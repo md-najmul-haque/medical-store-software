@@ -1,9 +1,11 @@
 import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import ItemInfo from './ItemInfo';
 
 
 const ItemForm = () => {
+
     return (
         <>
             <Tabs>
@@ -14,8 +16,7 @@ const ItemForm = () => {
                 </TabList>
 
                 <TabPanel>
-                    <h2>Any content 1</h2>
-
+                    <ItemInfo />
                 </TabPanel>
                 <TabPanel>
                     <h2>Any content 2</h2>
