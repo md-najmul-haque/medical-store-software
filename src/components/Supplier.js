@@ -87,6 +87,7 @@ const Supplier = () => {
                             })} />
                         <label className="label">
                             {errors.email?.type === 'required' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
+                            {errors.email?.type === "pattern" && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
                         </label>
                     </div>
 
@@ -175,10 +176,9 @@ const Supplier = () => {
                         />
                     </div>
 
-                    <input type="submit" className="btn w-full btn-primary text-white mt-5" value='Submit' />
+                    <input type="submit" className="btn w-full btn-accent text-white mt-5" value='Submit' />
                 </div>
             </form>
-
         </div>
     )
 }

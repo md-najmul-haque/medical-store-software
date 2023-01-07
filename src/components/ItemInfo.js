@@ -196,7 +196,7 @@ const ItemInfo = () => {
                         />
                     </div>
 
-                    <input type="submit" className="btn w-full btn-primary text-white mt-5" value='Submit' />
+                    <input type="submit" className="btn w-full btn-accent text-white mt-5" value='Submit' />
                 </div>
             </form>
 
