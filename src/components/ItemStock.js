@@ -30,8 +30,6 @@ const ItemStock = () => {
                         </label>
                     </div>
 
-
-
                     <div className="form-control w-full ">
                         <label className="label">
                             <span className="label-text">Manufacturing Data</span>
