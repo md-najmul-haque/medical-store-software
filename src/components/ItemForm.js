@@ -3,6 +3,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import ItemInfo from './ItemInfo';
 import ItemPrice from './ItemPrice';
+import ItemStock from './ItemStock';
 
 
 const ItemForm = () => {
@@ -23,11 +24,11 @@ const ItemForm = () => {
                     <ItemPrice />
                 </TabPanel>
                 <TabPanel>
-                    <h2>Any content 2</h2>
+                    <ItemStock />
                 </TabPanel>
             </Tabs>
 
-        </div>
+        </div >
     );
 };
 
