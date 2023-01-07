@@ -11,10 +11,10 @@ const ItemForm = () => {
     return (
         <div className='container mx-auto'>
             <Tabs>
-                <TabList>
-                    <Tab>Item Info</Tab>
-                    <Tab>Item Price</Tab>
-                    <Tab>Item Stock</Tab>
+                <TabList className='flex border-none bg-gray-100'>
+                    <Tab className='p-3 font-bold'>Item Info</Tab>
+                    <Tab className='p-3 font-bold'>Item Price</Tab>
+                    <Tab className='p-3 font-bold'>Item Stock</Tab>
                 </TabList>
 
                 <TabPanel>

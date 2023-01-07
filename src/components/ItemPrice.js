@@ -6,9 +6,7 @@ const ItemPrice = () => {
     const onSubmit = data => console.log(data)
 
     return (
-        <div className="container mx-auto">
-            <h2 className="text-center text-2xl uppercase font-bold text-primary mb-2">Item Price</h2>
-
+        <div className="container mx-auto mt-3">
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className='grid grid-cols-2 gap-x-5'>
                     <div className="form-control w-full">
