@@ -110,23 +110,62 @@ const ItemInfo = () => {
                             </label>
                         </div>
 
+                        <div className="form-control w-full max-w-xs mb-2">
+                            <select className="select select-bordered w-full max-w-xs" {...register("lotControl")}>
+                                <option disabled selected>Lot Control?</option>
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+                        </div>
 
-                        <div className="form-control w-full max-w-xs">
+
+                        <div className="form-control w-full max-w-xs mb-2">
                             <input
-                                type="number"
-                                placeholder="Enter Product Price"
+                                type="text"
+                                placeholder="Remarks"
                                 className="input input-bordered w-full max-w-xs"
-                                {...register("price", {
+                                {...register("remarks")} />
+                        </div>
+
+
+                        <div className="form-control w-full max-w-xs mb-2">
+                            <input
+                                type="text"
+                                placeholder="Status"
+                                className="input input-bordered w-full max-w-xs"
+                                {...register("status", {
                                     required: {
                                         value: true,
-                                        message: 'Product price is required'
+                                        message: 'Status is required'
                                     }
                                 })} />
                             <label className="label">
-                                {errors.price?.type === 'required' && <span className="label-text-alt text-red-500">{errors.price.message}</span>}
+                                {errors.status?.type === 'required' && <span className="label-text-alt text-red-500">{errors.status.message}</span>}
                             </label>
                         </div>
 
+
+                        <div className="form-control w-full max-w-xs mb-2">
+                            <input
+                                type="date"
+                                placeholder="Start Date"
+                                className="input input-bordered w-full max-w-xs"
+                                {...register("startData", {
+                                    valueAsDate: true,
+                                })}
+                            />
+                        </div>
+
+                        <div className="form-control w-full max-w-xs mb-2">
+                            <input
+                                type="date"
+                                placeholder="End Date"
+                                className="input input-bordered w-full max-w-xs"
+                                {...register("endData", {
+                                    valueAsDate: true,
+                                })}
+                            />
+                        </div>
 
 
 
