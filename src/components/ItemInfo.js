@@ -7,21 +7,18 @@ const ItemInfo = () => {
 
 
     return (
-        <div className="hero">
-            <div className="hero-content flex-col lg:flex-row justify-start">
-
-                <div className="card-body w-96">
+                <div className="container mx-auto">
                     <h2 className="text-center text-2xl uppercase font-bold text-primary mb-2">Item Info</h2>
 
-                    <form className='gap-1' onSubmit={handleSubmit(onSubmit)}>
-                        <div className="form-control w-full max-w-xs mb-2">
+                    <form className='grid grid-cols-2 gap-4' onSubmit={handleSubmit(onSubmit)}>
+                        <div className="form-control w-full mb-2">
                             <label className="label">
                                 <span className="label-text">Item Name</span>
                             </label>
                             <input
                                 type="text"
                                 placeholder="Item Name"
-                                className="input input-bordered w-full max-w-xs"
+                                className="input bg-gray-100 w-full max-w-xs mb-2"
                                 {...register("itemName", {
                                     required: {
                                         value: true,
@@ -40,7 +37,7 @@ const ItemInfo = () => {
                             <input
                                 type="text"
                                 placeholder="Category Name"
-                                className="input input-bordered w-full max-w-xs"
+                                className="input bg-gray-100 w-full max-w-xs mb-2"
                                 {...register("categoryName", {
                                     required: {
                                         value: true,
@@ -59,7 +56,7 @@ const ItemInfo = () => {
                             <input
                                 type="text"
                                 placeholder="Supplier Name"
-                                className="input input-bordered w-full max-w-xs"
+                                className="input bg-gray-100 w-full max-w-xs"
                                 {...register("supplierName", {
                                     required: {
                                         value: true,
@@ -78,7 +75,7 @@ const ItemInfo = () => {
                             <input
                                 type="text"
                                 placeholder="Brand Name"
-                                className="input input-bordered w-full max-w-xs"
+                                className="input bg-gray-100 w-full max-w-xs"
                                 {...register("brandName", {
                                     required: {
                                         value: true,
@@ -97,7 +94,7 @@ const ItemInfo = () => {
                             <input
                                 type="text"
                                 placeholder="Measurement Unit"
-                                className="input input-bordered w-full max-w-xs"
+                                className="input bg-gray-100 w-full max-w-xs"
                                 {...register("unit", {
                                     required: {
                                         value: true,
@@ -116,7 +113,7 @@ const ItemInfo = () => {
                             <input
                                 type="text"
                                 placeholder="Country of Origin"
-                                className="input input-bordered w-full max-w-xs"
+                                className="input bg-gray-100 w-full max-w-xs"
                                 {...register("origin", {
                                     required: {
                                         value: true,
@@ -132,7 +129,7 @@ const ItemInfo = () => {
                             <label className="label">
                                 <span className="label-text">Lot Control</span>
                             </label>
-                            <select className="select select-bordered w-full max-w-xs" {...register("lotControl")}>
+                            <select className="select bg-gray-100 w-full max-w-xs" {...register("lotControl")}>
                                 <option disabled selected>Lot Control?</option>
                                 <option>Yes</option>
                                 <option>No</option>
@@ -147,7 +144,7 @@ const ItemInfo = () => {
                             <input
                                 type="text"
                                 placeholder="Remarks"
-                                className="input input-bordered w-full max-w-xs"
+                                className="input bg-gray-100 w-full max-w-xs"
                                 {...register("remarks")} />
                         </div>
 
@@ -159,7 +156,7 @@ const ItemInfo = () => {
                             <input
                                 type="text"
                                 placeholder="Status"
-                                className="input input-bordered w-full max-w-xs"
+                                className="input bg-gray-100 w-full max-w-xs"
                                 {...register("status", {
                                     required: {
                                         value: true,
@@ -179,7 +176,7 @@ const ItemInfo = () => {
                             <input
                                 type="date"
                                 placeholder="Start Date"
-                                className="input input-bordered w-full max-w-xs"
+                                className="input bg-gray-100 w-full max-w-xs"
                                 {...register("startData", {
                                     valueAsDate: true,
                                 })}
@@ -193,7 +190,7 @@ const ItemInfo = () => {
                             <input
                                 type="date"
                                 placeholder="End Date"
-                                className="input input-bordered w-full max-w-xs"
+                                className="input bg-gray-100 w-full max-w-xs"
                                 {...register("endData", {
                                     valueAsDate: true,
                                 })}
@@ -205,9 +202,7 @@ const ItemInfo = () => {
                     </form>
 
                 </div>
-
-            </div>
-        </div>
+  
     );
 };
 
