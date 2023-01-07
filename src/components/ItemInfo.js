@@ -10,15 +10,16 @@ const ItemInfo = () => {
                 <div className="container mx-auto">
                     <h2 className="text-center text-2xl uppercase font-bold text-primary mb-2">Item Info</h2>
 
-                    <form className='grid grid-cols-2 gap-4' onSubmit={handleSubmit(onSubmit)}>
-                        <div className="form-control w-full mb-2">
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <div className='grid grid-cols-2 gap-x-5'>
+                        <div className="form-control w-full">
                             <label className="label">
                                 <span className="label-text">Item Name</span>
                             </label>
                             <input
                                 type="text"
                                 placeholder="Item Name"
-                                className="input bg-gray-100 w-full max-w-xs mb-2"
+                                className="input bg-gray-100 w-full "
                                 {...register("itemName", {
                                     required: {
                                         value: true,
@@ -30,14 +31,14 @@ const ItemInfo = () => {
                             </label>
                         </div>
 
-                        <div className="form-control w-full max-w-xs mb-2">
+                        <div className="form-control w-full ">
                             <label className="label">
                                 <span className="label-text">Category Name</span>
                             </label>
                             <input
                                 type="text"
                                 placeholder="Category Name"
-                                className="input bg-gray-100 w-full max-w-xs mb-2"
+                                className="input bg-gray-100 w-full "
                                 {...register("categoryName", {
                                     required: {
                                         value: true,
@@ -49,14 +50,14 @@ const ItemInfo = () => {
                             </label>
                         </div>
 
-                        <div className="form-control w-full max-w-xs mb-2">
+                        <div className="form-control w-full ">
                             <label className="label">
                                 <span className="label-text">Supplier Name</span>
                             </label>
                             <input
                                 type="text"
                                 placeholder="Supplier Name"
-                                className="input bg-gray-100 w-full max-w-xs"
+                                className="input bg-gray-100 w-full "
                                 {...register("supplierName", {
                                     required: {
                                         value: true,
@@ -68,14 +69,14 @@ const ItemInfo = () => {
                             </label>
                         </div>
 
-                        <div className="form-control w-full max-w-xs mb-2">
+                        <div className="form-control w-full">
                             <label className="label">
                                 <span className="label-text">Brand Name</span>
                             </label>
                             <input
                                 type="text"
                                 placeholder="Brand Name"
-                                className="input bg-gray-100 w-full max-w-xs"
+                                className="input bg-gray-100 w-full "
                                 {...register("brandName", {
                                     required: {
                                         value: true,
@@ -87,14 +88,14 @@ const ItemInfo = () => {
                             </label>
                         </div>
 
-                        <div className="form-control w-full max-w-xs mb-2">
+                        <div className="form-control w-full ">
                             <label className="label">
                                 <span className="label-text">Measurement Unit</span>
                             </label>
                             <input
                                 type="text"
                                 placeholder="Measurement Unit"
-                                className="input bg-gray-100 w-full max-w-xs"
+                                className="input bg-gray-100 w-full "
                                 {...register("unit", {
                                     required: {
                                         value: true,
@@ -106,14 +107,14 @@ const ItemInfo = () => {
                             </label>
                         </div>
 
-                        <div className="form-control w-full max-w-xs mb-2">
+                        <div className="form-control w-full ">
                             <label className="label">
                                 <span className="label-text">Country of Origin</span>
                             </label>
                             <input
                                 type="text"
                                 placeholder="Country of Origin"
-                                className="input bg-gray-100 w-full max-w-xs"
+                                className="input bg-gray-100 w-full "
                                 {...register("origin", {
                                     required: {
                                         value: true,
@@ -125,11 +126,11 @@ const ItemInfo = () => {
                             </label>
                         </div>
 
-                        <div className="form-control w-full max-w-xs mb-2">
+                        <div className="form-control w-full ">
                             <label className="label">
                                 <span className="label-text">Lot Control</span>
                             </label>
-                            <select className="select bg-gray-100 w-full max-w-xs" {...register("lotControl")}>
+                            <select className="select bg-gray-100 w-full " {...register("lotControl")}>
                                 <option disabled selected>Lot Control?</option>
                                 <option>Yes</option>
                                 <option>No</option>
@@ -137,26 +138,26 @@ const ItemInfo = () => {
                         </div>
 
 
-                        <div className="form-control w-full max-w-xs mb-2">
+                        <div className="form-control w-full ">
                             <label className="label">
                                 <span className="label-text">Remarks</span>
                             </label>
                             <input
                                 type="text"
                                 placeholder="Remarks"
-                                className="input bg-gray-100 w-full max-w-xs"
+                                className="input bg-gray-100 w-full "
                                 {...register("remarks")} />
                         </div>
 
 
-                        <div className="form-control w-full max-w-xs mb-2">
+                        <div className="form-control w-full ">
                             <label className="label">
                                 <span className="label-text">Status</span>
                             </label>
                             <input
                                 type="text"
                                 placeholder="Status"
-                                className="input bg-gray-100 w-full max-w-xs"
+                                className="input bg-gray-100 w-full "
                                 {...register("status", {
                                     required: {
                                         value: true,
@@ -168,37 +169,36 @@ const ItemInfo = () => {
                             </label>
                         </div>
 
-
-                        <div className="form-control w-full max-w-xs mb-2">
+                        <div className="form-control w-full ">
                             <label className="label">
                                 <span className="label-text">Start Data</span>
                             </label>
                             <input
                                 type="date"
                                 placeholder="Start Date"
-                                className="input bg-gray-100 w-full max-w-xs"
+                                className="input bg-gray-100 w-full "
                                 {...register("startData", {
                                     valueAsDate: true,
                                 })}
                             />
                         </div>
 
-                        <div className="form-control w-full max-w-xs mb-2">
+                        <div className="form-control w-full ">
                             <label className="label">
                                 <span className="label-text">End Data</span>
                             </label>
                             <input
                                 type="date"
                                 placeholder="End Date"
-                                className="input bg-gray-100 w-full max-w-xs"
+                                className="input bg-gray-100 w-full "
                                 {...register("endData", {
                                     valueAsDate: true,
                                 })}
                             />
                         </div>
 
-                        <input type="submit" className="btn w-full btn-primary text-white max-w-xs" value='Submit' />
-
+                        <input type="submit" className="btn w-full btn-primary text-white mt-5" value='Submit' />
+                        </div>
                     </form>
 
                 </div>
