@@ -15,6 +15,9 @@ const ItemInfo = () => {
 
                     <form className='gap-1' onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-control w-full max-w-xs mb-2">
+                            <label className="label">
+                                <span className="label-text">Item Name</span>
+                            </label>
                             <input
                                 type="text"
                                 placeholder="Item Name"
@@ -26,11 +29,14 @@ const ItemInfo = () => {
                                     }
                                 })} />
                             <label className="label">
-                                {errors.itemName?.type === 'required' && <span className="label-text-alt text-red-500">{errors.ItemName.message}</span>}
+                                {errors.itemName?.type === 'required' && <span className="label-text-alt text-red-500">{errors.itemName.message}</span>}
                             </label>
                         </div>
 
                         <div className="form-control w-full max-w-xs mb-2">
+                            <label className="label">
+                                <span className="label-text">Category Name</span>
+                            </label>
                             <input
                                 type="text"
                                 placeholder="Category Name"
@@ -47,6 +53,9 @@ const ItemInfo = () => {
                         </div>
 
                         <div className="form-control w-full max-w-xs mb-2">
+                            <label className="label">
+                                <span className="label-text">Supplier Name</span>
+                            </label>
                             <input
                                 type="text"
                                 placeholder="Supplier Name"
@@ -63,6 +72,9 @@ const ItemInfo = () => {
                         </div>
 
                         <div className="form-control w-full max-w-xs mb-2">
+                            <label className="label">
+                                <span className="label-text">Brand Name</span>
+                            </label>
                             <input
                                 type="text"
                                 placeholder="Brand Name"
@@ -79,6 +91,9 @@ const ItemInfo = () => {
                         </div>
 
                         <div className="form-control w-full max-w-xs mb-2">
+                            <label className="label">
+                                <span className="label-text">Measurement Unit</span>
+                            </label>
                             <input
                                 type="text"
                                 placeholder="Measurement Unit"
@@ -95,6 +110,9 @@ const ItemInfo = () => {
                         </div>
 
                         <div className="form-control w-full max-w-xs mb-2">
+                            <label className="label">
+                                <span className="label-text">Country of Origin</span>
+                            </label>
                             <input
                                 type="text"
                                 placeholder="Country of Origin"
@@ -111,6 +129,9 @@ const ItemInfo = () => {
                         </div>
 
                         <div className="form-control w-full max-w-xs mb-2">
+                            <label className="label">
+                                <span className="label-text">Lot Control</span>
+                            </label>
                             <select className="select select-bordered w-full max-w-xs" {...register("lotControl")}>
                                 <option disabled selected>Lot Control?</option>
                                 <option>Yes</option>
@@ -120,6 +141,9 @@ const ItemInfo = () => {
 
 
                         <div className="form-control w-full max-w-xs mb-2">
+                            <label className="label">
+                                <span className="label-text">Remarks</span>
+                            </label>
                             <input
                                 type="text"
                                 placeholder="Remarks"
@@ -129,6 +153,9 @@ const ItemInfo = () => {
 
 
                         <div className="form-control w-full max-w-xs mb-2">
+                            <label className="label">
+                                <span className="label-text">Status</span>
+                            </label>
                             <input
                                 type="text"
                                 placeholder="Status"
@@ -146,6 +173,9 @@ const ItemInfo = () => {
 
 
                         <div className="form-control w-full max-w-xs mb-2">
+                            <label className="label">
+                                <span className="label-text">Start Data</span>
+                            </label>
                             <input
                                 type="date"
                                 placeholder="Start Date"
@@ -157,6 +187,9 @@ const ItemInfo = () => {
                         </div>
 
                         <div className="form-control w-full max-w-xs mb-2">
+                            <label className="label">
+                                <span className="label-text">End Data</span>
+                            </label>
                             <input
                                 type="date"
                                 placeholder="End Date"
@@ -166,8 +199,6 @@ const ItemInfo = () => {
                                 })}
                             />
                         </div>
-
-
 
                         <input type="submit" className="btn w-full btn-primary text-white max-w-xs" value='Submit' />
 
