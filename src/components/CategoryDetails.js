@@ -80,7 +80,22 @@ const CategoryDetails = () => {
 
                     </div>
 
-
+                    <div className="form-control w-full col-span-2 ml-5 mt-10">
+                        <input
+                            type="image"
+                            alt="category-image"
+                            style={{ width: '200px', height: '200px' }}
+                            className="input-bordered border-2 shadow-md"
+                            {...register("categoryName", {
+                                required: {
+                                    value: true,
+                                    message: 'Category name is required'
+                                }
+                            })} />
+                        <label className="label">
+                            {errors.categoryName?.type === 'required' && <span className="label-text-alt text-red-500">{errors.categoryName.message}</span>}
+                        </label>
+                    </div>
 
 
 
