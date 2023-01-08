@@ -22,7 +22,7 @@ const CreateSalesBill = () => {
                                     <span className="label-text">Requisition From App #</span>
                                 </label>
                                 <select className="select w-full input-bordered" {...register("memoNumber")}>
-                                    <option selected>Choose App Memo Number</option>
+                                    <option disabled selected>Choose App Memo Number</option>
                                     <option>1</option>
                                     <option>2</option>
                                 </select>
@@ -45,7 +45,7 @@ const CreateSalesBill = () => {
 
                         <div className='grid grid-cols-3 col-span-2 gap-x-10'>
                             <div className="form-control w-full">
-                                <label className="label">
+                                <label className="label font-bold">
                                     <span className="label-text">Customer No</span>
                                 </label>
                                 <input
@@ -64,7 +64,7 @@ const CreateSalesBill = () => {
                             </div>
 
                             <div className="form-control w-full col-span-2">
-                                <label className="label">
+                                <label className="label font-bold">
                                     <span className="label-text">Customer Name</span>
                                 </label>
                                 <input
@@ -83,23 +83,44 @@ const CreateSalesBill = () => {
                             </div>
                         </div>
 
-                        <div className="form-control w-full col-span-2">
-                            <label className="label">
-                                <span className="label-text">Category Name</span>
-                            </label>
-                            <input
-                                type="text"
-                                placeholder="Category Name"
-                                className="input w-full input-bordered"
-                                {...register("categoryName", {
-                                    required: {
-                                        value: true,
-                                        message: 'Category name is required'
-                                    }
-                                })} />
-                            <label className="label">
-                                {errors.categoryName?.type === 'required' && <span className="label-text-alt text-red-500">{errors.categoryName.message}</span>}
-                            </label>
+                        <div className='grid grid-cols-3 col-span-2 gap-x-10'>
+                            <div className="form-control w-full">
+                                <label className="label font-bold">
+                                    <span className="label-text">Barcode</span>
+                                </label>
+                                <input
+                                    type="qr"
+                                    placeholder="Scan Barcode"
+                                    className="input w-full input-bordered"
+                                    {...register("barcode", {
+                                        required: {
+                                            value: true,
+                                            message: 'Barcode No is required'
+                                        }
+                                    })} />
+                                <label className="label">
+                                    {errors.barcode?.type === 'required' && <span className="label-text-alt text-red-500">{errors.barcode.message}</span>}
+                                </label>
+                            </div>
+
+                            <div className="form-control w-full col-span-2">
+                                <label className="label font-bold">
+                                    <span className="label-text">Add Product</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    placeholder="Add Product / Barcode ID"
+                                    className="input w-full input-bordered"
+                                    {...register("customerName", {
+                                        required: {
+                                            value: true,
+                                            message: 'Customer Name is required'
+                                        }
+                                    })} />
+                                <label className="label">
+                                    {errors.customerName?.type === 'required' && <span className="label-text-alt text-red-500">{errors.customerName.message}</span>}
+                                </label>
+                            </div>
                         </div>
 
 
