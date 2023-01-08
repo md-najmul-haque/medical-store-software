@@ -95,7 +95,7 @@ const CreateSalesBill = () => {
                                     {...register("barcode", {
                                         required: {
                                             value: true,
-                                            message: 'Barcode No is required'
+                                            message: 'Barcode is required'
                                         }
                                     })} />
                                 <label className="label">
@@ -111,14 +111,14 @@ const CreateSalesBill = () => {
                                     type="text"
                                     placeholder="Add Product / Barcode ID"
                                     className="input w-full input-bordered"
-                                    {...register("customerName", {
+                                    {...register("addProduct", {
                                         required: {
                                             value: true,
-                                            message: 'Customer Name is required'
+                                            message: 'Product is required'
                                         }
                                     })} />
                                 <label className="label">
-                                    {errors.customerName?.type === 'required' && <span className="label-text-alt text-red-500">{errors.customerName.message}</span>}
+                                    {errors.addProduct?.type === 'required' && <span className="label-text-alt text-red-500">{errors.addProduct.message}</span>}
                                 </label>
                             </div>
                         </div>
