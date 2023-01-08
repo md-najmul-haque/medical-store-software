@@ -23,7 +23,7 @@ const CategoryDetails = () => {
                                 {...register("catId", {
                                     required: {
                                         value: true,
-                                        message: 'CAT id is required'
+                                        message: 'CAT ID is required'
                                     }
                                 })} />
                             <label className="label">
@@ -70,7 +70,7 @@ const CategoryDetails = () => {
                                 {...register("status", {
                                     required: {
                                         value: true,
-                                        message: 'Status is required'
+                                        message: 'Category image is required'
                                     }
                                 })} />
                             <label className="label">
@@ -83,24 +83,13 @@ const CategoryDetails = () => {
                     <div className="form-control w-full col-span-2 ml-5 mt-10">
                         <input
                             type="image"
-                            alt="category-image"
+                            alt=""
                             style={{ width: '200px', height: '200px' }}
                             className="input-bordered border-2 shadow-md"
-                            {...register("categoryName", {
-                                required: {
-                                    value: true,
-                                    message: 'Category name is required'
-                                }
-                            })} />
-                        <label className="label">
-                            {errors.categoryName?.type === 'required' && <span className="label-text-alt text-red-500">{errors.categoryName.message}</span>}
-                        </label>
+                            {...register("image")} />
                     </div>
 
-
-
-
-                    <div className='flex ml-5'>
+                    <div className='flex ml-5 mt-5'>
                         <button className='btn btn-accent'>Cancel</button>
                         <input type="submit" className="btn btn-success text-white ml-10" value='Save' />
                     </div>
