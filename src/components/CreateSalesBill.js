@@ -126,13 +126,51 @@ const CreateSalesBill = () => {
 
                     </div>
 
+                    <div className="overflow-x-auto">
+                        <table className="table w-full">
+                            <thead className='py-10'>
+                                <tr>
+                                    <th></th>
+                                    <th className='border'>Barcode ID</th>
+                                    <th className='border'>Item Description</th>
+                                    <th className='border'>MRP Price</th>
+                                    <th className='border'>Quantity</th>
+                                    <th className='border'>Unit Price</th>
+                                    <th className='border'>Total</th>
+                                </tr>
+                            </thead>
+                            {/* <tbody>
+                                <tr>
+                                    <th>1</th>
+                                    <td>Cy Ganderton</td>
+                                    <td>Quality Control Specialist</td>
+                                    <td>Littel, Schaden and Vandervort</td>
+                                    <td>Canada</td>
+                                    <td>12/16/2020</td>
+                                    <td>Blue</td>
+                                </tr>
+                            </tbody> */}
+                        </table>
+                        <div class="flex justify-end items-center mt-10  ">
+                            <h2 className='bg-gray-100 p-3'>Total Amount</h2>
+                            <input
+                                type="number"
+                                placeholder='00.0'
+                                className="input w-full max-w-xs input-bordered text-right"
+                                {...register("total")} />
+                        </div>
+
+                    </div>
+
 
                     <div className='flex justify-between items-center ml-5 mt-5'>
-                        <button className='btn btn-info'>Back</button>
-                        <input type="submit" className="btn btn-success text-white ml-10" value='Save' />
+                        <button className='btn btn-info px-10'>Back</button>
+                        <input type="submit" className="btn btn-success text-white px-10 ml-10" value='Save' />
                     </div>
                 </div>
             </form>
+
+
         </div>
     );
 };
