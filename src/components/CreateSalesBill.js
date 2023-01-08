@@ -15,7 +15,95 @@ const CreateSalesBill = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className='mx-5'>
 
+                    <div className='grid grid-cols-3 gap-x-5 pl-5 pr-20'>
+                        <div className='grid grid-cols-3 col-span-2 gap-x-10'>
+                            <div className="form-control w-full col-span-2">
+                                <label className="label">
+                                    <span className="label-text">Requisition From App #</span>
+                                </label>
+                                <select className="select w-full input-bordered" {...register("memoNumber")}>
+                                    <option selected>Choose App Memo Number</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                </select>
+                            </div>
 
+                            <div className="form-control w-full ">
+                                <label className="label">
+                                    <span className="label-text">Invoice Data</span>
+                                </label>
+                                <input
+                                    type="date"
+                                    defaultValue={Date.now()}
+                                    className="input bg-gray-100 w-full "
+                                    {...register("startData", {
+                                        valueAsDate: true,
+                                    })}
+                                />
+                            </div>
+                        </div>
+
+                        <div className='grid grid-cols-3 col-span-2 gap-x-10'>
+                            <div className="form-control w-full">
+                                <label className="label">
+                                    <span className="label-text">Customer No</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    placeholder="Customer No"
+                                    className="input w-full input-bordered"
+                                    {...register("customerNo", {
+                                        required: {
+                                            value: true,
+                                            message: 'Customer No is required'
+                                        }
+                                    })} />
+                                <label className="label">
+                                    {errors.customerNo?.type === 'required' && <span className="label-text-alt text-red-500">{errors.customerNo.message}</span>}
+                                </label>
+                            </div>
+
+                            <div className="form-control w-full col-span-2">
+                                <label className="label">
+                                    <span className="label-text">Customer Name</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    placeholder="Customer Name"
+                                    className="input w-full input-bordered"
+                                    {...register("customerName", {
+                                        required: {
+                                            value: true,
+                                            message: 'Customer Name is required'
+                                        }
+                                    })} />
+                                <label className="label">
+                                    {errors.customerName?.type === 'required' && <span className="label-text-alt text-red-500">{errors.customerName.message}</span>}
+                                </label>
+                            </div>
+                        </div>
+
+                        <div className="form-control w-full col-span-2">
+                            <label className="label">
+                                <span className="label-text">Category Name</span>
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="Category Name"
+                                className="input w-full input-bordered"
+                                {...register("categoryName", {
+                                    required: {
+                                        value: true,
+                                        message: 'Category name is required'
+                                    }
+                                })} />
+                            <label className="label">
+                                {errors.categoryName?.type === 'required' && <span className="label-text-alt text-red-500">{errors.categoryName.message}</span>}
+                            </label>
+                        </div>
+
+
+                    </div>
 
 
                     <div className='flex justify-between items-center ml-5 mt-5'>
