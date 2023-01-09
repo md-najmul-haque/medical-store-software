@@ -170,7 +170,7 @@ const ItemInfo = () => {
 
                     <div className="form-control w-full ">
                         <label className="label">
-                            <span className="label-text">Start Data</span>
+                            <span className="label-text">Start Date</span>
                         </label>
                         <input
                             type="date"
@@ -184,7 +184,7 @@ const ItemInfo = () => {
 
                     <div className="form-control w-full ">
                         <label className="label">
-                            <span className="label-text">End Data</span>
+                            <span className="label-text">End Date</span>
                         </label>
                         <input
                             type="date"
