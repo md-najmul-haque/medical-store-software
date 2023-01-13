@@ -8,6 +8,7 @@ import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Main from './Layouts/Main';
+import Registration from './components/Registration';
 
 function App() {
 
@@ -15,6 +16,10 @@ function App() {
     {
       path: "/",
       element: <Main />
+    },
+    {
+      path: "/register",
+      element: <Registration />
     },
   ]);
 

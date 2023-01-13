@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png'
 
 
@@ -38,19 +39,18 @@ const Login = () => {
                                         />
                                     </div>
                                     <div class="text-center pt-1 mb-12 pb-1">
-                                        <button type="button" className='btn btn-success btn-sm px-6 rounded w-full mb-3'>Login</button>
-
+                                        <button type="button" className='btn btn-success btn-sm px-6 rounded w-full mb-3 font-semibold'>Login</button>
                                         <a class="text-red-600" href="#!">Forgot password?</a>
                                     </div>
                                     <div class="flex items-center justify-between pb-6">
                                         <p class="mb-0 mr-2">Don't have an account?</p>
-                                        <button
+                                        <Link to='/register'
                                             type="button"
-                                            class="btn btn-info btn-sm font-normal rounded"
+                                            class="btn btn-info btn-sm font-semibold rounded"
 
                                         >
                                             Sign Up
-                                        </button>
+                                        </Link>
                                     </div>
                                 </form>
                             </div>
