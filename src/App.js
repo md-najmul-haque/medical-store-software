@@ -5,11 +5,13 @@ import CategoryDetails from './components/CategoryDetails';
 import CreateSalesBill from './components/CreateSalesBill';
 import AddNewPayment from './components/AddNewPayment';
 import Dashboard from './components/Dashboard';
+import Login from './components/Login';
 
 function App() {
   return (
     <div className="App">
-      <Dashboard />
+      <Login />
+      {/* <Dashboard /> */}
       {/* <ItemForm /> */}
       {/* <CategoryDetails /> */}
       {/* <CreateSalesBill /> */}
