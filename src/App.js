@@ -6,11 +6,22 @@ import CreateSalesBill from './components/CreateSalesBill';
 import AddNewPayment from './components/AddNewPayment';
 import Dashboard from './components/Dashboard';
 import Login from './components/Login';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Main from './Layouts/Main';
 
 function App() {
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Main />
+    },
+  ]);
+
   return (
     <div className="App">
-      <Login />
+      <RouterProvider router={router} />
+      {/* <Login /> */}
       {/* <Dashboard /> */}
       {/* <ItemForm /> */}
       {/* <CategoryDetails /> */}

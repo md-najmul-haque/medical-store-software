@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from '../assets/logo.png'
-import login from '../assets/login.png'
+
 
 const Login = () => {
     return (
@@ -18,10 +18,9 @@ const Login = () => {
                                         src={logo}
                                         alt="logo"
                                     />
-                                    <h4 class="text-xl font-semibold mt-1 mb-8 pb-1">We are The Lotus Team</h4>
                                 </div>
                                 <form>
-                                    <p class="mb-4">Please login to your account</p>
+                                    <p class="mb-4 mt-5 text-xl">Please login to your account</p>
                                     <div class="mb-4">
                                         <input
                                             type="text"
@@ -39,7 +38,7 @@ const Login = () => {
                                         />
                                     </div>
                                     <div class="text-center pt-1 mb-12 pb-1">
-                                        <button type="button" className='btn btn-success px-6 py-1.5 w-full mb-3'>Login</button>
+                                        <button type="button" className='btn btn-success btn-sm px-6 rounded w-full mb-3'>Login</button>
 
                                         <a class="text-red-600" href="#!">Forgot password?</a>
                                     </div>
