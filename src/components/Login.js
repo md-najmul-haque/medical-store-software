@@ -1,9 +1,14 @@
 import React from 'react';
+import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png'
 
 
 const Login = () => {
+
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
+    const onSubmit = data => console.log(data)
+
     return (
         <section class="bg-gray-200 h-screen">
 
@@ -20,15 +25,25 @@ const Login = () => {
                                         alt="logo"
                                     />
                                 </div>
-                                <form>
+                                <form onSubmit={handleSubmit(onSubmit)}>
                                     <p class="mb-4 mt-5 text-xl">Please login to your account</p>
-                                    <div class="mb-4">
+                                    <div class="form-control mb-4">
                                         <input
                                             type="text"
                                             class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                             id="exampleFormControlInput1"
                                             placeholder="Username"
+                                            {...register("userName", {
+                                                required: {
+                                                    value: true,
+                                                    message: 'User name is required'
+                                                }
+                                            }
+                                            )}
                                         />
+                                        <label className="label py-0">
+                                            {errors.userName?.type === 'required' && <p className="label-text-alt text-red-500">{errors.userName.message}</p>}
+                                        </label>
                                     </div>
                                     <div class="mb-4">
                                         <input
@@ -39,20 +54,20 @@ const Login = () => {
                                         />
                                     </div>
                                     <div class="text-center pt-1 mb-12 pb-1">
-                                        <button type="button" className='btn btn-success btn-sm px-6 rounded w-full mb-3 font-semibold'>Login</button>
+                                        <input type="submit" className="btn btn-success btn-sm px-6 rounded w-full mb-3 font-semibold" value='Submit' />
                                         <a class="text-red-600" href="#!">Forgot password?</a>
                                     </div>
-                                    <div class="flex items-center justify-between pb-6">
-                                        <p class="mb-0 mr-2">Don't have an account?</p>
-                                        <Link to='/register'
-                                            type="button"
-                                            class="btn btn-info btn-sm font-semibold rounded"
-
-                                        >
-                                            Sign Up
-                                        </Link>
-                                    </div>
                                 </form>
+                                <div class="flex items-center justify-between pb-6">
+                                    <p class="mb-0 mr-2">Don't have an account?</p>
+                                    <Link to='/register'
+                                        type="button"
+                                        class="btn btn-info btn-sm font-semibold rounded"
+
+                                    >
+                                        Sign Up
+                                    </Link>
+                                </div>
                             </div>
                         </div>
 
