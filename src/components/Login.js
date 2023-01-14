@@ -11,11 +11,9 @@ const Login = () => {
 
     return (
         <section class="bg-gray-200 h-screen">
-
             <div class="flex justify-center items-center flex-wrap h-full text-gray-800">
                 <div class="">
                     <div class="block bg-white shadow-lg rounded-lg">
-
                         <div class="md:px-0">
                             <div class="md:p-12 md:mx-6">
                                 <div class="text-center">
@@ -27,7 +25,7 @@ const Login = () => {
                                 </div>
                                 <form onSubmit={handleSubmit(onSubmit)}>
                                     <p class="mb-4 mt-5 text-xl">Please login to your account</p>
-                                    <div class="form-control mb-4">
+                                    <div class=" mb-4">
                                         <input
                                             type="text"
                                             class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
@@ -42,16 +40,26 @@ const Login = () => {
                                             )}
                                         />
                                         <label className="label py-0">
-                                            {errors.userName?.type === 'required' && <p className="label-text-alt text-red-500">{errors.userName.message}</p>}
+                                            {errors.userName?.type === 'required' && <span className="label-text-alt text-red-500">{errors.userName.message}</span>}
                                         </label>
                                     </div>
                                     <div class="mb-4">
                                         <input
                                             type="password"
                                             class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                                            id="exampleFormControlInput1"
                                             placeholder="Password"
+                                            {...register("password", {
+                                                required: {
+                                                    value: true,
+                                                    message: 'Password is required'
+                                                }
+                                            }
+                                            )}
                                         />
+
+                                        <label className="label py-0">
+                                            {errors.password?.type === 'required' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
+                                        </label>
                                     </div>
                                     <div class="text-center pt-1 mb-12 pb-1">
                                         <input type="submit" className="btn btn-success btn-sm px-6 rounded w-full mb-3 font-semibold" value='Submit' />
@@ -74,8 +82,6 @@ const Login = () => {
                     </div>
                 </div>
             </div>
-
-
         </section >
 
     );
