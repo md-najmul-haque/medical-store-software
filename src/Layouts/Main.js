@@ -1,10 +1,12 @@
 import React from 'react';
 import Login from '../components/Login';
+import SalesBill from '../components/SalesBill';
 
 const Main = () => {
     return (
         <div>
-            <Login />
+            {/* <Login /> */}
+            <SalesBill />
         </div>
     );
 };
