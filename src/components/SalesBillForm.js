@@ -93,14 +93,23 @@ const SalesBillForm = () => {
                         </tr>
                     </tbody>
                 </table>
-                <div class="flex justify-end items-center mt-10  ">
-                    <h2 className='bg-gray-100 p-3'>Total Amount</h2>
+                <div class="flex justify-end items-center mt-5 mb-2">
+                    <h2 className='p-3 font-semibold'>Invoice Discount: </h2>
                     <input
                         type="number"
                         placeholder='00.0'
-                        className="input w-full max-w-xs input-bordered focus:outline-none rounded-none text-right"
+                        className="input w-full max-w-xs input-bordered focus:outline-none rounded text-right"
                     />
                 </div>
+                <div class="flex justify-end items-center mb-2">
+                    <h2 className='p-3 font-semibold'>Total Discount: </h2>
+                    <input
+                        type="number"
+                        placeholder='00.0'
+                        className="input w-full max-w-xs input-bordered focus:outline-none rounded text-right"
+                    />
+                </div>
+
 
             </div>
         </div>
