@@ -2,6 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import SalesBillForm from './SalesBillForm';
+import SalesBillNavbar from './SalesBillNavbar';
 
 const SalesBill = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
@@ -9,6 +10,7 @@ const SalesBill = () => {
 
     return (
         <div className='h-screen'>
+            <SalesBillNavbar />
             <div className='grid grid-cols-2 gap-5'>
 
                 <div>
