@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import SalesBillForm from './SalesBillForm';
 
 const SalesBill = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
@@ -31,7 +32,7 @@ const SalesBill = () => {
                             </div>
 
                             <div className="form-control w-full">
-                                <select className="select w-full input-bordered">
+                                <select className="select w-full input-bordered focus:outline-none">
                                     <option disabled selected>Select Medicine</option>
                                     <option>1</option>
                                     <option>2</option>
@@ -64,7 +65,7 @@ const SalesBill = () => {
                 </div>
             </div>
             <div>
-                <h1>this is section 2</h1>
+                <SalesBillForm />
             </div>
         </div>
     );
