@@ -110,6 +110,41 @@ const SalesBillForm = () => {
                     />
                 </div>
 
+                <div class="flex justify-end items-center mb-2">
+                    <h2 className='p-3 font-semibold'>Total VAT: </h2>
+                    <input
+                        type="number"
+                        placeholder='00.0'
+                        className="input w-full max-w-xs input-bordered focus:outline-none rounded text-right"
+                    />
+                </div>
+
+                <div class="flex justify-end items-center mb-2">
+                    <h2 className='p-3 font-semibold'>Grand Total: </h2>
+                    <input
+                        type="number"
+                        placeholder='00.0'
+                        className="input w-full max-w-xs input-bordered focus:outline-none rounded text-right"
+                    />
+                </div>
+
+                <div class="flex justify-end items-center mb-2">
+                    <h2 className='p-3 font-semibold'>Previous: </h2>
+                    <input
+                        type="number"
+                        placeholder='00.0'
+                        className="input w-full max-w-xs input-bordered focus:outline-none rounded text-right"
+                    />
+                </div>
+
+                <div class="flex justify-end items-center mb-2">
+                    <h2 className='p-3 font-semibold'>change: </h2>
+                    <input
+                        type="number"
+                        placeholder='00.0'
+                        className="input w-full max-w-xs input-bordered focus:outline-none rounded text-right"
+                    />
+                </div>
 
             </div>
         </div>
