@@ -39,8 +39,10 @@ const SalesBillSidebar = () => {
                     <div className="form-control w-full">
                         <select className="select w-full input-bordered focus:outline-none">
                             <option disabled selected>Select Medicine</option>
-                            <option>1</option>
-                            <option>2</option>
+                            {
+                                medicines.map(medicine => <option key={medicine._id}>{medicine.name}</option>)
+                            }
+
                         </select>
                     </div>
                 </div>
