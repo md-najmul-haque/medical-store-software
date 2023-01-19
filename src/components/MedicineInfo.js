@@ -3,7 +3,23 @@ import { useForm } from 'react-hook-form';
 
 const MedicineInfo = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
-    const onSubmit = data => console.log(data)
+    const onSubmit = data => {
+
+        fetch(`http://localhost:5000/`, {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                'content-type': "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(medicine => console.log('inside medicine', medicine))
+
+
+
+        console.log(data)
+
+    }
 
     return (
         <div className="container mx-auto mt-3">
@@ -175,7 +191,6 @@ const MedicineInfo = () => {
                         </label>
                         <input
                             type="date"
-                            placeholder="End Date"
                             className="input bg-gray-100 w-full "
                             {...register("expData", {
                                 valueAsDate: true,
