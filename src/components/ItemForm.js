@@ -4,6 +4,7 @@ import 'react-tabs/style/react-tabs.css';
 import ItemInfo from './ItemInfo';
 import ItemPrice from './ItemPrice';
 import ItemStock from './ItemStock';
+import MedicineInfo from './MedicineInfo';
 import Supplier from './Supplier';
 
 
@@ -17,6 +18,7 @@ const ItemForm = () => {
                     <Tab className='p-3 font-bold'>Item Price</Tab>
                     <Tab className='p-3 font-bold'>Item Stock</Tab>
                     <Tab className='p-3 font-bold'>Supplier</Tab>
+                    <Tab className='p-3 font-bold'>Medicine Info</Tab>
                 </TabList>
 
                 <TabPanel>
@@ -30,6 +32,9 @@ const ItemForm = () => {
                 </TabPanel>
                 <TabPanel>
                     <Supplier />
+                </TabPanel>
+                <TabPanel>
+                    <MedicineInfo />
                 </TabPanel>
             </Tabs>
 

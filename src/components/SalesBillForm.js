@@ -10,7 +10,7 @@ const SalesBillForm = () => {
                 <div className="form-control w-full">
                     <input
                         type="qr"
-                        placeholder="Scan Barcode"
+                        placeholder="Customer Name / Phone Number"
                         className="input w-full input-bordered focus:outline-none"
                     />
                 </div>

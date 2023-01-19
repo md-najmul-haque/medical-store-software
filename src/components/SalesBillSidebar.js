@@ -40,13 +40,11 @@ const SalesBillSidebar = () => {
                     </div>
 
                     <div className="form-control w-full">
-                        <select className="select w-full input-bordered focus:outline-none">
-                            <option disabled selected>Select Medicine</option>
-                            {
-                                medicines.filter(medicine => medicine.name.toLowerCase().includes(query)).map(medicine => <option key={medicine._id}>{medicine.name}</option>)
-                            }
-
-                        </select>
+                        <input
+                            type="qr"
+                            placeholder="Scan Barcode"
+                            className="input w-full input-bordered focus:outline-none"
+                        />
                     </div>
                 </div>
                 <div className='grid grid-cols-4'>

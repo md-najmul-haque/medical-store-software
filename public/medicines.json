@@ -2,6 +2,7 @@
     {
         "_id": "1",
         "name": "Emorivir 200",
+        "genericName": "",
         "type": "capsule",
         "price": 200,
         "photoURL": "https://i.ibb.co/Q9yZss7/0x0.jpg"
@@ -9,6 +10,7 @@
     {
         "_id": "2",
         "name": "Alacot 5ml",
+        "genericName": "",
         "type": "drop",
         "price": 150,
         "photoURL": "https://i.ibb.co/K0W8m6f/Alacot-o1.jpg"
@@ -16,6 +18,7 @@
     {
         "_id": "3",
         "name": "Angilock 100",
+        "genericName": "",
         "type": "tablet",
         "price": 200,
         "photoURL": "https://i.ibb.co/BVV7bVk/Angilock-l-2.jpg"
@@ -23,13 +26,15 @@
     {
         "_id": "4",
         "name": "Apsol 5gm",
-        "type": "onitment",
+        "genericName": "",
+        "type": "ointment",
         "price": 180,
         "photoURL": "https://i.ibb.co/4gSTsYw/Apsol-Oral-01.jpg"
     },
     {
         "_id": "5",
         "name": "Erytromix 60ml",
+        "genericName": "",
         "type": "syrup",
         "price": 400,
         "photoURL": "https://i.ibb.co/ZYkNBcw/Chlorpheniramine-Maleate-Syrups-Finished-Medicine-Pharmaceuticals.jpg"
@@ -37,6 +42,7 @@
     {
         "_id": "6",
         "name": "Flexivan ER 200mg",
+        "genericName": "",
         "type": "tablet",
         "price": 400,
         "photoURL": "https://i.ibb.co/McnNzL0/flexivan-ER4.png"
@@ -44,6 +50,7 @@
     {
         "_id": "7",
         "name": "Molvir 200mg",
+        "genericName": "",
         "type": "capsule",
         "price": 300,
         "photoURL": "https://i.ibb.co/jZ9hNK8/Molvir-P.jpg"
@@ -51,6 +58,7 @@
     {
         "_id": "8",
         "name": "Nafodil 100mg",
+        "genericName": "",
         "type": "capsule",
         "price": 300,
         "photoURL": "https://i.ibb.co/4Z58986/Nafodil-resized-pic.jpg"
@@ -58,6 +66,7 @@
     {
         "_id": "9",
         "name": "Teconin 200mg",
+        "genericName": "",
         "type": "injection",
         "price": 500,
         "photoURL": "https://i.ibb.co/C5YNcks/Teconin-200.jpg"
@@ -65,6 +74,7 @@
     {
         "_id": "10",
         "name": "Tomephen 100ml",
+        "genericName": "",
         "type": "syrup",
         "price": 500,
         "photoURL": "https://i.ibb.co/DzzmvQF/tomephen-syrup-100ml-1-pc.jpg"
