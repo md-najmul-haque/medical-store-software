@@ -3,21 +3,43 @@ import { useForm } from 'react-hook-form';
 
 const MedicineInfo = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
+
+
+
     const onSubmit = data => {
 
-        fetch(`http://localhost:5000/`, {
-            method: "POST",
-            body: JSON.stringify(data),
-            headers: {
-                'content-type': "application/json"
-            }
+        const image = data.image[0];
+        const imageStorageKey = '659c9f3714e59a5aab97b06d91ac3782';
+        const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`
+        const formData = new FormData();
+        formData.append('image', image);
+
+        fetch(url, {
+            method: 'POST',
+            body: formData
         })
-            .then(res => res.json())
-            .then(medicine => console.log('inside medicine', medicine))
+            .then((response) => response.json())
+            .then((result) => {
+                console.log('Success:', result);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+
+
+        // fetch(`http://localhost:5000/`, {
+        //     method: "POST",
+        //     body: JSON.stringify(data),
+        //     headers: {
+        //         'content-type': "application/json"
+        //     }
+        // })
+        //     .then(res => res.json())
+        //     .then(medicine => console.log('inside medicine', medicine))
 
 
 
-        console.log(data)
+        // console.log(data.image[0].name)
 
     }
 
