@@ -1,34 +1,65 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BiPlusMedical } from 'react-icons/bi';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
 import { AiFillEye } from 'react-icons/ai';
+import { useForm } from 'react-hook-form';
 
 const SalesBillForm = () => {
+    const [customerData, setCustomerData] = useState([])
+
+    const handleNumber = (e) => {
+        const customerNumber = e.target.value
+        console.log(customerNumber)
+
+        fetch(`customer.json`)
+            .then(res => res.json())
+            .then(data => {
+                const selectedCustomer = data.filter(customer => customer.customerNumber === customerNumber)
+                setCustomerData(selectedCustomer)
+                // console.log(selectedCustomer)
+            })
+
+        // console.log(customerData)
+    }
+
     return (
         <div className='mr-5'>
             <div className='grid grid-cols-2 gap-x-10'>
+
                 <div className="form-control w-full">
                     <input
-                        type="qr"
+                        type="text"
                         placeholder="Customer Name / Phone Number"
                         className="input w-full input-bordered focus:outline-none"
+                        defaultValue={customerData[0]?.customerName}
+
                     />
                 </div>
 
-                <div class="flex justify-center">
-                    <div class="mb-3 xl:w-96">
+                <div className="form-control">
+                    <div className="input-group">
+                        <input type="text" placeholder="Search…" className="input input-bordered w-full focus:outline-none" onBlur={handleNumber} />
+                        <button className="btn btn-square">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                        </button>
+                    </div>
+                </div>
+
+                {/* <div class="flex justify-center">
+                    <div class="mb-3">
                         <div class="input-group relative flex flex-wrap items-stretch w-full mb-4">
-                            <input type="search" class="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-success focus:outline-none" placeholder="Tan" aria-label="Search" aria-describedby="button-addon2" />
-                            <button class="btn inline-block px-6 py-2.5 bg-success text-white font-medium text-xs leading-tight uppercase shadow-md hover:bg-success hover:shadow-lg focus:bg-success  focus:shadow-lg focus:outline-none focus:ring-0 active:bg-success active:shadow-lg transition duration-150 ease-in-out flex items-center" type="button" id="button-addon2">
+                            <input type="text" name='mobile' class="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-success focus:outline-none" placeholder="Mobile" aria-label="Search" aria-describedby="button-addon2" />
+                            <button type='submit' class="btn inline-block px-6 py-2.5 bg-success text-white font-medium text-xs leading-tight uppercase shadow-md hover:bg-success hover:shadow-lg focus:bg-success  focus:shadow-lg focus:outline-none focus:ring-0 active:bg-success active:shadow-lg transition duration-150 ease-in-out flex items-center" type="button" id="button-addon2">
                                 <BiPlusMedical />
                             </button>
                         </div>
                     </div>
-                </div>
+                </div> */}
+
 
             </div>
 
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto mt-10">
                 <table className="table w-full border">
                     <thead className='py-10'>
                         <tr>

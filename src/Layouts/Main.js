@@ -7,8 +7,8 @@ const Main = () => {
     return (
         <div>
             {/* <Login /> */}
-            {/* <SalesBill /> */}
-            <ItemForm />
+            <SalesBill />
+            {/* <ItemForm /> */}
         </div>
     );
 };

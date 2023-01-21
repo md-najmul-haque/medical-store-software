@@ -1,0 +1,22 @@
+[
+    {
+        "_id": "1",
+        "customerName": "Najmul Haque",
+        "customerNumber": "01717888789"
+    },
+    {
+        "_id": "2",
+        "customerName": "Ayan",
+        "customerNumber": "01558888788"
+    },
+    {
+        "_id": "3",
+        "customerName": "Shahraan",
+        "customerNumber": "01717888782"
+    },
+    {
+        "_id": "4",
+        "customerName": "Tashfin",
+        "customerNumber": "01717874541"
+    }
+]
