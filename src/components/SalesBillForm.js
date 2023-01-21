@@ -4,7 +4,7 @@ import { RiDeleteBin5Fill } from 'react-icons/ri';
 import { AiFillEye } from 'react-icons/ai';
 import { useForm } from 'react-hook-form';
 
-const SalesBillForm = () => {
+const SalesBillForm = ({ medicine }) => {
     const [customerData, setCustomerData] = useState([])
 
     const handleNumber = (e) => {
@@ -56,7 +56,6 @@ const SalesBillForm = () => {
                     </div>
                 </div> */}
 
-
             </div>
 
             <div className="overflow-x-auto mt-10">
@@ -79,6 +78,7 @@ const SalesBillForm = () => {
                                 <input
                                     type="text"
                                     className="input w-full input-bordered focus:outline-none"
+                                    defaultValue={medicine?.name}
                                 />
                             </th>
                             <td className='border p-1'>

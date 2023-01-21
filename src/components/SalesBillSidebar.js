@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import MedicineCard from './MedicineCard';
 
-const SalesBillSidebar = () => {
+const SalesBillSidebar = ({ handleMedicine }) => {
     const [medicines, setMedicines] = useState([])
     const [query, setQuery] = useState('')
 
@@ -12,7 +11,7 @@ const SalesBillSidebar = () => {
                 .then(data => setMedicines(data)))
     }, [])
 
-    console.log(medicines.filter(medicine => medicine.name.toLowerCase().includes(query)))
+    // console.log(medicines.filter(medicine => medicine.name.toLowerCase().includes(query)))
 
     const handleAllMedicine = () => {
 
@@ -49,7 +48,14 @@ const SalesBillSidebar = () => {
                 </div>
                 <div className='grid grid-cols-4'>
                     {
-                        medicines.filter(medicine => medicine.name.toLowerCase().includes(query)).map(medicine => <MedicineCard key={medicine._id} medicine={medicine} />)
+                        medicines.filter(medicine => medicine.name.toLowerCase().includes(query)).map(medicine => {
+                            return (
+                                <div onClick={() => handleMedicine(medicine)} key={medicine._id} className="card w-40 gap-3 mb-2 bg-base-100 shadow-xl">
+                                    <figure><img src={medicine.photoURL} alt="medicine" /></figure>
+                                    <h2 className="text-center pb-1">{medicine.name}</h2>
+                                </div>
+                            )
+                        })
                     }
                 </div>
 
@@ -69,6 +75,7 @@ const SalesBillSidebar = () => {
                     <li><Link className='btn btn-success mb-2' to=''>Antibiotics</Link></li>
                     <li><Link className='btn btn-success mb-2' to=''>Injection</Link></li>
                     <li><Link className='btn btn-success mb-2' to=''>Boroline</Link></li>
+                    <li><Link className='btn btn-success mb-2' to=''>Syrup</Link></li>
                     <li><Link className='btn btn-success mb-2' to=''>Syrup</Link></li>
                 </ul>
 

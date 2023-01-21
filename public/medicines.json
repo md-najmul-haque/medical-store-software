@@ -6,7 +6,8 @@
         "supplierName": "Beximco",
         "type": "capsule",
         "price": 200,
-        "photoURL": "https://i.ibb.co/Q9yZss7/0x0.jpg"
+        "photoURL": "https://i.ibb.co/Q9yZss7/0x0.jpg",
+        "quantity": 300
     },
     {
         "_id": "2",
@@ -15,7 +16,8 @@
         "supplierName": "squire",
         "type": "drop",
         "price": 150,
-        "photoURL": "https://i.ibb.co/K0W8m6f/Alacot-o1.jpg"
+        "photoURL": "https://i.ibb.co/K0W8m6f/Alacot-o1.jpg",
+        "quantity": 300
     },
     {
         "_id": "3",
@@ -24,7 +26,8 @@
         "supplierName": "squire",
         "type": "tablet",
         "price": 200,
-        "photoURL": "https://i.ibb.co/BVV7bVk/Angilock-l-2.jpg"
+        "photoURL": "https://i.ibb.co/BVV7bVk/Angilock-l-2.jpg",
+        "quantity": 200
     },
     {
         "_id": "4",
@@ -33,7 +36,8 @@
         "supplierName": "squire",
         "type": "ointment",
         "price": 180,
-        "photoURL": "https://i.ibb.co/4gSTsYw/Apsol-Oral-01.jpg"
+        "photoURL": "https://i.ibb.co/4gSTsYw/Apsol-Oral-01.jpg",
+        "quantity": 150
     },
     {
         "_id": "5",
@@ -42,7 +46,8 @@
         "supplierName": "opsonin",
         "type": "syrup",
         "price": 400,
-        "photoURL": "https://i.ibb.co/ZYkNBcw/Chlorpheniramine-Maleate-Syrups-Finished-Medicine-Pharmaceuticals.jpg"
+        "photoURL": "https://i.ibb.co/ZYkNBcw/Chlorpheniramine-Maleate-Syrups-Finished-Medicine-Pharmaceuticals.jpg",
+        "quantity": 100
     },
     {
         "_id": "6",
@@ -51,7 +56,8 @@
         "supplierName": "Nipro",
         "type": "tablet",
         "price": 400,
-        "photoURL": "https://i.ibb.co/McnNzL0/flexivan-ER4.png"
+        "photoURL": "https://i.ibb.co/McnNzL0/flexivan-ER4.png",
+        "quantity": 50
     },
     {
         "_id": "7",
@@ -60,7 +66,8 @@
         "supplierName": "squire",
         "type": "capsule",
         "price": 300,
-        "photoURL": "https://i.ibb.co/jZ9hNK8/Molvir-P.jpg"
+        "photoURL": "https://i.ibb.co/jZ9hNK8/Molvir-P.jpg",
+        "quantity": 100
     },
     {
         "_id": "8",
@@ -69,7 +76,8 @@
         "supplierName": "ACI",
         "type": "capsule",
         "price": 300,
-        "photoURL": "https://i.ibb.co/4Z58986/Nafodil-resized-pic.jpg"
+        "photoURL": "https://i.ibb.co/4Z58986/Nafodil-resized-pic.jpg",
+        "quantity": 350
     },
     {
         "_id": "9",
@@ -78,7 +86,8 @@
         "supplierName": "drug international",
         "type": "injection",
         "price": 500,
-        "photoURL": "https://i.ibb.co/C5YNcks/Teconin-200.jpg"
+        "photoURL": "https://i.ibb.co/C5YNcks/Teconin-200.jpg",
+        "quantity": 150
     },
     {
         "_id": "10",
@@ -87,6 +96,7 @@
         "supplierName": "squire",
         "type": "syrup",
         "price": 500,
-        "photoURL": "https://i.ibb.co/DzzmvQF/tomephen-syrup-100ml-1-pc.jpg"
+        "photoURL": "https://i.ibb.co/DzzmvQF/tomephen-syrup-100ml-1-pc.jpg",
+        "quantity": 200
     }
 ]
