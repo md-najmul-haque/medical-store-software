@@ -21,25 +21,37 @@ const MedicineInfo = () => {
             .then((response) => response.json())
             .then((result) => {
                 console.log('Success:', result);
+                if (result.success === true) {
+                    const img = result.data.url
+
+                    const medicine = {
+                        medicineName: data.medicineName,
+                        genericName: data.genericName,
+                        medicineCategory: data.medicineCategory,
+                        supplierName: data.supplierName,
+                        brandName: data.brandName,
+                        unit: data.unit,
+                        origin: data.origin,
+                        lotControl: data.lotControl,
+                        quantity: data.quantity,
+                        expData: data.expData,
+                        price: data.price,
+                        imageURL: img,
+                        remarks: data.remarks,
+                    }
+
+                    fetch(`http://localhost:5000/api/v1/medicine`, {
+                        method: "POST",
+                        body: JSON.stringify(medicine),
+                        headers: {
+                            'content-type': "application/json"
+                        }
+                    })
+                        .then(res => res.json())
+                        .then(medicine => console.log('inside medicine', medicine))
+                }
             })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
 
-
-        // fetch(`http://localhost:5000/`, {
-        //     method: "POST",
-        //     body: JSON.stringify(data),
-        //     headers: {
-        //         'content-type': "application/json"
-        //     }
-        // })
-        //     .then(res => res.json())
-        //     .then(medicine => console.log('inside medicine', medicine))
-
-
-
-        // console.log(data.image[0].name)
 
     }
 
