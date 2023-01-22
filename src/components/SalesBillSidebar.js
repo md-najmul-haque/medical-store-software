@@ -13,6 +13,13 @@ const SalesBillSidebar = ({ handleMedicine }) => {
 
     // console.log(medicines.filter(medicine => medicine.name.toLowerCase().includes(query)))
 
+    const keys = ['medicineName', 'genericName', 'supplierName']
+
+    const search = (data) => {
+
+        return data.filter(medicine => keys.some(key => medicine[key].toLowerCase().includes(query)))
+    }
+
     const handleAllMedicine = () => {
 
     }
@@ -48,11 +55,11 @@ const SalesBillSidebar = ({ handleMedicine }) => {
                 </div>
                 <div className='grid grid-cols-4'>
                     {
-                        medicines.filter(medicine => medicine.name.toLowerCase().includes(query)).map(medicine => {
+                        search(medicines).map(medicine => {
                             return (
                                 <div onClick={() => handleMedicine(medicine)} key={medicine._id} className="card w-40 gap-3 mb-2 bg-base-100 shadow-xl">
                                     <figure><img src={medicine.photoURL} alt="medicine" /></figure>
-                                    <h2 className="text-center pb-1">{medicine.name}</h2>
+                                    <h2 className="text-center pb-1">{medicine.medicineName}</h2>
                                 </div>
                             )
                         })

@@ -40,7 +40,7 @@ const MedicineInfo = () => {
                         remarks: data.remarks,
                     }
 
-                    fetch(`http://localhost:5000/api/v1/medicine`, {
+                    fetch(`http://localhost:5001/api/v1/medicine`, {
                         method: "POST",
                         body: JSON.stringify(medicine),
                         headers: {

@@ -1,7 +1,7 @@
 [
     {
         "_id": "1",
-        "name": "Emorivir 200",
+        "medicineName": "Emorivir 200",
         "genericName": "monipuravir",
         "supplierName": "Beximco",
         "type": "capsule",
@@ -11,7 +11,7 @@
     },
     {
         "_id": "2",
-        "name": "Alacot 5ml",
+        "medicineName": "Alacot 5ml",
         "genericName": "benza chloride",
         "supplierName": "squire",
         "type": "drop",
@@ -21,7 +21,7 @@
     },
     {
         "_id": "3",
-        "name": "Angilock 100",
+        "medicineName": "Angilock 100",
         "genericName": "losartan potassium",
         "supplierName": "squire",
         "type": "tablet",
@@ -31,7 +31,7 @@
     },
     {
         "_id": "4",
-        "name": "Apsol 5gm",
+        "medicineName": "Apsol 5gm",
         "genericName": "amlexanox 5%",
         "supplierName": "squire",
         "type": "ointment",
@@ -41,7 +41,7 @@
     },
     {
         "_id": "5",
-        "name": "Erytromix 60ml",
+        "medicineName": "Erytromix 60ml",
         "genericName": "Erytromixine",
         "supplierName": "opsonin",
         "type": "syrup",
@@ -51,7 +51,7 @@
     },
     {
         "_id": "6",
-        "name": "Flexivan ER 200mg",
+        "medicineName": "Flexivan ER 200mg",
         "genericName": "aceclofenac BP 200mg",
         "supplierName": "Nipro",
         "type": "tablet",
@@ -61,7 +61,7 @@
     },
     {
         "_id": "7",
-        "name": "Molvir 200mg",
+        "medicineName": "Molvir 200mg",
         "genericName": "Molvirine",
         "supplierName": "squire",
         "type": "capsule",
@@ -71,7 +71,7 @@
     },
     {
         "_id": "8",
-        "name": "Nafodil 100mg",
+        "medicineName": "Nafodil 100mg",
         "genericName": "Nafodilin",
         "supplierName": "ACI",
         "type": "capsule",
@@ -81,7 +81,7 @@
     },
     {
         "_id": "9",
-        "name": "Teconin 200mg",
+        "medicineName": "Teconin 200mg",
         "genericName": "Teconin",
         "supplierName": "drug international",
         "type": "injection",
@@ -91,7 +91,7 @@
     },
     {
         "_id": "10",
-        "name": "Tomephen 100ml",
+        "medicineName": "Tomephen 100ml",
         "genericName": "Tomephenol",
         "supplierName": "squire",
         "type": "syrup",
