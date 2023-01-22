@@ -6,21 +6,27 @@ import { useForm } from 'react-hook-form';
 
 const SalesBillForm = ({ medicine }) => {
     const [customerData, setCustomerData] = useState([])
+    const [customerNumber, setCustomerNumber] = useState('')
 
-    const handleNumber = (e) => {
-        const customerNumber = e.target.value
-        console.log(customerNumber)
 
-        fetch(`customer.json`)
-            .then(res => res.json())
-            .then(data => {
-                const selectedCustomer = data.filter(customer => customer.customerNumber === customerNumber)
-                setCustomerData(selectedCustomer)
-                // console.log(selectedCustomer)
-            })
+    console.log(customerNumber)
 
-        // console.log(customerData)
+    const findCustomer = () => {
+        if (customerNumber) {
+            fetch(`customer.json`)
+                .then(res => res.json())
+                .then(data => {
+                    const selectedCustomer = data.filter(customer => customer.customerNumber === customerNumber)
+                    setCustomerData(selectedCustomer)
+                    // console.log(selectedCustomer)
+                })
+
+            // console.log(customerData)
+        }
+
     }
+
+
 
     return (
         <div className='mr-5'>
@@ -38,8 +44,8 @@ const SalesBillForm = ({ medicine }) => {
 
                 <div className="form-control">
                     <div className="input-group">
-                        <input type="text" placeholder="Search…" className="input input-bordered w-full focus:outline-none" onBlur={handleNumber} />
-                        <button className="btn btn-square">
+                        <input type="text" placeholder="Search…" className="input input-bordered w-full focus:outline-none" onChange={(e) => setCustomerNumber(e.target.value)} />
+                        <button onClick={() => findCustomer()} className="btn btn-square">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
                         </button>
                     </div>
@@ -72,56 +78,65 @@ const SalesBillForm = ({ medicine }) => {
                             <th className='border'>Action</th>
                         </tr>
                     </thead>
+
                     <tbody>
-                        <tr>
-                            <th className='border p-1 '>
-                                <input
-                                    type="text"
-                                    className="input w-full input-bordered focus:outline-none"
-                                    defaultValue={medicine?.name}
-                                />
-                            </th>
-                            <td className='border p-1'>
-                                <input
-                                    type="text"
-                                    className="input w-full px-0 input-bordered focus:outline-none"
-                                />
-                            </td>
-                            <td className='border p-1'>
-                                <input
-                                    type="date"
-                                    className="input w-full max-w-xs input-bordered focus:outline-none"
-                                />
-                            </td>
-                            <td className='border p-1'>
-                                <input
-                                    type="number"
-                                    className="input w-full max-w-xs input-bordered focus:outline-none"
-                                />
-                            </td>
-                            <td className='border p-1'>
-                                <input
-                                    type="number"
-                                    className="input w-full max-w-xs input-bordered focus:outline-none"
-                                />
-                            </td>
-                            <td className='border p-1'>
-                                <input
-                                    type="number"
-                                    className="input w-full max-w-xs input-bordered focus:outline-none"
-                                />
-                            </td>
-                            <td className='border p-1'>
-                                <input
-                                    type="number"
-                                    className="input w-full max-w-xs input-bordered focus:outline-none"
-                                />
-                            </td>
-                            <td className='border p-1'>
-                                <button className='btn btn-sm bg-red-200 hover:bg-red-300 border-none text-red-600'><RiDeleteBin5Fill /></button>
-                                <button className='btn btn-sm bg-green-200 hover:bg-green-300 border-none text-green-700 ml-2'><AiFillEye /></button>
-                            </td>
-                        </tr>
+                        {
+                            medicine.map(med => {
+                                return (
+                                    <tr>
+                                        <th className='border p-1 '>
+                                            <input
+                                                type="text"
+                                                className="input w-full input-bordered focus:outline-none"
+                                                defaultValue={med?.medicineName}
+                                            />
+                                        </th>
+                                        <td className='border p-1'>
+                                            <input
+                                                type="text"
+                                                className="input w-full px-0 input-bordered focus:outline-none"
+                                            />
+                                        </td>
+                                        <td className='border p-1'>
+                                            <input
+                                                type="date"
+                                                className="input w-full max-w-xs input-bordered focus:outline-none"
+                                            />
+                                        </td>
+                                        <td className='border p-1'>
+                                            <input
+                                                type="number"
+                                                className="input w-full max-w-xs input-bordered focus:outline-none"
+                                                value={med?.defaultQuantity}
+                                            />
+                                        </td>
+                                        <td className='border p-1'>
+                                            <input
+                                                type="number"
+                                                className="input w-full max-w-xs input-bordered focus:outline-none"
+                                            />
+                                        </td>
+                                        <td className='border p-1'>
+                                            <input
+                                                type="number"
+                                                className="input w-full max-w-xs input-bordered focus:outline-none"
+                                            />
+                                        </td>
+                                        <td className='border p-1'>
+                                            <input
+                                                type="number"
+                                                className="input w-full max-w-xs input-bordered focus:outline-none"
+                                            />
+                                        </td>
+                                        <td className='border p-1'>
+                                            <button className='btn btn-sm bg-red-200 hover:bg-red-300 border-none text-red-600'><RiDeleteBin5Fill /></button>
+                                            <button className='btn btn-sm bg-green-200 hover:bg-green-300 border-none text-green-700 ml-2'><AiFillEye /></button>
+                                        </td>
+                                    </tr>
+                                )
+                            })
+                        }
+
                     </tbody>
                 </table>
                 <div class="flex justify-end items-center mt-5 mb-2">
