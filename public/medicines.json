@@ -14,7 +14,7 @@
         "medicineName": "Alacot 5ml",
         "genericName": "benza chloride",
         "supplierName": "squire",
-        "type": "drop",
+        "type": "Drop",
         "price": 150,
         "photoURL": "https://i.ibb.co/K0W8m6f/Alacot-o1.jpg",
         "quantity": 300
@@ -24,7 +24,7 @@
         "medicineName": "Angilock 100",
         "genericName": "losartan potassium",
         "supplierName": "squire",
-        "type": "tablet",
+        "type": "Tablet",
         "price": 200,
         "photoURL": "https://i.ibb.co/BVV7bVk/Angilock-l-2.jpg",
         "quantity": 200
@@ -34,7 +34,7 @@
         "medicineName": "Apsol 5gm",
         "genericName": "amlexanox 5%",
         "supplierName": "squire",
-        "type": "ointment",
+        "type": "Ointment",
         "price": 180,
         "photoURL": "https://i.ibb.co/4gSTsYw/Apsol-Oral-01.jpg",
         "quantity": 150
@@ -44,7 +44,7 @@
         "medicineName": "Erytromix 60ml",
         "genericName": "Erytromixine",
         "supplierName": "opsonin",
-        "type": "syrup",
+        "type": "Syrup",
         "price": 400,
         "photoURL": "https://i.ibb.co/ZYkNBcw/Chlorpheniramine-Maleate-Syrups-Finished-Medicine-Pharmaceuticals.jpg",
         "quantity": 100
@@ -54,7 +54,7 @@
         "medicineName": "Flexivan ER 200mg",
         "genericName": "aceclofenac BP 200mg",
         "supplierName": "Nipro",
-        "type": "tablet",
+        "type": "Tablet",
         "price": 400,
         "photoURL": "https://i.ibb.co/McnNzL0/flexivan-ER4.png",
         "quantity": 50
@@ -64,7 +64,7 @@
         "medicineName": "Molvir 200mg",
         "genericName": "Molvirine",
         "supplierName": "squire",
-        "type": "capsule",
+        "type": "Capsule",
         "price": 300,
         "photoURL": "https://i.ibb.co/jZ9hNK8/Molvir-P.jpg",
         "quantity": 100
@@ -74,7 +74,7 @@
         "medicineName": "Nafodil 100mg",
         "genericName": "Nafodilin",
         "supplierName": "ACI",
-        "type": "capsule",
+        "type": "Capsule",
         "price": 300,
         "photoURL": "https://i.ibb.co/4Z58986/Nafodil-resized-pic.jpg",
         "quantity": 350
@@ -84,7 +84,7 @@
         "medicineName": "Teconin 200mg",
         "genericName": "Teconin",
         "supplierName": "drug international",
-        "type": "injection",
+        "type": "Injection",
         "price": 500,
         "photoURL": "https://i.ibb.co/C5YNcks/Teconin-200.jpg",
         "quantity": 150
@@ -94,7 +94,7 @@
         "medicineName": "Tomephen 100ml",
         "genericName": "Tomephenol",
         "supplierName": "squire",
-        "type": "syrup",
+        "type": "Syrup",
         "price": 500,
         "photoURL": "https://i.ibb.co/DzzmvQF/tomephen-syrup-100ml-1-pc.jpg",
         "quantity": 200

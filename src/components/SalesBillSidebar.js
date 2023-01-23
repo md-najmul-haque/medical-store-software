@@ -1,32 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const SalesBillSidebar = ({ handleMedicine, medicines, setMedicines }) => {
-    // const [medicines, setMedicines] = useState([])
+
     const [query, setQuery] = useState('')
-    // const [medInfo, setMedInfo] = useState([])
+    const [categorizedMedicines, setCategorizedMedicines] = useState(null)
 
-    // useEffect(() => {
-    //     fetch('medicines.json')
-    //         .then(res => res.json()
-    //             .then(data => setMedicines(data)))
-    // }, [])
-
-    // console.log(medicines.filter(medicine => medicine.name.toLowerCase().includes(query)))
 
     const keys = ['medicineName', 'genericName', 'supplierName']
 
-    // const medicineCategories = [Capsule, ]
+    const medicineCategories = ['All', 'Tablet', 'Capsule', 'Drop', 'Syrup', 'Ointment', 'Injection']
 
     const search = (data) => {
 
         return data.filter(medicine => keys.some(key => medicine[key].toLowerCase().includes(query)))
     }
 
-    const handleAllMedicine = (type) => {
+    const handleAllMedicine = (category) => {
+        if (category === 'All') {
+            setCategorizedMedicines(null)
 
-        const med = medicines.filter(medi => medi.type === type)
-        // setMedicines(med)
+        } else {
+            const med = medicines.filter(medi => medi.type === category)
+            setCategorizedMedicines(med)
+        }
 
 
     }
@@ -61,7 +58,29 @@ const SalesBillSidebar = ({ handleMedicine, medicines, setMedicines }) => {
                     </div>
                 </div>
                 <div className='grid grid-cols-4'>
+
                     {
+                        categorizedMedicines ?
+                            search(categorizedMedicines).map(medicine => {
+                                return (
+                                    <div onClick={() => handleMedicine(medicine._id)} key={medicine._id} className="card w-32 gap-3 mb-2 bg-base-100 shadow-xl">
+                                        <figure><img src={medicine.photoURL} alt="medicine" /></figure>
+                                        <h2 className="text-center pb-1">{medicine.medicineName}</h2>
+                                    </div>
+                                )
+                            })
+
+                            : search(medicines).map(medicine => {
+                                return (
+                                    <div onClick={() => handleMedicine(medicine._id)} key={medicine._id} className="card w-32 gap-3 mb-2 bg-base-100 shadow-xl">
+                                        <figure><img src={medicine.photoURL} alt="medicine" /></figure>
+                                        <h2 className="text-center pb-1">{medicine.medicineName}</h2>
+                                    </div>
+                                )
+                            })
+                    }
+
+                    {/* {
                         search(medicines).map(medicine => {
                             return (
                                 <div onClick={() => handleMedicine(medicine._id)} key={medicine._id} className="card w-32 gap-3 mb-2 bg-base-100 shadow-xl">
@@ -70,7 +89,7 @@ const SalesBillSidebar = ({ handleMedicine, medicines, setMedicines }) => {
                                 </div>
                             )
                         })
-                    }
+                    } */}
                 </div>
 
             </div>
@@ -78,7 +97,7 @@ const SalesBillSidebar = ({ handleMedicine, medicines, setMedicines }) => {
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu p-4 w-60 bg-base-100 text-base-content">
                     {
-                        medicines.map(med => <li><Link onClick={() => handleAllMedicine(med.type)} className='btn btn-success mb-2' to=''>{med.type}</Link></li>)
+                        medicineCategories.map(category => <li><Link onClick={() => handleAllMedicine(category)} className='btn btn-success mb-2' to=''>{category}</Link></li>)
                     }
 
                 </ul>
