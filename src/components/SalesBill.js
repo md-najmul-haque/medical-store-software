@@ -7,7 +7,9 @@ import SalesBillSidebar from './SalesBillSidebar';
 const SalesBill = () => {
 
     const [medicines, setMedicines] = useState([])
-    var [medicine, setMedicine] = useState([])
+    const [medicine, setMedicine] = useState([])
+    const [grandTotal, setGrandTotal] = useState(null)
+
 
 
     useEffect(() => {
@@ -16,6 +18,11 @@ const SalesBill = () => {
                 .then(data => setMedicines(data)))
     }, [])
 
+    useEffect(() => {
+        removeMedicine()
+
+    }, [medicine.length])
+
     // console.log(medicine)
 
 
@@ -23,15 +30,9 @@ const SalesBill = () => {
         var incrementQuantity = medicine.find(med => med._id === id)
         const formateData = medicine.filter(med => med._id !== id)
 
-
-
-
         if (incrementQuantity) {
             incrementQuantity = { ...incrementQuantity, defaultQuantity: incrementQuantity.defaultQuantity + 1 }
-
             setMedicine([...formateData, incrementQuantity])
-
-
 
         } else {
             const data = medicines.find(medicine => medicine._id === id)
@@ -40,22 +41,24 @@ const SalesBill = () => {
                 setMedicine([...medicine, dataInfo])
             }
         }
-
         // console.log(incrementQuantity)
-        console.log(medicine)
-
-
-
 
     }
+    console.log(medicine)
 
+    const removeMedicine = id => {
+        console.log(id)
+        const restMedicine = medicine.filter(med => med._id !== id)
+        setMedicine(restMedicine)
+
+    }
 
     return (
         <div className='h-screen'>
             <SalesBillNavbar />
             <div className='grid grid-cols-2 gap-5'>
                 <SalesBillSidebar medicines={medicines} setMedicines={setMedicines} handleMedicine={handleMedicine} />
-                <SalesBillForm medicine={medicine} />
+                <SalesBillForm medicine={medicine} removeMedicine={removeMedicine} grandTotal={grandTotal} setGrandTotal={setGrandTotal} />
             </div>
             <SalesBillBottomBar />
         </div>

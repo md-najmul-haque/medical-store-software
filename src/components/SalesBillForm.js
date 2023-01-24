@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
-import { BiPlusMedical } from 'react-icons/bi';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
 import { AiFillEye } from 'react-icons/ai';
-import { useForm } from 'react-hook-form';
+import { useEffect } from 'react';
 
-const SalesBillForm = ({ medicine }) => {
+
+const SalesBillForm = ({ medicine, removeMedicine, grandTotal, setGrandTotal }) => {
     const [customerData, setCustomerData] = useState([])
     const [customerNumber, setCustomerNumber] = useState('')
+    const [discount, setDiscount] = useState(0)
+
+    useEffect(() => {
 
 
-    console.log(customerNumber)
+    }, [])
+
 
     const findCustomer = () => {
         if (customerNumber) {
@@ -25,6 +29,9 @@ const SalesBillForm = ({ medicine }) => {
         }
 
     }
+
+
+
 
 
 
@@ -45,7 +52,7 @@ const SalesBillForm = ({ medicine }) => {
                 <div className="form-control">
                     <div className="input-group">
                         <input type="text" placeholder="Search…" className="input input-bordered w-full focus:outline-none" onChange={(e) => setCustomerNumber(e.target.value)} />
-                        <button onClick={() => findCustomer()} className="btn btn-square">
+                        <button onClick={() => findCustomer()} className="btn btn-square bg-success shadow-md hover:bg-success hover:shadow-lg focus:bg-success  focus:shadow-lg border-none">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
                         </button>
                     </div>
@@ -72,9 +79,9 @@ const SalesBillForm = ({ medicine }) => {
                             <th className='border'>Batch</th>
                             <th className='border'>Expire date</th>
                             <th className='border'>Quantity</th>
-                            <th className='border'>Price</th>
+                            <th className='border px-5'>Price</th>
                             <th className='border'>Discount %</th>
-                            <th className='border'>Total</th>
+                            <th className='border px-10'>Total</th>
                             <th className='border'>Action</th>
                         </tr>
                     </thead>
@@ -113,23 +120,26 @@ const SalesBillForm = ({ medicine }) => {
                                         <td className='border p-1'>
                                             <input
                                                 type="number"
-                                                className="input w-full max-w-xs input-bordered focus:outline-none"
+                                                className="input w-full max-w-xs input-bordered focus:outline-none px-2 "
+                                                value={med?.price}
                                             />
                                         </td>
                                         <td className='border p-1'>
                                             <input
                                                 type="number"
                                                 className="input w-full max-w-xs input-bordered focus:outline-none"
+                                                onChange={e => setDiscount(e.target.value)}
                                             />
                                         </td>
                                         <td className='border p-1'>
                                             <input
                                                 type="number"
                                                 className="input w-full max-w-xs input-bordered focus:outline-none"
+                                                value={(med.defaultQuantity * med.price) - ((med.defaultQuantity * med.price) * (discount / 100))}
                                             />
                                         </td>
                                         <td className='border p-1'>
-                                            <button className='btn btn-sm bg-red-200 hover:bg-red-300 border-none text-red-600'><RiDeleteBin5Fill /></button>
+                                            <button onClick={() => removeMedicine(med._id)} className='btn btn-sm bg-red-200 hover:bg-red-300 border-none text-red-600'><RiDeleteBin5Fill /></button>
                                             <button className='btn btn-sm bg-green-200 hover:bg-green-300 border-none text-green-700 ml-2'><AiFillEye /></button>
                                         </td>
                                     </tr>
@@ -153,6 +163,7 @@ const SalesBillForm = ({ medicine }) => {
                         type="number"
                         placeholder='00.0'
                         className="input w-full max-w-xs input-bordered focus:outline-none rounded text-right"
+
                     />
                 </div>
 
@@ -171,6 +182,7 @@ const SalesBillForm = ({ medicine }) => {
                         type="number"
                         placeholder='00.0'
                         className="input w-full max-w-xs input-bordered focus:outline-none rounded text-right"
+                        value={grandTotal}
                     />
                 </div>
 
