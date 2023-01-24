@@ -27,6 +27,14 @@ const SalesBillSidebar = ({ handleMedicine, medicines, setMedicines }) => {
 
     }
 
+    const handleBarcode = e => {
+        if (e.key === 'Enter') {
+            handleMedicine(e.target.value)
+            e.target.value = "";
+        }
+
+    }
+
     return (
         <div style={{ height: "100%" }} className="drawer drawer-mobile">
 
@@ -50,7 +58,8 @@ const SalesBillSidebar = ({ handleMedicine, medicines, setMedicines }) => {
 
                     <div className="form-control w-full">
                         <input
-                            type="qr"
+                            onKeyDown={(e) => handleBarcode(e)}
+                            type="number"
                             placeholder="Scan Barcode"
                             className="input w-full input-bordered focus:outline-none"
                         />
