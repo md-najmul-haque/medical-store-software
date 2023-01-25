@@ -1,19 +1,11 @@
 import React, { useState } from 'react';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
 import { AiFillEye } from 'react-icons/ai';
-import { useEffect } from 'react';
-
 
 const SalesBillForm = ({ medicine, removeMedicine, grandTotal, setGrandTotal }) => {
     const [customerData, setCustomerData] = useState([])
     const [customerNumber, setCustomerNumber] = useState('')
     const [discount, setDiscount] = useState(0)
-
-    useEffect(() => {
-
-
-    }, [])
-
 
     const findCustomer = () => {
         if (customerNumber) {
@@ -29,11 +21,6 @@ const SalesBillForm = ({ medicine, removeMedicine, grandTotal, setGrandTotal }) 
         }
 
     }
-
-
-
-
-
 
     return (
         <div className='mr-5'>
@@ -88,7 +75,7 @@ const SalesBillForm = ({ medicine, removeMedicine, grandTotal, setGrandTotal }) 
 
                     <tbody>
                         {
-                            medicine.map(med => {
+                            medicine?.map(med => {
                                 return (
                                     <tr>
                                         <th className='border p-1 '>
@@ -146,17 +133,69 @@ const SalesBillForm = ({ medicine, removeMedicine, grandTotal, setGrandTotal }) 
                                 )
                             })
                         }
+                        {/* {
+                            medicine.map(med => {
+                                return (
+                                    <tr>
+                                        <th className='border p-1 '>
+                                            <input
+                                                type="text"
+                                                className="input w-full input-bordered focus:outline-none"
+                                                defaultValue={med?.medicineName}
+                                            />
+                                        </th>
+                                        <td className='border p-1'>
+                                            <input
+                                                type="text"
+                                                className="input w-full px-0 input-bordered focus:outline-none"
+                                            />
+                                        </td>
+                                        <td className='border p-1'>
+                                            <input
+                                                type="date"
+                                                className="input w-full max-w-xs input-bordered focus:outline-none"
+                                            />
+                                        </td>
+                                        <td className='border p-1'>
+                                            <input
+                                                type="number"
+                                                className="input w-full max-w-xs input-bordered focus:outline-none"
+                                                value={med?.defaultQuantity}
+                                            />
+                                        </td>
+                                        <td className='border p-1'>
+                                            <input
+                                                type="number"
+                                                className="input w-full max-w-xs input-bordered focus:outline-none px-2 "
+                                                value={med?.price}
+                                            />
+                                        </td>
+                                        <td className='border p-1'>
+                                            <input
+                                                type="number"
+                                                className="input w-full max-w-xs input-bordered focus:outline-none"
+                                                onChange={e => setDiscount(e.target.value)}
+                                            />
+                                        </td>
+                                        <td className='border p-1'>
+                                            <input
+                                                type="number"
+                                                className="input w-full max-w-xs input-bordered focus:outline-none"
+                                                value={(med.defaultQuantity * med.price) - ((med.defaultQuantity * med.price) * (discount / 100))}
+                                            />
+                                        </td>
+                                        <td className='border p-1'>
+                                            <button onClick={() => removeMedicine(med._id)} className='btn btn-sm bg-red-200 hover:bg-red-300 border-none text-red-600'><RiDeleteBin5Fill /></button>
+                                            <button className='btn btn-sm bg-green-200 hover:bg-green-300 border-none text-green-700 ml-2'><AiFillEye /></button>
+                                        </td>
+                                    </tr>
+                                )
+                            })
+                        } */}
 
                     </tbody>
                 </table>
-                <div class="flex justify-end items-center mt-5 mb-2">
-                    <h2 className='p-3 font-semibold'>Invoice Discount: </h2>
-                    <input
-                        type="number"
-                        placeholder='00.0'
-                        className="input w-full max-w-xs input-bordered focus:outline-none rounded text-right"
-                    />
-                </div>
+
                 <div class="flex justify-end items-center mb-2">
                     <h2 className='p-3 font-semibold'>Total Discount: </h2>
                     <input

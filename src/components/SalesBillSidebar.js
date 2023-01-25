@@ -2,10 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const SalesBillSidebar = ({ handleMedicine, medicines, setMedicines }) => {
-
     const [query, setQuery] = useState('')
     const [categorizedMedicines, setCategorizedMedicines] = useState(null)
-
 
     const keys = ['medicineName', 'genericName', 'supplierName']
 
@@ -16,7 +14,7 @@ const SalesBillSidebar = ({ handleMedicine, medicines, setMedicines }) => {
         return data.filter(medicine => keys.some(key => medicine[key].toLowerCase().includes(query)))
     }
 
-    const handleAllMedicine = (category) => {
+    const getMedicineByCategory = (category) => {
         if (category === 'All') {
             setCategorizedMedicines(null)
 
@@ -94,7 +92,7 @@ const SalesBillSidebar = ({ handleMedicine, medicines, setMedicines }) => {
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu p-4 w-60 bg-base-100 text-base-content">
                     {
-                        medicineCategories.map(category => <li><Link onClick={() => handleAllMedicine(category)} className='btn btn-success mb-2' to=''>{category}</Link></li>)
+                        medicineCategories.map(category => <li><Link onClick={() => getMedicineByCategory(category)} className='btn btn-success mb-2' to=''>{category}</Link></li>)
                     }
 
                 </ul>

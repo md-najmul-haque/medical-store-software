@@ -10,20 +10,11 @@ const SalesBill = () => {
     const [medicine, setMedicine] = useState([])
     const [grandTotal, setGrandTotal] = useState(null)
 
-
-
     useEffect(() => {
         fetch('medicines.json')
             .then(res => res.json()
                 .then(data => setMedicines(data)))
     }, [])
-
-    useEffect(() => {
-        removeMedicine()
-
-    }, [medicine.length])
-
-    // console.log(medicine)
 
 
     const handleMedicine = (id) => {
@@ -44,14 +35,17 @@ const SalesBill = () => {
         // console.log(incrementQuantity)
 
     }
-    console.log(medicine)
 
-    const removeMedicine = id => {
-        console.log(id)
+    const removeMedicine = (id) => {
         const restMedicine = medicine.filter(med => med._id !== id)
         setMedicine(restMedicine)
+        // console.log(restMedicine)
+
 
     }
+
+
+    console.log(medicine)
 
     return (
         <div className='h-screen'>
