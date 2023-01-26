@@ -77,7 +77,7 @@ const SalesBillForm = ({ medicine, removeMedicine, grandTotal, setGrandTotal }) 
                         {
                             medicine?.map(med => {
                                 return (
-                                    <tr>
+                                    <tr key={med?._id}>
                                         <th className='border p-1 '>
                                             <input
                                                 type="text"

@@ -38,14 +38,11 @@ const SalesBill = () => {
 
     const removeMedicine = (id) => {
         const restMedicine = medicine.filter(med => med._id !== id)
-        setMedicine(restMedicine)
-        // console.log(restMedicine)
-
+        return setMedicine(restMedicine)
 
     }
 
-
-    console.log(medicine)
+    // console.log(medicine)
 
     return (
         <div className='h-screen'>
