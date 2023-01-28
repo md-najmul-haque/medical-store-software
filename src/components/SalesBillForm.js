@@ -5,10 +5,8 @@ import { AiFillEye } from 'react-icons/ai';
 const SalesBillForm = ({ medicine, setMedicine, totalPrice, removeMedicine }) => {
     const [customerData, setCustomerData] = useState([])
     const [customerNumber, setCustomerNumber] = useState('')
-    const [discount, setDiscount] = useState(0)
-    const [total, setTotal] = useState('')
-    const [totals, setTotals] = useState([])
-    const [grandTotal, setGrandTotal] = useState(0)
+    const [totalDiscount, setTotalDiscount] = useState(0)
+
 
     const findCustomer = () => {
         if (customerNumber) {
@@ -24,17 +22,32 @@ const SalesBillForm = ({ medicine, setMedicine, totalPrice, removeMedicine }) =>
         }
     }
 
+
+
     const handleDiscount = (e, id) => {
         const discountedMedicine = medicine.find(med => med._id === id)
         const discount = e.target.value
-        const updatedMedicine = { ...discountedMedicine, discount: discount }
+        let updatedMedicine = { ...discountedMedicine, discount: discount }
 
+        //calculate total discount
+        if (updatedMedicine.discountedValue) {
+            const newDiscountedValue = updatedMedicine.price * (updatedMedicine.discount / 100)
+            setTotalDiscount(totalDiscount - updatedMedicine?.discountedValue + newDiscountedValue)
+            updatedMedicine = { ...updatedMedicine, discountedValue: newDiscountedValue }
+        } else {
+            const discountedValue = updatedMedicine.price * (updatedMedicine.discount / 100)
+            updatedMedicine = { ...updatedMedicine, discountedValue: discountedValue }
+            setTotalDiscount(totalDiscount + updatedMedicine?.discountedValue)
+        }
+
+        //remove earlier medicine and add updated medicine
         let discountedMedicineIndex = medicine.findIndex(med => med._id === id);
         medicine.splice(discountedMedicineIndex, 1)
         medicine = Array.from(medicine);
         medicine?.splice(discountedMedicineIndex, 0, updatedMedicine);
 
         setMedicine(medicine)
+
 
 
     }
@@ -161,6 +174,7 @@ const SalesBillForm = ({ medicine, setMedicine, totalPrice, removeMedicine }) =>
                         type="number"
                         placeholder='00.0'
                         className="input w-full max-w-xs input-bordered focus:outline-none rounded text-right"
+                        value={totalDiscount}
 
                     />
                 </div>
