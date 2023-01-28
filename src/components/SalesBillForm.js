@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
 import { AiFillEye } from 'react-icons/ai';
 
-const SalesBillForm = ({ medicine,totalPrice,removeMedicine }) => {
+const SalesBillForm = ({ medicine, setMedicine, totalPrice, removeMedicine }) => {
     const [customerData, setCustomerData] = useState([])
     const [customerNumber, setCustomerNumber] = useState('')
     const [discount, setDiscount] = useState(0)
@@ -24,22 +24,17 @@ const SalesBillForm = ({ medicine,totalPrice,removeMedicine }) => {
         }
     }
 
-    const handleTotal = (e) => {
-        const value = e.target.total.value
-        console.log(value)
-        return value
+    const handleDiscount = (e, id) => {
+        const discountedMedicine = medicine.find(med => med._id === id)
+        const discount = e.target.value
+        const updatedMedicine = { ...discountedMedicine, discount: discount }
+        const restMedicine = medicine.filter(med => med._id !== id)
+        setMedicine([...restMedicine, updatedMedicine])
+        // console.log(updatedMedicine)
 
     }
 
-    console.log(total)
-
-    // Total line and total bill
-    useEffect(() => {
-        setGrandTotal((i) => i + Number(total))
-
-
-    }, [total, setGrandTotal])
-
+    console.log(medicine)
 
 
     return (
@@ -136,7 +131,7 @@ const SalesBillForm = ({ medicine,totalPrice,removeMedicine }) => {
                                             <input
                                                 type="number"
                                                 className="input w-full max-w-xs input-bordered focus:outline-none"
-                                                onChange={e => setDiscount(e.target.value)}
+                                                onChange={(e) => handleDiscount(e, med._id)}
                                             />
                                         </td>
                                         <td className='border p-1'>
@@ -144,8 +139,7 @@ const SalesBillForm = ({ medicine,totalPrice,removeMedicine }) => {
                                                 type="number"
                                                 name='total'
                                                 className="input w-full max-w-xs input-bordered focus:outline-none"
-                                                onChange={e => setTotal(e.target.value)}
-                                                value={(med.defaultQuantity * med.price) - ((med.defaultQuantity * med.price) * (discount / 100))}
+                                                value={(med.defaultQuantity * med.price) - ((med.defaultQuantity * med.price) * (med?.discount ? Number(`${med?.discount / 100}`) : 0))}
                                             />
                                         </td>
                                         <td className='border p-1'>

@@ -18,12 +18,13 @@ const SalesBill = () => {
 
 
     const handleMedicine = (id) => {
-        var incrementQuantity = medicine.find(med => med._id === id)
+        let incrementedMedicine = medicine.find(med => med._id === id)
         const formateData = medicine.filter(med => med._id !== id)
 
-        if (incrementQuantity) {
-            incrementQuantity = { ...incrementQuantity, defaultQuantity: incrementQuantity.defaultQuantity + 1 }
-            setMedicine([...formateData, incrementQuantity])
+        if (incrementedMedicine) {
+            incrementedMedicine = { ...incrementedMedicine, defaultQuantity: incrementedMedicine.defaultQuantity + 1 }
+            setMedicine([...formateData, incrementedMedicine])
+            setTotal(total + incrementedMedicine?.price)
 
         } else {
             const data = medicines.find(medicine => medicine._id === id)
@@ -53,7 +54,7 @@ const SalesBill = () => {
             <SalesBillNavbar />
             <div className='grid grid-cols-2 gap-5'>
                 <SalesBillSidebar medicines={medicines} setMedicines={setMedicines} handleMedicine={handleMedicine} />
-                <SalesBillForm totalPrice={total} medicine={medicine} removeMedicine={removeMedicine} />
+                <SalesBillForm totalPrice={total} medicine={medicine} setMedicine={setMedicine} removeMedicine={removeMedicine} />
             </div>
             <SalesBillBottomBar />
         </div>
