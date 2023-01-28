@@ -7,6 +7,7 @@ const SalesBillForm = ({ medicine, setMedicine, total, setTotal, removeMedicine 
     const [customerNumber, setCustomerNumber] = useState('')
     const [totalDiscount, setTotalDiscount] = useState(0)
     const [vat, setVat] = useState(0)
+    const [changeAmount, setChangeAmount] = useState(0)
 
     const findCustomer = () => {
         if (customerNumber) {
@@ -58,6 +59,14 @@ const SalesBillForm = ({ medicine, setMedicine, total, setTotal, removeMedicine 
         const totalVat = total * (vat / 100)
         setVat(totalVat)
     }
+
+    const handleAmount = e => {
+
+        const givenAmount = e.target.value
+        const changeAmount = givenAmount - total
+        setChangeAmount(changeAmount)
+    }
+
 
 
     return (
@@ -208,11 +217,12 @@ const SalesBillForm = ({ medicine, setMedicine, total, setTotal, removeMedicine 
                 </div>
 
                 <div class="flex justify-end items-center mb-2">
-                    <h2 className='p-3 font-semibold'>Previous: </h2>
+                    <h2 className='p-3 font-semibold'>Given Amount: </h2>
                     <input
                         type="number"
                         placeholder='00.0'
                         className="input w-full max-w-xs input-bordered focus:outline-none rounded text-right"
+                        onChange={e => handleAmount(e)}
                     />
                 </div>
 
@@ -222,6 +232,7 @@ const SalesBillForm = ({ medicine, setMedicine, total, setTotal, removeMedicine 
                         type="number"
                         placeholder='00.0'
                         className="input w-full max-w-xs input-bordered focus:outline-none rounded text-right"
+                        value={changeAmount}
                     />
                 </div>
 
