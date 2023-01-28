@@ -7,7 +7,7 @@ import SalesBillSidebar from './SalesBillSidebar';
 const SalesBill = () => {
     const [total, setTotal] = useState(0)
     const [medicines, setMedicines] = useState([])
-    const [medicine, setMedicine] = useState([])
+    let [medicine, setMedicine] = useState([])
 
 
     useEffect(() => {
@@ -23,7 +23,13 @@ const SalesBill = () => {
 
         if (incrementedMedicine) {
             incrementedMedicine = { ...incrementedMedicine, defaultQuantity: incrementedMedicine.defaultQuantity + 1 }
-            setMedicine([...formateData, incrementedMedicine])
+
+            let incrementedMedicineIndex = medicine.findIndex(med => med._id === id);
+            medicine.splice(incrementedMedicineIndex, 1)
+            medicine = Array.from(medicine);
+            medicine?.splice(incrementedMedicineIndex, 0, incrementedMedicine);
+            setMedicine(medicine)
+
             setTotal(total + incrementedMedicine?.price)
 
         } else {

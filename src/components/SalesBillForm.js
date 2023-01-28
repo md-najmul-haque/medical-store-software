@@ -37,8 +37,6 @@ const SalesBillForm = ({ medicine, setMedicine, totalPrice, removeMedicine }) =>
         setMedicine(medicine)
 
 
-
-
     }
 
     return (
