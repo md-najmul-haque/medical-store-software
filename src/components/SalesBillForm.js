@@ -28,14 +28,18 @@ const SalesBillForm = ({ medicine, setMedicine, totalPrice, removeMedicine }) =>
         const discountedMedicine = medicine.find(med => med._id === id)
         const discount = e.target.value
         const updatedMedicine = { ...discountedMedicine, discount: discount }
-        const restMedicine = medicine.filter(med => med._id !== id)
-        setMedicine([...restMedicine, updatedMedicine])
-        // console.log(updatedMedicine)
+
+        let discountedMedicineIndex = medicine.findIndex(med => med._id === id);
+        medicine.splice(discountedMedicineIndex, 1)
+        medicine = Array.from(medicine);
+        medicine?.splice(discountedMedicineIndex, 0, updatedMedicine);
+
+        setMedicine(medicine)
+
+
+
 
     }
-
-    console.log(medicine)
-
 
     return (
         <div className='mr-5'>
@@ -139,7 +143,7 @@ const SalesBillForm = ({ medicine, setMedicine, totalPrice, removeMedicine }) =>
                                                 type="number"
                                                 name='total'
                                                 className="input w-full max-w-xs input-bordered focus:outline-none"
-                                                value={(med.defaultQuantity * med.price) - ((med.defaultQuantity * med.price) * (med?.discount ? Number(`${med?.discount / 100}`) : 0))}
+                                                value={(med?.defaultQuantity * med?.price) - ((med?.defaultQuantity * med?.price) * (med?.discount ? Number(`${med?.discount / 100}`) : 0))}
                                             />
                                         </td>
                                         <td className='border p-1'>
