@@ -60,7 +60,7 @@ const SalesBill = () => {
             <SalesBillNavbar />
             <div className='grid grid-cols-2 gap-5'>
                 <SalesBillSidebar medicines={medicines} setMedicines={setMedicines} handleMedicine={handleMedicine} />
-                <SalesBillForm totalPrice={total} medicine={medicine} setMedicine={setMedicine} removeMedicine={removeMedicine} />
+                <SalesBillForm total={total} setTotal={setTotal} medicine={medicine} setMedicine={setMedicine} removeMedicine={removeMedicine} />
             </div>
             <SalesBillBottomBar />
         </div>

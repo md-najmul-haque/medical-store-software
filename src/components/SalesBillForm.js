@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
 import { AiFillEye } from 'react-icons/ai';
 
-const SalesBillForm = ({ medicine, setMedicine, totalPrice, removeMedicine }) => {
+const SalesBillForm = ({ medicine, setMedicine, total, setTotal, removeMedicine }) => {
     const [customerData, setCustomerData] = useState([])
     const [customerNumber, setCustomerNumber] = useState('')
     const [totalDiscount, setTotalDiscount] = useState(0)
@@ -38,6 +38,7 @@ const SalesBillForm = ({ medicine, setMedicine, totalPrice, removeMedicine }) =>
             const discountedValue = updatedMedicine.price * (updatedMedicine.discount / 100)
             updatedMedicine = { ...updatedMedicine, discountedValue: discountedValue }
             setTotalDiscount(totalDiscount + updatedMedicine?.discountedValue)
+
         }
 
         //remove earlier medicine and add updated medicine
@@ -47,8 +48,16 @@ const SalesBillForm = ({ medicine, setMedicine, totalPrice, removeMedicine }) =>
         medicine?.splice(discountedMedicineIndex, 0, updatedMedicine);
 
         setMedicine(medicine)
+        console.log(totalDiscount)
 
 
+
+    }
+    setTotal(total - totalDiscount)
+
+    const handleVat = e => {
+        const vat = e.target.value
+        setTotal(total + (total * (vat / 100)))
 
     }
 
@@ -185,6 +194,7 @@ const SalesBillForm = ({ medicine, setMedicine, totalPrice, removeMedicine }) =>
                         type="number"
                         placeholder='00.0'
                         className="input w-full max-w-xs input-bordered focus:outline-none rounded text-right"
+                        onChange={e => handleVat(e)}
                     />
                 </div>
 
@@ -194,7 +204,7 @@ const SalesBillForm = ({ medicine, setMedicine, totalPrice, removeMedicine }) =>
                         type="number"
                         placeholder='00.0'
                         className="input w-full max-w-xs input-bordered focus:outline-none rounded text-right"
-                        value={totalPrice}
+                        value={total}
                     />
                 </div>
 
