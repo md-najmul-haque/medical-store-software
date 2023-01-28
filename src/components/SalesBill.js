@@ -6,8 +6,10 @@ import SalesBillSidebar from './SalesBillSidebar';
 
 const SalesBill = () => {
     const [total, setTotal] = useState(0)
+    const [updateTotal, setUpdateTotal] = useState(0)
     const [medicines, setMedicines] = useState([])
     let [medicine, setMedicine] = useState([])
+
 
 
     useEffect(() => {
@@ -55,14 +57,16 @@ const SalesBill = () => {
 
     // console.log(medicine)
 
+    console.log(updateTotal)
+
     return (
         <div className='h-screen'>
             <SalesBillNavbar />
             <div className='grid grid-cols-2 gap-5'>
                 <SalesBillSidebar medicines={medicines} setMedicines={setMedicines} handleMedicine={handleMedicine} />
-                <SalesBillForm total={total} setTotal={setTotal} medicine={medicine} setMedicine={setMedicine} removeMedicine={removeMedicine} />
+                <SalesBillForm total={total} setTotal={setTotal} medicine={medicine} setMedicine={setMedicine} removeMedicine={removeMedicine} setUpdateTotal={setUpdateTotal} />
             </div>
-            <SalesBillBottomBar />
+            <SalesBillBottomBar updateTotal={updateTotal} />
         </div>
     );
 };
