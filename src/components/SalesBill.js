@@ -5,10 +5,10 @@ import SalesBillNavbar from './SalesBillNavbar';
 import SalesBillSidebar from './SalesBillSidebar';
 
 const SalesBill = () => {
-
+    const [total, setTotal] = useState(0)
     const [medicines, setMedicines] = useState([])
     const [medicine, setMedicine] = useState([])
-    const [grandTotal, setGrandTotal] = useState(null)
+
 
     useEffect(() => {
         fetch('medicines.json')
@@ -27,6 +27,7 @@ const SalesBill = () => {
 
         } else {
             const data = medicines.find(medicine => medicine._id === id)
+            setTotal(total + data?.price)
             const dataInfo = { ...data, defaultQuantity: 1 }
             if (dataInfo) {
                 setMedicine([...medicine, dataInfo])
@@ -37,7 +38,10 @@ const SalesBill = () => {
     }
 
     const removeMedicine = (id) => {
+        const PriceDelete = medicine.find(med => med._id === id)
+        setTotal(total - PriceDelete.price)
         const restMedicine = medicine.filter(med => med._id !== id)
+
         return setMedicine(restMedicine)
 
     }
@@ -49,7 +53,7 @@ const SalesBill = () => {
             <SalesBillNavbar />
             <div className='grid grid-cols-2 gap-5'>
                 <SalesBillSidebar medicines={medicines} setMedicines={setMedicines} handleMedicine={handleMedicine} />
-                <SalesBillForm medicine={medicine} removeMedicine={removeMedicine} grandTotal={grandTotal} setGrandTotal={setGrandTotal} />
+                <SalesBillForm totalPrice={total} medicine={medicine} removeMedicine={removeMedicine} />
             </div>
             <SalesBillBottomBar />
         </div>

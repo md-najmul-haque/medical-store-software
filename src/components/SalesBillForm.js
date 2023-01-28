@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
 import { AiFillEye } from 'react-icons/ai';
 
-const SalesBillForm = ({ medicine, removeMedicine, grandTotal, setGrandTotal }) => {
+const SalesBillForm = ({ medicine,totalPrice,removeMedicine }) => {
     const [customerData, setCustomerData] = useState([])
     const [customerNumber, setCustomerNumber] = useState('')
     const [discount, setDiscount] = useState(0)
+    const [total, setTotal] = useState('')
+    const [totals, setTotals] = useState([])
+    const [grandTotal, setGrandTotal] = useState(0)
 
     const findCustomer = () => {
         if (customerNumber) {
@@ -19,8 +22,25 @@ const SalesBillForm = ({ medicine, removeMedicine, grandTotal, setGrandTotal }) 
 
             // console.log(customerData)
         }
+    }
+
+    const handleTotal = (e) => {
+        const value = e.target.total.value
+        console.log(value)
+        return value
 
     }
+
+    console.log(total)
+
+    // Total line and total bill
+    useEffect(() => {
+        setGrandTotal((i) => i + Number(total))
+
+
+    }, [total, setGrandTotal])
+
+
 
     return (
         <div className='mr-5'>
@@ -77,7 +97,7 @@ const SalesBillForm = ({ medicine, removeMedicine, grandTotal, setGrandTotal }) 
                         {
                             medicine?.map(med => {
                                 return (
-                                    <tr key={med?._id}>
+                                    <tr key={med?._id} >
                                         <th className='border p-1 '>
                                             <input
                                                 type="text"
@@ -107,6 +127,7 @@ const SalesBillForm = ({ medicine, removeMedicine, grandTotal, setGrandTotal }) 
                                         <td className='border p-1'>
                                             <input
                                                 type="number"
+                                                id="checKPrice"
                                                 className="input w-full max-w-xs input-bordered focus:outline-none px-2 "
                                                 value={med?.price}
                                             />
@@ -121,7 +142,9 @@ const SalesBillForm = ({ medicine, removeMedicine, grandTotal, setGrandTotal }) 
                                         <td className='border p-1'>
                                             <input
                                                 type="number"
+                                                name='total'
                                                 className="input w-full max-w-xs input-bordered focus:outline-none"
+                                                onChange={e => setTotal(e.target.value)}
                                                 value={(med.defaultQuantity * med.price) - ((med.defaultQuantity * med.price) * (discount / 100))}
                                             />
                                         </td>
@@ -133,66 +156,6 @@ const SalesBillForm = ({ medicine, removeMedicine, grandTotal, setGrandTotal }) 
                                 )
                             })
                         }
-                        {/* {
-                            medicine.map(med => {
-                                return (
-                                    <tr>
-                                        <th className='border p-1 '>
-                                            <input
-                                                type="text"
-                                                className="input w-full input-bordered focus:outline-none"
-                                                defaultValue={med?.medicineName}
-                                            />
-                                        </th>
-                                        <td className='border p-1'>
-                                            <input
-                                                type="text"
-                                                className="input w-full px-0 input-bordered focus:outline-none"
-                                            />
-                                        </td>
-                                        <td className='border p-1'>
-                                            <input
-                                                type="date"
-                                                className="input w-full max-w-xs input-bordered focus:outline-none"
-                                            />
-                                        </td>
-                                        <td className='border p-1'>
-                                            <input
-                                                type="number"
-                                                className="input w-full max-w-xs input-bordered focus:outline-none"
-                                                value={med?.defaultQuantity}
-                                            />
-                                        </td>
-                                        <td className='border p-1'>
-                                            <input
-                                                type="number"
-                                                className="input w-full max-w-xs input-bordered focus:outline-none px-2 "
-                                                value={med?.price}
-                                            />
-                                        </td>
-                                        <td className='border p-1'>
-                                            <input
-                                                type="number"
-                                                className="input w-full max-w-xs input-bordered focus:outline-none"
-                                                onChange={e => setDiscount(e.target.value)}
-                                            />
-                                        </td>
-                                        <td className='border p-1'>
-                                            <input
-                                                type="number"
-                                                className="input w-full max-w-xs input-bordered focus:outline-none"
-                                                value={(med.defaultQuantity * med.price) - ((med.defaultQuantity * med.price) * (discount / 100))}
-                                            />
-                                        </td>
-                                        <td className='border p-1'>
-                                            <button onClick={() => removeMedicine(med._id)} className='btn btn-sm bg-red-200 hover:bg-red-300 border-none text-red-600'><RiDeleteBin5Fill /></button>
-                                            <button className='btn btn-sm bg-green-200 hover:bg-green-300 border-none text-green-700 ml-2'><AiFillEye /></button>
-                                        </td>
-                                    </tr>
-                                )
-                            })
-                        } */}
-
                     </tbody>
                 </table>
 
@@ -221,7 +184,7 @@ const SalesBillForm = ({ medicine, removeMedicine, grandTotal, setGrandTotal }) 
                         type="number"
                         placeholder='00.0'
                         className="input w-full max-w-xs input-bordered focus:outline-none rounded text-right"
-                        value={grandTotal}
+                        value={totalPrice}
                     />
                 </div>
 
