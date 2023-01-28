@@ -6,7 +6,7 @@ const SalesBillForm = ({ medicine, setMedicine, total, setTotal, removeMedicine 
     const [customerData, setCustomerData] = useState([])
     const [customerNumber, setCustomerNumber] = useState('')
     const [totalDiscount, setTotalDiscount] = useState(0)
-
+    const [vat, setVat] = useState(0)
 
     const findCustomer = () => {
         if (customerNumber) {
@@ -39,7 +39,10 @@ const SalesBillForm = ({ medicine, setMedicine, total, setTotal, removeMedicine 
             updatedMedicine = { ...updatedMedicine, discountedValue: discountedValue }
             setTotalDiscount(totalDiscount + updatedMedicine?.discountedValue)
 
+
         }
+
+        // setTotal((total - totalDiscount))
 
         //remove earlier medicine and add updated medicine
         let discountedMedicineIndex = medicine.findIndex(med => med._id === id);
@@ -49,17 +52,13 @@ const SalesBillForm = ({ medicine, setMedicine, total, setTotal, removeMedicine 
 
         setMedicine(medicine)
         console.log(totalDiscount)
-
-
-
     }
-    setTotal(total - totalDiscount)
-
-    const handleVat = e => {
+    const handleVat = (e) => {
         const vat = e.target.value
-        setTotal(total + (total * (vat / 100)))
-
+        const totalVat = total * (vat / 100)
+        setVat(totalVat)
     }
+
 
     return (
         <div className='mr-5'>
@@ -189,12 +188,12 @@ const SalesBillForm = ({ medicine, setMedicine, total, setTotal, removeMedicine 
                 </div>
 
                 <div class="flex justify-end items-center mb-2">
-                    <h2 className='p-3 font-semibold'>Total VAT: </h2>
+                    <h2 className='p-3 font-semibold'>Total VAT(%): </h2>
                     <input
                         type="number"
                         placeholder='00.0'
                         className="input w-full max-w-xs input-bordered focus:outline-none rounded text-right"
-                        onChange={e => handleVat(e)}
+                        onChange={(e) => handleVat(e)}
                     />
                 </div>
 
@@ -204,7 +203,7 @@ const SalesBillForm = ({ medicine, setMedicine, total, setTotal, removeMedicine 
                         type="number"
                         placeholder='00.0'
                         className="input w-full max-w-xs input-bordered focus:outline-none rounded text-right"
-                        value={total}
+                        value={total - totalDiscount + vat}
                     />
                 </div>
 
