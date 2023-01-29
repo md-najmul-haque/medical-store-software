@@ -41,8 +41,6 @@ const SalesBillForm = ({ medicine, setMedicine, total, setTotal, removeMedicine,
 
         }
 
-        // setTotal((total - totalDiscount))
-
         //remove earlier medicine and add updated medicine
         let discountedMedicineIndex = medicine.findIndex(med => med._id === id);
         medicine.splice(discountedMedicineIndex, 1)
@@ -64,12 +62,6 @@ const SalesBillForm = ({ medicine, setMedicine, total, setTotal, removeMedicine,
         const changeAmount = givenAmount - total
         setChangeAmount(changeAmount)
     }
-
-    // const handleTotal = (e) => {
-    //     const value = e.target.value
-    //     setUpdateTotal(value)
-    //     console.log(value)
-    // }
 
     return (
         <div className='mr-5'>

@@ -47,8 +47,19 @@ const SalesBill = () => {
     }
 
     const removeMedicine = (id) => {
-        const PriceDelete = medicine.find(med => med._id === id)
-        setTotal(total - PriceDelete.price)
+        const removeMedicine = medicine.find(med => med._id === id)
+
+        //set total value
+        if (removeMedicine.discountedValue) {
+            setTotalDiscount(totalDiscount - removeMedicine.discountedValue)
+            setTotal(total - removeMedicine.price)
+
+        } else {
+            setTotal(total - removeMedicine.price)
+
+        }
+
+        // setTotal(total - removeMedicine.price)
         const restMedicine = medicine.filter(med => med._id !== id)
 
         return setMedicine(restMedicine)
