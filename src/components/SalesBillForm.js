@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
 import { AiFillEye } from 'react-icons/ai';
 
-const SalesBillForm = ({ medicine, setMedicine, total, setVatPercentage, removeMedicine, totalDiscount, setTotalDiscount, vat, setVat }) => {
+const SalesBillForm = ({ medicine, setMedicine, total, setTotal, totalDiscount, setTotalDiscount, vat, setVat }) => {
     const [customerData, setCustomerData] = useState([])
     const [customerNumber, setCustomerNumber] = useState('')
+    const [givenAmount, setGivenAmount] = useState(0)
     const [changeAmount, setChangeAmount] = useState(0)
+    const [vatPercentage, setVatPercentage] = useState(0)
+
 
     const findCustomer = () => {
         if (customerNumber) {
@@ -59,9 +62,43 @@ const SalesBillForm = ({ medicine, setMedicine, total, setVatPercentage, removeM
 
     const handleAmount = e => {
 
-        const givenAmount = e.target.value
-        const changeAmount = givenAmount - total
+        const amount = e.target.value
+        setGivenAmount(amount)
+        const changeAmount = amount - (total - totalDiscount + vat)
+        console.log(total)
+        console.log(totalDiscount)
+        console.log(vat)
+
         setChangeAmount(changeAmount)
+    }
+
+    const removeMedicine = (id) => {
+        const removeMedicine = medicine.find(med => med._id === id)
+        const removeMedicineVat = removeMedicine.price * vatPercentage
+
+        const restMedicine = medicine.filter(med => med._id !== id)
+
+
+        //set total value
+        if (removeMedicine.discountedValue) {
+            setTotalDiscount(totalDiscount - removeMedicine.discountedValue)
+            setTotal(total - removeMedicine.price - removeMedicineVat)
+
+        } else {
+            setTotal(total - removeMedicine.price - removeMedicineVat)
+
+        }
+        setMedicine(restMedicine)
+
+        if (removeMedicine.discountedValue) {
+            const changeAmount = givenAmount - ((total - totalDiscount + vat) - (removeMedicine.price - removeMedicine.discountedValue + removeMedicineVat))
+            setChangeAmount(changeAmount)
+        } else {
+            const changeAmount = givenAmount - ((total - totalDiscount + vat) - (removeMedicine.price + removeMedicineVat))
+            setChangeAmount(changeAmount)
+        }
+
+        console.log('remove', givenAmount, total)
     }
 
     return (

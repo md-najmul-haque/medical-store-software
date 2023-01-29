@@ -8,7 +8,6 @@ const SalesBill = () => {
     const [total, setTotal] = useState(0)
     const [totalDiscount, setTotalDiscount] = useState(0)
     const [vat, setVat] = useState(0)
-    const [vatPercentage, setVatPercentage] = useState(0)
     const [medicines, setMedicines] = useState([])
     let [medicine, setMedicine] = useState([])
 
@@ -22,11 +21,12 @@ const SalesBill = () => {
 
     const handleMedicine = (id) => {
         let incrementedMedicine = medicine.find(med => med._id === id)
-        const formateData = medicine.filter(med => med._id !== id)
+        // const formateData = medicine.filter(med => med._id !== id)
 
         if (incrementedMedicine) {
             incrementedMedicine = { ...incrementedMedicine, defaultQuantity: incrementedMedicine.defaultQuantity + 1 }
 
+            //set incremented quantity. row up-down problem solved by using this way
             let incrementedMedicineIndex = medicine.findIndex(med => med._id === id);
             medicine.splice(incrementedMedicineIndex, 1)
             medicine = Array.from(medicine);
@@ -47,27 +47,25 @@ const SalesBill = () => {
 
     }
 
-    const removeMedicine = (id) => {
-        const removeMedicine = medicine.find(med => med._id === id)
+    // const removeMedicine = (id) => {
+    //     const removeMedicine = medicine.find(med => med._id === id)
 
-        const removeMedicineVat = removeMedicine.price * vatPercentage
+    //     const removeMedicineVat = removeMedicine.price * vatPercentage
 
-        //set total value
-        if (removeMedicine.discountedValue) {
-            setTotalDiscount(totalDiscount - removeMedicine.discountedValue)
-            setTotal(total - removeMedicine.price - removeMedicineVat)
+    //     //set total value
+    //     if (removeMedicine.discountedValue) {
+    //         setTotalDiscount(totalDiscount - removeMedicine.discountedValue)
+    //         setTotal(total - removeMedicine.price - removeMedicineVat)
 
-        } else {
-            setTotal(total - removeMedicine.price - removeMedicineVat)
+    //     } else {
+    //         setTotal(total - removeMedicine.price - removeMedicineVat)
 
-        }
+    //     }
 
-        // setTotal(total - removeMedicine.price)
-        const restMedicine = medicine.filter(med => med._id !== id)
+    //     const restMedicine = medicine.filter(med => med._id !== id)
+    //     return setMedicine(restMedicine)
 
-        return setMedicine(restMedicine)
-
-    }
+    // }
 
     // console.log(medicine)
 
@@ -77,7 +75,19 @@ const SalesBill = () => {
             <SalesBillNavbar />
             <div className='grid grid-cols-2 gap-5'>
                 <SalesBillSidebar medicines={medicines} setMedicines={setMedicines} handleMedicine={handleMedicine} />
-                <SalesBillForm total={total} setTotal={setTotal} medicine={medicine} setMedicine={setMedicine} removeMedicine={removeMedicine} totalDiscount={totalDiscount} setTotalDiscount={setTotalDiscount} vat={vat} setVat={setVat} setVatPercentage={setVatPercentage} />
+                <SalesBillForm
+                    total={total}
+                    setTotal={setTotal}
+                    medicine={medicine}
+                    setMedicine={setMedicine}
+                    // removeMedicine={removeMedicine}
+                    totalDiscount={totalDiscount}
+                    setTotalDiscount={setTotalDiscount}
+                    vat={vat}
+                    setVat={setVat}
+                // setVatPercentage={setVatPercentage}
+
+                />
             </div>
             <SalesBillBottomBar total={total} totalDiscount={totalDiscount} vat={vat} />
         </div>
