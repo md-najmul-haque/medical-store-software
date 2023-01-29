@@ -2,11 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
 import { AiFillEye } from 'react-icons/ai';
 
-const SalesBillForm = ({ medicine, setMedicine, total, setTotal, removeMedicine, setUpdateTotal }) => {
+const SalesBillForm = ({ medicine, setMedicine, total, setTotal, removeMedicine, totalDiscount, setTotalDiscount, vat, setVat }) => {
     const [customerData, setCustomerData] = useState([])
     const [customerNumber, setCustomerNumber] = useState('')
-    const [totalDiscount, setTotalDiscount] = useState(0)
-    const [vat, setVat] = useState(0)
     const [changeAmount, setChangeAmount] = useState(0)
 
     const findCustomer = () => {
@@ -217,7 +215,6 @@ const SalesBillForm = ({ medicine, setMedicine, total, setTotal, removeMedicine,
                         placeholder='00.0'
                         className="input w-full max-w-xs input-bordered focus:outline-none rounded text-right"
                         value={total - totalDiscount + vat}
-                        onChange={e => setUpdateTotal(e.target.value)}
                     />
                 </div>
 
