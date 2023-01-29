@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
 import { AiFillEye } from 'react-icons/ai';
 
-const SalesBillForm = ({ medicine, setMedicine, total, setTotal, removeMedicine, totalDiscount, setTotalDiscount, vat, setVat }) => {
+const SalesBillForm = ({ medicine, setMedicine, total, setVatPercentage, removeMedicine, totalDiscount, setTotalDiscount, vat, setVat }) => {
     const [customerData, setCustomerData] = useState([])
     const [customerNumber, setCustomerNumber] = useState('')
     const [changeAmount, setChangeAmount] = useState(0)
@@ -51,8 +51,9 @@ const SalesBillForm = ({ medicine, setMedicine, total, setTotal, removeMedicine,
         console.log(totalDiscount)
     }
     const handleVat = (e) => {
-        const vat = e.target.value
-        const totalVat = total * (vat / 100)
+        const vatPercent = e.target.value
+        setVatPercentage(vatPercent / 100)
+        const totalVat = total * (vatPercent / 100)
         setVat(totalVat)
     }
 

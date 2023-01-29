@@ -8,6 +8,7 @@ const SalesBill = () => {
     const [total, setTotal] = useState(0)
     const [totalDiscount, setTotalDiscount] = useState(0)
     const [vat, setVat] = useState(0)
+    const [vatPercentage, setVatPercentage] = useState(0)
     const [medicines, setMedicines] = useState([])
     let [medicine, setMedicine] = useState([])
 
@@ -49,13 +50,15 @@ const SalesBill = () => {
     const removeMedicine = (id) => {
         const removeMedicine = medicine.find(med => med._id === id)
 
+        const removeMedicineVat = removeMedicine.price * vatPercentage
+
         //set total value
         if (removeMedicine.discountedValue) {
             setTotalDiscount(totalDiscount - removeMedicine.discountedValue)
-            setTotal(total - removeMedicine.price)
+            setTotal(total - removeMedicine.price - removeMedicineVat)
 
         } else {
-            setTotal(total - removeMedicine.price)
+            setTotal(total - removeMedicine.price - removeMedicineVat)
 
         }
 
@@ -74,7 +77,7 @@ const SalesBill = () => {
             <SalesBillNavbar />
             <div className='grid grid-cols-2 gap-5'>
                 <SalesBillSidebar medicines={medicines} setMedicines={setMedicines} handleMedicine={handleMedicine} />
-                <SalesBillForm total={total} setTotal={setTotal} medicine={medicine} setMedicine={setMedicine} removeMedicine={removeMedicine} totalDiscount={totalDiscount} setTotalDiscount={setTotalDiscount} vat={vat} setVat={setVat} />
+                <SalesBillForm total={total} setTotal={setTotal} medicine={medicine} setMedicine={setMedicine} removeMedicine={removeMedicine} totalDiscount={totalDiscount} setTotalDiscount={setTotalDiscount} vat={vat} setVat={setVat} setVatPercentage={setVatPercentage} />
             </div>
             <SalesBillBottomBar total={total} totalDiscount={totalDiscount} vat={vat} />
         </div>
