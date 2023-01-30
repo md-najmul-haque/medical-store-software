@@ -11,6 +11,8 @@ const SalesBill = () => {
     const [medicines, setMedicines] = useState([])
     let [medicine, setMedicine] = useState([])
     const [vatPercentage, setVatPercentage] = useState(0)
+    const [givenAmount, setGivenAmount] = useState(0)
+    const [changeAmount, setChangeAmount] = useState(0)
 
     useEffect(() => {
         fetch('medicines.json')
@@ -21,6 +23,7 @@ const SalesBill = () => {
 
     const handleMedicine = (id) => {
         let incrementedMedicine = medicine.find(med => med._id === id)
+        const selectedMedicine = medicines.find(medicine => medicine._id === id)
 
         if (incrementedMedicine) {
             incrementedMedicine = { ...incrementedMedicine, defaultQuantity: incrementedMedicine.defaultQuantity + 1 }
@@ -34,25 +37,32 @@ const SalesBill = () => {
 
             setTotal(total + incrementedMedicine?.price)
 
+            // handle given amount
+            if (givenAmount) {
+                const incrementedMedicineVat = incrementedMedicine.price * vatPercentage
+                const changeAmount = parseInt(givenAmount) - (((total - totalDiscount) + (total - totalDiscount) * vatPercentage) + (incrementedMedicine.price + incrementedMedicineVat))
+                setChangeAmount(changeAmount)
+                console.log((((total - totalDiscount) + (total - totalDiscount) * vatPercentage)))
+
+            }
 
         } else {
-            const data = medicines.find(medicine => medicine._id === id)
 
-            // if (vatPercentage) {
-            //     setTotal((total + data.price) + ((total + data.price) * vatPercentage))
-            // } else {
-            //     setTotal(total + data.price)
-            // }
-
-            setTotal(total + data.price)
+            setTotal(total + selectedMedicine.price)
             console.log('add', total, total)
-            const dataInfo = { ...data, defaultQuantity: 1 }
+            const dataInfo = { ...selectedMedicine, defaultQuantity: 1 }
             setMedicine([...medicine, dataInfo])
 
+            // handle given amount
+            if (givenAmount) {
+                const selectedMedicineVat = selectedMedicine.price * vatPercentage
+                const changeAmount = parseInt(givenAmount) - (((total - totalDiscount) + (total - totalDiscount) * vatPercentage) + (selectedMedicine.price + selectedMedicineVat))
+                setChangeAmount(changeAmount)
+
+            }
+
         }
-        // console.log(incrementQuantity)
-        const totalVat = total * vatPercentage
-        setVat(totalVat)
+
     }
 
     return (
@@ -75,6 +85,10 @@ const SalesBill = () => {
                     setVat={setVat}
                     vatPercentage={vatPercentage}
                     setVatPercentage={setVatPercentage}
+                    givenAmount={givenAmount}
+                    setGivenAmount={setGivenAmount}
+                    changeAmount={changeAmount}
+                    setChangeAmount={setChangeAmount}
                 />
             </div>
             <SalesBillBottomBar

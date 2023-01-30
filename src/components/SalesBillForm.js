@@ -2,12 +2,9 @@ import React, { useState } from 'react';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
 import { AiFillEye } from 'react-icons/ai';
 
-const SalesBillForm = ({ medicine, setMedicine, vat, total, setTotal, totalDiscount, setTotalDiscount, vatPercentage, setVatPercentage }) => {
+const SalesBillForm = ({ medicine, setMedicine, vat, total, setTotal, totalDiscount, setTotalDiscount, vatPercentage, setVatPercentage, givenAmount, setGivenAmount, setChangeAmount, changeAmount }) => {
     const [customerData, setCustomerData] = useState([])
     const [customerNumber, setCustomerNumber] = useState('')
-    const [givenAmount, setGivenAmount] = useState(0)
-    const [changeAmount, setChangeAmount] = useState(0)
-
 
     const findCustomer = () => {
         if (customerNumber) {
@@ -52,6 +49,8 @@ const SalesBillForm = ({ medicine, setMedicine, vat, total, setTotal, totalDisco
         setMedicine(medicine)
         console.log(totalDiscount)
     }
+
+
     const handleVat = (e) => {
         const vatPercent = e.target.value
         setVatPercentage(vatPercent / 100)
@@ -64,10 +63,6 @@ const SalesBillForm = ({ medicine, setMedicine, vat, total, setTotal, totalDisco
         const amount = e.target.value
         setGivenAmount(amount)
         const changeAmount = amount - ((total - totalDiscount) + (total - totalDiscount) * vatPercentage).toFixed(2)
-        console.log(total)
-        console.log(totalDiscount)
-
-
         setChangeAmount(changeAmount)
     }
 
@@ -91,12 +86,13 @@ const SalesBillForm = ({ medicine, setMedicine, vat, total, setTotal, totalDisco
         setMedicine(restMedicine)
 
         //handle given amount when remove medicine
+        // ((total - totalDiscount) + (total - totalDiscount) * vatPercentage) = grad total amount
         if (givenAmount) {
             if (removeMedicine.discountedValue) {
-                const changeAmount = givenAmount - ((total - totalDiscount + vat) - (removeMedicine.price - removeMedicine.discountedValue + removeMedicineVat))
+                const changeAmount = givenAmount - (((total - totalDiscount) + (total - totalDiscount) * vatPercentage) - (removeMedicine.price - removeMedicine.discountedValue + removeMedicineVat))
                 setChangeAmount(changeAmount)
             } else {
-                const changeAmount = givenAmount - ((total - totalDiscount + vat) - (removeMedicine.price + removeMedicineVat))
+                const changeAmount = givenAmount - (((total - totalDiscount) + (total - totalDiscount) * vatPercentage) - (removeMedicine.price + removeMedicineVat))
                 setChangeAmount(changeAmount)
             }
         }
@@ -256,7 +252,7 @@ const SalesBillForm = ({ medicine, setMedicine, vat, total, setTotal, totalDisco
                         type="number"
                         placeholder='00.0'
                         className="input w-full max-w-xs input-bordered focus:outline-none rounded text-right"
-                        value={changeAmount.toFixed(0)}
+                        value={givenAmount ? changeAmount.toFixed(0) : ''}
                     />
                 </div>
 
