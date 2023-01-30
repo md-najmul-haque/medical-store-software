@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-const SalesBillBottomBar = ({ total, totalDiscount, vat }) => {
+const SalesBillBottomBar = ({ total, totalDiscount, vatPercentage }) => {
     const [dueAmount, setDueAmount] = useState(null)
 
     const handlePaidAmount = (e) => {
         const paidAmount = e.target.value
-        setDueAmount(total - totalDiscount + vat - paidAmount)
+        setDueAmount(((total - totalDiscount) + (total - totalDiscount) * vatPercentage) - paidAmount)
     }
 
     return (
@@ -18,7 +18,7 @@ const SalesBillBottomBar = ({ total, totalDiscount, vat }) => {
                             type="number"
                             placeholder='00.0'
                             className="input w-full max-w-xs input-bordered focus:outline-none rounded text-right"
-                            value={total - totalDiscount + vat}
+                            value={((total - totalDiscount) + (total - totalDiscount) * vatPercentage).toFixed(2)}
                         />
                     </div>
                     <div class="flex items-center">

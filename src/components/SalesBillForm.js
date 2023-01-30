@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
 import { AiFillEye } from 'react-icons/ai';
 
-const SalesBillForm = ({ medicine, setMedicine, total, setTotal, totalDiscount, setTotalDiscount, vat, setVat }) => {
+const SalesBillForm = ({ medicine, setMedicine, vat, total, setTotal, totalDiscount, setTotalDiscount, vatPercentage, setVatPercentage }) => {
     const [customerData, setCustomerData] = useState([])
     const [customerNumber, setCustomerNumber] = useState('')
     const [givenAmount, setGivenAmount] = useState(0)
     const [changeAmount, setChangeAmount] = useState(0)
-    const [vatPercentage, setVatPercentage] = useState(0)
 
 
     const findCustomer = () => {
@@ -56,18 +55,18 @@ const SalesBillForm = ({ medicine, setMedicine, total, setTotal, totalDiscount, 
     const handleVat = (e) => {
         const vatPercent = e.target.value
         setVatPercentage(vatPercent / 100)
-        const totalVat = total * (vatPercent / 100)
-        setVat(totalVat)
+        // const totalVat = total * (vatPercent / 100)
+        // setVat(totalVat)
     }
 
     const handleAmount = e => {
 
         const amount = e.target.value
         setGivenAmount(amount)
-        const changeAmount = amount - (total - totalDiscount + vat)
+        const changeAmount = amount - ((total - totalDiscount) + (total - totalDiscount) * vatPercentage).toFixed(2)
         console.log(total)
         console.log(totalDiscount)
-        console.log(vat)
+
 
         setChangeAmount(changeAmount)
     }
@@ -82,23 +81,27 @@ const SalesBillForm = ({ medicine, setMedicine, total, setTotal, totalDiscount, 
         //set total value
         if (removeMedicine.discountedValue) {
             setTotalDiscount(totalDiscount - removeMedicine.discountedValue)
-            setTotal(total - removeMedicine.price - removeMedicineVat)
+            // setTotal(total - removeMedicine.price - removeMedicineVat)
 
         } else {
-            setTotal(total - removeMedicine.price - removeMedicineVat)
+            // setTotal(total - removeMedicine.price - removeMedicineVat)
 
         }
+        setTotal(total - removeMedicine.price)
         setMedicine(restMedicine)
 
-        if (removeMedicine.discountedValue) {
-            const changeAmount = givenAmount - ((total - totalDiscount + vat) - (removeMedicine.price - removeMedicine.discountedValue + removeMedicineVat))
-            setChangeAmount(changeAmount)
-        } else {
-            const changeAmount = givenAmount - ((total - totalDiscount + vat) - (removeMedicine.price + removeMedicineVat))
-            setChangeAmount(changeAmount)
+        //handle given amount when remove medicine
+        if (givenAmount) {
+            if (removeMedicine.discountedValue) {
+                const changeAmount = givenAmount - ((total - totalDiscount + vat) - (removeMedicine.price - removeMedicine.discountedValue + removeMedicineVat))
+                setChangeAmount(changeAmount)
+            } else {
+                const changeAmount = givenAmount - ((total - totalDiscount + vat) - (removeMedicine.price + removeMedicineVat))
+                setChangeAmount(changeAmount)
+            }
         }
 
-        console.log('remove', givenAmount, total)
+        // console.log('remove', givenAmount, total)
     }
 
     return (
@@ -123,17 +126,6 @@ const SalesBillForm = ({ medicine, setMedicine, total, setTotal, totalDiscount, 
                         </button>
                     </div>
                 </div>
-
-                {/* <div class="flex justify-center">
-                    <div class="mb-3">
-                        <div class="input-group relative flex flex-wrap items-stretch w-full mb-4">
-                            <input type="text" name='mobile' class="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-success focus:outline-none" placeholder="Mobile" aria-label="Search" aria-describedby="button-addon2" />
-                            <button type='submit' class="btn inline-block px-6 py-2.5 bg-success text-white font-medium text-xs leading-tight uppercase shadow-md hover:bg-success hover:shadow-lg focus:bg-success  focus:shadow-lg focus:outline-none focus:ring-0 active:bg-success active:shadow-lg transition duration-150 ease-in-out flex items-center" type="button" id="button-addon2">
-                                <BiPlusMedical />
-                            </button>
-                        </div>
-                    </div>
-                </div> */}
 
             </div>
 
@@ -223,7 +215,7 @@ const SalesBillForm = ({ medicine, setMedicine, total, setTotal, totalDiscount, 
                         type="number"
                         placeholder='00.0'
                         className="input w-full max-w-xs input-bordered focus:outline-none rounded text-right"
-                        value={totalDiscount}
+                        value={totalDiscount.toFixed(2)}
 
                     />
                 </div>
@@ -244,7 +236,7 @@ const SalesBillForm = ({ medicine, setMedicine, total, setTotal, totalDiscount, 
                         type="number"
                         placeholder='00.0'
                         className="input w-full max-w-xs input-bordered focus:outline-none rounded text-right"
-                        value={total - totalDiscount + vat}
+                        value={((total - totalDiscount) + (total - totalDiscount) * vatPercentage).toFixed(2)}
                     />
                 </div>
 
@@ -264,7 +256,7 @@ const SalesBillForm = ({ medicine, setMedicine, total, setTotal, totalDiscount, 
                         type="number"
                         placeholder='00.0'
                         className="input w-full max-w-xs input-bordered focus:outline-none rounded text-right"
-                        value={changeAmount}
+                        value={changeAmount.toFixed(0)}
                     />
                 </div>
 

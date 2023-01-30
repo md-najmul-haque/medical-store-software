@@ -10,7 +10,7 @@ const SalesBill = () => {
     const [vat, setVat] = useState(0)
     const [medicines, setMedicines] = useState([])
     let [medicine, setMedicine] = useState([])
-
+    const [vatPercentage, setVatPercentage] = useState(0)
 
     useEffect(() => {
         fetch('medicines.json')
@@ -21,7 +21,6 @@ const SalesBill = () => {
 
     const handleMedicine = (id) => {
         let incrementedMedicine = medicine.find(med => med._id === id)
-        // const formateData = medicine.filter(med => med._id !== id)
 
         if (incrementedMedicine) {
             incrementedMedicine = { ...incrementedMedicine, defaultQuantity: incrementedMedicine.defaultQuantity + 1 }
@@ -35,61 +34,54 @@ const SalesBill = () => {
 
             setTotal(total + incrementedMedicine?.price)
 
+
         } else {
             const data = medicines.find(medicine => medicine._id === id)
-            setTotal(total + data?.price)
+
+            // if (vatPercentage) {
+            //     setTotal((total + data.price) + ((total + data.price) * vatPercentage))
+            // } else {
+            //     setTotal(total + data.price)
+            // }
+
+            setTotal(total + data.price)
+            console.log('add', total, total)
             const dataInfo = { ...data, defaultQuantity: 1 }
-            if (dataInfo) {
-                setMedicine([...medicine, dataInfo])
-            }
+            setMedicine([...medicine, dataInfo])
+
         }
         // console.log(incrementQuantity)
-
+        const totalVat = total * vatPercentage
+        setVat(totalVat)
     }
-
-    // const removeMedicine = (id) => {
-    //     const removeMedicine = medicine.find(med => med._id === id)
-
-    //     const removeMedicineVat = removeMedicine.price * vatPercentage
-
-    //     //set total value
-    //     if (removeMedicine.discountedValue) {
-    //         setTotalDiscount(totalDiscount - removeMedicine.discountedValue)
-    //         setTotal(total - removeMedicine.price - removeMedicineVat)
-
-    //     } else {
-    //         setTotal(total - removeMedicine.price - removeMedicineVat)
-
-    //     }
-
-    //     const restMedicine = medicine.filter(med => med._id !== id)
-    //     return setMedicine(restMedicine)
-
-    // }
-
-    // console.log(medicine)
-
 
     return (
         <div className='h-screen'>
             <SalesBillNavbar />
             <div className='grid grid-cols-2 gap-5'>
-                <SalesBillSidebar medicines={medicines} setMedicines={setMedicines} handleMedicine={handleMedicine} />
+                <SalesBillSidebar
+                    medicines={medicines}
+                    setMedicines={setMedicines}
+                    handleMedicine={handleMedicine}
+                />
                 <SalesBillForm
                     total={total}
                     setTotal={setTotal}
                     medicine={medicine}
                     setMedicine={setMedicine}
-                    // removeMedicine={removeMedicine}
                     totalDiscount={totalDiscount}
                     setTotalDiscount={setTotalDiscount}
                     vat={vat}
                     setVat={setVat}
-                // setVatPercentage={setVatPercentage}
-
+                    vatPercentage={vatPercentage}
+                    setVatPercentage={setVatPercentage}
                 />
             </div>
-            <SalesBillBottomBar total={total} totalDiscount={totalDiscount} vat={vat} />
+            <SalesBillBottomBar
+                total={total}
+                totalDiscount={totalDiscount}
+                vatPercentage={vatPercentage}
+            />
         </div>
     );
 };
