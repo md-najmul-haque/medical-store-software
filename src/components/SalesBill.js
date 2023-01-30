@@ -64,7 +64,7 @@ const SalesBill = () => {
     }
 
     return (
-        <div className='h-screen'>
+        <div className='h-screen bg-white'>
             <SalesBillNavbar />
             <div className='grid grid-cols-2 gap-5'>
                 <SalesBillSidebar

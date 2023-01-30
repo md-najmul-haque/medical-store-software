@@ -17,7 +17,7 @@ const SalesBillBottomBar = ({ total, totalDiscount, vatPercentage }) => {
                         <input
                             type="number"
                             placeholder='00.0'
-                            className="input w-full max-w-xs input-bordered focus:outline-none rounded text-right"
+                            className="input w-full bg-white max-w-xs input-bordered focus:outline-none rounded text-right"
                             value={((total - totalDiscount) + (total - totalDiscount) * vatPercentage).toFixed(2)}
                         />
                     </div>
@@ -26,7 +26,7 @@ const SalesBillBottomBar = ({ total, totalDiscount, vatPercentage }) => {
                         <input
                             type="number"
                             placeholder='00.0'
-                            className="input w-full max-w-xs input-bordered focus:outline-none rounded text-right"
+                            className="input w-full max-w-xs bg-white input-bordered focus:outline-none rounded text-right"
                             onChange={e => handlePaidAmount(e)}
                         />
                     </div>
@@ -35,14 +35,14 @@ const SalesBillBottomBar = ({ total, totalDiscount, vatPercentage }) => {
                         <input
                             type="number"
                             placeholder='00.0'
-                            className="input w-full max-w-xs input-bordered focus:outline-none rounded text-right"
+                            className="input w-full bg-white max-w-xs input-bordered focus:outline-none rounded text-right"
                             value={dueAmount}
                         />
                     </div>
                 </div>
                 <div>
-                    <button className='btn btn-success'>Cash Payment</button>
-                    <button className='btn btn-info ml-2'>Bank Payment</button>
+                    <button className='btn btn-secondary text-white'>Cash Payment</button>
+                    <button className='btn btn-primary text-white ml-2'>Bank Payment</button>
                 </div>
             </div>
         </div>
