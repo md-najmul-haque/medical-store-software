@@ -26,16 +26,37 @@ const SalesBillForm = ({ medicine, setMedicine, vat, total, setTotal, totalDisco
         const discountedMedicine = medicine.find(med => med._id === id)
         const discount = e.target.value
         let updatedMedicine = { ...discountedMedicine, discount: discount }
+        const discountedValue = updatedMedicine.price * (updatedMedicine.discount / 100)
 
         //calculate total discount
         if (updatedMedicine.discountedValue) {
             const newDiscountedValue = updatedMedicine.price * (updatedMedicine.discount / 100)
             setTotalDiscount(totalDiscount - updatedMedicine?.discountedValue + newDiscountedValue)
             updatedMedicine = { ...updatedMedicine, discountedValue: newDiscountedValue }
+
+            if (givenAmount) {
+                const oldDiscountedValue = discountedMedicine.price * (discountedMedicine.discount / 100)
+                const oldDiscountedVat = (updatedMedicine?.discountedValue * vatPercentage)
+                const newDiscountedVat = (newDiscountedValue * vatPercentage)
+                const changeAmount = parseInt(givenAmount) - (((total - totalDiscount) + (total - totalDiscount) * vatPercentage)) + newDiscountedValue - oldDiscountedValue
+                setChangeAmount(changeAmount)
+
+            }
+
         } else {
-            const discountedValue = updatedMedicine.price * (updatedMedicine.discount / 100)
+
             updatedMedicine = { ...updatedMedicine, discountedValue: discountedValue }
             setTotalDiscount(totalDiscount + updatedMedicine?.discountedValue)
+
+            // handle given amount
+            if (givenAmount) {
+                const discountedVat = (discountedValue * vatPercentage)
+                const changeAmount = parseInt(givenAmount) - (((total - totalDiscount) + (total - totalDiscount) * vatPercentage)) + discountedValue
+                setChangeAmount(changeAmount)
+
+                console.log(discountedValue)
+
+            }
 
 
         }
@@ -47,7 +68,7 @@ const SalesBillForm = ({ medicine, setMedicine, vat, total, setTotal, totalDisco
         medicine?.splice(discountedMedicineIndex, 0, updatedMedicine);
 
         setMedicine(medicine)
-        console.log(totalDiscount)
+        // console.log(totalDiscount)
     }
 
 
@@ -82,8 +103,8 @@ const SalesBillForm = ({ medicine, setMedicine, vat, total, setTotal, totalDisco
             // setTotal(total - removeMedicine.price - removeMedicineVat)
 
         }
-        setTotal(total - removeMedicine.price)
         setMedicine(restMedicine)
+        setTotal(total - removeMedicine.price)
 
         //handle given amount when remove medicine
         // ((total - totalDiscount) + (total - totalDiscount) * vatPercentage) = grad total amount
@@ -183,7 +204,7 @@ const SalesBillForm = ({ medicine, setMedicine, vat, total, setTotal, totalDisco
                                             <input
                                                 type="number"
                                                 className="input w-full max-w-xs input-bordered focus:outline-none"
-                                                onChange={(e) => handleDiscount(e, med._id)}
+                                                onBlur={(e) => handleDiscount(e, med._id)}
                                             />
                                         </td>
                                         <td className='border p-1'>

@@ -42,7 +42,6 @@ const SalesBill = () => {
                 const incrementedMedicineVat = incrementedMedicine.price * vatPercentage
                 const changeAmount = parseInt(givenAmount) - (((total - totalDiscount) + (total - totalDiscount) * vatPercentage) + (incrementedMedicine.price + incrementedMedicineVat))
                 setChangeAmount(changeAmount)
-                console.log((((total - totalDiscount) + (total - totalDiscount) * vatPercentage)))
 
             }
 
@@ -58,7 +57,6 @@ const SalesBill = () => {
                 const selectedMedicineVat = selectedMedicine.price * vatPercentage
                 const changeAmount = parseInt(givenAmount) - (((total - totalDiscount) + (total - totalDiscount) * vatPercentage) + (selectedMedicine.price + selectedMedicineVat))
                 setChangeAmount(changeAmount)
-
             }
 
         }
