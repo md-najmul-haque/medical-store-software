@@ -1,6 +1,10 @@
 import React from 'react';
+import { useForm } from 'react-hook-form';
 
 const AddCustomer = ({ setAddCustomer }) => {
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
+    const onSubmit = data => console.log(data)
+
     return (
         <div className=''>
             <input type="checkbox" id="add-customer" className="modal-toggle" />
@@ -11,16 +15,42 @@ const AddCustomer = ({ setAddCustomer }) => {
                     <div className="card mx-auto">
 
                         <div className="card-body items-center text-center">
-                            <h2 className="card-title text-lg text-primary">Medicine Name: </h2>
+                            <form onSubmit={handleSubmit(onSubmit)}>
+
+                                <div className="form-control w-full">
+                                    <label className="label">
+                                        <span className="label-text">Customer Name</span>
+                                    </label>
+                                    <input
+                                        type="text"
+                                        placeholder="Customer Name"
+                                        className="input bg-gray-100 w-full "
+                                        {...register("customerName", {
+                                            required: {
+                                                value: true,
+                                                message: 'Customer name is required'
+                                            }
+                                        })} />
+                                    <label className="label">
+                                        {errors.customerName?.type === 'required' && <span className="label-text-alt text-red-500">{errors.customerName.message}</span>}
+                                    </label>
+                                </div>
+
+                                <div className="card-actions items-center justify-between">
+                                    <button onClick={() => setAddCustomer(false)} className="btn btn-secondary text-white px-10">Close</button>
+                                    <input type="submit" className="btn btn-primary text-white px-10" value='Submit' />
+                                </div>
+
+
+
+                            </form>
 
                         </div>
-                        <div className="card-actions justify-end">
-                            <button onClick={() => setAddCustomer(false)} className="btn btn-secondary right-3">Close</button>
-                        </div>
+
                     </div>
 
                 </div>
-            </div>
+            </div >
         </div >
     );
 };
