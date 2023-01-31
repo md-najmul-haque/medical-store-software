@@ -2,28 +2,35 @@ import React, { useState } from 'react';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
 import { AiFillEye } from 'react-icons/ai';
 import MedicineDetails from './MedicineDetails';
+import AddCustomer from './AddCustomer';
 
 const SalesBillForm = ({ medicine, setMedicine, vat, total, setTotal, totalDiscount, setTotalDiscount, vatPercentage, setVatPercentage, givenAmount, setGivenAmount, setChangeAmount, changeAmount }) => {
-    const [customerData, setCustomerData] = useState([])
-    const [customerNumber, setCustomerNumber] = useState('')
+    const [customerData, setCustomerData] = useState(null)
+    const [customerNumber, setCustomerNumber] = useState(null)
     const [addCustomer, setAddCustomer] = useState(false)
     const [modal, setModal] = useState(false)
     const [medicineDetails, setMedicineDetails] = useState(null)
 
     const findCustomer = () => {
-        if (customerNumber) {
-            fetch(`customer.json`)
-                .then(res => res.json())
-                .then(data => {
-                    const selectedCustomer = data.filter(customer => customer.customerNumber === customerNumber)
-                    setCustomerData(selectedCustomer)
-                    // console.log(selectedCustomer)
-                })
 
-            // console.log(customerData)
-        } else {
-            setAddCustomer(true)
-        }
+        fetch(`customer.json`)
+            .then(res => res.json())
+            .then(data => {
+                const selectedCustomer = data.find(customer => customer.customerNumber === customerNumber)
+                console.log(selectedCustomer)
+                if (selectedCustomer !== undefined) {
+                    setCustomerData(selectedCustomer)
+                    setAddCustomer(false)
+                } else {
+                    setAddCustomer(true)
+                    setCustomerData(null)
+                }
+            })
+
+        // console.log(customerData)
+
+
+
     }
 
 
@@ -146,7 +153,7 @@ const SalesBillForm = ({ medicine, setMedicine, vat, total, setTotal, totalDisco
                         type="text"
                         placeholder="Customer Name / Phone Number"
                         className="input w-full input-bordered bg-white focus:outline-none"
-                        defaultValue={customerData[0]?.customerName}
+                        defaultValue={customerData?.customerName}
 
                     />
                 </div>
@@ -154,9 +161,9 @@ const SalesBillForm = ({ medicine, setMedicine, vat, total, setTotal, totalDisco
                 <div className="form-control">
                     <div className="input-group">
                         <input type="text" placeholder="Search…" className="input input-bordered w-full bg-white  focus:outline-none" onChange={(e) => setCustomerNumber(e.target.value)} />
-                        <button onClick={() => findCustomer()} className="btn btn-square text-white bg-secondary shadow-md hover:bg-secondary hover:shadow-lg focus:bg-secondary  focus:shadow-lg border-none">
+                        <label htmlFor="add-customer" onClick={() => findCustomer()} className="btn btn-square text-white bg-secondary shadow-md hover:bg-secondary hover:shadow-lg focus:bg-secondary  focus:shadow-lg border-none">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-                        </button>
+                        </label>
                     </div>
                 </div>
 
@@ -294,6 +301,13 @@ const SalesBillForm = ({ medicine, setMedicine, vat, total, setTotal, totalDisco
                 </div>
 
             </div>
+
+            <div>
+                {
+                    addCustomer && <AddCustomer setAddCustomer={setAddCustomer} />
+                }
+            </div>
+
             <div>
                 {
                     modal && <MedicineDetails setModal={setModal} medicineDetails={medicineDetails} />
