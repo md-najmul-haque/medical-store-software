@@ -3,10 +3,10 @@ import React from 'react';
 const MedicineDetails = ({ setModal, medicineDetails }) => {
     return (
         <div className=''>
-            <input type="checkbox" id="add-project" className="modal-toggle" />
+            <input type="checkbox" id="view-medicine" className="modal-toggle" />
             <div className="modal w-full modal-bottom sm:modal-middle">
                 <div className="modal-box w-full bg-white">
-                    <label htmlFor="add-project" className="btn btn-sm btn-secondary text-white btn-square absolute right-3 top-3">✕</label>
+                    <label htmlFor="view-medicine" className="btn btn-sm btn-secondary text-white btn-square absolute right-3 top-3">✕</label>
                     <h3 className="font-bold text-2xl text-primary"> Details about {medicineDetails.medicineName}</h3>
                     <div className="card mx-auto">
                         <figure className="px-10 pt-10">
@@ -21,7 +21,7 @@ const MedicineDetails = ({ setModal, medicineDetails }) => {
                             <p>Available Quantity: {medicineDetails.quantity}</p>
                         </div>
                         <div className="card-actions justify-end">
-                            <button className="btn btn-secondary right-3">Close</button>
+                            <button onClick={() => setModal(false)} className="btn btn-secondary right-3">Close</button>
                         </div>
                     </div>
 

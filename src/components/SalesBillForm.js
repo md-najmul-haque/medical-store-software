@@ -6,6 +6,7 @@ import MedicineDetails from './MedicineDetails';
 const SalesBillForm = ({ medicine, setMedicine, vat, total, setTotal, totalDiscount, setTotalDiscount, vatPercentage, setVatPercentage, givenAmount, setGivenAmount, setChangeAmount, changeAmount }) => {
     const [customerData, setCustomerData] = useState([])
     const [customerNumber, setCustomerNumber] = useState('')
+    const [addCustomer, setAddCustomer] = useState(false)
     const [modal, setModal] = useState(false)
     const [medicineDetails, setMedicineDetails] = useState(null)
 
@@ -20,6 +21,8 @@ const SalesBillForm = ({ medicine, setMedicine, vat, total, setTotal, totalDisco
                 })
 
             // console.log(customerData)
+        } else {
+            setAddCustomer(true)
         }
     }
 
@@ -230,7 +233,7 @@ const SalesBillForm = ({ medicine, setMedicine, vat, total, setTotal, totalDisco
                                         </td>
                                         <td className='border p-1'>
                                             <button onClick={() => removeMedicine(med._id)} className='btn btn-sm bg-red-200 hover:bg-red-300 border-none text-red-600'><RiDeleteBin5Fill /></button>
-                                            <label htmlFor="add-project" onClick={() => viewMedicine(med._id)} className='btn btn-sm bg-green-200 hover:bg-green-300 border-none text-green-700 ml-2'><AiFillEye /></label>
+                                            <label htmlFor="view-medicine" onClick={() => viewMedicine(med._id)} className='btn btn-sm bg-green-200 hover:bg-green-300 border-none text-green-700 ml-2'><AiFillEye /></label>
                                         </td>
                                     </tr>
                                 )
