@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
 import { AiFillEye } from 'react-icons/ai';
+import MedicineDetails from './MedicineDetails';
 
 const SalesBillForm = ({ medicine, setMedicine, vat, total, setTotal, totalDiscount, setTotalDiscount, vatPercentage, setVatPercentage, givenAmount, setGivenAmount, setChangeAmount, changeAmount }) => {
     const [customerData, setCustomerData] = useState([])
     const [customerNumber, setCustomerNumber] = useState('')
+    const [modal, setModal] = useState(false)
+    const [medicineDetails, setMedicineDetails] = useState(null)
 
     const findCustomer = () => {
         if (customerNumber) {
@@ -124,6 +127,13 @@ const SalesBillForm = ({ medicine, setMedicine, vat, total, setTotal, totalDisco
         // console.log('remove', givenAmount, total)
     }
 
+    const viewMedicine = (id) => {
+
+        const selectedMedicine = medicine.find(med => med._id === id)
+        setMedicineDetails(selectedMedicine)
+        setModal(true)
+    }
+
     return (
         <div className='mr-5'>
             <div className='grid grid-cols-2 gap-x-10'>
@@ -220,7 +230,7 @@ const SalesBillForm = ({ medicine, setMedicine, vat, total, setTotal, totalDisco
                                         </td>
                                         <td className='border p-1'>
                                             <button onClick={() => removeMedicine(med._id)} className='btn btn-sm bg-red-200 hover:bg-red-300 border-none text-red-600'><RiDeleteBin5Fill /></button>
-                                            <button className='btn btn-sm bg-green-200 hover:bg-green-300 border-none text-green-700 ml-2'><AiFillEye /></button>
+                                            <label htmlFor="add-project" onClick={() => viewMedicine(med._id)} className='btn btn-sm bg-green-200 hover:bg-green-300 border-none text-green-700 ml-2'><AiFillEye /></label>
                                         </td>
                                     </tr>
                                 )
@@ -280,6 +290,11 @@ const SalesBillForm = ({ medicine, setMedicine, vat, total, setTotal, totalDisco
                     />
                 </div>
 
+            </div>
+            <div>
+                {
+                    modal && <MedicineDetails setModal={setModal} medicineDetails={medicineDetails} />
+                }
             </div>
         </div>
     );
