@@ -3,7 +3,26 @@ import { useForm } from 'react-hook-form';
 
 const AddCustomer = ({ setAddCustomer }) => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
-    const onSubmit = data => console.log(data)
+
+    const onSubmit = data => {
+
+        const customer = {
+            customerName: data.customerName,
+            phoneNumber: data.phoneNumber,
+        }
+
+        fetch(`http://localhost:5001/api/v1/customer`, {
+            method: "POST",
+            body: JSON.stringify(customer),
+            headers: {
+                'content-type': "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(medicine => console.log(customer))
+    }
+
+
 
     return (
         <div className=''>
@@ -33,6 +52,25 @@ const AddCustomer = ({ setAddCustomer }) => {
                                         })} />
                                     <label className="label">
                                         {errors.customerName?.type === 'required' && <span className="label-text-alt text-red-500">{errors.customerName.message}</span>}
+                                    </label>
+                                </div>
+
+                                <div className="form-control w-full">
+                                    <label className="label">
+                                        <span className="label-text">Phone Number</span>
+                                    </label>
+                                    <input
+                                        type="text"
+                                        placeholder="Phone Number"
+                                        className="input bg-gray-100 w-full"
+                                        {...register("phoneNumber", {
+                                            required: {
+                                                value: true,
+                                                message: 'Phone number is required'
+                                            }
+                                        })} />
+                                    <label className="label">
+                                        {errors.phoneNumber?.type === 'required' && <span className="label-text-alt text-red-500">{errors.phoneNumber.message}</span>}
                                     </label>
                                 </div>
 
