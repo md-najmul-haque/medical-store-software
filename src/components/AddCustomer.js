@@ -21,7 +21,11 @@ const AddCustomer = ({ setAddCustomer }) => {
             }
         })
             .then(res => res.json())
-            .then(medicine => console.log(customer))
+            .then(medicine => {
+                setAddCustomer(false)
+                reset()
+                console.log(customer)
+            })
     }
 
 
@@ -73,6 +77,30 @@ const AddCustomer = ({ setAddCustomer }) => {
                                     })} />
                                 <label className="label">
                                     {errors.phoneNumber?.type === 'required' && <span className="label-text-alt text-red-500">{errors.phoneNumber.message}</span>}
+                                </label>
+                            </div>
+
+                            <div className="form-control w-full">
+                                <label className="label">
+                                    <span className="label-text">Customer Email</span>
+                                </label>
+                                <input
+                                    type="email"
+                                    placeholder="Customer Email"
+                                    className="input bg-gray-100 w-full "
+                                    {...register("email", {
+                                        required: {
+                                            value: true,
+                                            message: 'Email is required'
+                                        },
+                                        pattern: {
+                                            value: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                                            message: "Please provide a valid email"
+                                        }
+                                    })} />
+                                <label className="label">
+                                    {errors.email?.type === 'required' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
+                                    {errors.email?.type === "pattern" && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
                                 </label>
                             </div>
 
