@@ -1,0 +1,132 @@
+[
+    {
+        "supplierName": "Beximco",
+        "product": [
+            {
+                "_id": "1",
+                "medicineName": "Emorivir 200",
+                "genericName": "monipuravir",
+                "supplierName": "Beximco",
+                "type": "capsule",
+                "price": 200,
+                "photoURL": "https://i.ibb.co/Q9yZss7/0x0.jpg",
+                "quantity": 300
+            }
+        ]
+    },
+    {
+        "supplierName": "Squire",
+        "product": [
+            {
+                "_id": "2",
+                "medicineName": "Alacot 5ml",
+                "genericName": "benza chloride",
+                "supplierName": "Squire",
+                "type": "Drop",
+                "price": 150,
+                "photoURL": "https://i.ibb.co/K0W8m6f/Alacot-o1.jpg",
+                "quantity": 300
+            },
+            {
+                "_id": "3",
+                "medicineName": "Angilock 100",
+                "genericName": "losartan potassium",
+                "supplierName": "squire",
+                "type": "Tablet",
+                "price": 200,
+                "photoURL": "https://i.ibb.co/BVV7bVk/Angilock-l-2.jpg",
+                "quantity": 200
+            },
+            {
+                "_id": "4",
+                "medicineName": "Apsol 5gm",
+                "genericName": "amlexanox 5%",
+                "supplierName": "squire",
+                "type": "Ointment",
+                "price": 180,
+                "photoURL": "https://i.ibb.co/4gSTsYw/Apsol-Oral-01.jpg",
+                "quantity": 150
+            },
+            {
+                "_id": "7",
+                "medicineName": "Molvir 200mg",
+                "genericName": "Molvirine",
+                "supplierName": "squire",
+                "type": "Capsule",
+                "price": 300,
+                "photoURL": "https://i.ibb.co/jZ9hNK8/Molvir-P.jpg",
+                "quantity": 100
+            },
+            {
+                "_id": "10",
+                "medicineName": "Tomephen 100ml",
+                "genericName": "Tomephenol",
+                "supplierName": "squire",
+                "type": "Syrup",
+                "price": 500,
+                "photoURL": "https://i.ibb.co/DzzmvQF/tomephen-syrup-100ml-1-pc.jpg",
+                "quantity": 200
+            }
+        ]
+    },
+    {
+        "supplierName": "Opsonin",
+        "product": [
+            {
+                "_id": "5",
+                "medicineName": "Erytromix 60ml",
+                "genericName": "Erytromixine",
+                "supplierName": "opsonin",
+                "type": "Syrup",
+                "price": 400,
+                "photoURL": "https://i.ibb.co/ZYkNBcw/Chlorpheniramine-Maleate-Syrups-Finished-Medicine-Pharmaceuticals.jpg",
+                "quantity": 100
+            }
+        ]
+    },
+    {
+        "supplierName": "Nipro",
+        "product": [
+            {
+                "_id": "6",
+                "medicineName": "Flexivan ER 200mg",
+                "genericName": "aceclofenac BP 200mg",
+                "supplierName": "Nipro",
+                "type": "Tablet",
+                "price": 400,
+                "photoURL": "https://i.ibb.co/McnNzL0/flexivan-ER4.png",
+                "quantity": 50
+            }
+        ]
+    },
+    {
+        "supplierName": "ACI",
+        "product": [
+            {
+                "_id": "8",
+                "medicineName": "Nafodil 100mg",
+                "genericName": "Nafodilin",
+                "supplierName": "ACI",
+                "type": "Capsule",
+                "price": 300,
+                "photoURL": "https://i.ibb.co/4Z58986/Nafodil-resized-pic.jpg",
+                "quantity": 350
+            }
+        ]
+    },
+    {
+        "supplierName": "Drug international",
+        "product": [
+            {
+                "_id": "9",
+                "medicineName": "Teconin 200mg",
+                "genericName": "Teconin",
+                "supplierName": "Drug international",
+                "type": "Injection",
+                "price": 500,
+                "photoURL": "https://i.ibb.co/C5YNcks/Teconin-200.jpg",
+                "quantity": 150
+            }
+        ]
+    }
+]

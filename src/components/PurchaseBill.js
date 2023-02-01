@@ -5,6 +5,7 @@ const PurchaseBill = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const onSubmit = data => console.log(data)
 
+
     return (
         <div className='bg-white h-screen'>
             <div className='flex justify-between items-center bg-base-100 py-3 px-5 border-b-2'>
@@ -19,9 +20,9 @@ const PurchaseBill = () => {
                                 <span className="label-text font-bold">Supplier Name<span className='text-red-600 font-bold'>*</span></span>
                             </label>
                             <select className="select w-full input-bordered" {...register("memoNumber")}>
-                                <option disabled selected>Supplier Memo</option>
-                                <option>1</option>
-                                <option>2</option>
+                                <option disabled selected>Supplier</option>
+                                <option>ACI</option>
+                                <option>Squire</option>
                             </select>
                         </div>
 
@@ -31,11 +32,12 @@ const PurchaseBill = () => {
                             </label>
                             <input
                                 type="date"
-                                defaultValue={Date.now()}
+
                                 className="input w-full input-bordered"
                                 {...register("startData", {
                                     valueAsDate: true,
                                 })}
+
                             />
                         </div>
                         <div className="form-control w-full">
@@ -81,17 +83,19 @@ const PurchaseBill = () => {
                                     <th className='border'>Total (BDT)</th>
                                 </tr>
                             </thead>
-                            {/* <tbody>
-                                <tr>
-                                    <th>1</th>
-                                    <td>Cy Ganderton</td>
-                                    <td>Quality Control Specialist</td>
-                                    <td>Littel, Schaden and Vandervort</td>
-                                    <td>Canada</td>
-                                    <td>12/16/2020</td>
-                                    <td>Blue</td>
+                            <tbody>
+                                <tr className='border'>
+                                    <th className='bg-white border-2'>1</th>
+                                    <td className='bg-white border-2'>Cy Ganderton</td>
+                                    <td className='bg-gray-100 border-2'>Angilock</td>
+                                    <td className='bg-gray-100 border-2'>2</td>
+                                    <td className='bg-white border-2'>Canada</td>
+                                    <td className='bg-white border-2'>12/16/2020</td>
+                                    <td className='bg-white border-2'>Blue</td>
+                                    <td className='bg-white border-2'>Canada</td>
+                                    <td className='bg-gray-100 border-2'>2556</td>
                                 </tr>
-                            </tbody> */}
+                            </tbody>
                         </table>
 
 
