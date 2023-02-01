@@ -1,5 +1,6 @@
 [
     {
+        "_id": "1",
         "supplierName": "Beximco",
         "product": [
             {
@@ -10,11 +11,13 @@
                 "type": "capsule",
                 "price": 200,
                 "photoURL": "https://i.ibb.co/Q9yZss7/0x0.jpg",
-                "quantity": 300
+                "quantity": 300,
+                "purchasePrice": 160
             }
         ]
     },
     {
+        "_id": "2",
         "supplierName": "Squire",
         "product": [
             {
@@ -25,7 +28,8 @@
                 "type": "Drop",
                 "price": 150,
                 "photoURL": "https://i.ibb.co/K0W8m6f/Alacot-o1.jpg",
-                "quantity": 300
+                "quantity": 300,
+                "purchasePrice": 120
             },
             {
                 "_id": "3",
@@ -35,7 +39,8 @@
                 "type": "Tablet",
                 "price": 200,
                 "photoURL": "https://i.ibb.co/BVV7bVk/Angilock-l-2.jpg",
-                "quantity": 200
+                "quantity": 200,
+                "purchasePrice": 160
             },
             {
                 "_id": "4",
@@ -45,7 +50,8 @@
                 "type": "Ointment",
                 "price": 180,
                 "photoURL": "https://i.ibb.co/4gSTsYw/Apsol-Oral-01.jpg",
-                "quantity": 150
+                "quantity": 150,
+                "purchasePrice": 130
             },
             {
                 "_id": "7",
@@ -55,7 +61,8 @@
                 "type": "Capsule",
                 "price": 300,
                 "photoURL": "https://i.ibb.co/jZ9hNK8/Molvir-P.jpg",
-                "quantity": 100
+                "quantity": 100,
+                "purchasePrice": 220
             },
             {
                 "_id": "10",
@@ -65,11 +72,13 @@
                 "type": "Syrup",
                 "price": 500,
                 "photoURL": "https://i.ibb.co/DzzmvQF/tomephen-syrup-100ml-1-pc.jpg",
-                "quantity": 200
+                "quantity": 200,
+                "purchasePrice": 430
             }
         ]
     },
     {
+        "_id": "3",
         "supplierName": "Opsonin",
         "product": [
             {
@@ -80,11 +89,13 @@
                 "type": "Syrup",
                 "price": 400,
                 "photoURL": "https://i.ibb.co/ZYkNBcw/Chlorpheniramine-Maleate-Syrups-Finished-Medicine-Pharmaceuticals.jpg",
-                "quantity": 100
+                "quantity": 100,
+                "purchasePrice": 340
             }
         ]
     },
     {
+        "_id": "4",
         "supplierName": "Nipro",
         "product": [
             {
@@ -95,11 +106,12 @@
                 "type": "Tablet",
                 "price": 400,
                 "photoURL": "https://i.ibb.co/McnNzL0/flexivan-ER4.png",
-                "quantity": 50
+                "quantity": 320
             }
         ]
     },
     {
+        "_id": "5",
         "supplierName": "ACI",
         "product": [
             {
@@ -110,11 +122,13 @@
                 "type": "Capsule",
                 "price": 300,
                 "photoURL": "https://i.ibb.co/4Z58986/Nafodil-resized-pic.jpg",
-                "quantity": 350
+                "quantity": 220,
+                "purchasePrice": 260
             }
         ]
     },
     {
+        "_id": "6",
         "supplierName": "Drug international",
         "product": [
             {
@@ -125,7 +139,8 @@
                 "type": "Injection",
                 "price": 500,
                 "photoURL": "https://i.ibb.co/C5YNcks/Teconin-200.jpg",
-                "quantity": 150
+                "quantity": 150,
+                "purchasePrice": 410
             }
         ]
     }

@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { ImCross } from 'react-icons/im';
 
 const PurchaseBill = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const [suppliers, setSuppliers] = useState([])
+    const [products, setProducts] = useState([])
 
     useEffect(() => {
         fetch('supplier.json')
@@ -12,8 +14,13 @@ const PurchaseBill = () => {
                 .then(data => setSuppliers(data)))
     }, [])
 
-    const handleSupplier = () => {
-        
+    const handleSupplier = (e) => {
+        const supplierName = e.target.value
+
+        const supplier = suppliers.find(sup => sup.supplierName === supplierName)
+        console.log(supplier.product)
+        setProducts(supplier.product);
+
     }
 
     const onSubmit = data => console.log(data)
@@ -32,13 +39,12 @@ const PurchaseBill = () => {
                             <label className="label">
                                 <span className="label-text font-bold">Supplier Name<span className='text-red-600 font-bold'>*</span></span>
                             </label>
-                            <select onChange={handleSupplier} className="select w-full input-bordered" {...register("memoNumber")}>
+                            <select onChange={e => handleSupplier(e)} className="select w-full input-bordered" >
                                 <option disabled selected>Supplier</option>
                                 {
                                     suppliers?.map(supplier => {
-                                        return <>
-                                            <option>{supplier.supplierName}</option>
-                                        </>
+                                        return <option key={supplier._id}>{supplier.supplierName}</option>
+
                                     })
                                 }
                             </select>
@@ -94,7 +100,7 @@ const PurchaseBill = () => {
                                     <th className='border'>Barcode ID</th>
                                     <th className='border'>Product</th>
                                     <th className='border'>Stock</th>
-                                    <th className='border'>Purchase</th>
+                                    <th className='border'>Purchase Qty</th>
                                     <th className='border'>MRP Price (BDT)</th>
                                     <th className='border'>Purchase Price (BDT)</th>
                                     <th className='border'>Sale Price (BDT)</th>
@@ -102,17 +108,22 @@ const PurchaseBill = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr className='border'>
-                                    <th className='bg-white border-2'>1</th>
-                                    <td className='bg-white border-2'>Cy Ganderton</td>
-                                    <td className='bg-gray-100 border-2'>Angilock</td>
-                                    <td className='bg-gray-100 border-2'>2</td>
-                                    <td className='bg-white border-2'>Canada</td>
-                                    <td className='bg-white border-2'>12/16/2020</td>
-                                    <td className='bg-white border-2'>Blue</td>
-                                    <td className='bg-white border-2'>Canada</td>
-                                    <td className='bg-gray-100 border-2'>2556</td>
-                                </tr>
+                                {
+                                    products?.map(product => {
+                                        return <tr className='border'>
+                                            <th className='bg-white border-2 flex justify-center items-center text-red-600'> <ImCross /> </th>
+                                            <td className='bg-white border-2'>{product._id}</td>
+                                            <td className='bg-gray-100 border-2'>{product.medicineName}</td>
+                                            <td className='bg-gray-100 border-2'>{product.quantity}</td>
+                                            <td className='bg-white border-2'></td>
+                                            <td className='bg-white border-2'>{product.price}</td>
+                                            <td className='bg-white border-2'>{product.purchasePrice}</td>
+                                            <td className='bg-white border-2'>{product.price}</td>
+                                            <td className='bg-gray-100 border-2'>2556</td>
+                                        </tr>
+                                    })
+                                }
+
                             </tbody>
                         </table>
 
