@@ -9,6 +9,8 @@ const AddCustomer = ({ setAddCustomer }) => {
         const customer = {
             customerName: data.customerName,
             phoneNumber: data.phoneNumber,
+            address: data.address,
+            area: data.area
         }
 
         fetch(`http://localhost:5001/api/v1/customer`, {
@@ -71,6 +73,45 @@ const AddCustomer = ({ setAddCustomer }) => {
                                     })} />
                                 <label className="label">
                                     {errors.phoneNumber?.type === 'required' && <span className="label-text-alt text-red-500">{errors.phoneNumber.message}</span>}
+                                </label>
+                            </div>
+
+                            <div className="form-control w-full">
+                                <label className="label">
+                                    <span className="label-text">Address</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    placeholder="Enter Address"
+                                    className="input bg-gray-100 w-full"
+                                    {...register("address", {
+                                        required: {
+                                            value: true,
+                                            message: 'Address is required'
+                                        }
+                                    })} />
+                                <label className="label">
+                                    {errors.address?.type === 'required' && <span className="label-text-alt text-red-500">{errors.address.message}</span>}
+                                </label>
+                            </div>
+
+                            <div className="form-control w-full ">
+                                <label className="label">
+                                    <span className="label-text">Area</span>
+                                </label>
+                                <select className="select bg-gray-100 w-full " {...register("area", {
+                                    required: {
+                                        value: true,
+                                        message: 'Phone number is required'
+                                    }
+                                })}>
+                                    <option disabled selected>Area</option>
+                                    <option>Mirpur</option>
+                                    <option>Mohammadpur</option>
+                                    <option>Banani</option>
+                                </select>
+                                <label className="label">
+                                    {errors.area?.type === 'required' && <span className="label-text-alt text-red-500">{errors.area.message}</span>}
                                 </label>
                             </div>
 
