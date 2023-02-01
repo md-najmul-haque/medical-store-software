@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 const PurchaseBill = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
+    const [suppliers, setSuppliers] = useState([])
+
+    useEffect(() => {
+        fetch('supplier.json')
+            .then(res => res.json()
+                .then(data => setSuppliers(data)))
+    }, [])
+
+    const handleSupplier = () => {
+        
+    }
+
     const onSubmit = data => console.log(data)
 
 
@@ -19,10 +32,15 @@ const PurchaseBill = () => {
                             <label className="label">
                                 <span className="label-text font-bold">Supplier Name<span className='text-red-600 font-bold'>*</span></span>
                             </label>
-                            <select className="select w-full input-bordered" {...register("memoNumber")}>
+                            <select onChange={handleSupplier} className="select w-full input-bordered" {...register("memoNumber")}>
                                 <option disabled selected>Supplier</option>
-                                <option>ACI</option>
-                                <option>Squire</option>
+                                {
+                                    suppliers?.map(supplier => {
+                                        return <>
+                                            <option>{supplier.supplierName}</option>
+                                        </>
+                                    })
+                                }
                             </select>
                         </div>
 
