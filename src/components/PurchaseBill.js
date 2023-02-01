@@ -7,7 +7,7 @@ const PurchaseBill = () => {
 
     return (
         <div className='bg-white h-screen'>
-            <div className='flex justify-between items-center bg-base-100 py-3 px-10 border-b-2'>
+            <div className='flex justify-between items-center bg-base-100 py-3 px-5 border-b-2'>
                 <h1 className='uppercase text-xl font-bold'>Create Purchase Memo</h1>
                 <button className='btn btn-secondary px-12'>Back</button>
             </div>
@@ -59,7 +59,7 @@ const PurchaseBill = () => {
                                 <span className="label-text font-bold">Add Product<span className='text-red-600 font-bold'>*</span></span>
                             </label>
                             <select className="select w-full input-bordered" {...register("addProduct")}>
-                                <option disabled selected>Add Product</option>
+                                <option disabled selected>Product Name / Barcode ID</option>
                                 <option>1</option>
                                 <option>2</option>
                             </select>
@@ -93,20 +93,39 @@ const PurchaseBill = () => {
                                 </tr>
                             </tbody> */}
                         </table>
-                        <div class="flex justify-end items-center mt-10  ">
-                            <h2 className='bg-gray-100 p-3'>Total Amount</h2>
-                            <input
-                                type="number"
-                                placeholder='00.0'
-                                className="input w-full max-w-xs input-bordered text-right"
-                                {...register("total")} />
-                        </div>
+
 
                     </div>
 
-
-                    <div className='flex justify-end items-center ml-5 mt-5'>
+                    <div className='flex justify-end items-center ml-5 my-5'>
                         <input type="submit" className="btn btn-primary text-white px-12" value='Save' />
+                    </div>
+
+                    <div class="flex justify-end items-center mb-2">
+                        <h2 className='p-3 font-semibold'>Grand Total: </h2>
+                        <input
+                            type="number"
+                            placeholder='00.0'
+                            className="input bg-white w-full max-w-xs input-bordered focus:outline-none rounded text-right"
+                        />
+                    </div>
+
+                    <div class="flex justify-end items-center mb-2 ">
+                        <h2 className='p-3 font-semibold '> Discount: </h2>
+                        <input
+                            type="number"
+                            placeholder='00.0'
+                            className="input bg-white w-full max-w-xs input-bordered focus:outline-none rounded text-right"
+                        />
+                    </div>
+
+                    <div class="flex justify-end items-center mb-2">
+                        <h2 className='p-3 font-semibold'>Net Payable:</h2>
+                        <input
+                            type="number"
+                            placeholder='00.0'
+                            className="input bg-white w-full max-w-xs input-bordered focus:outline-none rounded text-right"
+                        />
                     </div>
                 </div>
             </form>
