@@ -4,9 +4,11 @@ import { useForm } from 'react-hook-form';
 import { ImCross } from 'react-icons/im';
 
 const PurchaseBill = () => {
-    const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const [suppliers, setSuppliers] = useState([])
     const [products, setProducts] = useState([])
+
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
+
 
     useEffect(() => {
         fetch('supplier.json')
@@ -21,6 +23,11 @@ const PurchaseBill = () => {
         console.log(supplier.product)
         setProducts(supplier.product);
 
+    }
+
+    const handleMedicinePurchase = id => {
+        const restMedicine = products.filter(product => product._id !== id)
+        setProducts(restMedicine)
     }
 
     const onSubmit = data => console.log(data)
@@ -111,7 +118,7 @@ const PurchaseBill = () => {
                                 {
                                     products?.map(product => {
                                         return <tr className='border'>
-                                            <th className='bg-white border-2 flex justify-center items-center text-red-600'> <ImCross /> </th>
+                                            <th onClick={() => { handleMedicinePurchase(product._id) }} className='bg-white border-2 flex justify-center items-center text-red-600'> <ImCross /> </th>
                                             <td className='bg-white border-2'>{product._id}</td>
                                             <td className='bg-gray-100 border-2'>{product.medicineName}</td>
                                             <td className='bg-gray-100 border-2'>{product.quantity}</td>
