@@ -30,7 +30,7 @@ const PurchaseBill = () => {
         setProducts(restMedicine)
     }
 
-    const onSubmit = data => console.log(data)
+    const onSubmit = data => { console.log(data) }
 
 
     return (
