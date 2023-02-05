@@ -14,7 +14,8 @@
                 "quantity": 300,
                 "purchasePrice": 160
             }
-        ]
+        ],
+        "address": "Dhaka"
     },
     {
         "_id": "2",
@@ -75,7 +76,8 @@
                 "quantity": 200,
                 "purchasePrice": 430
             }
-        ]
+        ],
+        "address": "Dhaka"
     },
     {
         "_id": "3",
@@ -92,7 +94,8 @@
                 "quantity": 100,
                 "purchasePrice": 340
             }
-        ]
+        ],
+        "address": "Dhaka"
     },
     {
         "_id": "4",
@@ -108,7 +111,8 @@
                 "photoURL": "https://i.ibb.co/McnNzL0/flexivan-ER4.png",
                 "quantity": 320
             }
-        ]
+        ],
+        "address": "Dhaka"
     },
     {
         "_id": "5",
@@ -125,7 +129,8 @@
                 "quantity": 220,
                 "purchasePrice": 260
             }
-        ]
+        ],
+        "address": "Dhaka"
     },
     {
         "_id": "6",
@@ -142,6 +147,7 @@
                 "quantity": 150,
                 "purchasePrice": 410
             }
-        ]
+        ],
+        "address": "Dhaka"
     }
 ]

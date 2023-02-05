@@ -35,51 +35,85 @@ const SupplierList = () => {
 
             </div>
 
-            <div className="overflow-x-auto mt-16">
-                <table className="table table-zebra w-full bg-info">
-                    <thead className='py-10 bg-info'>
-                        <tr className=''>
-                            <th className=''>SL</th>
-                            <th className='border'>Date</th>
-                            <th className='border'>Medicine Name</th>
-                            <th className='border'>Stock</th>
-                            <th className='border'>Barcode ID</th>
-                            <th className='border'>Previous QTY</th>
-                            <th className='border'>Stock</th>
-                            <th className='border'>Remarks</th>
-                            <th className='border'>Status</th>
-                            <th className='border'>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr className='border'>
-                            <th className='border-2 flex justify-center items-center text-red-600'></th>
-                            <td className='border-2'></td>
-                            <td className='border-2'></td>
-                            <td className='border-2'></td>
-                            <td className=' border-2'></td>
-                            <td className='border-2'></td>
-                            <td className='border-2'></td>
-                            <td className='border-2'></td>
-                            <th className='border'></th>
-                            <th className='border'></th>
-                        </tr>
-                        <tr className='border'>
-                            <th className='border-2 flex justify-center items-center text-red-600'></th>
-                            <td className='border-2'></td>
-                            <td className='border-2'></td>
-                            <td className='border-2'></td>
-                            <td className=' border-2'></td>
-                            <td className='border-2'></td>
-                            <td className='border-2'></td>
-                            <td className='border-2'></td>
-                            <th className='border'></th>
-                            <th className='border'></th>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="flex flex-col">
+                <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                    <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                        <div class="overflow-hidden">
+                            <table class="min-w-full">
+                                <thead class="bg-white border-b">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-4">
+                                            Sl
+                                        </th>
+                                        <th scope="col" class="px-6 py-4">
+                                            Supplier Id
+                                        </th>
+                                        <th scope="col" class="px-6 py-4">
+                                            Supplier Name
+                                        </th>
+                                        <th scope="col" class="px-6 py-4">
+                                            Address
+                                        </th>
+                                        <th scope="col" class="px-6 py-4">
+                                            phone
+                                        </th>
+                                        <th scope="col" class="px-6 py-4">
+                                            contact Person
+                                        </th>
+                                        <th scope="col" class="px-6 py-4">
+                                            Payable
+                                        </th>
+                                        <th scope="col" class="px-6 py-4">
+                                            Paid
+                                        </th>
+                                        <th scope="col" class="px-6 py-4">
+                                            Due
+                                        </th>
+                                        <th scope="col" class="px-6 py-4">
+                                            Status
+                                        </th>
 
-
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="bg-gray-100 border-b">
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">1</td>
+                                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                            Mark
+                                        </td>
+                                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                            Otto
+                                        </td>
+                                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                            @mdo
+                                        </td>
+                                    </tr>
+                                    <tr class="bg-white border-b">
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">2</td>
+                                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                            Jacob
+                                        </td>
+                                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                            Thornton
+                                        </td>
+                                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                            @fat
+                                        </td>
+                                    </tr>
+                                    <tr class="bg-gray-100 border-b">
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">3</td>
+                                        <td colspan="2" class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-center">
+                                            Larry the Bird
+                                        </td>
+                                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                            @twitter
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
 
 
