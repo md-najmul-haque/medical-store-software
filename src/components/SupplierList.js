@@ -98,7 +98,9 @@ const SupplierList = () => {
                                         <th scope="col" class="px-6 py-4">
                                             Status
                                         </th>
-
+                                        <th scope="col" class="px-6 py-4">
+                                            Action
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -131,6 +133,10 @@ const SupplierList = () => {
                                                     </td>
                                                     <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                         {supplier.status}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap flex items-center justify-center">
+                                                        <button className="btn btn-sm btn-info"> <IoIosCreate /> Edit</button>
+                                                        <button className="btn btn-sm btn-error ml-2">Delete</button>
                                                     </td>
                                                 </tr>
                                             )
