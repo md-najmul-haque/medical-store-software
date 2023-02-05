@@ -19,7 +19,8 @@
         "phone": "01717888789",
         "contactPerson": "Abdul Karim",
         "payable": 10000,
-        "paid": 5000
+        "paid": 5000,
+        "status": "Active"
     },
     {
         "_id": "2",
@@ -85,7 +86,8 @@
         "phone": "01717888788",
         "contactPerson": "Ayan",
         "payable": 50000,
-        "paid": 30000
+        "paid": 30000,
+        "status": "Active"
     },
     {
         "_id": "3",
@@ -107,7 +109,8 @@
         "phone": "01717588789",
         "contactPerson": "Salam",
         "payable": 20000,
-        "paid": 10000
+        "paid": 10000,
+        "status": "Active"
     },
     {
         "_id": "4",
@@ -128,7 +131,8 @@
         "phone": "01717888559",
         "contactPerson": "Rahim",
         "payable": 30000,
-        "paid": 10000
+        "paid": 10000,
+        "status": "Active"
     },
     {
         "_id": "5",
@@ -150,7 +154,8 @@
         "phone": "01717888784",
         "contactPerson": "Tashfin",
         "payable": 40000,
-        "paid": 10000
+        "paid": 10000,
+        "status": "Active"
     },
     {
         "_id": "6",
@@ -172,6 +177,7 @@
         "phone": "01717888774",
         "contactPerson": "Najmul",
         "payable": 30000,
-        "paid": 10000
+        "paid": 10000,
+        "status": "Active"
     }
 ]
