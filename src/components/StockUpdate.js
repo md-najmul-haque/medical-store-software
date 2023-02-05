@@ -1,8 +1,10 @@
 import React from 'react'
 import { useForm } from 'react-hook-form';
+import useMedicine from '../hooks/useMedicine';
 
 const StockUpdate = () => {
 
+    const [medicines, setMedicines] = useMedicine()
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const onSubmit = data => { console.log(data) }
@@ -21,28 +23,26 @@ const StockUpdate = () => {
                 <h1 className='uppercase text-xl font-bold text-left'>Stock Update</h1>
             </div>
 
-            <div className='grid grid-cols-4'>
+            <div className='grid grid-cols-4 gap-5 m-5'>
                 <div className="form-control w-full">
                     <input
                         onKeyDown={(e) => handleBarcode(e)}
                         type="number"
-                        placeholder="Scan Barcode"
+                        placeholder="Search Barcode"
                         className="input w-full input-bordered bg-white focus:outline-none"
                     />
                 </div>
 
                 <div className="form-control w-full col-span-2">
-                    <label className="label">
-                        <span className="label-text font-bold">Supplier Name<span className='text-red-600 font-bold'>*</span></span>
-                    </label>
+
                     <select className="select w-full input-bordered" >
-                        <option disabled selected>Supplier</option>
-                        {/* {
-                            suppliers?.map(supplier => {
-                                return <option key={supplier._id}>{supplier.supplierName}</option>
+                        <option disabled selected>Medicine Name</option>
+                        {
+                            medicines?.map(medicine => {
+                                return <option key={medicine._id}>{medicine.medicineName}</option>
 
                             })
-                        } */}
+                        }
                     </select>
                 </div>
             </div>
