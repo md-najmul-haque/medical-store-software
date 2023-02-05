@@ -1,6 +1,7 @@
 import React from 'react'
 import { useForm } from 'react-hook-form';
 import useMedicine from '../hooks/useMedicine';
+import { ImCross } from 'react-icons/im';
 
 const StockUpdate = () => {
 
@@ -48,128 +49,117 @@ const StockUpdate = () => {
             </div>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className='mx-5'>
-                    <div className='grid grid-cols-5 gap-x-10'>
-                        <div className="form-control w-full col-span-2">
-                            <label className="label">
-                                <span className="label-text font-bold">Supplier Name<span className='text-red-600 font-bold'>*</span></span>
-                            </label>
-                            <select className="select w-full input-bordered" >
-                                <option disabled selected>Supplier</option>
-                                {
-                                    // suppliers?.map(supplier => {
-                                    //     return <option key={supplier._id}>{supplier.supplierName}</option>
+                    <div className=''>
 
-                                    // })
-                                }
-                            </select>
-                        </div>
-
-                        <div className="form-control w-full ">
-                            <label className="label">
-                                <span className="label-text font-bold">Data of Invoice<span className='text-red-600 font-bold'>*</span></span>
-                            </label>
-                            <input
-                                type="date"
-
-                                className="input w-full input-bordered"
-                                {...register("startData", {
-                                    valueAsDate: true,
-                                })}
-
-                            />
-                        </div>
-                        <div className="form-control w-full">
-                            <label className="label font-bold">
-                                <span className="label-text">Memo No</span>
-                            </label>
-                            <input
-                                type="text"
-                                placeholder="Memo No"
-                                className="input w-full input-bordered"
-                                {...register("memo")} />
-                            <label className="label">
-                                {errors.memo?.type === 'required' && <span className="label-text-alt text-red-500">{errors.memo.message}</span>}
-                            </label>
-                        </div>
-                    </div>
-
-                    <div className='grid grid-cols-3 col-span-2 mb-5 gap-x-10'>
-                        <div className="form-control w-full">
-                            <label className="label">
-                                <span className="label-text font-bold">Add Product<span className='text-red-600 font-bold'>*</span></span>
-                            </label>
-                            <select className="select w-full input-bordered" {...register("addProduct")}>
-                                <option disabled selected>Product Name / Barcode ID</option>
-                                <option>1</option>
-                                <option>2</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div className="overflow-x-auto">
                         <table className="table w-full">
                             <thead className='py-10'>
                                 <tr>
                                     <th></th>
                                     <th className='border'>Barcode ID</th>
-                                    <th className='border'>Product</th>
-                                    <th className='border'>Stock</th>
-                                    <th className='border'>Purchase Qty</th>
-                                    <th className='border'>MRP Price (BDT)</th>
-                                    <th className='border'>Purchase Price (BDT)</th>
-                                    <th className='border'>Sale Price (BDT)</th>
-                                    <th className='border'>Total (BDT)</th>
+                                    <th className='border'>Medicine Name</th>
+                                    <th className='border'>Stock Quantity</th>
+                                    <th className='border'>Adjusted Quantity</th>
+                                    <th className='border'>Remarks</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr className='border'>
-                                    <th className='bg-white border-2 flex justify-center items-center text-red-600'> </th>
-                                    <td className='bg-white border-2'></td>
-                                    <td className='bg-gray-100 border-2'></td>
-                                    <td className='bg-gray-100 border-2'></td>
-                                    <td className='bg-white border-2'></td>
-                                    <td className='bg-white border-2'></td>
-                                    <td className='bg-white border-2'></td>
-                                    <td className='bg-white border-2'></td>
-                                    <td className='bg-gray-100 border-2'>2556</td>
+                                    <td className='bg-white border-2 text-red-600 text-center pl-5' ><ImCross /></td>
+                                    <td className='bg-white border-2 p-0'>
+                                        <div className="form-control w-full">
+
+                                            <input
+                                                onKeyDown={(e) => handleBarcode(e)}
+                                                type="number"
+                                                placeholder="Search Barcode"
+                                                className="input w-full input-bordered rounded bg-base-100 focus:outline-none"
+                                                {...register("barcodeId")}
+                                            />
+
+                                        </div>
+                                    </td>
+                                    <td className='border-2 p-0'>
+                                        <input
+                                            type="text"
+                                            className="input w-full bg-base-100 rounded input-bordered"
+                                            {...register("medicineName")} />
+                                    </td>
+                                    <td className='border-2  p-0'>
+                                        <input
+                                            type="number"
+                                            className="input w-full bg-base-100 input-bordered"
+                                            {...register("quantity")} />
+                                    </td>
+                                    <td className='bg-white border-2  p-0'>
+                                        <input
+                                            type="number"
+                                            placeholder='Enter Quantity'
+                                            className="input w-full rounded input-bordered bg-white"
+                                            {...register("adjustedQuantity")} />
+                                    </td>
+                                    <td className='bg-white border-2 p-0'>
+                                        <input
+                                            type="text"
+                                            placeholder='remarks'
+                                            className="input w-full rounded input-bordered bg-white"
+                                            {...register("adjustedQuantity")} />
+                                    </td>
+
                                 </tr>
-
-
                             </tbody>
+
                         </table>
-
+                        <div className='flex justify-end item-center my-5'>
+                            <button className='btn btn-secondary text-white'>Submit</button>
+                        </div>
 
                     </div>
 
-                    <div className='flex justify-end items-center ml-5 my-5'>
-                        <input type="submit" className="btn btn-primary text-white px-12" value='Save' />
-                    </div>
+                    <div>
+                        <div className='bg-base-100 py-3 px-5 border-b-2 flex justify-between items-center'>
+                            <div className='flex'>
+                                <h1 className='uppercase text-xl font-bold text-left flex-none'>Stock Adjustment History</h1>
+                                <select className="input-bordered bg-base-200 ml-5" >
+                                    <option selected>All</option>
+                                </select>
+                            </div>
+                            <button className='btn btn-primary text-white'>Excel</button>
+                        </div>
+                        <div className="overflow-x-auto">
+                            <table className="table w-full">
+                                <thead className='py-10 bg-info'>
+                                    <tr className='bg-info'>
+                                        <th className='bg-sky-300'>SL</th>
+                                        <th className='border bg-sky-300'>Date</th>
+                                        <th className='border bg-sky-300'>Medicine Name</th>
+                                        <th className='border bg-sky-300'>Stock</th>
+                                        <th className='border bg-sky-300'>Barcode ID</th>
+                                        <th className='border bg-sky-300'>Previous QTY</th>
+                                        <th className='border bg-sky-300'>Stock</th>
+                                        <th className='border bg-sky-300'>Remarks</th>
+                                        <th className='border bg-sky-300'>Status</th>
+                                        <th className='border bg-sky-300'>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr className='border'>
+                                        <th className='bg-white border-2 flex justify-center items-center text-red-600'></th>
+                                        <td className='bg-white border-2'></td>
+                                        <td className='bg-gray-100 border-2'></td>
+                                        <td className='bg-gray-100 border-2'></td>
+                                        <td className='bg-white border-2'></td>
+                                        <td className='bg-white border-2'></td>
+                                        <td className='bg-white border-2'></td>
+                                        <td className='bg-white border-2'></td>
+                                        <th className='border'></th>
+                                        <th className='border'></th>
+                                    </tr>
+                                </tbody>
+                            </table>
 
-                    <div class="flex justify-end items-center mb-2">
-                        <h2 className='p-3 font-semibold'>Grand Total: </h2>
-                        <input
-                            type="number"
-                            placeholder='00.0'
-                            className="input bg-white w-full max-w-xs input-bordered focus:outline-none rounded text-right"
-                        />
-                    </div>
 
-                    <div class="flex justify-end items-center mb-2 ">
-                        <h2 className='p-3 font-semibold '> Discount: </h2>
-                        <input
-                            type="number"
-                            placeholder='00.0'
-                            className="input bg-white w-full max-w-xs input-bordered focus:outline-none rounded text-right"
-                        />
-                    </div>
+                        </div>
 
-                    <div class="flex justify-end items-center mb-2">
-                        <h2 className='p-3 font-semibold'>Net Payable:</h2>
-                        <input
-                            type="number"
-                            placeholder='00.0'
-                            className="input bg-white w-full max-w-xs input-bordered focus:outline-none rounded text-right"
-                        />
                     </div>
                 </div>
             </form>
