@@ -35,6 +35,27 @@ const SupplierList = () => {
 
             </div>
 
+            <div className='py-3 px-5 mt-10 border-b-2 flex justify-between items-center'>
+                <div className='flex'>
+                    <p>Show</p>
+                    <select className="input-bordered bg-base-200 mx-1" >
+                        <option selected>100</option>
+                    </select>
+                    <p>entries</p>
+                </div>
+                <div className="form-control w-full flex justify-end items-end">
+                    <div className="flex">
+                        <label className="label">
+                            <span className="label-text font-semibold">Search:</span>
+                        </label>
+                        <input
+                            type="number"
+                            className="max-w-xs border-2 bg-white focus:outline-none"
+                        />
+                    </div>
+                </div>
+            </div>
+
             <div class="flex flex-col">
                 <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">

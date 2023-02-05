@@ -15,7 +15,10 @@
                 "purchasePrice": 160
             }
         ],
-        "address": "Dhaka"
+        "address": "Kushtia",
+        "phone": "01717888789",
+        "contactPerson": "Abdul Karim",
+        "payable": 5000
     },
     {
         "_id": "2",
@@ -77,7 +80,11 @@
                 "purchasePrice": 430
             }
         ],
-        "address": "Dhaka"
+        "address": "Dhaka",
+        "phone": "01717888788",
+        "contactPerson": "Ayan",
+        "payable": 50000,
+        "paid": 30000
     },
     {
         "_id": "3",
@@ -95,7 +102,11 @@
                 "purchasePrice": 340
             }
         ],
-        "address": "Dhaka"
+        "address": "Dhaka",
+        "phone": "01717588789",
+        "contactPerson": "Salam",
+        "payable": 20000,
+        "paid": 10000
     },
     {
         "_id": "4",
@@ -112,7 +123,11 @@
                 "quantity": 320
             }
         ],
-        "address": "Dhaka"
+        "address": "Rajshahi",
+        "phone": "01717888559",
+        "contactPerson": "Rahim",
+        "payable": 30000,
+        "paid": 10000
     },
     {
         "_id": "5",
@@ -130,7 +145,11 @@
                 "purchasePrice": 260
             }
         ],
-        "address": "Dhaka"
+        "address": "Dhaka",
+        "phone": "01717888784",
+        "contactPerson": "Tashfin",
+        "payable": 40000,
+        "paid": 10000
     },
     {
         "_id": "6",
@@ -148,6 +167,10 @@
                 "purchasePrice": 410
             }
         ],
-        "address": "Dhaka"
+        "address": "Gazipur",
+        "phone": "01717888774",
+        "contactPerson": "Najmul",
+        "payable": 30000,
+        "paid": 10000
     }
 ]
