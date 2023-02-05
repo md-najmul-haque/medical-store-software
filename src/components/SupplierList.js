@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { IoIosCreate } from 'react-icons/io';
+import useSupplier from "../hooks/useSupplier";
 
 
 const SupplierList = () => {
+    const [suppliers] = useSupplier()
 
     return (
         <div className='bg-white h-screen'>
@@ -62,6 +64,9 @@ const SupplierList = () => {
                         <div class="overflow-hidden">
                             <table class="min-w-full">
                                 <thead class="bg-white border-b">
+                                    {
+
+                                    }
                                     <tr>
                                         <th scope="col" class="px-6 py-4">
                                             Sl
@@ -76,10 +81,10 @@ const SupplierList = () => {
                                             Address
                                         </th>
                                         <th scope="col" class="px-6 py-4">
-                                            phone
+                                            Phone
                                         </th>
                                         <th scope="col" class="px-6 py-4">
-                                            contact Person
+                                            Contact Person
                                         </th>
                                         <th scope="col" class="px-6 py-4">
                                             Payable
@@ -97,39 +102,41 @@ const SupplierList = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="bg-gray-100 border-b">
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">1</td>
-                                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                            Mark
-                                        </td>
-                                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                            Otto
-                                        </td>
-                                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                            @mdo
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-white border-b">
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">2</td>
-                                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                            Jacob
-                                        </td>
-                                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                            Thornton
-                                        </td>
-                                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                            @fat
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-gray-100 border-b">
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">3</td>
-                                        <td colspan="2" class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-center">
-                                            Larry the Bird
-                                        </td>
-                                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                            @twitter
-                                        </td>
-                                    </tr>
+                                    {
+                                        suppliers?.map((supplier, index) => {
+                                            return (
+                                                <tr class="even:bg-gray-100 border-b">
+                                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>
+                                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{supplier._id}</td>
+                                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                        {supplier.supplierName}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                        {supplier.address}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                        {supplier.phone}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                        {supplier.contactPerson}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                        {supplier.payable}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                        {supplier.paid}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                        {supplier.payable - supplier.paid}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+
+                                                    </td>
+                                                </tr>
+                                            )
+                                        })
+                                    }
+
                                 </tbody>
                             </table>
                         </div>

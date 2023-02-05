@@ -18,7 +18,8 @@
         "address": "Kushtia",
         "phone": "01717888789",
         "contactPerson": "Abdul Karim",
-        "payable": 5000
+        "payable": 10000,
+        "paid": 5000
     },
     {
         "_id": "2",
