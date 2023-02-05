@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form';
 import useMedicine from '../hooks/useMedicine';
 import { ImCross } from 'react-icons/im';
 
 const StockUpdate = () => {
-
+    let [medicine, setMedicine] = useState([])
     const [medicines, setMedicines] = useMedicine()
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
@@ -12,10 +12,22 @@ const StockUpdate = () => {
 
     const handleBarcode = e => {
         if (e.key === 'Enter') {
-            // handleMedicine(e.target.value)
-            e.target.value = "";
+            const barcodeId = e.target.value
+            const selectedMedicine = medicines.find(medicine => medicine._id === barcodeId)
+            const updatedMedicine = [...medicine, selectedMedicine]
+            setMedicine(updatedMedicine)
+            e.target.value = ''
         }
 
+    }
+
+
+    const handleMedicine = e => {
+        const name = e.target.value
+        const selectedMedicine = medicines.find(medicine => medicine.medicineName === name)
+        const updatedMedicine = [...medicine, selectedMedicine]
+        setMedicine(updatedMedicine)
+        e.target.value = ''
     }
 
     return (
@@ -36,8 +48,8 @@ const StockUpdate = () => {
 
                 <div className="form-control w-full col-span-2">
 
-                    <select className="select w-full input-bordered" >
-                        <option disabled selected>Medicine Name</option>
+                    <select onChange={(e) => handleMedicine(e)} className="select w-full input-bordered" >
+                        <option selected>Medicine Name</option>
                         {
                             medicines?.map(medicine => {
                                 return <option key={medicine._id}>{medicine.medicineName}</option>
@@ -63,49 +75,57 @@ const StockUpdate = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr className='border'>
-                                    <td className='bg-white border-2 text-red-600 text-center pl-5' ><ImCross /></td>
-                                    <td className='bg-white border-2 p-0'>
-                                        <div className="form-control w-full">
+                                {
+                                    medicine?.map(med => {
+                                        return (
+                                            <tr className='border'>
+                                                <td className='bg-white border-2 text-red-600 text-center pl-5' ><ImCross /></td>
+                                                <td className='bg-white border-2 p-0'>
+                                                    <div className="form-control w-full">
 
-                                            <input
-                                                onKeyDown={(e) => handleBarcode(e)}
-                                                type="number"
-                                                placeholder="Search Barcode"
-                                                className="input w-full input-bordered rounded bg-base-100 focus:outline-none"
-                                                {...register("barcodeId")}
-                                            />
+                                                        <input
+                                                            onKeyDown={(e) => handleBarcode(e)}
+                                                            type="number"
+                                                            placeholder="Search Barcode"
+                                                            value={med._id}
+                                                            className="input w-full input-bordered rounded bg-base-100 focus:outline-none"
+                                                        />
 
-                                        </div>
-                                    </td>
-                                    <td className='border-2 p-0'>
-                                        <input
-                                            type="text"
-                                            className="input w-full bg-base-100 rounded input-bordered"
-                                            {...register("medicineName")} />
-                                    </td>
-                                    <td className='border-2  p-0'>
-                                        <input
-                                            type="number"
-                                            className="input w-full bg-base-100 input-bordered"
-                                            {...register("quantity")} />
-                                    </td>
-                                    <td className='bg-white border-2  p-0'>
-                                        <input
-                                            type="number"
-                                            placeholder='Enter Quantity'
-                                            className="input w-full rounded input-bordered bg-white"
-                                            {...register("adjustedQuantity")} />
-                                    </td>
-                                    <td className='bg-white border-2 p-0'>
-                                        <input
-                                            type="text"
-                                            placeholder='remarks'
-                                            className="input w-full rounded input-bordered bg-white"
-                                            {...register("adjustedQuantity")} />
-                                    </td>
+                                                    </div>
+                                                </td>
+                                                <td className='border-2 p-0'>
+                                                    <input
+                                                        type="text"
+                                                        className="input w-full bg-base-100 rounded input-bordered"
+                                                        value={med.medicineName}
+                                                    />
+                                                </td>
+                                                <td className='border-2  p-0'>
+                                                    <input
+                                                        type="number"
+                                                        className="input w-full bg-base-100 input-bordered"
+                                                        value={med.quantity} />
+                                                </td>
+                                                <td className='bg-white border-2  p-0'>
+                                                    <input
+                                                        type="number"
+                                                        placeholder='Enter Quantity'
+                                                        className="input w-full rounded input-bordered bg-white"
+                                                        {...register("adjustedQuantity")} />
+                                                </td>
+                                                <td className='bg-white border-2 p-0'>
+                                                    <input
+                                                        type="text"
+                                                        placeholder='remarks'
+                                                        className="input w-full rounded input-bordered bg-white"
+                                                        {...register("adjustedQuantity")} />
+                                                </td>
 
-                                </tr>
+                                            </tr>
+                                        )
+                                    })
+                                }
+
                             </tbody>
 
                         </table>
