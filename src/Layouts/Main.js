@@ -5,6 +5,7 @@ import Login from '../components/Login';
 import MedicineDetails from '../components/MedicineDetails';
 import PurchaseBill from '../components/PurchaseBill';
 import SalesBill from '../components/SalesBill';
+import StockUpdate from '../components/StockUpdate';
 
 const Main = () => {
     return (
@@ -14,7 +15,8 @@ const Main = () => {
             {/* <ItemForm /> */}
             {/* <MedicineDetails /> */}
             {/* <CreateSalesBill /> */}
-            <PurchaseBill />
+            {/* <PurchaseBill /> */}
+            <StockUpdate />
 
         </div>
     );
