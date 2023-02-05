@@ -2,19 +2,14 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { ImCross } from 'react-icons/im';
+import useSupplier from '../hooks/useSupplier';
 
 const PurchaseBill = () => {
-    const [suppliers, setSuppliers] = useState([])
+    const [suppliers, setSuppliers] = useSupplier()
     const [products, setProducts] = useState([])
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
-
-    useEffect(() => {
-        fetch('supplier.json')
-            .then(res => res.json()
-                .then(data => setSuppliers(data)))
-    }, [])
 
     const handleSupplier = (e) => {
         const supplierName = e.target.value
