@@ -5,7 +5,7 @@ import ItemInfo from './ItemInfo';
 import ItemPrice from './ItemPrice';
 import ItemStock from './ItemStock';
 import MedicineInfo from './MedicineInfo';
-import Supplier from './Supplier';
+import Supplier from './AddSupplier';
 
 
 const ItemForm = () => {
