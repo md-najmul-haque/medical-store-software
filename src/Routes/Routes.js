@@ -1,4 +1,3 @@
-import { Children } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import AddCategory from "../components/AddCategory";
 import AddSupplier from "../components/AddSupplier";
@@ -14,7 +13,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <Dashboard />
+                element: <AddSupplier />
             },
             {
                 path: "/supplierList",

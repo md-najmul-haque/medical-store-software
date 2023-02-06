@@ -15,21 +15,21 @@ const SupplierList = () => {
             </div>
             <div className="flex gap-16 justify-end mt-5 mr-2">
                 <div className="card w-96 p-0 bg-base-100 shadow-xl">
-                    <div className="card-body p-0">
+                    <div className="card-body text-center px-0 pt-0 pb-2">
                         <h2 className="bg-secondary p-3 text-white">Total Payable (BDT)</h2>
                         <p>100000</p>
                     </div>
                 </div>
 
                 <div className="card w-96 p-0 bg-base-100 shadow-xl">
-                    <div className="card-body p-0">
+                    <div className="card-body text-center px-0 pt-0 pb-2">
                         <h2 className="bg-secondary p-3 text-white">Total Paid (BDT)</h2>
                         <p>50000</p>
                     </div>
                 </div>
 
                 <div className="card w-96 p-0 bg-base-100 shadow-xl">
-                    <div className="card-body p-0">
+                    <div className="card-body text-center px-0 pt-0 pb-2">
                         <h2 className="bg-secondary p-3 text-white">Total Due (BDT)</h2>
                         <p>50000</p>
                     </div>
@@ -62,7 +62,7 @@ const SupplierList = () => {
                 <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                         <div class="overflow-hidden">
-                            <table class="min-w-full">
+                            <table class="min-w-full text-center">
                                 <thead class="bg-white border-b">
                                     <tr>
                                         <th scope="col" class="px-6 py-4">
