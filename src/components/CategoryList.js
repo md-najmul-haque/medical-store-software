@@ -11,7 +11,7 @@ const CategoryList = () => {
         <div className='bg-white h-screen'>
             <div className='bg-base-100 py-3 px-5 border-b-2 flex items-center'>
                 <h1 className='uppercase text-xl font-bold text-left'>Category List</h1>
-                <Link to='' className="btn btn-primary text-white normal-case btn-sm ml-5" ><span className="mr-1"><IoIosCreate /></span> Create Category</Link>
+                <Link to='/addCategory' className="btn btn-primary text-white normal-case btn-sm ml-5" ><span className="mr-1"><IoIosCreate /></span> Create Category</Link>
             </div>
 
             <div className='py-3 px-5 mt-10 border-b-2 flex justify-between items-center'>
@@ -72,8 +72,8 @@ const CategoryList = () => {
                                                 <tr class="even:bg-gray-100 border-b">
                                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>
                                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{category._id}</td>
-                                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                        {category.image}
+                                                    <td class="text-sm text-gray-900 font-light w-28 px-6 py-4 whitespace-nowrap">
+                                                        <img src={category.image} alt="" />
                                                     </td>
                                                     <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                         {category.categoryName}
@@ -84,7 +84,7 @@ const CategoryList = () => {
                                                     <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                         {category.status}
                                                     </td>
-                                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap flex items-center justify-center">
+                                                    <td class="text-sm text-gray-900 font-light mt-2 px-6 py-4 whitespace-nowrap flex items-center justify-center">
                                                         <button className="btn btn-sm btn-info"> <IoIosCreate /> Edit</button>
                                                         <button className="btn btn-sm btn-error ml-2">Delete</button>
                                                     </td>

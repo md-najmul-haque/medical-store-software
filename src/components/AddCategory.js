@@ -1,14 +1,19 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 
-const CategoryDetails = () => {
+const AddCategory = () => {
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const onSubmit = data => console.log(data)
 
     return (
-        <div>
-            <h1 className='uppercase text-left text-xl font-bold bg-gray-100 py-5 ml-5 border-b-2'>Category Details</h1>
+        <div className='bg-white h-screen'>
+            <div className='bg-base-100 py-4 px-5 border-b-2 flex items-center justify-between'>
+                <h1 className='uppercase text-left text-xl font-bold'>Category Details</h1>
+                <Link to='/' className="btn btn-primary text-white normal-case px-10 ml-5" >Back</Link>
+            </div>
+
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className=''>
                     <div className='grid grid-cols-3 gap-x-5 pl-5 pr-20'>
@@ -90,8 +95,8 @@ const CategoryDetails = () => {
                     </div>
 
                     <div className='flex ml-5 mt-5'>
-                        <button className='btn btn-accent'>Cancel</button>
-                        <input type="submit" className="btn btn-success text-white ml-10" value='Save' />
+                        <button className='btn btn-primary text-white'>Cancel</button>
+                        <input type="submit" className="btn btn-secondary px-6 text-white ml-8" value='Save' />
                     </div>
                 </div>
             </form>
@@ -99,4 +104,4 @@ const CategoryDetails = () => {
     );
 };
 
-export default CategoryDetails;
+export default AddCategory;
