@@ -1,4 +1,5 @@
 import React from 'react';
+import CategoryList from '../components/CategoryList';
 import CreateSalesBill from '../components/CreateSalesBill';
 import ItemForm from '../components/ItemForm';
 import Login from '../components/Login';
@@ -19,7 +20,8 @@ const Main = () => {
             {/* <PurchaseBill /> */}
             {/* <StockUpdate /> */}
 
-            <SupplierList />
+            {/* <SupplierList /> */}
+            <CategoryList />
 
         </div>
     );

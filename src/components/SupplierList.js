@@ -17,21 +17,21 @@ const SupplierList = () => {
                 <div className="card w-96 p-0 bg-base-100 shadow-xl">
                     <div className="card-body p-0">
                         <h2 className="bg-secondary p-3 text-white">Total Payable (BDT)</h2>
-                        <p>55</p>
+                        <p>100000</p>
                     </div>
                 </div>
 
                 <div className="card w-96 p-0 bg-base-100 shadow-xl">
                     <div className="card-body p-0">
                         <h2 className="bg-secondary p-3 text-white">Total Paid (BDT)</h2>
-                        <p>55</p>
+                        <p>50000</p>
                     </div>
                 </div>
 
                 <div className="card w-96 p-0 bg-base-100 shadow-xl">
                     <div className="card-body p-0">
                         <h2 className="bg-secondary p-3 text-white">Total Due (BDT)</h2>
-                        <p>55</p>
+                        <p>50000</p>
                     </div>
                 </div>
 
