@@ -1,7 +1,7 @@
 import React from 'react';
 import { IoIosCreate } from 'react-icons/io';
 import { Link } from 'react-router-dom';
-import useCategory from '../hooks/useCategory';
+import useCategory from '../../hooks/useCategory';
 
 const CategoryList = () => {
 

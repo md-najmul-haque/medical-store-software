@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import SalesBillBottomBar from './SalesBillBottomBar';
-import SalesBillForm from './SalesBillForm';
-import SalesBillNavbar from './SalesBillNavbar';
-import SalesBillSidebar from './SalesBillSidebar';
+import SalesBillBottomBar from '../SalesBillBottomBar';
+import SalesBillForm from '../SalesBillForm';
+import SalesBillNavbar from '../SalesBillNavbar';
+import SalesBillSidebar from '../SalesBillSidebar';
 
 const SalesBill = () => {
     const [total, setTotal] = useState(0)

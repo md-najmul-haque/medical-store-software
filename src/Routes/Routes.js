@@ -1,10 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
-import AddCategory from "../components/AddCategory";
-import AddSupplier from "../components/AddSupplier";
-import CategoryList from "../components/CategoryList";
+import AddCategory from "../components/Category/AddCategory";
+import AddSupplier from "../components/Supplier/AddSupplier";
+import CategoryList from "../components/Category/CategoryList";
 import Dashboard from "../components/Dashboard";
-import SupplierList from "../components/SupplierList";
+import SupplierList from "../components/Supplier/SupplierList";
 import Main from "../Layouts/Main";
+import MedicineList from "../components/Medicine/MedicineList";
 
 const router = createBrowserRouter([
     {
@@ -13,7 +14,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <AddSupplier />
+                element: <MedicineList />
             },
             {
                 path: "/supplierList",

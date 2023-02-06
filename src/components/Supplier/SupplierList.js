@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { IoIosCreate } from 'react-icons/io';
-import useSupplier from "../hooks/useSupplier";
+import useSupplier from "../../hooks/useSupplier";
 
 
 const SupplierList = () => {
