@@ -64,9 +64,6 @@ const SupplierList = () => {
                         <div class="overflow-hidden">
                             <table class="min-w-full">
                                 <thead class="bg-white border-b">
-                                    {
-
-                                    }
                                     <tr>
                                         <th scope="col" class="px-6 py-4">
                                             Sl
@@ -107,7 +104,7 @@ const SupplierList = () => {
                                     {
                                         suppliers?.map((supplier, index) => {
                                             return (
-                                                <tr class="even:bg-gray-100 border-b">
+                                                <tr class="even:bg-gray-100 border-b" key={supplier._id}>
                                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>
                                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{supplier._id}</td>
                                                     <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
