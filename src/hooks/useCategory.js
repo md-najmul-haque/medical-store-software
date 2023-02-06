@@ -4,7 +4,7 @@ const useCategory = () => {
     const [categories, setCategories] = useState([])
 
     useEffect(() => {
-        fetch('category.json')
+        fetch('categories.json')
             .then(res => res.json()
                 .then(data => setCategories(data)))
     }, [])

@@ -1,0 +1,44 @@
+[
+    {
+        "_id": "1",
+        "categoryName": "Capsule",
+        "image": "https://i.ibb.co/Q9yZss7/0x0.jpg",
+        "quantity": 3,
+        "status": "Active"
+    },
+    {
+        "_id": "2",
+        "categoryName": "Drop",
+        "image": "https://i.ibb.co/K0W8m6f/Alacot-o1.jpg",
+        "quantity": 1,
+        "status": "Active"
+    },
+    {
+        "_id": "3",
+        "categoryName": "Tablet",
+        "image": "https://i.ibb.co/BVV7bVk/Angilock-l-2.jpg",
+        "quantity": 3,
+        "status": "Active"
+    },
+    {
+        "_id": "4",
+        "categoryName": "Ointment",
+        "image": "https://i.ibb.co/4gSTsYw/Apsol-Oral-01.jpg",
+        "quantity": 1,
+        "status": "Active"
+    },
+    {
+        "_id": "5",
+        "categoryName": "Syrup",
+        "image": "https://i.ibb.co/DzzmvQF/tomephen-syrup-100ml-1-pc.jpg",
+        "quantity": 2,
+        "status": "Active"
+    },
+    {
+        "_id": "6",
+        "categoryName": "Injection",
+        "image": "https://i.ibb.co/C5YNcks/Teconin-200.jpg",
+        "quantity": 1,
+        "status": "Active"
+    }
+]
