@@ -8,16 +8,34 @@ const AddSupplier = () => {
 
     return (
         <div className="bg-white h-screen">
-            <div className='bg-base-100 py-4 px-5 border-b-2 flex items-center justify-between'>
+            <div className='bg-base-100 py-4 px-5 border-b-2'>
                 <h1 className='uppercase text-left text-xl font-bold'>Add Supplier</h1>
-                <Link to='/supplierList' className="btn btn-primary text-white normal-case px-10 ml-5" >Back</Link>
             </div>
             <div className='container mx-auto'>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className='grid grid-cols-2 gap-x-5'>
-                        <div className="form-control w-full">
+                    <div className=''>
+                        <div className="form-control max-w-xl mx-auto">
                             <label className="label">
-                                <span className="label-text">Supplier Name</span>
+                                <span className="font-semibold">Supplier ID</span>
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="Enter Supplier ID"
+                                className="input bg-gray-100 w-full"
+                                {...register("supplierId", {
+                                    required: {
+                                        value: true,
+                                        message: 'Supplier id is required'
+                                    }
+                                })} />
+                            <label className="label">
+                                {errors.supplierId?.type === 'required' && <span className="label-text-alt text-red-500">{errors.supplierId.message}</span>}
+                            </label>
+                        </div>
+
+                        <div className="form-control max-w-xl mx-auto">
+                            <label className="label">
+                                <span className="font-semibold">Supplier Name</span>
                             </label>
                             <input
                                 type="text"
@@ -34,14 +52,14 @@ const AddSupplier = () => {
                             </label>
                         </div>
 
-                        <div className="form-control w-full ">
+                        <div className="form-control max-w-xl mx-auto">
                             <label className="label">
-                                <span className="label-text">Address</span>
+                                <span className="font-semibold">Address</span>
                             </label>
                             <input
                                 type="text"
                                 placeholder="Enter Address"
-                                className="input bg-gray-100 w-full "
+                                className="input bg-gray-100 w-full"
                                 {...register("address", {
                                     required: {
                                         value: true,
@@ -53,14 +71,14 @@ const AddSupplier = () => {
                             </label>
                         </div>
 
-                        <div className="form-control w-full ">
+                        <div className="form-control  max-w-xl mx-auto">
                             <label className="label">
-                                <span className="label-text">Supplier Phone Number</span>
+                                <span className="font-semibold">Supplier Phone Number</span>
                             </label>
                             <input
                                 type="text"
                                 placeholder="Enter Phone Number"
-                                className="input bg-gray-100 w-full "
+                                className="input bg-gray-100 w-full"
                                 {...register("phone", {
                                     required: {
                                         value: true,
@@ -72,14 +90,14 @@ const AddSupplier = () => {
                             </label>
                         </div>
 
-                        <div className="form-control w-full">
+                        <div className="form-control max-w-xl mx-auto">
                             <label className="label">
-                                <span className="label-text">Supplier Email</span>
+                                <span className="font-semibold">Supplier Email</span>
                             </label>
                             <input
                                 type="email"
                                 placeholder="Enter Supplier Email"
-                                className="input bg-gray-100 w-full "
+                                className="input bg-gray-100 w-full"
                                 {...register("email", {
                                     required: {
                                         value: true,
@@ -96,14 +114,14 @@ const AddSupplier = () => {
                             </label>
                         </div>
 
-                        <div className="form-control w-full ">
+                        <div className="form-control max-w-xl mx-auto">
                             <label className="label">
-                                <span className="label-text">Contact Person</span>
+                                <span className="font-semibold">Contact Person</span>
                             </label>
                             <input
                                 type="text"
                                 placeholder="Contact Person"
-                                className="input bg-gray-100 w-full "
+                                className="input bg-gray-100 w-full"
                                 {...register("contactPerson", {
                                     required: {
                                         value: true,
@@ -115,14 +133,14 @@ const AddSupplier = () => {
                             </label>
                         </div>
 
-                        <div className="form-control w-full ">
+                        <div className="form-control max-w-xl mx-auto">
                             <label className="label">
-                                <span className="label-text">Contact Person Mobile</span>
+                                <span className="font-semibold">Contact Person Mobile</span>
                             </label>
                             <input
                                 type="text"
                                 placeholder="Contact Person Mobile"
-                                className="input bg-gray-100 w-full "
+                                className="input bg-gray-100 w-full"
                                 {...register("contactPersonMobile", {
                                     required: {
                                         value: true,
@@ -134,14 +152,14 @@ const AddSupplier = () => {
                             </label>
                         </div>
 
-                        <div className="form-control w-full ">
+                        <div className="form-control max-w-xl mx-auto">
                             <label className="label">
-                                <span className="label-text">Status</span>
+                                <span className="font-semibold">Status</span>
                             </label>
                             <input
                                 type="text"
                                 placeholder="Status"
-                                className="input bg-gray-100 w-full "
+                                className="input bg-gray-100 w-full"
                                 {...register("status", {
                                     required: {
                                         value: true,
@@ -153,35 +171,10 @@ const AddSupplier = () => {
                             </label>
                         </div>
 
-                        <div className="form-control w-full ">
-                            <label className="label">
-                                <span className="label-text">Start Data</span>
-                            </label>
-                            <input
-                                type="date"
-                                placeholder="Start Date"
-                                className="input bg-gray-100 w-full "
-                                {...register("startData", {
-                                    valueAsDate: true,
-                                })}
-                            />
+                        <div className='flex justify-center items-center max-w-xl mx-auto'>
+                            <Link to='/supplierList' className="btn btn-primary text-white px-10 ml-5" >Back</Link>
+                            <input type="submit" className="btn btn-secondary ml-5 text-white px-10" value='Submit' />
                         </div>
-
-                        <div className="form-control w-full ">
-                            <label className="label">
-                                <span className="label-text">End Data</span>
-                            </label>
-                            <input
-                                type="date"
-                                placeholder="End Date"
-                                className="input bg-gray-100 w-full "
-                                {...register("endData", {
-                                    valueAsDate: true,
-                                })}
-                            />
-                        </div>
-
-                        <input type="submit" className="btn w-full btn-accent text-white mt-5" value='Submit' />
                     </div>
                 </form>
             </div>
