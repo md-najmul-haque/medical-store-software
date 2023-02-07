@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { IoIosCreate } from 'react-icons/io';
 import useSupplier from "../../hooks/useSupplier";
+import { RiDeleteBin6Line } from 'react-icons/ri';
+import { AiOutlineEdit } from 'react-icons/ai';
 
 
 const SupplierList = () => {
@@ -131,9 +133,9 @@ const SupplierList = () => {
                                                     <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                         {supplier.status}
                                                     </td>
-                                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap flex items-center justify-center">
-                                                        <button className="btn btn-sm btn-info"> <IoIosCreate /> Edit</button>
-                                                        <button className="btn btn-sm btn-error ml-2">Delete</button>
+                                                    <td class="text-sm text-gray-900 font-light mt-2 px-5 py-4 whitespace-nowrap flex items-center justify-center">
+                                                        <button className="btn btn-sm bg-sky-500 hover:bg-sky-600 border-none font-semibold text-md text-white"> <AiOutlineEdit /></button>
+                                                        <button className="btn btn-sm bg-red-500 hover:bg-red-600 border-none text-md text-white ml-2"><RiDeleteBin6Line /></button>
                                                     </td>
                                                 </tr>
                                             )
