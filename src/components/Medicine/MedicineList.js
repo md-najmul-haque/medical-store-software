@@ -2,13 +2,15 @@ import React from 'react';
 import { IoIosCreate } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import useMedicine from '../../hooks/useMedicine';
+import { RiDeleteBin6Line } from 'react-icons/ri';
+import { AiOutlineEdit } from 'react-icons/ai';
 
 const MedicineList = () => {
 
     const [medicines] = useMedicine()
 
     return (
-        <div className='bg-white h-screen'>
+        <div className='bg-white'>
             <div className='bg-base-100 py-3 px-5 border-b-2 flex items-center'>
                 <h1 className='uppercase text-xl font-bold text-left text-primary'>Medicine List</h1>
                 <Link to='addCategory' className="btn btn-primary text-white normal-case btn-sm ml-5" ><span className="mr-1"><IoIosCreate /></span>Add Medicine</Link>
@@ -75,55 +77,52 @@ const MedicineList = () => {
                             <table class="min-w-full text-center">
                                 <thead class="bg-sky-300 border-b-2">
                                     <tr>
-                                        <th scope="col" class="px-6 py-4">
+                                        <th scope="col" class="px-5 py-4">
                                             Sl
                                         </th>
-                                        <th scope="col" class="px-6 py-4">
-                                            Medicine ID
-                                        </th>
-                                        <th scope="col" class="px-6 py-4">
+                                        <th scope="col" class="px-5 py-4">
                                             Image
                                         </th>
-                                        <th scope="col" class="px-6 py-4">
+                                        <th scope="col" class="px-5 py-4">
                                             Medicine Name
                                         </th>
-                                        <th scope="col" class="px-6 py-4">
+                                        <th scope="col" class="px-5 py-4">
                                             Category
                                         </th>
-                                        <th scope="col" class="px-6 py-4">
+                                        <th scope="col" class="px-5 py-4">
                                             Brand
                                         </th>
-                                        <th scope="col" class="px-6 py-4">
+                                        <th scope="col" class="px-5 py-4">
                                             Supplier
                                         </th>
-                                        <th scope="col" class="px-6 py-4">
+                                        <th scope="col" class="px-5 py-4">
                                             Barcode ID
                                         </th>
-                                        <th scope="col" class="px-6 py-4">
+                                        <th scope="col" class="px-5 py-4">
                                             MRP Price(BDT)
                                         </th>
-                                        <th scope="col" class="px-6 py-4">
+                                        <th scope="col" class="px-5 py-4">
                                             Purchase Price(BDT)
                                         </th>
-                                        <th scope="col" class="px-6 py-4">
+                                        <th scope="col" class="px-5 py-4">
                                             Sale Price(BDT)
                                         </th>
-                                        <th scope="col" class="px-6 py-4">
+                                        <th scope="col" class="px-5 py-4">
                                             Purchase Quantity
                                         </th>
-                                        <th scope="col" class="px-6 py-4">
+                                        <th scope="col" class="px-5 py-4">
                                             Sale Quantity
                                         </th>
-                                        <th scope="col" class="px-6 py-4">
+                                        <th scope="col" class="px-5 py-4">
                                             Available Stock
                                         </th>
-                                        <th scope="col" class="px-6 py-4">
+                                        <th scope="col" class="px-5 py-4">
                                             Booked Quantity
                                         </th>
-                                        <th scope="col" class="px-6 py-4">
+                                        <th scope="col" class="px-3 py-4">
                                             Status
                                         </th>
-                                        <th scope="col" class="px-6 py-4">
+                                        <th scope="col" class="px-3 py-4">
                                             Action
                                         </th>
                                     </tr>
@@ -133,23 +132,54 @@ const MedicineList = () => {
                                         medicines?.map((medicine, index) => {
                                             return (
                                                 <tr class="even:bg-gray-100 border-b">
-                                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>
-                                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{medicine._id}</td>
+                                                    <td class="px-5 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>
                                                     <td class="text-sm text-gray-900 font-light w-28 px-6 py-4 whitespace-nowrap">
-                                                        <img src={medicine.image} alt="" />
+                                                        <img src={medicine.photoURL} alt="" />
                                                     </td>
-                                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                        {medicine.categoryName}
+                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                        {medicine.medicineName}
                                                     </td>
-                                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                        {medicine.quantity}
+                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                        {medicine.type}
                                                     </td>
-                                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                        {medicine.brandName}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                        {medicine.supplierName}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                        {medicine?.barcodeId}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                        {medicine.price}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                        {medicine.purchasePrice}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                        {medicine.salePrice}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                        {medicine.purchaseQty}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                        {medicine.saleQuantity}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                        {medicine.saleQuantity}
+                                                    </td>
+
+                                                    <td class="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
+                                                        {medicine.bookedQty}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
                                                         {medicine.status}
                                                     </td>
-                                                    <td class="text-sm text-gray-900 font-light mt-2 px-6 py-4 whitespace-nowrap flex items-center justify-center">
-                                                        <button className="btn btn-sm btn-info"> <IoIosCreate /> Edit</button>
-                                                        <button className="btn btn-sm btn-error ml-2">Delete</button>
+
+                                                    <td class="text-sm text-gray-900 font-light mt-2 px-5 py-4 whitespace-nowrap flex items-center justify-center">
+                                                        <button className="btn btn-sm bg-sky-500 hover:bg-sky-600 border-none font-semibold text-md text-white"> <AiOutlineEdit /></button>
+                                                        <button className="btn btn-sm bg-red-500 hover:bg-red-600 border-none text-md text-white ml-2"><RiDeleteBin6Line /></button>
                                                     </td>
                                                 </tr>
                                             )
