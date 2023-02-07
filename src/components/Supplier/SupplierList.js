@@ -15,25 +15,25 @@ const SupplierList = () => {
                 <h1 className='uppercase text-xl font-bold text-left'>Supplier List</h1>
                 <Link to='' className="btn btn-primary text-white normal-case btn-sm ml-5" ><span className="mr-1"><IoIosCreate /></span> Create Supplier</Link>
             </div>
-            <div className="flex gap-16 justify-end mt-5 mr-2">
-                <div className="card w-96 p-0 bg-base-100 shadow-xl">
-                    <div className="card-body text-center px-0 pt-0 pb-2">
-                        <h2 className="bg-secondary p-3 text-white">Total Payable (BDT)</h2>
-                        <p>100000</p>
+            <div className="flex gap-16 justify-end mt-10 mr-2">
+                <div className="card w-96 pb-10 bg-white shadow-xl">
+                    <div className="flex justify-between border-b-2 items-center px-5 pt-2 pb-2">
+                        <h2 className="p-3 font-2xl text-primary font-bold">Total Payable (BDT)</h2>
+                        <p className="p-3 rounded-md bg-primary text-white">100000</p>
                     </div>
                 </div>
 
-                <div className="card w-96 p-0 bg-base-100 shadow-xl">
-                    <div className="card-body text-center px-0 pt-0 pb-2">
-                        <h2 className="bg-secondary p-3 text-white">Total Paid (BDT)</h2>
-                        <p>50000</p>
+                <div className="card w-96 pb-10 bg-white shadow-xl">
+                    <div className="flex justify-between border-b-2 items-center px-5 pt-2 pb-2">
+                        <h2 className="p-3 font-2xl text-primary font-bold">Total Paid (BDT)</h2>
+                        <p className="p-3 rounded-md bg-primary text-white">50000</p>
                     </div>
                 </div>
 
-                <div className="card w-96 p-0 bg-base-100 shadow-xl">
-                    <div className="card-body text-center px-0 pt-0 pb-2">
-                        <h2 className="bg-secondary p-3 text-white">Total Due (BDT)</h2>
-                        <p>50000</p>
+                <div className="card w-96 pb-10 bg-white shadow-xl">
+                    <div className="flex justify-between border-b-2 items-center px-5 pt-2 pb-2">
+                        <h2 className="p-3 font-2xl text-primary font-bold">Total Due (BDT)</h2>
+                        <p className="p-3 rounded-md bg-primary text-white">50000</p>
                     </div>
                 </div>
 
