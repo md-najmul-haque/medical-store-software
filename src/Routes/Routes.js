@@ -7,6 +7,7 @@ import SupplierList from "../components/Supplier/SupplierList";
 import Main from "../Layouts/Main";
 import MedicineList from "../components/Medicine/MedicineList";
 import AddMedicine from "../components/Medicine/AddMedicine";
+import SalesBill from "../components/SalesBill/SalesBill";
 
 const router = createBrowserRouter([
     {
@@ -18,9 +19,14 @@ const router = createBrowserRouter([
                 element: <Dashboard />
             },
             {
+                path: "/salesBill",
+                element: <SalesBill />
+            },
+            {
                 path: "/medicineList",
                 element: <MedicineList />,
-            }, {
+            },
+            {
                 path: "/addMedicine",
                 element: <AddMedicine />,
             },
