@@ -13,7 +13,7 @@ const SupplierList = () => {
         <div className='bg-white h-screen'>
             <div className='bg-base-100 py-3 px-5 border-b-2 flex items-center'>
                 <h1 className='uppercase text-xl text-primary font-bold text-left'>Supplier List</h1>
-                <Link to='' className="btn btn-primary text-white normal-case btn-sm ml-5" ><span className="mr-1"><IoIosCreate /></span> Create Supplier</Link>
+                <Link to='/addSupplier' className="btn btn-primary text-white normal-case btn-sm ml-5" ><span className="mr-1"><IoIosCreate /></span> Create Supplier</Link>
             </div>
             <div className="flex gap-16 justify-end mt-10 mr-2">
                 <div className="card w-96 pb-10 bg-white shadow-xl">

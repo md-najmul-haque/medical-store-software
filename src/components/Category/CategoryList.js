@@ -13,7 +13,7 @@ const CategoryList = () => {
         <div className='bg-white h-screen'>
             <div className='bg-base-100 py-3 px-5 border-b-2 flex items-center'>
                 <h1 className='uppercase text-xl font-bold text-left'>Category List</h1>
-                <Link to='addCategory' className="btn btn-primary text-white normal-case btn-sm ml-5" ><span className="mr-1"><IoIosCreate /></span> Create Category</Link>
+                <Link to='/addCategory' className="btn btn-primary text-white normal-case btn-sm ml-5" ><span className="mr-1"><IoIosCreate /></span> Create Category</Link>
             </div>
 
             <div className='py-3 px-5 mt-10 border-b-2 flex justify-between items-center'>

@@ -24,27 +24,22 @@ const router = createBrowserRouter([
                 path: "/addMedicine",
                 element: <AddMedicine />,
             },
-
             {
                 path: "/supplierList",
-                element: <SupplierList />,
-                children: [
-                    {
-                        path: "addSupplier",
-                        element: <AddSupplier />
-                    },
-                ]
+                element: <SupplierList />
+            },
+            {
+                path: "/addSupplier",
+                element: <AddSupplier />
             },
             {
                 path: "/categoryList",
-                element: <CategoryList />,
-                children: [
-                    {
-                        path: "addCategory",
-                        element: <AddCategory />
-                    },
-                ]
+                element: <CategoryList />
             },
+            {
+                path: "addCategory",
+                element: <AddCategory />
+            }
 
         ]
     },
