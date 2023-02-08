@@ -28,7 +28,6 @@ const AddCustomer = ({ setAddCustomer }) => {
                     setAddCustomer(false)
                     reset()
                     toast.success('Customer data added successfully')
-                    console.log(customer)
                 } else {
                     toast.error('Fail to saved customer data')
                 }
