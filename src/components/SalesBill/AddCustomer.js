@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 const AddCustomer = ({ setAddCustomer }) => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
@@ -9,11 +10,12 @@ const AddCustomer = ({ setAddCustomer }) => {
         const customer = {
             customerName: data.customerName,
             phoneNumber: data.phoneNumber,
+            email: data.email,
             address: data.address,
             area: data.area
         }
 
-        fetch(`http://localhost:5001/api/v1/customer`, {
+        fetch(`http://localhost:5000/api/v1/customer`, {
             method: "POST",
             body: JSON.stringify(customer),
             headers: {
@@ -21,10 +23,15 @@ const AddCustomer = ({ setAddCustomer }) => {
             }
         })
             .then(res => res.json())
-            .then(medicine => {
-                setAddCustomer(false)
-                reset()
-                console.log(customer)
+            .then(customer => {
+                if (customer.status === "success") {
+                    setAddCustomer(false)
+                    reset()
+                    toast.success('Customer data added successfully')
+                    console.log(customer)
+                } else {
+                    toast.error('Fail to saved customer data')
+                }
             })
     }
 

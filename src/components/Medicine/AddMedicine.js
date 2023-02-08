@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 const AddMedicine = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
@@ -40,9 +41,7 @@ const AddMedicine = () => {
                         remarks: data.remarks,
                     }
 
-                    console.log(medicine)
-
-                    fetch(`http://localhost:5001/api/v1/medicine`, {
+                    fetch(`http://localhost:5000/api/v1/medicine`, {
                         method: "POST",
                         body: JSON.stringify(medicine),
                         headers: {
@@ -50,7 +49,10 @@ const AddMedicine = () => {
                         }
                     })
                         .then(res => res.json())
-                        .then(medicine => console.log('inside medicine', medicine))
+                        .then(medicine => {
+                            reset()
+                            toast.success("Medicine Data Saved Successfully")
+                        })
                 }
             })
 
@@ -267,7 +269,7 @@ const AddMedicine = () => {
                                 {...register("image", {
                                     required: {
                                         value: true,
-                                        message: 'Price is required'
+                                        message: 'Medicine image is required'
                                     }
                                 })} />
                             <label className="label">
