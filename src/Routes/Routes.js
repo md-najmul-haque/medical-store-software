@@ -6,6 +6,7 @@ import Dashboard from "../components/Dashboard";
 import SupplierList from "../components/Supplier/SupplierList";
 import Main from "../Layouts/Main";
 import MedicineList from "../components/Medicine/MedicineList";
+import AddMedicine from "../components/Medicine/AddMedicine";
 
 const router = createBrowserRouter([
     {
@@ -14,8 +15,16 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <MedicineList />
+                element: <Dashboard />
             },
+            {
+                path: "/medicineList",
+                element: <MedicineList />,
+            }, {
+                path: "/addMedicine",
+                element: <AddMedicine />,
+            },
+
             {
                 path: "/supplierList",
                 element: <SupplierList />,
@@ -36,6 +45,7 @@ const router = createBrowserRouter([
                     },
                 ]
             },
+
         ]
     },
 

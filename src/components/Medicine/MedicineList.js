@@ -13,7 +13,7 @@ const MedicineList = () => {
         <div className='bg-white'>
             <div className='bg-base-100 py-3 px-5 border-b-2 flex items-center'>
                 <h1 className='uppercase text-xl font-bold text-left text-primary'>Medicine List</h1>
-                <Link to='addCategory' className="btn btn-primary text-white normal-case btn-sm ml-5" ><span className="mr-1"><IoIosCreate /></span>Add Medicine</Link>
+                <Link to='/addMedicine' className="btn btn-primary text-white normal-case btn-sm ml-5" ><span className="mr-1"><IoIosCreate /></span>Add Medicine</Link>
             </div>
 
             <div className='grid grid-cols-5 gap-x-10 px-5'>
