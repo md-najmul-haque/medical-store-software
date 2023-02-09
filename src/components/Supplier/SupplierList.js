@@ -5,11 +5,13 @@ import { RiDeleteBin6Line } from 'react-icons/ri';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { GoPlus } from 'react-icons/go';
 import AddSupplier from "./AddSupplier";
+import ImportSupplier from "./ImportSupplier";
 
 
 const SupplierList = () => {
     const [suppliers] = useSupplier()
     const [supplierModal, setSupplierModal] = useState(false)
+    const [importSupplier, setImportSupplier] = useState(false)
 
     return (
         <div className='bg-white h-screen'>
@@ -17,8 +19,8 @@ const SupplierList = () => {
                 <h1 className='uppercase text-xl text-primary font-bold text-left'>Supplier List</h1>
 
                 <div className='flex justify-end gap-1'>
-                    <label htmlFor="add-supplier" onClick={() => { setSupplierModal(true) }} className="btn btn-primary btn-sm btn-square text-white normal-case" ><TbFileImport /></label>
-                    <label htmlFor="add-supplier" onClick={() => { setSupplierModal(true) }} className="btn btn-primary btn-sm btn-square text-white normal-case" ><TbFileExport /></label>
+                    <label htmlFor="import-supplier" onClick={() => { setImportSupplier(true) }} className="btn btn-primary btn-sm btn-square text-white normal-case" ><TbFileImport /></label>
+                    <label htmlFor="" className="btn btn-primary btn-sm btn-square text-white normal-case" ><TbFileExport /></label>
                     <label htmlFor="add-supplier" onClick={() => { setSupplierModal(true) }} className="btn btn-primary btn-sm btn-square text-white normal-case" ><GoPlus /></label>
                 </div>
             </div>
@@ -159,6 +161,12 @@ const SupplierList = () => {
             <div>
                 {
                     supplierModal && <AddSupplier setSupplierModal={setSupplierModal} />
+                }
+            </div>
+
+            <div>
+                {
+                    importSupplier && <ImportSupplier setImportSupplier={setImportSupplier} />
                 }
             </div>
 
