@@ -1,19 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { IoIosCreate } from 'react-icons/io';
 import useSupplier from "../../hooks/useSupplier";
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { AiOutlineEdit } from 'react-icons/ai';
+import { GoPlus } from 'react-icons/go';
 
 
 const SupplierList = () => {
     const [suppliers] = useSupplier()
+    const [supplierModal, setSupplierModal] = useState(false)
 
     return (
         <div className='bg-white h-screen'>
-            <div className='bg-base-100 py-3 px-5 border-b-2 flex items-center'>
+            <div className='bg-base-100 py-3 px-5 border-b-2 flex justify-between items-center'>
                 <h1 className='uppercase text-xl text-primary font-bold text-left'>Supplier List</h1>
-                <Link to='/addSupplier' className="btn btn-primary text-white normal-case btn-sm ml-5" ><span className="mr-1"><IoIosCreate /></span> Create Supplier</Link>
+
+                <div className='flex justify-end'>
+                    <label htmlFor="add-supplier" onClick={() => { setSupplierModal(true) }} className="btn btn-primary btn-sm btn-square text-white normal-case" ><GoPlus /></label>
+                </div>
             </div>
             <div className="flex gap-16 justify-end mt-10 mr-2">
                 <div className="card w-96 pb-10 bg-white shadow-xl">
