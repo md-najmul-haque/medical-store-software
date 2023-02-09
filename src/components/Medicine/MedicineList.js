@@ -1,5 +1,5 @@
 import React from 'react';
-import { IoIosCreate } from 'react-icons/io';
+import { GoPlus } from 'react-icons/go';
 import { Link } from 'react-router-dom';
 import useMedicine from '../../hooks/useMedicine';
 import { RiDeleteBin6Line } from 'react-icons/ri';
@@ -11,9 +11,8 @@ const MedicineList = () => {
 
     return (
         <div className='bg-white'>
-            <div className='bg-base-100 py-3 px-5 border-b-2 flex items-center'>
+            <div className='bg-base-100 py-3 px-5 border-b-2'>
                 <h1 className='uppercase text-xl font-bold text-left text-primary'>Medicine List</h1>
-                <Link to='/addMedicine' className="btn btn-primary text-white normal-case btn-sm ml-5" ><span className="mr-1"><IoIosCreate /></span>Add Medicine</Link>
             </div>
 
             <div className='grid grid-cols-5 gap-x-10 px-5'>
@@ -45,6 +44,10 @@ const MedicineList = () => {
                 <div className='mt-9'>
                     <button className='btn btn-primary text-white px-10'>Find</button>
                     <button className='btn btn-secondary text-white ml-5 px-10'>Excel</button>
+                </div>
+
+                <div className='flex justify-end'>
+                    <Link to='/addMedicine' className="btn btn-primary w-40 text-white normal-case mt-9" ><span className="mr-1"><GoPlus /></span>Add Medicine</Link>
                 </div>
 
             </div>
