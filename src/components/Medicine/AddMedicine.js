@@ -62,24 +62,26 @@ const AddMedicine = ({ setModal }) => {
             <input type="checkbox" id="add-medicine" className="modal-toggle" />
 
             <div className="modal modal-bottom sm:modal-middle">
-                <div className="modal-box min-w-[50%] bg-white">
+                <div className="modal-box min-w-[50%] px-10 bg-white">
                     <div className='border-b-2'>
-                        <label htmlFor="add-medicine" className="btn btn-sm btn-ghost font-bold text-lg btn-square absolute right-5 top-5">✕</label>
-                        <h1 className='uppercase text-left text-xl font-bold'>Add Medicine</h1>
+                        <label htmlFor="add-medicine" className="btn btn-sm btn-ghost font-bold text-lg btn-square absolute right-8 top-5">✕</label>
+                        <h1 className='uppercase text-left text-primary text-xl font-bold'>Add Medicine</h1>
                     </div>
 
                     <div className="mx-auto mt-3">
 
                         <form onSubmit={handleSubmit(onSubmit)}>
 
-                            <div className='grid grid-cols-3 gap-5'>
+                            <h2 className='font-semibold'>Medicine Basic info</h2>
+
+                            <div className='grid grid-cols-3 gap-x-5'>
                                 <div className="form-control w-full">
                                     <label className="label">
                                         <span className="font-semibold">Medicine Name</span>
                                     </label>
                                     <input
                                         type="text"
-                                        placeholder="Medicine Name"
+
                                         className="input bg-gray-100 w-full "
                                         {...register("medicineName", {
                                             required: {
@@ -98,7 +100,6 @@ const AddMedicine = ({ setModal }) => {
                                     </label>
                                     <input
                                         type="text"
-                                        placeholder="Generic Name"
                                         className="input bg-gray-100 w-full "
                                         {...register("genericName", {
                                             required: {
@@ -134,7 +135,6 @@ const AddMedicine = ({ setModal }) => {
                                     </label>
                                     <input
                                         type="text"
-                                        placeholder="Supplier Name"
                                         className="input bg-gray-100 w-full "
                                         {...register("supplierName", {
                                             required: {
@@ -153,7 +153,6 @@ const AddMedicine = ({ setModal }) => {
                                     </label>
                                     <input
                                         type="text"
-                                        placeholder="Brand Name"
                                         className="input bg-gray-100 w-full "
                                         {...register("brandName", {
                                             required: {
@@ -167,65 +166,34 @@ const AddMedicine = ({ setModal }) => {
                                 </div>
                             </div>
 
-                            <div className='grid grid-cols-3 gap-5'>
+                            <h2 className='font-semibold mt-5'>Medicine details info</h2>
+
+                            <div className='grid grid-cols-3 gap-x-5'>
+
                                 <div className="form-control w-full ">
                                     <label className="label">
-                                        <span className="font-semibold">Measurement Unit</span>
+                                        <span className="font-semibold">Price</span>
                                     </label>
                                     <input
-                                        type="text"
-                                        placeholder="Measurement Unit"
+                                        type="number"
                                         className="input bg-gray-100 w-full "
-                                        {...register("unit", {
+                                        {...register("price", {
                                             required: {
                                                 value: true,
-                                                message: 'Measurement unit is required'
+                                                message: 'Price is required'
                                             }
                                         })} />
                                     <label className="label">
-                                        {errors.unit?.type === 'required' && <span className="label-text-alt text-red-500">{errors.unit.message}</span>}
+                                        {errors.price?.type === 'required' && <span className="label-text-alt text-red-500">{errors.price.message}</span>}
                                     </label>
                                 </div>
 
-                                <div className="form-control w-full ">
-                                    <label className="label">
-                                        <span className="font-semibold">Country of Origin</span>
-                                    </label>
-                                    <input
-                                        type="text"
-                                        placeholder="Country of Origin"
-                                        className="input bg-gray-100 w-full "
-                                        {...register("origin", {
-                                            required: {
-                                                value: true,
-                                                message: 'Country of origin is required'
-                                            }
-                                        })} />
-                                    <label className="label">
-                                        {errors.origin?.type === 'required' && <span className="label-text-alt text-red-500">{errors.origin.message}</span>}
-                                    </label>
-                                </div>
-
-                                <div className="form-control w-full ">
-                                    <label className="label">
-                                        <span className="font-semibold">Lot Control</span>
-                                    </label>
-                                    <select className="select bg-gray-100 w-full " {...register("lotControl")}>
-                                        <option disabled selected>Lot Control?</option>
-                                        <option>Yes</option>
-                                        <option>No</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div className='grid grid-cols-3 gap-5'>
                                 <div className="form-control w-full ">
                                     <label className="label">
                                         <span className="font-semibold">Quantity</span>
                                     </label>
                                     <input
                                         type="number"
-                                        placeholder="Enter Quantity"
                                         className="input bg-gray-100 w-full "
                                         {...register("quantity", {
                                             required: {
@@ -251,25 +219,79 @@ const AddMedicine = ({ setModal }) => {
                                     />
                                 </div>
 
-                                <div className="form-control w-full ">
+                                </div>
+                      
+
+                            <div className='grid grid-cols-4 gap-5'>
+                                
+                            <div className="form-control w-full ">
                                     <label className="label">
-                                        <span className="font-semibold">Price</span>
+                                        <span className="font-semibold">Batch No</span>
                                     </label>
                                     <input
-                                        type="number"
-                                        placeholder="Enter Price"
+                                        type="text"
                                         className="input bg-gray-100 w-full "
-                                        {...register("price", {
+                                        {...register("batchNo", {
                                             required: {
                                                 value: true,
-                                                message: 'Price is required'
+                                                message: 'Batch no is required'
                                             }
                                         })} />
                                     <label className="label">
-                                        {errors.price?.type === 'required' && <span className="label-text-alt text-red-500">{errors.price.message}</span>}
+                                        {errors.batchNo?.type === 'required' && <span className="label-text-alt text-red-500">{errors.batchNo.message}</span>}
                                     </label>
                                 </div>
+
+                                <div className="form-control w-full ">
+                                    <label className="label">
+                                        <span className="font-semibold">Lot Control</span>
+                                    </label>
+                                    <select className="select bg-gray-100 w-full " {...register("lotControl")}>
+                                        <option disabled selected>Lot Control?</option>
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+                                
+                                <div className="form-control w-full ">
+                                    <label className="label">
+                                        <span className="font-semibold">Measurement Unit</span>
+                                    </label>
+                                    <input
+                                        type="text"
+                                        className="input bg-gray-100 w-full "
+                                        {...register("unit", {
+                                            required: {
+                                                value: true,
+                                                message: 'Measurement unit is required'
+                                            }
+                                        })} />
+                                    <label className="label">
+                                        {errors.unit?.type === 'required' && <span className="label-text-alt text-red-500">{errors.unit.message}</span>}
+                                    </label>
+                                </div>
+
+                                <div className="form-control w-full ">
+                                    <label className="label">
+                                        <span className="font-semibold">Country of Origin</span>
+                                    </label>
+                                    <input
+                                        type="text"
+                                        className="input bg-gray-100 w-full "
+                                        {...register("origin", {
+                                            required: {
+                                                value: true,
+                                                message: 'Country of origin is required'
+                                            }
+                                        })} />
+                                    <label className="label">
+                                        {errors.origin?.type === 'required' && <span className="label-text-alt text-red-500">{errors.origin.message}</span>}
+                                    </label>
+                                </div>
+
                             </div>
+
+
 
                             <div className='grid grid-cols-2 gap-5'>
                                 <div className="form-control w-full ">
@@ -296,7 +318,6 @@ const AddMedicine = ({ setModal }) => {
                                     </label>
                                     <input
                                         type="text"
-                                        placeholder="Remarks"
                                         className="input bg-gray-100 w-full "
                                         {...register("remarks")} />
                                 </div>
