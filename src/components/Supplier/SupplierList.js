@@ -4,6 +4,7 @@ import useSupplier from "../../hooks/useSupplier";
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { GoPlus } from 'react-icons/go';
+import AddSupplier from "./AddSupplier";
 
 
 const SupplierList = () => {
@@ -153,6 +154,12 @@ const SupplierList = () => {
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div>
+                {
+                    supplierModal && <AddSupplier setSupplierModal={setSupplierModal} />
+                }
             </div>
 
 

@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-const AddSupplier = () => {
+const AddSupplier = ({ setSupplierModal }) => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const onSubmit = data => {
 
@@ -39,11 +39,15 @@ const AddSupplier = () => {
 
     return (
         <div className='bg-white'>
-            <div className="h-screen">
-                <div className='bg-base-100 py-4 px-5 border-b-2'>
-                    <h1 className='uppercase text-primary text-left text-xl font-bold'>Add Supplier</h1>
-                </div>
-                <div className='container mx-auto'>
+            <input type="checkbox" id="add-supplier" className="modal-toggle" />
+
+            <div className="modal modal-bottom sm:modal-middle">
+                <div className="modal-box min-w-[50%] px-10 bg-white">
+                    <div className='border-b-2'>
+                        <label htmlFor="add-supplier" className="btn btn-sm btn-ghost font-bold text-lg btn-square absolute right-8 top-5">✕</label>
+                        <h1 className='uppercase text-left text-primary text-xl font-bold'>Create New Vendor</h1>
+                    </div>
+
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className=''>
                             <div className="form-control max-w-xl mx-auto">
@@ -204,14 +208,17 @@ const AddSupplier = () => {
                                 </label>
                             </div>
 
-                            <div className='flex justify-center items-center max-w-xl mx-auto'>
-                                <Link to='/supplierList' className="btn btn-primary text-white px-10 ml-5" >Back</Link>
-                                <input type="submit" className="btn btn-secondary ml-5 text-white px-10" value='Submit' />
+                            <div className="card-actions justify-center mt-5">
+                                <button onClick={() => setSupplierModal(false)} className="btn btn-secondary px-10 text-white mr-5">Close</button>
+                                <input type="submit" className="btn btn-primary px-10 text-white" value='Submit' />
                             </div>
                         </div>
                     </form>
+
                 </div>
+
             </div>
+
         </div>
     )
 }
