@@ -49,14 +49,14 @@ const AddSupplier = ({ setSupplierModal }) => {
                     </div>
 
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <div className=''>
-                            <div className="form-control max-w-xl mx-auto">
+                        {/* <h2 className='font-semibold'>Supplier Basic info</h2> */}
+                        <div className='grid grid-cols-2 gap-2'>
+                            <div className="form-control w-full mx-auto">
                                 <label className="label">
                                     <span className="font-semibold">Supplier ID</span>
                                 </label>
                                 <input
                                     type="text"
-                                    placeholder="Enter Supplier ID"
                                     className="input bg-gray-100 w-full"
                                     {...register("supplierId", {
                                         required: {
@@ -69,13 +69,12 @@ const AddSupplier = ({ setSupplierModal }) => {
                                 </label>
                             </div>
 
-                            <div className="form-control max-w-xl mx-auto">
+                            <div className="form-control w-full mx-auto">
                                 <label className="label">
                                     <span className="font-semibold">Supplier Name</span>
                                 </label>
                                 <input
                                     type="text"
-                                    placeholder="Enter Supplier Name"
                                     className="input bg-gray-100 w-full "
                                     {...register("supplierName", {
                                         required: {
@@ -88,14 +87,14 @@ const AddSupplier = ({ setSupplierModal }) => {
                                 </label>
                             </div>
 
-
-                            <div className="form-control  max-w-xl mx-auto">
+                        </div>
+                        <div className='grid grid-cols-3 gap-x-5'>
+                            <div className="form-control w-full mx-auto">
                                 <label className="label">
                                     <span className="font-semibold">Supplier Phone Number</span>
                                 </label>
                                 <input
                                     type="text"
-                                    placeholder="Enter Phone Number"
                                     className="input bg-gray-100 w-full"
                                     {...register("supplierPhoneNo", {
                                         required: {
@@ -108,13 +107,12 @@ const AddSupplier = ({ setSupplierModal }) => {
                                 </label>
                             </div>
 
-                            <div className="form-control max-w-xl mx-auto">
+                            <div className="form-control w-full mx-auto">
                                 <label className="label">
                                     <span className="font-semibold">Supplier Email</span>
                                 </label>
                                 <input
                                     type="email"
-                                    placeholder="Enter Supplier Email"
                                     className="input bg-gray-100 w-full"
                                     {...register("email", {
                                         required: {
@@ -132,70 +130,12 @@ const AddSupplier = ({ setSupplierModal }) => {
                                 </label>
                             </div>
 
-                            <div className="form-control max-w-xl mx-auto">
-                                <label className="label">
-                                    <span className="font-semibold">Address</span>
-                                </label>
-                                <input
-                                    type="text"
-                                    placeholder="Enter Address"
-                                    className="input bg-gray-100 w-full"
-                                    {...register("address", {
-                                        required: {
-                                            value: true,
-                                            message: 'Address is required'
-                                        }
-                                    })} />
-                                <label className="label">
-                                    {errors.address?.type === 'required' && <span className="label-text-alt text-red-500">{errors.address.message}</span>}
-                                </label>
-                            </div>
-
-                            <div className="form-control max-w-xl mx-auto">
-                                <label className="label">
-                                    <span className="font-semibold">Contact Person</span>
-                                </label>
-                                <input
-                                    type="text"
-                                    placeholder="Contact Person"
-                                    className="input bg-gray-100 w-full"
-                                    {...register("contactPerson", {
-                                        required: {
-                                            value: true,
-                                            message: 'Contact Person is required'
-                                        }
-                                    })} />
-                                <label className="label">
-                                    {errors.contactPerson?.type === 'required' && <span className="label-text-alt text-red-500">{errors.contactPerson.message}</span>}
-                                </label>
-                            </div>
-
-                            <div className="form-control max-w-xl mx-auto">
-                                <label className="label">
-                                    <span className="font-semibold">Contact Person Mobile</span>
-                                </label>
-                                <input
-                                    type="text"
-                                    placeholder="Contact Person Mobile"
-                                    className="input bg-gray-100 w-full"
-                                    {...register("contactPersonPhoneNo", {
-                                        required: {
-                                            value: true,
-                                            message: 'Country of origin is required'
-                                        }
-                                    })} />
-                                <label className="label">
-                                    {errors.contactPersonMobile?.type === 'required' && <span className="label-text-alt text-red-500">{errors.contactPersonMobile.message}</span>}
-                                </label>
-                            </div>
-
-                            <div className="form-control max-w-xl mx-auto">
+                            <div className="form-control w-full mx-auto">
                                 <label className="label">
                                     <span className="font-semibold">Status</span>
                                 </label>
                                 <input
                                     type="text"
-                                    placeholder="Status"
                                     className="input bg-gray-100 w-full"
                                     {...register("status", {
                                         required: {
@@ -208,18 +148,135 @@ const AddSupplier = ({ setSupplierModal }) => {
                                 </label>
                             </div>
 
-                            <div className="card-actions justify-center mt-5">
-                                <button onClick={() => setSupplierModal(false)} className="btn btn-secondary px-10 text-white mr-5">Close</button>
-                                <input type="submit" className="btn btn-primary px-10 text-white" value='Submit' />
+                        </div>
+
+
+                        <div className="form-control w-full mx-auto">
+                            <label className="label">
+                                <span className="font-semibold">Address</span>
+                            </label>
+                            <textarea
+                                type="text"
+                                className="textarea textarea-bordered bg-gray-100 w-full"
+                                {...register("address", {
+                                    required: {
+                                        value: true,
+                                        message: 'Address is required'
+                                    }
+                                })} />
+                            <label className="label">
+                                {errors.address?.type === 'required' && <span className="label-text-alt text-red-500">{errors.address.message}</span>}
+                            </label>
+                        </div>
+
+                        <div className='grid grid-cols-3 gap-x-5'>
+                            <div className="form-control w-full mx-auto">
+                                <label className="label">
+                                    <span className="font-semibold">District</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    className="input bg-gray-100 w-full"
+                                    {...register("district", {
+                                        required: {
+                                            value: true,
+                                            message: 'District is required'
+                                        }
+                                    })} />
+                                <label className="label">
+                                    {errors.district?.type === 'required' && <span className="label-text-alt text-red-500">{errors.district.message}</span>}
+                                </label>
+                            </div>
+
+                            <div className="form-control w-full mx-auto">
+                                <label className="label">
+                                    <span className="font-semibold">Thana</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    className="input bg-gray-100 w-full"
+                                    {...register("thana", {
+                                        required: {
+                                            value: true,
+                                            message: 'Thana is required'
+                                        }
+                                    })} />
+                                <label className="label">
+                                    {errors.thana?.type === 'required' && <span className="label-text-alt text-red-500">{errors.thana.message}</span>}
+                                </label>
+                            </div>
+
+                            <div className="form-control w-full mx-auto">
+                                <label className="label">
+                                    <span className="font-semibold">Zip code</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    className="input bg-gray-100 w-full"
+                                    {...register("zipCode", {
+                                        required: {
+                                            value: true,
+                                            message: 'Contact Person is required'
+                                        }
+                                    })} />
+                                <label className="label">
+                                    {errors.zipCode?.type === 'required' && <span className="label-text-alt text-red-500">{errors.zipCode.message}</span>}
+                                </label>
+                            </div>
+
+                        </div>
+
+                        <div className='grid grid-cols-2 gap-x-5'>
+
+                            <div className="form-control w-full mx-auto">
+                                <label className="label">
+                                    <span className="font-semibold">Contact Person</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    className="input bg-gray-100 w-full"
+                                    {...register("contactPerson", {
+                                        required: {
+                                            value: true,
+                                            message: 'Contact Person is required'
+                                        }
+                                    })} />
+                                <label className="label">
+                                    {errors.contactPerson?.type === 'required' && <span className="label-text-alt text-red-500">{errors.contactPerson.message}</span>}
+                                </label>
+                            </div>
+
+                            <div className="form-control w-full mx-auto">
+                                <label className="label">
+                                    <span className="font-semibold">Contact Person Mobile</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    className="input bg-gray-100 w-full"
+                                    {...register("contactPersonPhoneNo", {
+                                        required: {
+                                            value: true,
+                                            message: 'Country of origin is required'
+                                        }
+                                    })} />
+                                <label className="label">
+                                    {errors.contactPersonMobile?.type === 'required' && <span className="label-text-alt text-red-500">{errors.contactPersonMobile.message}</span>}
+                                </label>
                             </div>
                         </div>
+
+                        <div className="flex justify-center items-center mt-5">
+                            <button onClick={() => setSupplierModal(false)} className="btn btn-secondary px-10 text-white mr-5">Close</button>
+                            <input type="submit" className="btn btn-primary px-10 text-white" value='Submit' />
+                        </div>
+
                     </form>
 
                 </div>
 
-            </div>
+            </div >
 
-        </div>
+        </div >
     )
 }
 
