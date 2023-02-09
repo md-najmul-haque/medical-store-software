@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { IoIosCreate } from 'react-icons/io';
+import { TbFileImport, TbFileExport } from 'react-icons/tb';
 import useSupplier from "../../hooks/useSupplier";
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { AiOutlineEdit } from 'react-icons/ai';
@@ -16,7 +15,9 @@ const SupplierList = () => {
             <div className='bg-base-100 py-3 px-5 border-b-2 flex justify-between items-center'>
                 <h1 className='uppercase text-xl text-primary font-bold text-left'>Supplier List</h1>
 
-                <div className='flex justify-end'>
+                <div className='flex justify-end gap-1'>
+                    <label htmlFor="add-supplier" onClick={() => { setSupplierModal(true) }} className="btn btn-primary btn-sm btn-square text-white normal-case" ><TbFileImport /></label>
+                    <label htmlFor="add-supplier" onClick={() => { setSupplierModal(true) }} className="btn btn-primary btn-sm btn-square text-white normal-case" ><TbFileExport /></label>
                     <label htmlFor="add-supplier" onClick={() => { setSupplierModal(true) }} className="btn btn-primary btn-sm btn-square text-white normal-case" ><GoPlus /></label>
                 </div>
             </div>
