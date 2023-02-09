@@ -34,6 +34,7 @@ const AddMedicine = ({ setModal }) => {
                         lotControl: data.lotControl,
                         quantity: data.quantity,
                         expData: data.expData,
+                        batchNo: data.batchNo,
                         price: data.price,
                         imageURL: img,
                         remarks: data.remarks,
@@ -219,12 +220,12 @@ const AddMedicine = ({ setModal }) => {
                                     />
                                 </div>
 
-                                </div>
-                      
+                            </div>
+
 
                             <div className='grid grid-cols-4 gap-5'>
-                                
-                            <div className="form-control w-full ">
+
+                                <div className="form-control w-full ">
                                     <label className="label">
                                         <span className="font-semibold">Batch No</span>
                                     </label>
@@ -252,7 +253,7 @@ const AddMedicine = ({ setModal }) => {
                                         <option>No</option>
                                     </select>
                                 </div>
-                                
+
                                 <div className="form-control w-full ">
                                     <label className="label">
                                         <span className="font-semibold">Measurement Unit</span>
