@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { GoPlus } from 'react-icons/go';
-import { Link } from 'react-router-dom';
 import useMedicine from '../../hooks/useMedicine';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { AiOutlineEdit } from 'react-icons/ai';
@@ -8,7 +7,7 @@ import AddMedicine from './AddMedicine';
 
 const MedicineList = () => {
 
-    const [modal, setModal] = useState(false)
+    const [medicineModal, setMedicineModal] = useState(false)
     const [medicines] = useMedicine()
 
     return (
@@ -49,7 +48,7 @@ const MedicineList = () => {
                 </div>
 
                 <div className='flex justify-end'>
-                    <label htmlFor="add-medicine" onClick={() => { setModal(true) }} className="btn btn-primary w-40 text-white normal-case mt-9" ><span className="mr-1"><GoPlus /></span>Add Medicine</label>
+                    <label htmlFor="add-medicine" onClick={() => { setMedicineModal(true) }} className="btn btn-primary w-40 text-white normal-case mt-9" ><span className="mr-1"><GoPlus /></span>Add Medicine</label>
                 </div>
 
             </div>
@@ -200,7 +199,7 @@ const MedicineList = () => {
 
             <div>
                 {
-                    modal && <AddMedicine setModal={setModal} />
+                    medicineModal && <AddMedicine setMedicineModal={setMedicineModal} />
                 }
             </div>
 

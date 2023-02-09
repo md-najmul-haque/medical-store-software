@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
-const AddMedicine = ({ setModal }) => {
+const AddMedicine = ({ setMedicineModal }) => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
     const onSubmit = data => {
@@ -49,12 +49,16 @@ const AddMedicine = ({ setModal }) => {
                     })
                         .then(res => res.json())
                         .then(medicine => {
-                            reset()
-                            toast.success("Medicine Data Saved Successfully")
+                            if (medicine.status === "success") {
+                                setMedicineModal(false)
+                                reset()
+                                toast.success("Medicine Data Saved Successfully")
+                            } else {
+                                toast.error('Fail to saved medicine data. Please try again later')
+                            }
                         })
                 }
             })
-
 
     }
 
@@ -325,7 +329,7 @@ const AddMedicine = ({ setModal }) => {
                             </div>
 
                             <div className="card-actions justify-center mt-5">
-                                <button onClick={() => setModal(false)} className="btn btn-secondary px-10 text-white mr-5">Close</button>
+                                <button onClick={() => setMedicineModal(false)} className="btn btn-secondary px-10 text-white mr-5">Close</button>
                                 <input type="submit" className="btn btn-primary px-10 text-white" value='Submit' />
                             </div>
                         </form >
