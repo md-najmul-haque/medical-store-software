@@ -5,12 +5,17 @@ import { MdOutlinePayment } from 'react-icons/md';
 import { AiOutlineStock } from 'react-icons/ai';
 import { HiDocumentReport } from 'react-icons/hi';
 import { FaCartPlus, FaUser, FaUserTie } from 'react-icons/fa';
+import logo from '../assets/logo.png'
 
 const Dashboard = () => {
     return (
         <div>
             <div class="w-60 h-full font-semibold shadow-md bg-gray-100 px-1 absolute" id="sidenavExample">
                 <ul class="relative">
+                    <li class="relative" id="sidenavEx1">
+                        <img src={logo} alt="" />
+                    </li>
+
                     <li class="relative" id="sidenavEx1">
                         <a class="flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded hover:text-gray-900 hover:bg-gray-100 transition duration-300 ease-in-out cursor-pointer" data-mdb-ripple="true" data-mdb-ripple-color="dark" data-bs-toggle="collapse" data-bs-target="#collapseSidenavEx1" aria-expanded="true" aria-controls="collapseSidenavEx1">
                             <FcSalesPerformance /> <span className='ml-2'>Sales</span>

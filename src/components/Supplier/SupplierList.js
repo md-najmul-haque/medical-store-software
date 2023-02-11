@@ -19,9 +19,9 @@ const SupplierList = () => {
                 <h1 className='uppercase text-xl text-primary font-bold text-left'>Supplier List</h1>
 
                 <div className='flex justify-end gap-1'>
-                    <label htmlFor="import-supplier" onClick={() => { setImportSupplier(true) }} className="btn btn-primary btn-sm btn-square text-white normal-case" ><TbFileImport /></label>
-                    <label htmlFor="" className="btn btn-primary btn-sm btn-square text-white normal-case" ><TbFileExport /></label>
-                    <label htmlFor="add-supplier" onClick={() => { setSupplierModal(true) }} className="btn btn-primary btn-sm btn-square text-white normal-case" ><GoPlus /></label>
+                    <label htmlFor="import-supplier" onClick={() => { setImportSupplier(true) }} className="btn btn-primary btn-sm text-white normal-case" ><span className="mr-1"><TbFileImport /></span>Import</label>
+                    <label htmlFor="" className="btn btn-primary  text-white normal-case btn-sm" ><span className="mr-1"><TbFileExport /></span> Export</label>
+                    <label htmlFor="add-supplier" onClick={() => { setSupplierModal(true) }} className="btn btn-primary btn-sm text-white normal-case" > <span className="mr-1"><GoPlus /></span> Add New</label>
                 </div>
             </div>
             <div className="flex gap-16 justify-end mt-10 mr-2">
