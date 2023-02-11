@@ -8,7 +8,6 @@ import { MdOutlinePayment } from 'react-icons/md';
 import { AiOutlineStock } from 'react-icons/ai';
 import { HiDocumentReport } from 'react-icons/hi';
 import { FaCartPlus, FaUser, FaUserTie } from 'react-icons/fa';
-import logo from '../assets/logo.png'
 
 const DashboardLayout = () => {
     return (
