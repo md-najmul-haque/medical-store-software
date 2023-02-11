@@ -5,7 +5,7 @@ import SupplierList from "../components/Supplier/SupplierList";
 import Main from "../Layouts/Main";
 import MedicineList from "../components/Medicine/MedicineList";
 import SalesBill from "../components/SalesBill/SalesBill";
-import DashboardLayout from "../components/DashboardLayout";
+import DashboardLayout from "../components/Dashboard/DashboardLayout";
 import PurchaseBill from "../components/PurchaseBill";
 import Dashboard from "../components/Dashboard/Dashboard";
 
