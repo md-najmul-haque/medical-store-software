@@ -79,7 +79,7 @@ const MedicineList = () => {
                     <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                         <div class="overflow-hidden">
                             <table class="min-w-full text-center">
-                                <thead class="bg-sky-300 border-b-2">
+                                <thead class="bg-base-100 border-b-2">
                                     <tr>
                                         <th scope="col" class="px-5 py-4">
                                             Sl

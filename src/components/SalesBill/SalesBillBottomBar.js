@@ -9,7 +9,7 @@ const SalesBillBottomBar = ({ total, totalDiscount, vatPercentage }) => {
     }
 
     return (
-        <div className='absolute inset-x-0 bottom-2 '>
+        <div className='absolute bg-base-100 py-2 inset-x-0 bottom-2 '>
             <div className='flex justify-between items-center pl-5 pr-10'>
                 <div className='grid grid-cols-3'>
                     <div class="flex items-center">

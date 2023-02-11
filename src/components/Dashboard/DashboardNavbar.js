@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 const DashboardNavbar = () => {
     return (
-        <div className="navbar">
+        <div className="navbar bg-base-100 mb-5">
             <div className="navbar-start">
                 <div className='w-48'>
                     <img src={logo} alt="" />
