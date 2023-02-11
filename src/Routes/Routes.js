@@ -8,36 +8,15 @@ import Main from "../Layouts/Main";
 import MedicineList from "../components/Medicine/MedicineList";
 import AddMedicine from "../components/Medicine/AddMedicine";
 import SalesBill from "../components/SalesBill/SalesBill";
+import DashboardMain from "../components/DashboardMain";
+import DashboardLayout from "../components/DashboardLayout";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Main />,
         children: [
-            {
-                path: "/",
-                element: <Dashboard />
-            },
-            {
-                path: "/salesBill",
-                element: <SalesBill />
-            },
-            {
-                path: "/medicineList",
-                element: <MedicineList />,
-            },
-            {
-                path: "/addMedicine",
-                element: <AddMedicine />,
-            },
-            {
-                path: "/supplierList",
-                element: <SupplierList />
-            },
-            {
-                path: "/addSupplier",
-                element: <AddSupplier />
-            },
+
             {
                 path: "/categoryList",
                 element: <CategoryList />
@@ -49,6 +28,27 @@ const router = createBrowserRouter([
 
         ]
     },
+
+    {
+        path: '/dashboard',
+        element: <DashboardLayout />,
+        children: [
+            {
+                path: '/dashboard',
+                element: <Dashboard />
+            },
+            {
+                path: '/dashboard/supplierList',
+                element: <SupplierList />
+            },
+            {
+                path: '/dashboard/salesBill',
+                element: <SalesBill />
+
+            }
+
+        ]
+    }
 
 ])
 
