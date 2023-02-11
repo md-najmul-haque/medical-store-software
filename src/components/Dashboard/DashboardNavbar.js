@@ -5,14 +5,14 @@ import { FaUserPlus } from 'react-icons/fa';
 import logo from '../../assets/logo.png'
 import { Link } from 'react-router-dom';
 
-
-const SalesBillNavbar = () => {
+const DashboardNavbar = () => {
     return (
         <div className="navbar">
             <div className="navbar-start">
                 <div className='w-48'>
                     <img src={logo} alt="" />
                 </div>
+
             </div>
 
             <div className="navbar-end">
@@ -45,4 +45,4 @@ const SalesBillNavbar = () => {
     );
 };
 
-export default SalesBillNavbar;
+export default DashboardNavbar;

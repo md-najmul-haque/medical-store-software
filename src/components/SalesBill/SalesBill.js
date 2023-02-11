@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import DashboardNavbar from '../Dashboard/DashboardNavbar';
 import SalesBillBottomBar from './SalesBillBottomBar';
 import SalesBillForm from './SalesBillForm';
 import SalesBillNavbar from './SalesBillNavbar';
@@ -66,7 +67,7 @@ const SalesBill = () => {
 
     return (
         <div className='h-screen bg-white'>
-            {/* <SalesBillNavbar /> */}
+            <DashboardNavbar />
             <div className='grid grid-cols-2 gap-5'>
                 <SalesBillSidebar
                     medicines={medicines}

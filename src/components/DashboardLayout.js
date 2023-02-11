@@ -1,21 +1,18 @@
 
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import SalesBillNavbar from './SalesBill/SalesBillNavbar';
-import { FcSalesPerformance } from 'react-icons/fc';
 import { BiPurchaseTag } from 'react-icons/bi';
 import { MdOutlinePayment } from 'react-icons/md';
 import { AiOutlineHome, AiOutlineStock } from 'react-icons/ai';
 import { HiDocumentReport } from 'react-icons/hi';
 import { FaCartPlus, FaUser, FaUserTie } from 'react-icons/fa';
 import { GiMedicines } from 'react-icons/gi';
-
-
+import DashboardNavbar from './Dashboard/DashboardNavbar';
 
 const DashboardLayout = () => {
     return (
         <div>
-            <SalesBillNavbar />
+            <DashboardNavbar />
             <div className="drawer drawer-mobile">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content">
