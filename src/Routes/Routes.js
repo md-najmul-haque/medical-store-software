@@ -6,6 +6,7 @@ import Main from "../Layouts/Main";
 import MedicineList from "../components/Medicine/MedicineList";
 import SalesBill from "../components/SalesBill/SalesBill";
 import DashboardLayout from "../components/DashboardLayout";
+import PurchaseBill from "../components/PurchaseBill";
 
 const router = createBrowserRouter([
     {
@@ -34,16 +35,20 @@ const router = createBrowserRouter([
                 element: <SalesBill />
             },
             {
+                path: '/dashboard/purchaseBill',
+                element: <PurchaseBill />
+            },
+            {
                 path: '/dashboard/medicineList',
                 element: <MedicineList />
             },
             {
                 path: '/dashboard/categoryList',
-                element: <MedicineList />
+                element: <CategoryList />
             },
             {
                 path: '/dashboard/supplierList',
-                element: <CategoryList />
+                element: <SupplierList />
             },
             {
                 path: '/dashboard/salesBill',

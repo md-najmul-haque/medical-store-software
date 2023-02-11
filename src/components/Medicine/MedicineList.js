@@ -43,8 +43,8 @@ const MedicineList = () => {
                 </div>
 
                 <div className='mt-9'>
-                    <button className='btn btn-primary text-white px-10'>Find</button>
-                    <button className='btn btn-secondary text-white ml-5 px-10'>Excel</button>
+                    <button className='btn btn-primary text-white px-7'>Find</button>
+                    <button className='btn btn-secondary text-white ml-5 px-5'>Excel</button>
                 </div>
 
                 <div className='flex justify-end'>
