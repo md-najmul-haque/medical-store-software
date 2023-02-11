@@ -7,6 +7,7 @@ import MedicineList from "../components/Medicine/MedicineList";
 import SalesBill from "../components/SalesBill/SalesBill";
 import DashboardLayout from "../components/DashboardLayout";
 import PurchaseBill from "../components/PurchaseBill";
+import Dashboard from "../components/Dashboard/Dashboard";
 
 const router = createBrowserRouter([
     {
@@ -15,12 +16,8 @@ const router = createBrowserRouter([
         children: [
 
             {
-                path: "/categoryList",
-                element: <CategoryList />
-            },
-            {
-                path: "addCategory",
-                element: <AddCategory />
+                path: "/salesBill",
+                element: <SalesBill />
             }
 
         ]
@@ -32,7 +29,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/dashboard',
-                element: <SalesBill />
+                element: <Dashboard />
             },
             {
                 path: '/dashboard/purchaseBill',
