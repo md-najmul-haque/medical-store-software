@@ -1,6 +1,7 @@
 import React from 'react';
-import { BsPeople } from 'react-icons/bs';
+import { BsCurrencyDollar, BsPeople } from 'react-icons/bs';
 import { FaFileInvoiceDollar } from 'react-icons/fa';
+import { TbCurrencyTaka } from 'react-icons/tb';
 import { Bar, BarChart, CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 
 const Dashboard = () => {
@@ -21,7 +22,7 @@ const Dashboard = () => {
         {
             "name": "March",
             "income": 2000,
-            "expense": 9800,
+            "expense": 1800,
 
         },
         {
@@ -63,7 +64,7 @@ const Dashboard = () => {
         {
             "name": "October",
             "income": 2000,
-            "expense": 9800,
+            "expense": 2800,
 
         },
         {
@@ -82,62 +83,126 @@ const Dashboard = () => {
 
     ]
 
+    const lineChartData = [
+        { date: '2022-01-01', income: 3200, expense: 3000 },
+        { date: '2022-02-01', income: 3800, expense: 4000 },
+        { date: '2022-03-01', income: 3800, expense: 3500 },
+        { date: '2022-04-01', income: 4200, expense: 4000 },
+        { date: '2022-05-01', income: 3800, expense: 3500 },
+        { date: '2022-01-01', income: 3200, expense: 3000 },
+        { date: '2022-02-01', income: 4200, expense: 4000 },
+        { date: '2022-03-01', income: 4000, expense: 3500 },
+        { date: '2022-04-01', income: 4200, expense: 4000 },
+        { date: '2022-05-01', income: 3600, expense: 3500 },
+    ];
+
     return (
-        <div>
-            <div className='grid grid-cols-3 gap-x-5'>
-                <div className='grid grid-cols-4 gap-x-5 col-span-2'>
-                    <div className='bg-white pb-10 pt-6 rounded-xl shadow-lg pl-7'>
-                        <p className='p-2 bg-info inline-block mb-5 text-white font-bold text-xl rounded-lg'><BsPeople /></p>
-                        <small className='block'>Total</small>
-                        <p className='font-semibold py-1'>Customers</p>
-                        <p className='font-bold text-xl'>1</p>
-                    </div>
 
-                    <div className='bg-white pb-10 pt-6 rounded-xl shadow-lg pl-7'>
-                        <p className='p-2 bg-secondary inline-block mb-5 text-white font-bold text-xl rounded-lg'><BsPeople /></p>
-                        <small className='block'>Total</small>
-                        <p className='font-semibold py-1'>Vendors</p>
-                        <p className='font-bold text-xl'>1</p>
-                    </div>
+        <div className='grid grid-cols-3 gap-x-5 w-full'>
+            <div className='grid grid-cols-4 gap-x-5 col-span-2'>
+                <div className='bg-white pb-10 pt-6 rounded-xl shadow-lg pl-7'>
+                    <p className='p-2 bg-info inline-block mb-5 text-white font-bold text-xl rounded-lg'><BsPeople /></p>
+                    <small className='block'>Total</small>
+                    <p className='font-semibold py-1'>Customers</p>
+                    <p className='font-bold text-xl'>1</p>
+                </div>
 
-                    <div className='bg-white pb-10 pt-6 rounded-xl shadow-lg pl-7'>
-                        <p className='p-2 bg-success inline-block mb-5 text-white font-bold text-xl rounded-lg'> <FaFileInvoiceDollar /></p>
-                        <small className='block'>Total</small>
-                        <p className='font-semibold py-1'>Invoices</p>
-                        <p className='font-bold text-xl'>1</p>
-                    </div>
+                <div className='bg-white pb-10 pt-6 rounded-xl shadow-lg pl-7'>
+                    <p className='p-2 bg-secondary inline-block mb-5 text-white font-bold text-xl rounded-lg'><BsPeople /></p>
+                    <small className='block'>Total</small>
+                    <p className='font-semibold py-1'>Vendors</p>
+                    <p className='font-bold text-xl'>1</p>
+                </div>
 
-                    <div className='bg-white pb-10 pt-6 rounded-xl shadow-lg pl-7'>
-                        <p className='p-2 bg-red-500 inline-block mb-5 text-white font-bold text-xl rounded-lg'> <FaFileInvoiceDollar /></p>
-                        <small className='block'>Total</small>
-                        <p className='font-semibold py-1'>Bills</p>
-                        <p className='font-bold text-xl'>1</p>
-                    </div>
+                <div className='bg-white pb-10 pt-6 rounded-xl shadow-lg pl-7'>
+                    <p className='p-2 bg-success inline-block mb-5 text-white font-bold text-xl rounded-lg'> <FaFileInvoiceDollar /></p>
+                    <small className='block'>Total</small>
+                    <p className='font-semibold py-1'>Invoices</p>
+                    <p className='font-bold text-xl'>1</p>
+                </div>
 
-                    <div className='col-span-4 shadow-lg rounded-xl bg-white mt-5'>
-                        <div className='flex justify-between font-semibold px-7 border-b-2 text-lg py-4 my-2'>
-                            <p className='text-primary'>Income and Expense</p>
-                            <p className='text-gray-400'> Current Year - 2023</p>
-                        </div>
-                        <div className='pl-7'>
-                            <ResponsiveContainer width="95%" height={400}>
-                                <BarChart data={data}>
-                                    {/* <CartesianGrid strokeDasharray="3 3" /> */}
-                                    <XAxis dataKey="name" />
-                                    {/* <YAxis /> */}
-                                    <Tooltip />
-                                    <Legend />
-                                    <Bar dataKey="income" fill="#8884d8" />
-                                    <Bar dataKey="expense" fill="#82ca9d" />
-                                </BarChart>
-                            </ResponsiveContainer>
+                <div className='bg-white pb-10 pt-6 rounded-xl shadow-lg pl-7'>
+                    <p className='p-2 bg-red-500 inline-block mb-5 text-white font-bold text-xl rounded-lg'> <FaFileInvoiceDollar /></p>
+                    <small className='block'>Total</small>
+                    <p className='font-semibold py-1'>Bills</p>
+                    <p className='font-bold text-xl'>1</p>
+                </div>
+
+                <div className='col-span-4 shadow-lg rounded-xl bg-white mt-5'>
+                    <div className='flex justify-between font-semibold px-7 border-b-2 text-lg py-4 my-2'>
+                        <p className='text-primary'>Income and Expense</p>
+                        <p className='text-gray-400'> Current Year - 2023</p>
+                    </div>
+                    <div className='pl-7'>
+                        <ResponsiveContainer width="95%" height={400}>
+                            <BarChart data={data}>
+                                {/* <CartesianGrid strokeDasharray="3 3" /> */}
+                                <XAxis dataKey="name" />
+                                {/* <YAxis /> */}
+                                <Tooltip />
+                                <Legend />
+                                <Bar dataKey="income" fill="#8884d8" />
+                                <Bar dataKey="expense" fill="#82ca9d" />
+                            </BarChart>
+                        </ResponsiveContainer>
+                    </div>
+                </div>
+
+                <div className='col-span-4 shadow-lg rounded-xl bg-white mt-5'>
+                    <h2 className='font-semibold pl-5 text-lg py-1 my-4 border-l-4 border-gray-500'>Account Balance</h2>
+                    <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                        <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                            <div class="overflow-hidden">
+                                <table class="min-w-full text-center">
+                                    <thead style={{ backgroundColor: "#f8f9fd" }} class="bg-white text-primary border-b">
+                                        <tr>
+                                            <th scope="col" class="px-6 py-4">
+                                                BANK
+                                            </th>
+                                            <th scope="col" class="px-6 py-4">
+                                                HOLDER NAME
+                                            </th>
+                                            <th scope="col" class="px-6 py-4">
+                                                BALANCE
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap text-md font-medium"></td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-md font-medium">Cash</td>
+                                            <td class="text-md px-6 py-4 flex justify-center items-center">
+                                                <TbCurrencyTaka /> <span className='ml-1'>20000</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div>2</div>
             </div>
-
+            <div>
+                <div className='bg-white shadow-lg rounded-xl mt-0 pt-0'>
+                    <div className='flex justify-between font-semibold px-7 border-b-2 text-lg py-4 my-2'>
+                        <p className='text-primary'>Cashflow</p>
+                    </div>
+                    <div className='pl-7'>
+                        <ResponsiveContainer width="95%" height={300}>
+                            <LineChart data={lineChartData}>
+                                <CartesianGrid strokeDasharray="3 3" />
+                                <XAxis dataKey="date" />
+                                <Tooltip />
+                                <Legend />
+                                <Line type="monotone" dataKey="income" stroke="#8884d8" activeDot={{ r: 8 }} />
+                                <Line type="monotone" dataKey="expense" stroke="#82ca9d" />
+                            </LineChart>
+                        </ResponsiveContainer>
+                    </div>
+                </div>
+            </div>
         </div>
+
     );
 };
 
