@@ -1,5 +1,6 @@
 import React from 'react';
-import { BsCurrencyDollar, BsPeople } from 'react-icons/bs';
+import { BsPeople } from 'react-icons/bs';
+import { CgFileDocument } from 'react-icons/cg';
 import { FaFileInvoiceDollar } from 'react-icons/fa';
 import { TbCurrencyTaka } from 'react-icons/tb';
 import { Bar, BarChart, CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
@@ -198,6 +199,60 @@ const Dashboard = () => {
                                 <Line type="monotone" dataKey="expense" stroke="#82ca9d" />
                             </LineChart>
                         </ResponsiveContainer>
+                    </div>
+                </div>
+
+                <div className='bg-white shadow-lg rounded-xl mt-5 p-5'>
+                    <h2 className='font-semibold pl-5 text-lg py-1 mb-3'>Income vs Expense</h2>
+                    <div className='grid grid-cols-2 gap-5 pl-5'>
+                        <div className='flex justify-start items-center'>
+                            <div className='flex justify-center items-center'>
+                                <p className='p-2 bg-info text-white font-bold text-xl rounded-lg'><FaFileInvoiceDollar /></p>
+                            </div>
+                            <div className='ml-2'>
+                                <small className='block'>Today's Income</small>
+                                <p class="flex justify-start items-center font-bold text-success">
+                                    <TbCurrencyTaka /> <span className='ml-1'>20000</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className='flex justify-start items-center'>
+                            <div className='flex justify-center items-center'>
+                                <p className='p-2 bg-secondary text-white font-bold text-xl rounded-lg'><CgFileDocument /></p>
+                            </div>
+                            <div className='ml-2'>
+                                <small className='block'>Today's Expense</small>
+                                <p class="flex justify-start items-center font-bold text-success">
+                                    <TbCurrencyTaka /> <span className='ml-1'>20000</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className='flex justify-start items-center'>
+                            <div className='flex justify-center items-center'>
+                                <p className='p-2 bg-success text-white font-bold text-xl rounded-lg'><CgFileDocument /></p>
+                            </div>
+                            <div className='ml-2'>
+                                <small className='block'>This Month Income</small>
+                                <p class="flex justify-start items-center font-bold text-success">
+                                    <TbCurrencyTaka /> <span className='ml-1'>20000</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className='flex justify-start items-center'>
+                            <div className='flex justify-center items-center'>
+                                <p className='p-2 bg-warning text-white font-bold text-xl rounded-lg'><FaFileInvoiceDollar /></p>
+                            </div>
+                            <div className='ml-2'>
+                                <small className='block'>This Month Expense</small>
+                                <p class="flex justify-start items-center font-bold text-success">
+                                    <TbCurrencyTaka /> <span className='ml-1'>20000</span>
+                                </p>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
