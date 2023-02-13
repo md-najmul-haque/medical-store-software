@@ -255,6 +255,40 @@ const Dashboard = () => {
 
                     </div>
                 </div>
+
+                <div className='shadow-lg rounded-xl bg-white mt-5'>
+                    <h2 className='font-semibold pl-5 text-lg py-1 mt-4 border-l-4 border-gray-500'>Latest Expanse</h2>
+                    <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                        <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                            <div class="overflow-hidden">
+                                <table class="min-w-full text-center">
+                                    <thead style={{ backgroundColor: "#f8f9fd" }} class="bg-white text-primary border-b">
+                                        <tr>
+                                            <th scope="col" class="px-6 py-4">
+                                                Date
+                                            </th>
+                                            <th scope="col" class="px-6 py-4">
+                                                CUSTOMER
+                                            </th>
+                                            <th scope="col" class="px-6 py-4">
+                                                AMOUNT DUE
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap text-md font-medium"></td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-md font-medium">Cash</td>
+                                            <td class="text-md px-6 py-4 flex justify-center items-center">
+                                                <TbCurrencyTaka /> <span className='ml-1'>20000</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
