@@ -1,8 +1,86 @@
 import React from 'react';
 import { BsPeople } from 'react-icons/bs';
 import { FaFileInvoiceDollar } from 'react-icons/fa';
+import { Bar, BarChart, CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 
 const Dashboard = () => {
+
+    const data = [
+        {
+            "name": "January",
+            "income": 4000,
+            "expense": 2400,
+
+        },
+        {
+            "name": "February",
+            "income": 3000,
+            "expense": 1398,
+
+        },
+        {
+            "name": "March",
+            "income": 2000,
+            "expense": 9800,
+
+        },
+        {
+            "name": "April",
+            "income": 2780,
+            "expense": 3908,
+
+        },
+        {
+            "name": "May",
+            "income": 1890,
+            "expense": 4800,
+
+        },
+        {
+            "name": "June",
+            "income": 2390,
+            "expense": 3800,
+
+        },
+        {
+            "name": "July",
+            "income": 3490,
+            "expense": 4300,
+
+        },
+        {
+            "name": "August",
+            "income": 4000,
+            "expense": 2400,
+
+        },
+        {
+            "name": "September",
+            "income": 3000,
+            "expense": 1398,
+
+        },
+        {
+            "name": "October",
+            "income": 2000,
+            "expense": 9800,
+
+        },
+        {
+            "name": "November",
+            "income": 2780,
+            "expense": 3908,
+
+        },
+        {
+            "name": "December",
+            "income": 1890,
+            "expense": 4800,
+
+        }
+
+
+    ]
 
     return (
         <div>
@@ -36,12 +114,24 @@ const Dashboard = () => {
                         <p className='font-bold text-xl'>1</p>
                     </div>
 
-                    <div className='col-span-4 bg-white'>
-                        <div className='flex justify-between'>
-                            <p>Income and Expense</p>
-                            <p>Current Year - 2023</p>
+                    <div className='col-span-4 shadow-lg rounded-xl bg-white mt-5'>
+                        <div className='flex justify-between font-semibold px-7 border-b-2 text-lg py-4 my-2'>
+                            <p className='text-primary'>Income and Expense</p>
+                            <p className='text-gray-400'> Current Year - 2023</p>
                         </div>
-
+                        <div className='pl-7'>
+                            <ResponsiveContainer width="95%" height={400}>
+                                <BarChart data={data}>
+                                    {/* <CartesianGrid strokeDasharray="3 3" /> */}
+                                    <XAxis dataKey="name" />
+                                    {/* <YAxis /> */}
+                                    <Tooltip />
+                                    <Legend />
+                                    <Bar dataKey="income" fill="#8884d8" />
+                                    <Bar dataKey="expense" fill="#82ca9d" />
+                                </BarChart>
+                            </ResponsiveContainer>
+                        </div>
                     </div>
                 </div>
                 <div>2</div>
