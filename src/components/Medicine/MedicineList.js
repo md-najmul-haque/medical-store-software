@@ -4,11 +4,16 @@ import useMedicine from '../../hooks/useMedicine';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { AiOutlineEdit } from 'react-icons/ai';
 import AddMedicine from './AddMedicine';
+import Loading from '../Loading.js/Loading';
 
 const MedicineList = () => {
 
     const [medicineModal, setMedicineModal] = useState(false)
     const [medicines] = useMedicine()
+
+
+
+    // console.log(medicines)
 
     return (
         <div className='bg-white'>
@@ -74,12 +79,12 @@ const MedicineList = () => {
                 </div>
             </div>
 
-            <div class="flex flex-col px-5">
+            <div class="flex flex-col">
                 <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-                    <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                    <div class="min-w-full sm:px-6 lg:px-8">
                         <div class="overflow-hidden">
                             <table class="min-w-full text-center">
-                                <thead class="bg-base-100 border-b-2">
+                                <thead class="bg-accent border-b-2">
                                     <tr>
                                         <th scope="col" class="px-5 py-4">
                                             Sl

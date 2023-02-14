@@ -5,7 +5,7 @@ const useSupplier = () => {
     const [suppliers, setSuppliers] = useState([])
 
     useEffect(() => {
-        fetch('supplier.json')
+        fetch('/supplier.json')
             .then(res => res.json()
                 .then(data => setSuppliers(data)))
     }, [])

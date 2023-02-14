@@ -15,7 +15,7 @@ const DashboardLayout = () => {
             <DashboardNavbar />
             <div className="drawer drawer-mobile">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-                <div className="drawer-content flex justify-center items-center">
+                <div className="drawer-content">
                     <Outlet />
                     <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
 
@@ -157,7 +157,7 @@ const DashboardLayout = () => {
 
                         <li class="relative" id="sidenavEx3">
                             <Link class="flex items-center text-md py-4 px-6 h-12 overflow-hidden   text-ellipsis whitespace-nowrap rounded-xl mb-2 hover:text-white hover:bg-primary mx-2 focus:bg-primary focus:text-white cursor-pointer" data-bs-toggle="collapse" data-bs-target="#collapseSidenavEx5" aria-expanded="false" aria-controls="collapseSidenavEx5">
-                                <span className='bg-base-100 text-primary p-2 rounded-lg'><FaCartPlus /></span> <span>Item</span>
+                                <span className='bg-base-100 text-primary p-2 rounded-lg mr-1'><FaCartPlus /></span> <span>Item</span>
                                 <svg aria-hidden="true" focusable="false" data-prefix="fas" class="w-3 h-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                     <path fill="currentColor" d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"></path>
                                 </svg>
@@ -176,7 +176,7 @@ const DashboardLayout = () => {
 
                         <li class="relative" id="sidenavEx3">
                             <Link class="flex items-center text-md py-4 px-6 h-12 overflow-hidden   text-ellipsis whitespace-nowrap rounded-xl mb-2 hover:text-white hover:bg-primary mx-2 focus:bg-primary focus:text-white cursor-pointer" data-bs-toggle="collapse" data-bs-target="#collapseSidenavEx7" aria-expanded="false" aria-controls="collapseSidenavEx7">
-                                <span className='bg-base-100 text-primary p-2 rounded-lg'><FaUser /></span>   <span>Users</span>
+                                <span className='bg-base-100 text-primary p-2 rounded-lg mr-1'><FaUser /></span>   <span>Users</span>
                                 <svg aria-hidden="true" focusable="false" data-prefix="fas" class="w-3 h-3 ml-auto" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                     <path fill="currentColor" d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"></path>
                                 </svg>
@@ -196,7 +196,7 @@ const DashboardLayout = () => {
 
                         <li class="relative" id="sidenavEx3">
                             <Link class="flex items-center text-md py-4 px-6 h-12 overflow-hidden   text-ellipsis whitespace-nowrap rounded-xl mb-2 hover:text-white hover:bg-primary mx-2 focus:bg-primary focus:text-white cursor-pointer" data-bs-toggle="collapse" data-bs-target="#collapseSidenavEx3" aria-expanded="false" aria-controls="collapseSidenavEx3">
-                                <span className='bg-base-100 text-primary p-2 rounded-lg'><HiDocumentReport /></span>   <span>Reports</span>
+                                <span className='bg-base-100 text-primary p-2 rounded-lg mr-1'><HiDocumentReport /></span>   <span>Reports</span>
                             </Link>
                         </li>
                     </ul>

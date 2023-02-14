@@ -74,7 +74,7 @@ const SupplierList = () => {
                     <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                         <div class="overflow-hidden">
                             <table class="min-w-full text-center">
-                                <thead class="bg-white text-primary border-b">
+                                <thead class="bg-accent text-primary border-b">
                                     <tr>
                                         <th scope="col" class="px-6 py-4">
                                             Sl
