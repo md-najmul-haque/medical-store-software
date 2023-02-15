@@ -7,10 +7,15 @@ import AddMedicine from './AddMedicine';
 import { Link } from 'react-router-dom';
 
 const MedicineList = () => {
-
-    const [medicineModal, setMedicineModal] = useState(false)
     const [medicines] = useMedicine()
+    const [medicineModal, setMedicineModal] = useState(false)
+    const [query, setQuery] = useState('')
 
+    const keys = ['_id', 'medicineName', 'genericName', 'supplierName', 'type', 'status']
+
+    const search = (data) => {
+        return data.filter(medicine => keys.some(key => medicine[key]?.toLowerCase().includes(query)))
+    }
 
 
     // console.log(medicines)
@@ -27,7 +32,7 @@ const MedicineList = () => {
                 </div>
             </div>
 
-            <div className="bg-white mx-5 shadow-xl rounded-xl">
+            <div className="bg-white mx-5 shadow-xl rounded-xl pt-4">
                 <div className='grid grid-cols-5 gap-x-10 px-5'>
                     <div className="form-control w-full col-span-2">
                         <label className="label">
@@ -79,7 +84,8 @@ const MedicineList = () => {
                                 <span className="label-text font-semibold">Search:</span>
                             </label>
                             <input
-                                type="number"
+                                type="text"
+                                onChange={event => setQuery(event.target.value)}
                                 className="max-w-xs border-2 bg-white focus:outline-none"
                             />
                         </div>
@@ -145,7 +151,7 @@ const MedicineList = () => {
                                     </thead>
                                     <tbody>
                                         {
-                                            medicines?.map((medicine, index) => {
+                                            search(medicines)?.map((medicine, index) => {
                                                 return (
                                                     <tr class="even:bg-gray-100 border-b">
                                                         <td class="px-5 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>

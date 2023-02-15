@@ -14,7 +14,7 @@ const CategoryList = () => {
     const keys = ['_id', 'categoryName', 'status']
 
     const search = (data) => {
-        return data.filter(category => keys.some(key => category[key].toLowerCase().includes(query)))
+        return data.filter(category => keys.some(key => category[key]?.toLowerCase().includes(query)))
     }
 
 
