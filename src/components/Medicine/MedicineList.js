@@ -7,9 +7,12 @@ import AddMedicine from './AddMedicine';
 import { Link } from 'react-router-dom';
 
 const MedicineList = () => {
-    const [medicines] = useMedicine()
+    const [medicines, setMedicines] = useMedicine()
     const [medicineModal, setMedicineModal] = useState(false)
     const [query, setQuery] = useState('')
+    const [medicineQuantity, setMedicineQuantity] = useState(10)
+    const [medicineName, setMedicineName] = useState('')
+    const [selectedMedicine, setSelectedMedicine] = useState(null)
 
     const keys = ['_id', 'medicineName', 'genericName', 'supplierName', 'type', 'status']
 
@@ -17,7 +20,19 @@ const MedicineList = () => {
         return data.filter(medicine => keys.some(key => medicine[key]?.toLowerCase().includes(query)))
     }
 
+    const findMedicine = () => {
 
+        if (medicineName === "All Medicine") {
+            setSelectedMedicine(null)
+
+        } else {
+            const selectedMedicine = medicines.find(medicine => medicine.medicineName === medicineName)
+            setSelectedMedicine(selectedMedicine)
+        }
+
+
+
+    }
     // console.log(medicines)
 
     return (
@@ -38,8 +53,8 @@ const MedicineList = () => {
                         <label className="label">
                             <span className="label-text font-bold">Medicine Name<span className='text-red-600 font-bold'>*</span></span>
                         </label>
-                        <select className="select w-full input-bordered" >
-                            <option disabled selected>All Medicine</option>
+                        <select onChange={e => setMedicineName(e.target.value)} className="select w-full input-bordered" >
+                            <option selected>All Medicine</option>
                             {
                                 medicines?.map(medicine => {
                                     return <option key={medicine._id}>{medicine.medicineName}</option>
@@ -60,7 +75,7 @@ const MedicineList = () => {
                     </div>
 
                     <div className='mt-9'>
-                        <button className='btn btn-primary text-white px-7'>Find</button>
+                        <button onClick={() => findMedicine()} className='btn btn-primary text-white px-7'>Find</button>
                         <button className='btn btn-secondary text-white ml-5 px-5'>Excel</button>
                     </div>
 
@@ -73,8 +88,13 @@ const MedicineList = () => {
                 <div className='py-3 px-5 mt-10 flex justify-between items-center'>
                     <div className='flex'>
                         <p>Show</p>
-                        <select className="input-bordered bg-base-200 mx-1" >
-                            <option selected>100</option>
+                        <select onChange={e => setMedicineQuantity(e.target.value)} className="input-bordered bg-base-200 mx-1" >
+                            <option>5</option>
+                            <option selected>10</option>
+                            <option>20</option>
+                            <option>30</option>
+                            <option>40</option>
+                            <option>50</option>
                         </select>
                         <p>entries</p>
                     </div>
@@ -151,61 +171,114 @@ const MedicineList = () => {
                                     </thead>
                                     <tbody>
                                         {
-                                            search(medicines)?.map((medicine, index) => {
-                                                return (
-                                                    <tr class="even:bg-gray-100 border-b">
-                                                        <td class="px-5 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>
-                                                        <td class="text-sm text-gray-900 font-light w-28 px-6 py-4 whitespace-nowrap">
-                                                            <img src={medicine.photoURL} alt="" />
-                                                        </td>
-                                                        <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
-                                                            {medicine.medicineName}
-                                                        </td>
-                                                        <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
-                                                            {medicine.type}
-                                                        </td>
-                                                        <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
-                                                            {medicine.brandName}
-                                                        </td>
-                                                        <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
-                                                            {medicine.supplierName}
-                                                        </td>
-                                                        <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
-                                                            {medicine?.barcodeId}
-                                                        </td>
-                                                        <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
-                                                            {medicine.price}
-                                                        </td>
-                                                        <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
-                                                            {medicine.purchasePrice}
-                                                        </td>
-                                                        <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
-                                                            {medicine.salePrice}
-                                                        </td>
-                                                        <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
-                                                            {medicine.purchaseQty}
-                                                        </td>
-                                                        <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
-                                                            {medicine.saleQuantity}
-                                                        </td>
-                                                        <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
-                                                            {medicine.saleQuantity}
-                                                        </td>
+                                            selectedMedicine ?
+                                                <tr class="even:bg-gray-100 border-b">
+                                                    <td class="px-5 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{1}</td>
+                                                    <td class="text-sm text-gray-900 font-light w-28 px-6 py-4 whitespace-nowrap">
+                                                        <img src={selectedMedicine.photoURL} alt="" />
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                        {selectedMedicine.medicineName}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                        {selectedMedicine.type}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                        {selectedMedicine.brandName}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                        {selectedMedicine.supplierName}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                        {selectedMedicine?.barcodeId}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                        {selectedMedicine.price}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                        {selectedMedicine.purchasePrice}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                        {selectedMedicine.salePrice}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                        {selectedMedicine.purchaseQty}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                        {selectedMedicine.saleQuantity}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                        {selectedMedicine.saleQuantity}
+                                                    </td>
 
-                                                        <td class="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
-                                                            {medicine.bookedQty}
-                                                        </td>
-                                                        <td class="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
-                                                            {medicine.status}
-                                                        </td>
+                                                    <td class="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
+                                                        {selectedMedicine.bookedQty}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
+                                                        {selectedMedicine.status}
+                                                    </td>
 
-                                                        <td class="text-sm text-gray-900 font-light mt-2 px-5 py-4 whitespace-nowrap flex items-center justify-center">
-                                                            <button className="btn btn-sm bg-sky-500 hover:bg-sky-600 border-none font-semibold text-md text-white"> <AiOutlineEdit /></button>
-                                                            <button className="btn btn-sm bg-red-500 hover:bg-red-600 border-none text-md text-white ml-2"><RiDeleteBin6Line /></button>
-                                                        </td>
-                                                    </tr>
-                                                )
-                                            })
+                                                    <td class="text-sm text-gray-900 font-light mt-2 px-5 py-4 whitespace-nowrap flex items-center justify-center">
+                                                        <button className="btn btn-sm bg-sky-500 hover:bg-sky-600 border-none font-semibold text-md text-white"> <AiOutlineEdit /></button>
+                                                        <button className="btn btn-sm bg-red-500 hover:bg-red-600 border-none text-md text-white ml-2"><RiDeleteBin6Line /></button>
+                                                    </td>
+                                                </tr>
+
+                                                : search(medicines)?.slice(0, medicineQuantity)?.map((medicine, index) => {
+                                                    return (
+                                                        <tr class="even:bg-gray-100 border-b">
+                                                            <td class="px-5 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>
+                                                            <td class="text-sm text-gray-900 font-light w-28 px-6 py-4 whitespace-nowrap">
+                                                                <img src={medicine.photoURL} alt="" />
+                                                            </td>
+                                                            <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                                {medicine.medicineName}
+                                                            </td>
+                                                            <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                                {medicine.type}
+                                                            </td>
+                                                            <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                                {medicine.brandName}
+                                                            </td>
+                                                            <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                                {medicine.supplierName}
+                                                            </td>
+                                                            <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                                {medicine?.barcodeId}
+                                                            </td>
+                                                            <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                                {medicine.price}
+                                                            </td>
+                                                            <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                                {medicine.purchasePrice}
+                                                            </td>
+                                                            <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                                {medicine.salePrice}
+                                                            </td>
+                                                            <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                                {medicine.purchaseQty}
+                                                            </td>
+                                                            <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                                {medicine.saleQuantity}
+                                                            </td>
+                                                            <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                                {medicine.saleQuantity}
+                                                            </td>
+
+                                                            <td class="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
+                                                                {medicine.bookedQty}
+                                                            </td>
+                                                            <td class="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
+                                                                {medicine.status}
+                                                            </td>
+
+                                                            <td class="text-sm text-gray-900 font-light mt-2 px-5 py-4 whitespace-nowrap flex items-center justify-center">
+                                                                <button className="btn btn-sm bg-sky-500 hover:bg-sky-600 border-none font-semibold text-md text-white"> <AiOutlineEdit /></button>
+                                                                <button className="btn btn-sm bg-red-500 hover:bg-red-600 border-none text-md text-white ml-2"><RiDeleteBin6Line /></button>
+                                                            </td>
+                                                        </tr>
+                                                    )
+                                                })
                                         }
 
                                     </tbody>
