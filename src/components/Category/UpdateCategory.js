@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 
-const EditCategory = ({ setEditCategoryModal }) => {
+const UpdateCategory = ({ setEditCategoryModal }) => {
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const onSubmit = data => console.log(data)
@@ -111,4 +111,4 @@ const EditCategory = ({ setEditCategoryModal }) => {
     );
 };
 
-export default EditCategory;
+export default UpdateCategory;

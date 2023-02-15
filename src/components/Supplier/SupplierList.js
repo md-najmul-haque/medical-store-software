@@ -7,6 +7,8 @@ import { GoPlus } from 'react-icons/go';
 import AddSupplier from "./AddSupplier";
 import ImportSupplier from "./ImportSupplier";
 import { Link } from "react-router-dom";
+import UpdateSupplier from "./UpdateSupplier";
+
 
 
 const SupplierList = () => {
@@ -15,6 +17,7 @@ const SupplierList = () => {
     const [importSupplier, setImportSupplier] = useState(false)
     const [query, setQuery] = useState('')
     const [numberOfSupplier, setNumberOfSupplier] = useState(10)
+    const [updateSupplier, setUpdateSupplier] = useState(false)
 
     const keys = ['_id', 'supplierName', 'phone', 'contactPerson', 'address', 'status']
     // console.log(suppliers[0]?.["supplierName"])
@@ -170,7 +173,7 @@ const SupplierList = () => {
                                                             {supplier.status}
                                                         </td>
                                                         <td class="text-sm text-gray-900 font-light mt-2 px-5 py-4 whitespace-nowrap flex items-center justify-center">
-                                                            <button className="btn btn-sm bg-sky-500 hover:bg-sky-600 border-none font-semibold text-md text-white"> <AiOutlineEdit /></button>
+                                                            <label htmlFor="update-supplier" onClick={() => setUpdateSupplier(true)} className="btn btn-sm bg-sky-500 hover:bg-sky-600 border-none font-semibold text-md text-white"> <AiOutlineEdit /></label>
                                                             <button className="btn btn-sm bg-red-500 hover:bg-red-600 border-none text-md text-white ml-2"><RiDeleteBin6Line /></button>
                                                         </td>
                                                     </tr>
@@ -198,6 +201,11 @@ const SupplierList = () => {
                 }
             </div>
 
+            <div>
+                {
+                    updateSupplier && <UpdateSupplier setUpdateSupplier={setUpdateSupplier} />
+                }
+            </div>
 
         </div>
     )

@@ -5,7 +5,7 @@ import { RiDeleteBin6Line } from 'react-icons/ri';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { GoPlus } from 'react-icons/go';
 import AddCategory from './AddCategory';
-import EditCategory from './EditCategory';
+import UpdateCategory from './UpdateCategory';
 
 const CategoryList = () => {
     const [categoryModal, setCategoryModal] = useState(false)
@@ -138,7 +138,7 @@ const CategoryList = () => {
 
             <div>
                 {
-                    editCategoryModal && <EditCategory setEditCategoryModal={setEditCategoryModal} />
+                    editCategoryModal && <UpdateCategory setEditCategoryModal={setEditCategoryModal} />
                 }
             </div>
 
