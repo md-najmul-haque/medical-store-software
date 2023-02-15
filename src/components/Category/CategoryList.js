@@ -5,9 +5,11 @@ import { RiDeleteBin6Line } from 'react-icons/ri';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { GoPlus } from 'react-icons/go';
 import AddCategory from './AddCategory';
+import EditCategory from './EditCategory';
 
 const CategoryList = () => {
     const [categoryModal, setCategoryModal] = useState(false)
+    const [editCategoryModal, setEditCategoryModal] = useState(false)
     const [categories] = useCategory()
     const [query, setQuery] = useState('')
     const [categoryQuantity, setCategoryQuantity] = useState(10)
@@ -112,7 +114,7 @@ const CategoryList = () => {
                                                             {category.status}
                                                         </td>
                                                         <td class="text-sm text-gray-900 font-light mt-2 px-5 py-4 whitespace-nowrap flex items-center justify-center">
-                                                            <button className="btn btn-sm bg-sky-500 hover:bg-sky-600 border-none font-semibold text-md text-white"> <AiOutlineEdit /></button>
+                                                            <label htmlFor='edit-category' onClick={() => setEditCategoryModal(true)} className="btn btn-sm bg-sky-500 hover:bg-sky-600 border-none font-semibold text-md text-white"> <AiOutlineEdit /></label>
                                                             <button className="btn btn-sm bg-red-500 hover:bg-red-600 border-none text-md text-white ml-2"><RiDeleteBin6Line /></button>
                                                         </td>
                                                     </tr>
@@ -131,6 +133,12 @@ const CategoryList = () => {
             <div>
                 {
                     categoryModal && <AddCategory setCategoryModal={setCategoryModal} />
+                }
+            </div>
+
+            <div>
+                {
+                    editCategoryModal && <EditCategory setEditCategoryModal={setEditCategoryModal} />
                 }
             </div>
 

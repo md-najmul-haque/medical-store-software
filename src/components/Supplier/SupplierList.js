@@ -14,6 +14,7 @@ const SupplierList = () => {
     const [supplierModal, setSupplierModal] = useState(false)
     const [importSupplier, setImportSupplier] = useState(false)
     const [query, setQuery] = useState('')
+    const [numberOfSupplier, setNumberOfSupplier] = useState(10)
 
     const keys = ['_id', 'supplierName', 'phone', 'contactPerson', 'address', 'status']
     // console.log(suppliers[0]?.["supplierName"])
@@ -71,8 +72,13 @@ const SupplierList = () => {
                 <div className='py-3 px-5 mt-10 flex justify-between items-center'>
                     <div className='flex'>
                         <p>Show</p>
-                        <select className="input-bordered bg-base-200 mx-1" >
-                            <option selected>100</option>
+                        <select onChange={e => setNumberOfSupplier(e.target.value)} className="input-bordered bg-base-200 mx-1" >
+                            <option>5</option>
+                            <option selected>10</option>
+                            <option>20</option>
+                            <option>30</option>
+                            <option>40</option>
+                            <option>50</option>
                         </select>
                         <p>entries</p>
                     </div>
@@ -134,7 +140,7 @@ const SupplierList = () => {
                                     </thead>
                                     <tbody>
                                         {
-                                            search(suppliers)?.map((supplier, index) => {
+                                            search(suppliers)?.slice(0, numberOfSupplier).map((supplier, index) => {
                                                 return (
                                                     <tr class="even:bg-gray-100 border-b" key={supplier._id}>
                                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>
