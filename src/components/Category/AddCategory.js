@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+
 
 const AddCategory = ({ setCategoryModal }) => {
 
@@ -8,7 +8,7 @@ const AddCategory = ({ setCategoryModal }) => {
     const onSubmit = data => console.log(data)
 
     return (
-        <div className='bg-white h-screen'>
+        <div className='h-screen'>
             <input type="checkbox" id="add-category" className="modal-toggle" />
             <div className="modal modal-bottom sm:modal-middle">
                 <div className="modal-box min-w-[50%] px-10 bg-white">

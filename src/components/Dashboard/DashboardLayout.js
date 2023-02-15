@@ -106,9 +106,6 @@ const DashboardLayout = () => {
                             </Link>
                             <ul class="relative accordion-collapse collapse" id="collapseSidenavEx14" aria-labelledby="sidenavEx3" data-bs-parent="#sidenavExample">
                                 <li class="relative">
-                                    <Link href="#!" class="flex items-center text-sm py-4 pl-12 pr-6 h-6 overflow-hidden   text-ellipsis whitespace-nowrap rounded " >Add New Supplier</Link>
-                                </li>
-                                <li class="relative">
                                     <Link to='/dashboard/supplierList' href="#!" class="flex items-center text-sm py-4 pl-12 pr-6 h-6 overflow-hidden   text-ellipsis whitespace-nowrap rounded " >Supplier List</Link>
                                 </li>
                             </ul>

@@ -5,6 +5,7 @@ import { RiDeleteBin6Line } from 'react-icons/ri';
 import { AiOutlineEdit } from 'react-icons/ai';
 import AddMedicine from './AddMedicine';
 import Loading from '../Loading.js/Loading';
+import { Link } from 'react-router-dom';
 
 const MedicineList = () => {
 
@@ -16,12 +17,18 @@ const MedicineList = () => {
     // console.log(medicines)
 
     return (
-        <div className='bg-white'>
-            <div className='bg-base-100 py-3 px-5 border-b-2'>
+        <div className=''>
+            <div className='py-3 px-5'>
                 <h1 className='uppercase text-xl font-bold text-left text-primary'>Medicine List</h1>
+                <div className="text-sm breadcrumbs">
+                    <ul>
+                        <li><Link to='/dashboard'>Dashboard</Link></li>
+                        <li><Link to='/dashboard/medicineList'>Medicine List</Link></li>
+                    </ul>
+                </div>
             </div>
 
-            <div className="shadow-xl rounded-xl">
+            <div className="bg-white mx-5 shadow-xl rounded-xl">
                 <div className='grid grid-cols-5 gap-x-10 px-5'>
                     <div className="form-control w-full col-span-2">
                         <label className="label">
