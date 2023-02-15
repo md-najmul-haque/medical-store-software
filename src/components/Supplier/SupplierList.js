@@ -16,6 +16,7 @@ const SupplierList = () => {
     const [query, setQuery] = useState('')
 
     const keys = ['supplierName', 'phone', 'contactPerson', 'address', 'status']
+    // console.log(suppliers[0]?.["supplierName"])
 
     const search = (data) => {
         return data.filter(supplier => keys.some(key => supplier[key].toLowerCase().includes(query)))
