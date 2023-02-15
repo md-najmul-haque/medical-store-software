@@ -1,17 +1,18 @@
-import React from 'react';
-import { IoIosCreate } from 'react-icons/io';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useCategory from '../../hooks/useCategory';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { AiOutlineEdit } from 'react-icons/ai';
+import { GoPlus } from 'react-icons/go';
+import AddCategory from './AddCategory';
 
 const CategoryList = () => {
-
+    const [categoryModal, setCategoryModal] = useState(false)
     const [categories] = useCategory()
 
     return (
         <div className='h-screen'>
-            <div className='bg-base-100 py-3 px-5 flex items-center'>
+            <div className='bg-base-100 py-3 px-5 flex items-center justify-between'>
                 <div>
                     <h1 className='uppercase text-xl font-bold text-left'>Category List</h1>
                     <div className="text-sm breadcrumbs">
@@ -21,10 +22,10 @@ const CategoryList = () => {
                         </ul>
                     </div>
                 </div>
-                <Link to='/addCategory' className="btn btn-primary text-white normal-case btn-sm ml-5" ><span className="mr-1"><IoIosCreate /></span> Create Category</Link>
+                <label htmlFor="add-category" onClick={() => { setCategoryModal(true) }} className="btn btn-primary text-white normal-case ml-5" ><span className="mr-1"><GoPlus /></span> Create Category</label>
             </div>
 
-            <div className='mx-10 shadow-lg rounded-lg bg-white'>
+            <div className='mx-5 shadow-lg rounded-lg bg-white'>
                 <div className='py-5 px-5 mt-10 flex justify-between items-center'>
                     <div className='flex'>
                         <p>Show</p>
@@ -112,6 +113,11 @@ const CategoryList = () => {
                 </div>
             </div>
 
+            <div>
+                {
+                    categoryModal && <AddCategory setCategoryModal={setCategoryModal} />
+                }
+            </div>
 
         </div>
     );
