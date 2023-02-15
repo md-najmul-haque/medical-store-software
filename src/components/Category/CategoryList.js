@@ -10,6 +10,7 @@ const CategoryList = () => {
     const [categoryModal, setCategoryModal] = useState(false)
     const [categories] = useCategory()
     const [query, setQuery] = useState('')
+    const [categoryQuantity, setCategoryQuantity] = useState(10)
 
     const keys = ['_id', 'categoryName', 'status']
 
@@ -37,8 +38,13 @@ const CategoryList = () => {
                 <div className='py-5 px-5 mt-10 flex justify-between items-center'>
                     <div className='flex'>
                         <p>Show</p>
-                        <select className="input-bordered bg-base-200 mx-1" >
-                            <option selected>100</option>
+                        <select onChange={e => setCategoryQuantity(e.target.value)} className="input-bordered bg-base-200 mx-1" >
+                            <option>5</option>
+                            <option selected>10</option>
+                            <option>20</option>
+                            <option>30</option>
+                            <option>40</option>
+                            <option>50</option>
                         </select>
                         <p>entries</p>
                     </div>
@@ -88,7 +94,7 @@ const CategoryList = () => {
                                     </thead>
                                     <tbody>
                                         {
-                                            search(categories)?.map((category, index) => {
+                                            search(categories)?.slice(0, categoryQuantity).map((category, index) => {
                                                 return (
                                                     <tr class="even:bg-gray-100">
                                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>
