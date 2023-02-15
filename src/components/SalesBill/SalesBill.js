@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import DashboardNavbar from '../Dashboard/DashboardNavbar';
 import SalesBillBottomBar from './SalesBillBottomBar';
 import SalesBillForm from './SalesBillForm';
-import SalesBillNavbar from './SalesBillNavbar';
 import SalesBillSidebar from './SalesBillSidebar';
 
 

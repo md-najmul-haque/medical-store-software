@@ -4,7 +4,6 @@ import useMedicine from '../../hooks/useMedicine';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { AiOutlineEdit } from 'react-icons/ai';
 import AddMedicine from './AddMedicine';
-import Loading from '../Loading.js/Loading';
 import { Link } from 'react-router-dom';
 
 const MedicineList = () => {

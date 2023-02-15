@@ -13,6 +13,14 @@ const SupplierList = () => {
     const [suppliers] = useSupplier()
     const [supplierModal, setSupplierModal] = useState(false)
     const [importSupplier, setImportSupplier] = useState(false)
+    const [query, setQuery] = useState('')
+
+    const keys = ['supplierName', 'phone', 'contactPerson', 'address', 'status']
+
+    const search = (data) => {
+        return data.filter(supplier => keys.some(key => supplier[key].toLowerCase().includes(query)))
+    }
+
 
     return (
         <div className='h-screen'>
@@ -73,7 +81,8 @@ const SupplierList = () => {
                                 <span className="label-text font-semibold">Search:</span>
                             </label>
                             <input
-                                type="number"
+                                type="text"
+                                onChange={event => setQuery(event.target.value)}
                                 className="max-w-xs border-2 bg-white focus:outline-none"
                             />
                         </div>
@@ -124,7 +133,7 @@ const SupplierList = () => {
                                     </thead>
                                     <tbody>
                                         {
-                                            suppliers?.map((supplier, index) => {
+                                            search(suppliers)?.map((supplier, index) => {
                                                 return (
                                                     <tr class="even:bg-gray-100 border-b" key={supplier._id}>
                                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>
