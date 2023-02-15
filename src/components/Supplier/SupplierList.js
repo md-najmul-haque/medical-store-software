@@ -15,7 +15,7 @@ const SupplierList = () => {
     const [importSupplier, setImportSupplier] = useState(false)
     const [query, setQuery] = useState('')
 
-    const keys = ['supplierName', 'phone', 'contactPerson', 'address', 'status']
+    const keys = ['_id', 'supplierName', 'phone', 'contactPerson', 'address', 'status']
     // console.log(suppliers[0]?.["supplierName"])
 
     const search = (data) => {

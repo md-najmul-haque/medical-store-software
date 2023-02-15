@@ -9,6 +9,14 @@ import AddCategory from './AddCategory';
 const CategoryList = () => {
     const [categoryModal, setCategoryModal] = useState(false)
     const [categories] = useCategory()
+    const [query, setQuery] = useState('')
+
+    const keys = ['_id', 'categoryName', 'status']
+
+    const search = (data) => {
+        return data.filter(category => keys.some(key => category[key].toLowerCase().includes(query)))
+    }
+
 
     return (
         <div className='h-screen'>
@@ -40,7 +48,8 @@ const CategoryList = () => {
                                 <span className="label-text font-semibold">Search:</span>
                             </label>
                             <input
-                                type="number"
+                                type="text"
+                                onChange={event => setQuery(event.target.value)}
                                 className="max-w-xs border-2 bg-white focus:outline-none"
                             />
                         </div>
@@ -79,7 +88,7 @@ const CategoryList = () => {
                                     </thead>
                                     <tbody>
                                         {
-                                            categories?.map((category, index) => {
+                                            search(categories)?.map((category, index) => {
                                                 return (
                                                     <tr class="even:bg-gray-100">
                                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>
