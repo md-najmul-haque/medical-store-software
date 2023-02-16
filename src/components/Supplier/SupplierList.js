@@ -10,7 +10,6 @@ import { Link } from "react-router-dom";
 import UpdateSupplier from "./UpdateSupplier";
 
 
-
 const SupplierList = () => {
     const [suppliers] = useSupplier()
     const [supplierModal, setSupplierModal] = useState(false)
