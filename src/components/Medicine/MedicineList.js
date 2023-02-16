@@ -77,7 +77,7 @@ const MedicineList = () => {
 
                     <div className='mt-9'>
                         <button onClick={() => findMedicine()} className='btn btn-primary text-white px-7'>Find</button>
-                        <CSVLink data={medicines} filename={"All-Medicine"} target="_blank" className='btn btn-secondary text-white ml-5 px-5'>Excel</CSVLink>
+                        <CSVLink data={medicines} filename={"All-Medicine.csv"} target="_blank" className='btn btn-secondary text-white ml-5 px-5'>Excel</CSVLink>
                     </div>
 
                     <div className='flex justify-end'>

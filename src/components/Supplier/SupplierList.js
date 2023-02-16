@@ -8,6 +8,7 @@ import AddSupplier from "./AddSupplier";
 import ImportSupplier from "./ImportSupplier";
 import { Link } from "react-router-dom";
 import UpdateSupplier from "./UpdateSupplier";
+import { CSVLink } from "react-csv";
 
 
 const SupplierList = () => {
@@ -41,7 +42,7 @@ const SupplierList = () => {
 
                 <div className='flex justify-end gap-1'>
                     <label htmlFor="import-supplier" onClick={() => { setImportSupplier(true) }} className="btn btn-primary btn-sm text-white normal-case" ><span className="mr-1"><TbFileImport /></span>Import</label>
-                    <label htmlFor="" className="btn btn-primary  text-white normal-case btn-sm" ><span className="mr-1"><TbFileExport /></span> Export</label>
+                    <CSVLink data={suppliers} filename={"Suppliers.csv"} target="_blank" className="btn btn-primary  text-white normal-case btn-sm" ><span className="mr-1"><TbFileExport /></span> Export</CSVLink>
                     <label htmlFor="add-supplier" onClick={() => { setSupplierModal(true) }} className="btn btn-primary btn-sm text-white normal-case" > <span className="mr-1"><GoPlus /></span> Add New</label>
                 </div>
             </div>
