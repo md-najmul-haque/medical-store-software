@@ -10,9 +10,9 @@ const DashboardDropdown = ({ route }) => {
 
     return (
         <>
-            <div onClick={() => setIsDropDownOpen(!isDropdownOpen)} className='flex items-center justify-between font-semibold text-lg px-5'>
-                <div className='flex items-center'>
-                    <div className=''>{route.icon}</div>
+            <div onClick={() => setIsDropDownOpen(!isDropdownOpen)} className='flex items-center justify-between font-semibold text-lg px-5 rounded-xl hover:text-white hover:bg-primary mx-2 focus:bg-primary focus:text-white cursor-pointer py-2'>
+                <div className='flex items-center '>
+                    <div className='bg-base-100 text-primary p-2 rounded-lg'>{route.icon}</div>
                     <div className='flex items-center justify-between'>
                         <div className='ml-2'>{route.name}</div>
                     </div>

@@ -38,7 +38,7 @@ const routes = [
     {
         path: "/purchase",
         name: "Purchase",
-        icon: <FaHome />,
+        icon: <BiPurchaseTag />,
         subRoutes: [
             {
                 path: "/dashboard/purchaseBill",
@@ -123,7 +123,7 @@ const routes = [
     {
         path: "/dashboard",
         name: "Stock",
-        icon: <FaHome />,
+        icon: <AiOutlineStock />,
         subRoutes: [
             {
                 path: "/dashboard/stockInfo",
@@ -135,7 +135,7 @@ const routes = [
     {
         path: "/dashboard",
         name: "Users",
-        icon: <FaHome />,
+        icon: <FaUsers />,
         subRoutes: [
             {
                 path: "/dashboard/account",
@@ -158,7 +158,7 @@ const routes = [
     {
         path: "/users",
         name: "Reports",
-        icon: <FaRProject />,
+        icon: <HiDocumentReport />,
     }
 
 ];
@@ -179,7 +179,7 @@ const DashboardLayout = ({ children }) => {
                                 }
                                 return <NavLink activeClassName="active" to={route.path} key={route.name}>
                                     <div className='flex items-center font-semibold text-lg px-5'>
-                                        <div className=''>{route.icon}</div>
+                                        <div className='bg-base-100 text-primary p-2 rounded-lg'>{route.icon}</div>
                                         <div className='ml-2'>{route.name}</div>
                                     </div>
                                 </NavLink>
