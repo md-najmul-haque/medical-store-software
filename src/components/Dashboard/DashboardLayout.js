@@ -170,15 +170,15 @@ const DashboardLayout = ({ children }) => {
         <div className='h-screen'>
             <DashboardNavbar />
             <div className='flex'>
-                <div className='w-72'>
+                <div className='w-1/6 min-w-[250px]'>
                     <section className=''>
                         {
                             routes.map((route) => {
                                 if (route.subRoutes) {
                                     return <DashboardDropdown key={route.name} route={route} />
                                 }
-                                return <NavLink activeClassName="active" to={route.path} key={route.name}>
-                                    <div className='flex items-center font-semibold text-lg px-5'>
+                                return <NavLink activeClassName="text-blue-600" to={route.path} key={route.name}>
+                                    <div className='flex items-center font-semibold text-lg px-5 rounded-xl hover:text-white hover:bg-primary mx-2 focus:bg-primary focus:text-white cursor-pointer py-2 hover:shadow-xl'>
                                         <div className='bg-base-100 text-primary p-2 rounded-lg'>{route.icon}</div>
                                         <div className='ml-2'>{route.name}</div>
                                     </div>
@@ -189,8 +189,7 @@ const DashboardLayout = ({ children }) => {
 
                     </section>
                 </div>
-                <div className='w-full'>
-
+                <div className='w-5/6'>
                     <Outlet />
                 </div>
 
