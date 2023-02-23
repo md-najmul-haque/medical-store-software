@@ -8,6 +8,7 @@ import SalesBill from "../components/SalesBill/SalesBill";
 import DashboardLayout from "../components/Dashboard/DashboardLayout";
 import PurchaseBill from "../components/PurchaseBill";
 import Dashboard from "../components/Dashboard/Dashboard";
+import Reports from "../components/Dashboard/Reports";
 
 const router = createBrowserRouter([
     {
@@ -59,7 +60,13 @@ const router = createBrowserRouter([
                 path: '/dashboard/salesBill',
                 element: <SalesBill />
 
+            },
+            {
+                path: '/dashboard/Reports',
+                element: <Reports />
+
             }
+
 
         ]
     }

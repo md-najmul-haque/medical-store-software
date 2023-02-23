@@ -1,6 +1,6 @@
 
 import React, { Children, useState } from 'react';
-import { Link, NavLink, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 import { BiMenu, BiPurchaseTag } from 'react-icons/bi';
 import { MdOutlineCategory, MdOutlinePayment } from 'react-icons/md';
 import { AiOutlineHome, AiOutlineStock } from 'react-icons/ai';
@@ -14,21 +14,25 @@ import DashboardDropdown from './DashboardDropdown';
 
 const routes = [
     {
+        id: 1,
         path: "/dashboard",
         name: "Dashboard",
         icon: <FaHome />,
         subRoutes: [
             {
+                mainRouteId: 1,
                 path: "/dashboard/account",
                 name: "Account ",
                 icon: <FaUser />,
             },
             {
+                mainRouteId: 1,
                 path: "",
                 name: "HRM",
                 icon: <FaLock />,
             },
             {
+                mainRouteId: 1,
                 path: "",
                 name: "Billing",
                 icon: <FaMoneyBill />,
@@ -36,48 +40,58 @@ const routes = [
         ],
     },
     {
+        id: 2,
         path: "/purchase",
         name: "Purchase",
         icon: <BiPurchaseTag />,
         subRoutes: [
             {
+                mainRouteId: 2,
                 path: "/dashboard/purchaseBill",
                 name: "Purchase Bill ",
                 icon: <FaUser />,
             },
             {
+                mainRouteId: 2,
                 path: "",
                 name: "Purchase Invoice",
                 icon: <FaLock />,
             },
             {
+                mainRouteId: 2,
                 path: "",
                 name: "Purchase Return",
                 icon: <FaMoneyBill />,
             },
             {
+                mainRouteId: 2,
                 path: "",
                 name: "History",
                 icon: <FaMoneyBill />,
             },
         ],
     }, {
+        id: 3,
         path: "/dashboard",
         name: "Medicine",
         icon: <GiMedicines />,
         subRoutes: [
             {
+                mainRouteId: 3,
                 path: "/dashboard/medicineList",
                 name: "Medicine List",
                 icon: <FaUser />,
             }
         ],
-    }, {
+    },
+    {
+        id: 4,
         path: "/dashboard",
         name: "Category",
         icon: <MdOutlineCategory />,
         subRoutes: [
             {
+                mainRouteId: 4,
                 path: "/dashboard/categoryList",
                 name: "Category List",
                 icon: <FaUser />,
@@ -85,11 +99,13 @@ const routes = [
         ],
     },
     {
+        id: 5,
         path: "/dashboard",
         name: "Supplier",
         icon: <FaUserTie />,
         subRoutes: [
             {
+                mainRouteId: 5,
                 path: "/dashboard/supplierList",
                 name: "Supplier List",
                 icon: <FaUsers />,
@@ -97,11 +113,13 @@ const routes = [
         ],
     },
     {
+        id: 6,
         path: "/dashboard",
         name: "POS System",
         icon: <MdOutlinePayment />,
         subRoutes: [
             {
+                mainRouteId: 6,
                 path: "/salesBill",
                 name: "Account ",
                 icon: <FaUser />,
@@ -109,11 +127,13 @@ const routes = [
         ],
     },
     {
+        id: 7,
         path: "/dashboard",
         name: "Payment",
         icon: <MdOutlinePayment />,
         subRoutes: [
             {
+                mainRouteId: 7,
                 path: "/dashboard/payment",
                 name: "Payment to Vendor",
                 icon: <FaUser />,
@@ -121,11 +141,13 @@ const routes = [
         ],
     },
     {
+        id: 8,
         path: "/dashboard",
         name: "Stock",
         icon: <AiOutlineStock />,
         subRoutes: [
             {
+                mainRouteId: 8,
                 path: "/dashboard/stockInfo",
                 name: "Stock Info",
                 icon: <FaUser />,
@@ -133,21 +155,25 @@ const routes = [
         ],
     },
     {
+        id: 9,
         path: "/dashboard",
         name: "Users",
         icon: <FaUsers />,
         subRoutes: [
             {
+                mainRouteId: 9,
                 path: "/dashboard/account",
                 name: "Add New User ",
                 icon: <FaUser />,
             },
             {
+                mainRouteId: 9,
                 path: "/dashboard/hrm",
                 name: "User Access Level",
                 icon: <FaLock />,
             },
             {
+                mainRouteId: 9,
                 path: "/dashboard/projects",
                 name: "Change Password",
                 icon: <FaMoneyBill />,
@@ -156,14 +182,16 @@ const routes = [
     },
 
     {
-        path: "/users",
+        id: 10,
+        path: "/dashboard/Reports",
         name: "Reports",
         icon: <HiDocumentReport />,
     }
 
 ];
 
-const DashboardLayout = ({ children }) => {
+const DashboardLayout = () => {
+    const [isActive, setIsActive] = useState(false)
 
     return (
 
@@ -175,10 +203,10 @@ const DashboardLayout = ({ children }) => {
                         {
                             routes.map((route) => {
                                 if (route.subRoutes) {
-                                    return <DashboardDropdown key={route.name} route={route} />
+                                    return <DashboardDropdown key={route.name} route={route} isActive={isActive} setIsActive={setIsActive} />
                                 }
-                                return <NavLink activeClassName="text-blue-600" to={route.path} key={route.name}>
-                                    <div className='flex items-center font-semibold text-lg px-5 rounded-xl hover:text-white hover:bg-primary mx-2 focus:bg-primary focus:text-white cursor-pointer py-2 hover:shadow-xl'>
+                                return <NavLink onClick={() => setIsActive(route.id)} activeClassName="text-blue-600" to={route.path} key={route.name}>
+                                    <div className={`flex items-center font-semibold text-lg px-5 rounded-xl hover:text-white hover:bg-primary mx-2 focus:bg-primary focus:text-white cursor-pointer py-2 hover:shadow-xl ${isActive === route.id && "bg-primary text-white"}`}>
                                         <div className='bg-base-100 text-primary p-2 rounded-lg'>{route.icon}</div>
                                         <div className='ml-2'>{route.name}</div>
                                     </div>
