@@ -134,7 +134,7 @@ const routes = [
         subRoutes: [
             {
                 mainRouteId: 7,
-                path: "/dashboard/payment",
+                path: "/dashboard/paymentToVendor",
                 name: "Payment to Vendor",
                 icon: <FaUser />,
             }

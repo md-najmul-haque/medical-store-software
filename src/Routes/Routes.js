@@ -10,6 +10,8 @@ import PurchaseBill from "../components/PurchaseBill";
 import Dashboard from "../components/Dashboard/Dashboard";
 import Reports from "../components/Dashboard/Reports";
 import StockInfo from "../components/Stock/StockInfo";
+import NotFound from "../components/NotFound/NotFound";
+import PaymentToVendor from "../components/Payment/PaymentToVendor";
 
 const router = createBrowserRouter([
     {
@@ -63,6 +65,11 @@ const router = createBrowserRouter([
 
             },
             {
+                path: '/dashboard/paymentToVendor',
+                element: <PaymentToVendor />
+
+            },
+            {
                 path: '/dashboard/stockInfo',
                 element: <StockInfo />
 
@@ -75,7 +82,11 @@ const router = createBrowserRouter([
 
 
         ]
-    }
+    },
+    {
+        path: "*",
+        element: <NotFound />
+    },
 
 ])
 
