@@ -9,6 +9,7 @@ import DashboardLayout from "../components/Dashboard/DashboardLayout";
 import PurchaseBill from "../components/PurchaseBill";
 import Dashboard from "../components/Dashboard/Dashboard";
 import Reports from "../components/Dashboard/Reports";
+import StockInfo from "../components/Stock/StockInfo";
 
 const router = createBrowserRouter([
     {
@@ -59,6 +60,11 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/salesBill',
                 element: <SalesBill />
+
+            },
+            {
+                path: '/dashboard/stockInfo',
+                element: <StockInfo />
 
             },
             {
