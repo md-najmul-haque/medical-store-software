@@ -7,7 +7,7 @@ const ItemInfo = () => {
 
 
     return (
-        <div className="container mx-auto mt-3">
+        <div className="container mx-auto mt-3  bg-white px-10 rounded-xl shadow-lg h-screen">
 
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className='grid grid-cols-2 gap-x-5'>

@@ -151,6 +151,12 @@ const routes = [
                 path: "/dashboard/stockInfo",
                 name: "Stock Info",
                 icon: <FaUser />,
+            },
+            {
+                mainRouteId: 8,
+                path: "/dashboard/itemForm",
+                name: "Item Form",
+                icon: <FaUser />,
             }
         ],
     },

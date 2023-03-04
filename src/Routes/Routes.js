@@ -12,6 +12,7 @@ import Reports from "../components/Dashboard/Reports";
 import StockInfo from "../components/Stock/StockInfo";
 import NotFound from "../components/NotFound/NotFound";
 import PaymentToVendor from "../components/Payment/PaymentToVendor";
+import ItemForm from "../components/ItemForm";
 
 const router = createBrowserRouter([
     {
@@ -72,6 +73,11 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/stockInfo',
                 element: <StockInfo />
+
+            },
+            {
+                path: '/dashboard/ItemForm',
+                element: <ItemForm />
 
             },
             {
