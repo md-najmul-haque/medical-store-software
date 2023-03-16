@@ -6,17 +6,22 @@ import { AiOutlineEdit } from 'react-icons/ai';
 import AddMedicine from './AddMedicine';
 import { Link } from 'react-router-dom';
 import { CSVLink } from "react-csv";
-import UpdateCategory from '../Category/UpdateCategory';
 import UpdateMedicine from './UpdateMedicine';
+import Loading from '../Loading/Loading';
 
 const MedicineList = () => {
-    const [medicines, setMedicines] = useMedicine()
+    const [medicines, setMedicines, loading] = useMedicine()
     const [medicineModal, setMedicineModal] = useState(false)
     const [updateMedicine, setUpdateMedicine] = useState(false)
     const [query, setQuery] = useState('')
     const [medicineQuantity, setMedicineQuantity] = useState(10)
     const [medicineName, setMedicineName] = useState('')
     const [selectedMedicine, setSelectedMedicine] = useState(null)
+    const [updateMedicineId, setUpdateMedicineId] = useState(null)
+
+    if (loading) {
+        return <Loading />
+    }
 
     const keys = ['_id', 'medicineName', 'genericName', 'supplierName', 'type', 'status']
 
@@ -25,7 +30,6 @@ const MedicineList = () => {
     }
 
     const findMedicine = () => {
-
         if (medicineName === "All Medicine") {
             setSelectedMedicine(null)
 
@@ -33,11 +37,13 @@ const MedicineList = () => {
             const selectedMedicine = medicines.find(medicine => medicine.medicineName === medicineName)
             setSelectedMedicine(selectedMedicine)
         }
-
-
-
     }
-    // console.log(medicines)
+    console.log(medicines)
+
+    const handleUpdateMedicine = (id) => {
+        setUpdateMedicine(true)
+        setUpdateMedicineId(id)
+    }
 
     return (
         <div className=''>
@@ -74,7 +80,6 @@ const MedicineList = () => {
                         </label>
                         <select className="select w-full input-bordered" >
                             <option disabled selected>All</option>
-
                         </select>
                     </div>
 
@@ -277,7 +282,7 @@ const MedicineList = () => {
                                                             </td>
 
                                                             <td class="text-sm text-gray-900 font-light mt-2 px-5 py-4 whitespace-nowrap flex items-center justify-center">
-                                                                <label htmlFor="update-medicine" onClick={() => { setUpdateMedicine(true) }} className="btn btn-sm bg-sky-500 hover:bg-sky-600 border-none font-semibold text-md text-white"> <AiOutlineEdit /></label>
+                                                                <label htmlFor="update-medicine" onClick={() => { handleUpdateMedicine(medicine._id) }} className="btn btn-sm bg-sky-500 hover:bg-sky-600 border-none font-semibold text-md text-white"> <AiOutlineEdit /></label>
                                                                 <button className="btn btn-sm bg-red-500 hover:bg-red-600 border-none text-md text-white ml-2"><RiDeleteBin6Line /></button>
                                                             </td>
                                                         </tr>
@@ -301,7 +306,7 @@ const MedicineList = () => {
 
             <div>
                 {
-                    updateMedicine && <UpdateMedicine setUpdateMedicine={setUpdateMedicine} />
+                    updateMedicine && <UpdateMedicine updateMedicineId={updateMedicineId} setUpdateMedicine={setUpdateMedicine} />
                 }
             </div>
 

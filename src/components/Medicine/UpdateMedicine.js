@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
-const UpdateMedicine = (setUpdateMedicine) => {
+const UpdateMedicine = (updateMedicineId, setUpdateMedicine) => {
+    const [data, setData] = useState({})
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/api/v1/medicine/${updateMedicineId}`)
+            .then(res => res.json())
+            .then(data => setData(data))
+    }, [updateMedicineId])
+
+
+    console.log(data)
 
     const onSubmit = data => {
 
@@ -86,6 +96,7 @@ const UpdateMedicine = (setUpdateMedicine) => {
                                     </label>
                                     <input
                                         type="text"
+                                        value={data.medicineName}
 
                                         className="input bg-gray-100 w-full "
                                         {...register("medicineName", {
