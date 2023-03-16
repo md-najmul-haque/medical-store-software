@@ -64,13 +64,13 @@ const UpdateMedicine = (setUpdateMedicine) => {
 
     return (
         <div>
-            <input type="checkbox" id="add-medicine" className="modal-toggle" />
+            <input type="checkbox" id="update-medicine" className="modal-toggle" />
 
             <div className="modal modal-bottom sm:modal-middle">
                 <div className="modal-box min-w-[50%] px-10 bg-white">
                     <div className='border-b-2'>
-                        <label htmlFor="add-medicine" className="btn btn-sm btn-ghost font-bold text-lg btn-square absolute right-8 top-5">✕</label>
-                        <h1 className='uppercase text-left text-primary text-xl font-bold'>Add Medicine</h1>
+                        <label htmlFor="update-medicine" className="btn btn-sm btn-ghost font-bold text-lg btn-square absolute right-8 top-5">✕</label>
+                        <h1 className='uppercase text-left text-primary text-xl font-bold'>Update Medicine</h1>
                     </div>
 
                     <div className="mx-auto mt-3">

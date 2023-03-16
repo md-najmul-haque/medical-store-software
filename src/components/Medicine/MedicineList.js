@@ -6,10 +6,13 @@ import { AiOutlineEdit } from 'react-icons/ai';
 import AddMedicine from './AddMedicine';
 import { Link } from 'react-router-dom';
 import { CSVLink } from "react-csv";
+import UpdateCategory from '../Category/UpdateCategory';
+import UpdateMedicine from './UpdateMedicine';
 
 const MedicineList = () => {
     const [medicines, setMedicines] = useMedicine()
     const [medicineModal, setMedicineModal] = useState(false)
+    const [updateMedicine, setUpdateMedicine] = useState(false)
     const [query, setQuery] = useState('')
     const [medicineQuantity, setMedicineQuantity] = useState(10)
     const [medicineName, setMedicineName] = useState('')
@@ -274,7 +277,7 @@ const MedicineList = () => {
                                                             </td>
 
                                                             <td class="text-sm text-gray-900 font-light mt-2 px-5 py-4 whitespace-nowrap flex items-center justify-center">
-                                                                <button className="btn btn-sm bg-sky-500 hover:bg-sky-600 border-none font-semibold text-md text-white"> <AiOutlineEdit /></button>
+                                                                <label htmlFor="update-medicine" onClick={() => { setUpdateMedicine(true) }} className="btn btn-sm bg-sky-500 hover:bg-sky-600 border-none font-semibold text-md text-white"> <AiOutlineEdit /></label>
                                                                 <button className="btn btn-sm bg-red-500 hover:bg-red-600 border-none text-md text-white ml-2"><RiDeleteBin6Line /></button>
                                                             </td>
                                                         </tr>
@@ -293,6 +296,12 @@ const MedicineList = () => {
             <div>
                 {
                     medicineModal && <AddMedicine setMedicineModal={setMedicineModal} />
+                }
+            </div>
+
+            <div>
+                {
+                    updateMedicine && <UpdateMedicine setUpdateMedicine={setUpdateMedicine} />
                 }
             </div>
 
