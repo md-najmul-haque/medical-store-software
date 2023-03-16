@@ -33,6 +33,7 @@ const AddSupplier = ({ setSupplierModal }) => {
                     reset()
                     toast.success('Supplier data added successfully')
                     console.log(supplier)
+                    setSupplierModal(false)
                 } else {
                     toast.error('Fail to saved customer data')
                 }
@@ -136,15 +137,16 @@ const AddSupplier = ({ setSupplierModal }) => {
                                 <label className="label">
                                     <span className="font-semibold">Status</span>
                                 </label>
-                                <input
-                                    type="text"
-                                    className="input bg-gray-100 w-full"
-                                    {...register("status", {
-                                        required: {
-                                            value: true,
-                                            message: 'Status is required'
-                                        }
-                                    })} />
+                                <select className="select bg-gray-100 w-full "  {...register("status", {
+                                    required: {
+                                        value: true,
+                                        message: 'Status is required'
+                                    }
+                                })} >
+                                    <option disabled selected>Status</option>
+                                    <option>Active</option>
+                                    <option>Inactive</option>
+                                </select>
                                 <label className="label">
                                     {errors.status?.type === 'required' && <span className="label-text-alt text-red-500">{errors.status.message}</span>}
                                 </label>
