@@ -195,7 +195,7 @@ const routes = [
         subRoutes: [
             {
                 mainRouteId: 10,
-                path: "/dashboard/account",
+                path: "/dashboard/stockReport",
                 name: "Stock Report",
                 icon: <FaUser />,
             },
