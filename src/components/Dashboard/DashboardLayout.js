@@ -201,7 +201,7 @@ const routes = [
             },
             {
                 mainRouteId: 10,
-                path: "/dashboard/hrm",
+                path: "/dashboard/datewiseReport",
                 name: "Datewise Report",
                 icon: <FaLock />,
             }

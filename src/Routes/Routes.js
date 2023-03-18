@@ -14,6 +14,7 @@ import NotFound from "../components/NotFound/NotFound";
 import PaymentToVendor from "../components/Payment/PaymentToVendor";
 import ItemForm from "../components/ItemForm";
 import StockReport from "../components/Reports/StockReport";
+import DatewiseReport from "../components/Reports/DatewiseReport";
 
 const router = createBrowserRouter([
     {
@@ -84,6 +85,11 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/stockReport',
                 element: <StockReport />
+
+            },
+            {
+                path: '/dashboard/datewiseReport',
+                element: <DatewiseReport />
 
             }
 
