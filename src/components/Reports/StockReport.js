@@ -1,7 +1,6 @@
 
 import React, { useState } from 'react';
 import { AiOutlineEdit } from 'react-icons/ai';
-import { GoPlus } from 'react-icons/go';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 import useCategory from '../../hooks/useCategory';
@@ -35,9 +34,9 @@ const StockReport = () => {
             <div className='mx-5 shadow-lg rounded-lg bg-white'>
 
                 <div className='flex justify-center item-center'>
-                    <div className='text-center'>
-                        <h1>Stock Report</h1>
-                        <h2>{Date.now()}</h2>
+                    <div className='text-center mt-5'>
+                        <h1 className='text-2xl font-semibold'>Stock Report</h1>
+                        <h2>{new Date().toLocaleString()}</h2>
                         <div className='flex justify-between items-center space-x-10' >
                             <p>Available Stock Quantity: </p>
                             <p>Total Stock Sales Price(BDT): </p>
@@ -45,7 +44,7 @@ const StockReport = () => {
                     </div>
                 </div>
 
-                <div className='py-5 px-5 mt-10 flex justify-between items-center'>
+                <div className='py-5 px-5 mt-5 flex justify-between items-center'>
                     <div className='flex'>
                         <p>Show</p>
                         <select onChange={e => setCategoryQuantity(e.target.value)} className="input-bordered bg-base-200 mx-1" >
@@ -83,22 +82,37 @@ const StockReport = () => {
                                                 Sl
                                             </th>
                                             <th scope="col" class="px-6 py-4">
-                                                CAT ID
+                                                Medicine Name
                                             </th>
                                             <th scope="col" class="px-6 py-4">
-                                                Image
+                                                Barcode ID
                                             </th>
                                             <th scope="col" class="px-6 py-4">
-                                                Category Name
+                                                Available Stock
                                             </th>
                                             <th scope="col" class="px-6 py-4">
-                                                Total Product
+                                                Category
+                                            </th>
+                                            <th scope="col" class="px-6 py-4">
+                                                Supplier
+                                            </th>
+                                            <th scope="col" class="px-6 py-4">
+                                                MRP Price (BDT)
+                                            </th>
+                                            <th scope="col" class="px-6 py-4">
+                                                Purchase Price (BDT)
+                                            </th>
+                                            <th scope="col" class="px-6 py-4">
+                                                Total Purchase price (BDT)
+                                            </th>
+                                            <th scope="col" class="px-6 py-4">
+                                                Sale Price (BDT)
+                                            </th>
+                                            <th scope="col" class="px-6 py-4">
+                                                Total Sale price (BDT)
                                             </th>
                                             <th scope="col" class="px-6 py-4">
                                                 Status
-                                            </th>
-                                            <th scope="col" class="px-6 py-4">
-                                                Action
                                             </th>
                                         </tr>
                                     </thead>
