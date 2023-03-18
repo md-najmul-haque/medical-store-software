@@ -192,6 +192,20 @@ const routes = [
         path: "/dashboard/Reports",
         name: "Reports",
         icon: <HiDocumentReport />,
+        subRoutes: [
+            {
+                mainRouteId: 10,
+                path: "/dashboard/account",
+                name: "Stock Report",
+                icon: <FaUser />,
+            },
+            {
+                mainRouteId: 10,
+                path: "/dashboard/hrm",
+                name: "Datewise Report",
+                icon: <FaLock />,
+            }
+        ],
     }
 
 ];
