@@ -34,7 +34,7 @@ const StockReport = () => {
                 </div>
             </div>
 
-            <div className="bg-white mx-5 shadow-xl rounded-xl pt-4">
+            <div className="bg-white mx-5 shadow-xl rounded-xl">
 
                 <div className='flex justify-center item-center'>
                     <div className='text-center mt-5'>
@@ -43,7 +43,7 @@ const StockReport = () => {
                     </div>
                 </div>
 
-                <div className='py-3 px-5 mt-10 flex justify-between items-center'>
+                <div className='py-5 px-5 flex justify-between items-center'>
                     <div className='flex'>
                         <p>Show</p>
                         <select onChange={e => setMedicineQuantity(e.target.value)} className="input-bordered bg-base-200 mx-1" >
@@ -131,10 +131,7 @@ const StockReport = () => {
                                                         {medicine.genericName}
                                                     </td>
                                                     <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
-                                                        {medicine.genericName}
-                                                    </td>
-                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
-                                                        {medicine._id}
+                                                        {medicine?.barcodeId}
                                                     </td>
                                                     <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                                                         {medicine.quantity}
@@ -143,16 +140,13 @@ const StockReport = () => {
                                                         {medicine.type}
                                                     </td>
                                                     <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
-                                                        {medicine.brandName}
-                                                    </td>
-                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                                                         {medicine.supplierName}
                                                     </td>
                                                     <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
-                                                        {medicine?.barcodeId}
+                                                        {medicine.price}
                                                     </td>
                                                     <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
-                                                        {medicine.price}
+                                                        {medicine?.barcodeId}
                                                     </td>
                                                     <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                                                         {medicine.purchasePrice}
@@ -162,16 +156,6 @@ const StockReport = () => {
                                                     </td>
                                                     <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                                                         {medicine.purchaseQty}
-                                                    </td>
-                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
-                                                        {medicine.saleQuantity}
-                                                    </td>
-                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
-                                                        {medicine.saleQuantity}
-                                                    </td>
-
-                                                    <td class="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
-                                                        {medicine.bookedQty}
                                                     </td>
                                                     <td class="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
                                                         {medicine.status}
