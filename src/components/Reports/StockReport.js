@@ -1,53 +1,52 @@
 
 import React, { useState } from 'react';
-import { AiOutlineEdit } from 'react-icons/ai';
-import { RiDeleteBin6Line } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
-import useCategory from '../../hooks/useCategory';
+import useMedicine from '../../hooks/useMedicine';
+import Loading from '../Loading/Loading';
 
 const StockReport = () => {
-    const [categories] = useCategory()
+    const [medicines, setMedicines, loading] = useMedicine()
+    const [medicineQuantity, setMedicineQuantity] = useState(10)
     const [query, setQuery] = useState('')
-    const [categoryQuantity, setCategoryQuantity] = useState(10)
 
-    const keys = ['_id', 'categoryName', 'status']
+    if (loading) {
+        return <Loading />
+    }
+
+    const keys = ['_id', 'medicineName', 'genericName', 'supplierName', 'type', 'status']
 
     const search = (data) => {
-        return data.filter(category => keys.some(key => category[key]?.toLowerCase().includes(query)))
+        return data.filter(medicine => keys.some(key => medicine[key]?.toLowerCase().includes(query)))
     }
 
 
+
     return (
-        <div className='h-screen'>
-            <div className='bg-base-100 py-3 px-5 flex items-center justify-between'>
-                <div>
-                    <h1 className='uppercase text-xl font-bold text-left'>Reports</h1>
-                    <div className="text-sm breadcrumbs">
-                        <ul>
-                            <li><Link to='/dashboard'>Dashboard</Link></li>
-                            <li><Link to='/dashboard/stockReport'>Stock Report</Link></li>
-                        </ul>
-                    </div>
+
+        <div className=''>
+            <div className='py-3 px-5'>
+                <h1 className='uppercase text-xl font-bold text-left text-primary'>Stock Report</h1>
+                <div className="text-sm breadcrumbs">
+                    <ul>
+                        <li><Link to='/dashboard'>Dashboard</Link></li>
+                        <li><Link to='/dashboard/stockReport'>Stock Report</Link></li>
+                    </ul>
                 </div>
             </div>
 
-            <div className='mx-5 shadow-lg rounded-lg bg-white'>
+            <div className="bg-white mx-5 shadow-xl rounded-xl pt-4">
 
                 <div className='flex justify-center item-center'>
                     <div className='text-center mt-5'>
                         <h1 className='text-2xl font-semibold'>Stock Report</h1>
                         <h2>{new Date().toLocaleString()}</h2>
-                        <div className='flex justify-between items-center space-x-10' >
-                            <p>Available Stock Quantity: </p>
-                            <p>Total Stock Sales Price(BDT): </p>
-                        </div>
                     </div>
                 </div>
 
-                <div className='py-5 px-5 mt-5 flex justify-between items-center'>
+                <div className='py-3 px-5 mt-10 flex justify-between items-center'>
                     <div className='flex'>
                         <p>Show</p>
-                        <select onChange={e => setCategoryQuantity(e.target.value)} className="input-bordered bg-base-200 mx-1" >
+                        <select onChange={e => setMedicineQuantity(e.target.value)} className="input-bordered bg-base-200 mx-1" >
                             <option>5</option>
                             <option selected>10</option>
                             <option>20</option>
@@ -72,11 +71,11 @@ const StockReport = () => {
                 </div>
 
                 <div class="flex flex-col">
-                    <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-                        <div class="inline-block min-w-full sm:px-6 lg:px-8">
-                            <div class="overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <div class="min-w-full">
+                            <div class="">
                                 <table class="min-w-full text-center">
-                                    <thead class="bg-accent border-b">
+                                    <thead class="bg-accent border-b-2">
                                         <tr>
                                             <th scope="col" class="px-6 py-4">
                                                 Sl
@@ -84,6 +83,10 @@ const StockReport = () => {
                                             <th scope="col" class="px-6 py-4">
                                                 Medicine Name
                                             </th>
+                                            <th scope="col" class="px-6 py-4">
+                                                Generic Name
+                                            </th>
+
                                             <th scope="col" class="px-6 py-4">
                                                 Barcode ID
                                             </th>
@@ -117,31 +120,65 @@ const StockReport = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {
-                                            search(categories)?.slice(0, categoryQuantity).map((category, index) => {
-                                                return (
-                                                    <tr class="even:bg-gray-100">
-                                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>
-                                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{category._id}</td>
-                                                        <td class="text-sm text-gray-900 font-light w-28 px-6 py-4 whitespace-nowrap">
-                                                            <img src={category.image} alt="" />
-                                                        </td>
-                                                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                            {category.categoryName}
-                                                        </td>
-                                                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                            {category.quantity}
-                                                        </td>
-                                                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                            {category.status}
-                                                        </td>
-                                                        <td class="text-sm text-gray-900 font-light mt-2 px-5 py-4 whitespace-nowrap flex items-center justify-center">
-                                                            <label htmlFor='edit-category' className="btn btn-sm bg-sky-500 hover:bg-sky-600 border-none font-semibold text-md text-white"> <AiOutlineEdit /></label>
-                                                            <button className="btn btn-sm bg-red-500 hover:bg-red-600 border-none text-md text-white ml-2"><RiDeleteBin6Line /></button>
-                                                        </td>
-                                                    </tr>
-                                                )
-                                            })
+                                        {search(medicines)?.slice(0, medicineQuantity)?.map((medicine, index) => {
+                                            return (
+                                                <tr class="even:bg-gray-100 border-b">
+                                                    <td class="px-5 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>
+                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                        {medicine.medicineName}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                        {medicine.genericName}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                        {medicine.genericName}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                        {medicine._id}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                        {medicine.quantity}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                        {medicine.type}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                        {medicine.brandName}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                        {medicine.supplierName}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                        {medicine?.barcodeId}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                        {medicine.price}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                        {medicine.purchasePrice}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                        {medicine.salePrice}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                        {medicine.purchaseQty}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                        {medicine.saleQuantity}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                        {medicine.saleQuantity}
+                                                    </td>
+
+                                                    <td class="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
+                                                        {medicine.bookedQty}
+                                                    </td>
+                                                    <td class="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
+                                                        {medicine.status}
+                                                    </td>
+                                                </tr>
+                                            )
+                                        })
                                         }
 
                                     </tbody>
@@ -151,6 +188,7 @@ const StockReport = () => {
                     </div>
                 </div>
             </div>
+
 
         </div>
     );
