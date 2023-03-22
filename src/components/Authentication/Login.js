@@ -1,11 +1,12 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import logo from '../../assets/logo.png'
 
 
 const Login = () => {
+    const navigate = useNavigate();
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const onSubmit = data => {
@@ -30,7 +31,7 @@ const Login = () => {
                 if (data.status === "success") {
                     reset()
                     toast.success(data.message)
-                    Navigate("/dashboard")
+                    navigate("/dashboard")
                 } else {
                     toast.error(data.message)
                 }
