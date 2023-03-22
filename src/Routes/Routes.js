@@ -15,6 +15,8 @@ import PaymentToVendor from "../components/Payment/PaymentToVendor";
 import ItemForm from "../components/ItemForm";
 import StockReport from "../components/Reports/StockReport";
 import DatewiseReport from "../components/Reports/DatewiseReport";
+import Login from "../components/Authentication/Login";
+import Registration from "../components/Authentication/Registration";
 
 const router = createBrowserRouter([
     {
@@ -23,12 +25,16 @@ const router = createBrowserRouter([
         children: [
 
             {
-                path: "/salesBill",
-                element: <SalesBill />
+                path: "/",
+                element: <Login />
             },
             {
-                path: '/medicineList',
-                element: <MedicineList />
+                path: "/register",
+                element: <Registration />
+            },
+            {
+                path: "/salesBill",
+                element: <SalesBill />
             }
 
         ]

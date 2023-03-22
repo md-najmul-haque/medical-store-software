@@ -1,13 +1,42 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
-import logo from '../assets/logo.png'
+import { Link, Navigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import logo from '../../assets/logo.png'
 
 
 const Login = () => {
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
-    const onSubmit = data => console.log(data)
+    const onSubmit = data => {
+
+        const user = {
+            email: data.email,
+            password: data.password
+        }
+
+        // console.log(user)
+
+        fetch(`http://localhost:5000/api/v1/login`, {
+            method: "POST",
+            body: JSON.stringify(user),
+            headers: {
+                'content-type': "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.status === "success") {
+                    reset()
+                    toast.success(data.message)
+                    Navigate("/dashboard")
+                } else {
+                    toast.error(data.message)
+                }
+            })
+
+    }
 
     return (
         <section class="bg-gray-200 h-screen">
@@ -30,17 +59,17 @@ const Login = () => {
                                             type="text"
                                             class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                             id="exampleFormControlInput1"
-                                            placeholder="Username"
-                                            {...register("userName", {
+                                            placeholder="Enter Email"
+                                            {...register("email", {
                                                 required: {
                                                     value: true,
-                                                    message: 'User name is required'
+                                                    message: 'Email is required'
                                                 }
                                             }
                                             )}
                                         />
                                         <label className="label py-0">
-                                            {errors.userName?.type === 'required' && <span className="label-text-alt text-red-500">{errors.userName.message}</span>}
+                                            {errors.email?.type === 'required' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
                                         </label>
                                     </div>
                                     <div class="mb-4">

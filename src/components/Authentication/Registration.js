@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-import logo from '../assets/logo.png'
+import logo from '../../assets/logo.png'
 
 const Registration = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
