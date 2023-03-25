@@ -45,12 +45,12 @@ const DashboardNavbar = () => {
                     </div>
                 </label>
                 <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
-                    <li>
+                    <Link to='' className='ml-2'>
                         <a className="justify-between">
                             Profile
                         </a>
-                    </li>
-                    <li><a>Logout</a></li>
+                    </Link>
+                    <Link to='/' className='ml-2'><a>Logout</a></Link>
                 </ul>
             </div>
         </div>

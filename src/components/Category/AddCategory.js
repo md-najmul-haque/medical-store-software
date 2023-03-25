@@ -1,11 +1,62 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 
 const AddCategory = ({ setCategoryModal }) => {
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
-    const onSubmit = data => console.log(data)
+
+    const onSubmit = data => {
+
+        console.log(data)
+
+        const image = data.image[0];
+        const imageStorageKey = '659c9f3714e59a5aab97b06d91ac3782';
+        const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`
+        const formData = new FormData();
+        formData.append('image', image);
+
+        console.log(image)
+
+        fetch(url, {
+            method: 'POST',
+            body: formData
+        })
+            .then((response) => response.json())
+            .then((result) => {
+                console.log('Success:', result);
+                if (result.success === true) {
+                    const img = result.data.url
+
+                    const category = {
+                        catId: data.catId,
+                        categoryName: data.categoryName,
+                        image: img,
+                        status: data.status,
+                    }
+
+                    fetch(`http://localhost:5000/api/v1/category`, {
+                        method: "POST",
+                        body: JSON.stringify(category),
+                        headers: {
+                            'content-type': "application/json"
+                        }
+                    })
+                        .then(res => res.json())
+                        .then(category => {
+                            if (category.status === "success") {
+                                setCategoryModal(false)
+                                reset()
+                                toast.success("Category Data Saved Successfully")
+                            } else {
+                                toast.error('Fail to saved category data. Please try again later')
+                            }
+                        })
+                }
+            })
+
+    }
 
     return (
         <div className='h-screen'>
@@ -25,7 +76,7 @@ const AddCategory = ({ setCategoryModal }) => {
                                         <span className="label-text">CAT ID</span>
                                     </label>
                                     <input
-                                        type="text"
+                                        type="number"
                                         placeholder="Enter CAT ID"
                                         className="input bg-gray-100 w-full input-bordered"
                                         {...register("catId", {
@@ -75,7 +126,7 @@ const AddCategory = ({ setCategoryModal }) => {
                                         type="file"
                                         placeholder="Status"
                                         className="input w-full shadow-md"
-                                        {...register("status", {
+                                        {...register("image", {
                                             required: {
                                                 value: true,
                                                 message: 'Category image is required'
