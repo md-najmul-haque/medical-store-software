@@ -17,6 +17,7 @@ import StockReport from "../components/Reports/StockReport";
 import DatewiseReport from "../components/Reports/DatewiseReport";
 import Login from "../components/Authentication/Login";
 import Registration from "../components/Authentication/Registration";
+import RequireAuth from "../hooks/requireAuth";
 
 const router = createBrowserRouter([
     {
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
 
     {
         path: '/dashboard',
-        element: <DashboardLayout />,
+        element: <RequireAuth><DashboardLayout /></RequireAuth>,
         children: [
             {
                 path: '/dashboard',
