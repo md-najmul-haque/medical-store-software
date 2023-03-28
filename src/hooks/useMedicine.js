@@ -1,20 +1,17 @@
 import React, { useEffect, useState } from 'react';
+import { useQuery } from 'react-query';
 
 const useMedicine = () => {
-    const [medicines, setMedicines] = useState([])
-    const [loading, setLoading] = useState(true)
 
-
-    useEffect(() => {
+    const { data: medicines, isLoading, refetch } = useQuery(['medicines'], () =>
         fetch('http://localhost:5000/api/v1/medicine')
-            .then(res => res.json())
-            .then(data => {
-                setMedicines(data.medicineInfo)
-                setLoading(false)
-            })
-    }, [])
+            .then(res => res.json()),
+        {
+            select: (data) => data && data.medicine,
+        }
+    )
 
-    return [medicines, setMedicines, loading]
+    return [isLoading, medicines, refetch]
 };
 
 export default useMedicine;

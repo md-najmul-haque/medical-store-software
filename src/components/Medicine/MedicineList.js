@@ -10,7 +10,7 @@ import UpdateMedicine from './UpdateMedicine';
 import Loading from '../Loading/Loading';
 
 const MedicineList = () => {
-    const [medicines, setMedicines, loading] = useMedicine()
+    const [isLoading, medicines, refetch] = useMedicine()
     const [medicineModal, setMedicineModal] = useState(false)
     const [updateMedicine, setUpdateMedicine] = useState(false)
     const [query, setQuery] = useState('')
@@ -19,7 +19,7 @@ const MedicineList = () => {
     const [selectedMedicine, setSelectedMedicine] = useState(null)
     const [updateMedicineId, setUpdateMedicineId] = useState(null)
 
-    if (loading) {
+    if (isLoading) {
         return <Loading />
     }
 
@@ -43,6 +43,20 @@ const MedicineList = () => {
     const handleUpdateMedicine = (id) => {
         setUpdateMedicine(true)
         setUpdateMedicineId(id)
+    }
+
+    const deleteMedicine = (id) => {
+
+        fetch(`https://itracker-server.vercel.app/deleteMeeting/${id}`,
+            {
+                method: "DELETE",
+                headers: {
+                    'content-type': 'application/json'
+                }
+            })
+            .then(res => res.json())
+
+
     }
 
     return (
@@ -184,7 +198,7 @@ const MedicineList = () => {
                                                 <tr class="even:bg-gray-100 border-b">
                                                     <td class="px-5 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{1}</td>
                                                     <td class="text-sm text-gray-900 font-light w-28 px-6 py-4 whitespace-nowrap">
-                                                        <img src={selectedMedicine.photoURL} alt="" />
+                                                        <img src={selectedMedicine.imageURL} alt="" />
                                                     </td>
                                                     <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                                                         {selectedMedicine.medicineName}
@@ -229,7 +243,7 @@ const MedicineList = () => {
 
                                                     <td class="text-sm text-gray-900 font-light mt-2 px-5 py-4 whitespace-nowrap flex items-center justify-center">
                                                         <button className="btn btn-sm bg-sky-500 hover:bg-sky-600 border-none font-semibold text-md text-white"> <AiOutlineEdit /></button>
-                                                        <button className="btn btn-sm bg-red-500 hover:bg-red-600 border-none text-md text-white ml-2"><RiDeleteBin6Line /></button>
+                                                        <button onClick={() => { deleteMedicine(selectedMedicine._id) }} className="btn btn-sm bg-red-500 hover:bg-red-600 border-none text-md text-white ml-2"><RiDeleteBin6Line /></button>
                                                     </td>
                                                 </tr>
 
@@ -238,7 +252,7 @@ const MedicineList = () => {
                                                         <tr class="even:bg-gray-100 border-b">
                                                             <td class="px-5 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>
                                                             <td class="text-sm text-gray-900 font-light w-28 px-6 py-4 whitespace-nowrap">
-                                                                <img src={medicine.photoURL} alt="" />
+                                                                <img src={medicine.imageURL} alt="" />
                                                             </td>
                                                             <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                                                                 {medicine.medicineName}
@@ -283,7 +297,7 @@ const MedicineList = () => {
 
                                                             <td class="text-sm text-gray-900 font-light mt-2 px-5 py-4 whitespace-nowrap flex items-center justify-center">
                                                                 <label htmlFor="update-medicine" onClick={() => { handleUpdateMedicine(medicine._id) }} className="btn btn-sm bg-sky-500 hover:bg-sky-600 border-none font-semibold text-md text-white"> <AiOutlineEdit /></label>
-                                                                <button className="btn btn-sm bg-red-500 hover:bg-red-600 border-none text-md text-white ml-2"><RiDeleteBin6Line /></button>
+                                                                <button onClick={() => { deleteMedicine(medicine._id) }} className="btn btn-sm bg-red-500 hover:bg-red-600 border-none text-md text-white ml-2"><RiDeleteBin6Line /></button>
                                                             </td>
                                                         </tr>
                                                     )

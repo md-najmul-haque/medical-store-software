@@ -93,7 +93,7 @@ const Login = () => {
                                         </label>
                                     </div>
                                     <div class="text-center pt-1 mb-12 pb-1">
-                                        <input type="submit" className="btn btn-success btn-sm px-6 rounded w-full mb-3 font-semibold" value='Submit' />
+                                        <input type="submit" className="btn btn-success btn-sm px-6 rounded w-full mb-3 font-semibold" value='Login' />
                                         <a class="text-red-600" href="#!">Forgot password?</a>
                                     </div>
                                 </form>

@@ -52,9 +52,9 @@ const AddMedicine = ({ setMedicineModal }) => {
                             if (medicine.status === "success") {
                                 setMedicineModal(false)
                                 reset()
-                                toast.success("Medicine Data Saved Successfully")
+                                toast.success(medicine.message)
                             } else {
-                                toast.error('Fail to saved medicine data. Please try again later')
+                                toast.error(medicine.message)
                             }
                         })
                 }
