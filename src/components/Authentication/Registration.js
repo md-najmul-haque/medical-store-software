@@ -30,6 +30,7 @@ const Registration = () => {
                 if (data.status === "success") {
                     reset()
                     toast.success(data.message)
+                    localStorage.setItem("token", data.token);
                     navigate("/dashboard")
                 } else {
                     toast.error(data.message)
