@@ -249,7 +249,7 @@ const SalesBillForm = ({ medicine, setMedicine, vat, total, setTotal, totalDisco
                     </tbody>
                 </table>
 
-                <div class="flex justify-end items-center mb-2">
+                <div className="flex justify-end items-center mb-2">
                     <h2 className='p-3 font-semibold'>Total Discount: </h2>
                     <input
                         type="number"
@@ -260,7 +260,7 @@ const SalesBillForm = ({ medicine, setMedicine, vat, total, setTotal, totalDisco
                     />
                 </div>
 
-                <div class="flex justify-end items-center mb-2">
+                <div className="flex justify-end items-center mb-2">
                     <h2 className='p-3 font-semibold'>Total VAT(%): </h2>
                     <input
                         type="number"
@@ -270,7 +270,7 @@ const SalesBillForm = ({ medicine, setMedicine, vat, total, setTotal, totalDisco
                     />
                 </div>
 
-                <div class="flex justify-end items-center mb-2">
+                <div className="flex justify-end items-center mb-2">
                     <h2 className='p-3 font-semibold'>Grand Total: </h2>
                     <input
                         type="number"
@@ -280,7 +280,7 @@ const SalesBillForm = ({ medicine, setMedicine, vat, total, setTotal, totalDisco
                     />
                 </div>
 
-                <div class="flex justify-end items-center mb-2">
+                <div className="flex justify-end items-center mb-2">
                     <h2 className='p-3 font-semibold'>Given Amount: </h2>
                     <input
                         type="number"
@@ -290,7 +290,7 @@ const SalesBillForm = ({ medicine, setMedicine, vat, total, setTotal, totalDisco
                     />
                 </div>
 
-                <div class="flex justify-end items-center mb-2">
+                <div className="flex justify-end items-center mb-2">
                     <h2 className='p-3 font-semibold'>change: </h2>
                     <input
                         type="number"

@@ -155,28 +155,28 @@ const Dashboard = () => {
 
                     <h2 className='font-semibold pl-5 text-lg py-5'>Account Balance</h2>
 
-                    <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-                        <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-                            <div class="overflow-hidden">
-                                <table class="min-w-full text-center">
-                                    <thead style={{ backgroundColor: "#f8f9fd" }} class="bg-white text-primary border-b">
+                    <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                        <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                            <div className="overflow-hidden">
+                                <table className="min-w-full text-center">
+                                    <thead style={{ backgroundColor: "#f8f9fd" }} className="bg-white text-primary border-b">
                                         <tr>
-                                            <th scope="col" class="px-6 py-4">
+                                            <th scope="col" className="px-6 py-4">
                                                 BANK
                                             </th>
-                                            <th scope="col" class="px-6 py-4">
+                                            <th scope="col" className="px-6 py-4">
                                                 HOLDER NAME
                                             </th>
-                                            <th scope="col" class="px-6 py-4">
+                                            <th scope="col" className="px-6 py-4">
                                                 BALANCE
                                             </th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="px-6 py-4 whitespace-nowrap text-md font-medium"></td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-md font-medium">Cash</td>
-                                            <td class="text-md px-6 py-4 flex justify-center items-center">
+                                            <td className="px-6 py-4 whitespace-nowrap text-md font-medium"></td>
+                                            <td className="px-6 py-4 whitespace-nowrap text-md font-medium">Cash</td>
+                                            <td className="text-md px-6 py-4 flex justify-center items-center">
                                                 <TbCurrencyTaka /> <span className='ml-1'>20000</span>
                                             </td>
                                         </tr>
@@ -216,7 +216,7 @@ const Dashboard = () => {
                             </div>
                             <div className='ml-2'>
                                 <small className='block'>Today's Income</small>
-                                <p class="flex justify-start items-center font-bold text-success">
+                                <p className="flex justify-start items-center font-bold text-success">
                                     <TbCurrencyTaka /> <span className='ml-1'>20000</span>
                                 </p>
                             </div>
@@ -228,7 +228,7 @@ const Dashboard = () => {
                             </div>
                             <div className='ml-2'>
                                 <small className='block'>Today's Expense</small>
-                                <p class="flex justify-start items-center font-bold text-success">
+                                <p className="flex justify-start items-center font-bold text-success">
                                     <TbCurrencyTaka /> <span className='ml-1'>20000</span>
                                 </p>
                             </div>
@@ -240,7 +240,7 @@ const Dashboard = () => {
                             </div>
                             <div className='ml-2'>
                                 <small className='block'>This Month Income</small>
-                                <p class="flex justify-start items-center font-bold text-success">
+                                <p className="flex justify-start items-center font-bold text-success">
                                     <TbCurrencyTaka /> <span className='ml-1'>20000</span>
                                 </p>
                             </div>
@@ -252,7 +252,7 @@ const Dashboard = () => {
                             </div>
                             <div className='ml-2'>
                                 <small className='block'>This Month Expense</small>
-                                <p class="flex justify-start items-center font-bold text-success">
+                                <p className="flex justify-start items-center font-bold text-success">
                                     <TbCurrencyTaka /> <span className='ml-1'>20000</span>
                                 </p>
                             </div>
@@ -263,28 +263,28 @@ const Dashboard = () => {
 
                 <div className='shadow-lg rounded-xl bg-white mt-5'>
                     <h2 className='font-semibold pl-5 text-lg py-5'>Latest Expanse</h2>
-                    <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-                        <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-                            <div class="overflow-hidden">
-                                <table class="min-w-full text-center">
-                                    <thead class="text-primary bg-accent border-b">
+                    <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                        <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                            <div className="overflow-hidden">
+                                <table className="min-w-full text-center">
+                                    <thead className="text-primary bg-accent border-b">
                                         <tr>
-                                            <th scope="col" class="px-6 py-4">
+                                            <th scope="col" className="px-6 py-4">
                                                 Date
                                             </th>
-                                            <th scope="col" class="px-6 py-4">
+                                            <th scope="col" className="px-6 py-4">
                                                 CUSTOMER
                                             </th>
-                                            <th scope="col" class="px-6 py-4">
+                                            <th scope="col" className="px-6 py-4">
                                                 AMOUNT DUE
                                             </th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="px-6 py-4 whitespace-nowrap text-md font-medium"></td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-md font-medium">Cash</td>
-                                            <td class="text-md px-6 py-4 flex justify-center items-center">
+                                            <td className="px-6 py-4 whitespace-nowrap text-md font-medium"></td>
+                                            <td className="px-6 py-4 whitespace-nowrap text-md font-medium">Cash</td>
+                                            <td className="text-md px-6 py-4 flex justify-center items-center">
                                                 <TbCurrencyTaka /> <span className='ml-1'>20000</span>
                                             </td>
                                         </tr>

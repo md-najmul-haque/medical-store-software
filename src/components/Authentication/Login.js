@@ -41,25 +41,25 @@ const Login = () => {
     }
 
     return (
-        <section class="bg-gray-200 h-screen">
-            <div class="flex justify-center items-center flex-wrap h-full text-gray-800">
-                <div class="">
-                    <div class="block bg-white shadow-lg rounded-lg">
-                        <div class="md:px-0">
-                            <div class="md:p-12 md:mx-6">
-                                <div class="text-center">
+        <section className="bg-gray-200 h-screen">
+            <div className="flex justify-center items-center flex-wrap h-full text-gray-800">
+                <div className="">
+                    <div className="block bg-white shadow-lg rounded-lg">
+                        <div className="md:px-0">
+                            <div className="md:p-12 md:mx-6">
+                                <div className="text-center">
                                     <img
-                                        class="mx-auto w-48"
+                                        className="mx-auto w-48"
                                         src={logo}
                                         alt="logo"
                                     />
                                 </div>
                                 <form onSubmit={handleSubmit(onSubmit)}>
-                                    <p class="mb-4 mt-5 text-xl">Please login to your account</p>
-                                    <div class=" mb-4">
+                                    <p className="mb-4 mt-5 text-xl">Please login to your account</p>
+                                    <div className=" mb-4">
                                         <input
                                             type="text"
-                                            class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                            className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                             id="exampleFormControlInput1"
                                             placeholder="Enter Email"
                                             {...register("email", {
@@ -74,10 +74,10 @@ const Login = () => {
                                             {errors.email?.type === 'required' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
                                         </label>
                                     </div>
-                                    <div class="mb-4">
+                                    <div className="mb-4">
                                         <input
                                             type="password"
-                                            class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                            className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                             placeholder="Password"
                                             {...register("password", {
                                                 required: {
@@ -92,16 +92,16 @@ const Login = () => {
                                             {errors.password?.type === 'required' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
                                         </label>
                                     </div>
-                                    <div class="text-center pt-1 mb-12 pb-1">
+                                    <div className="text-center pt-1 mb-12 pb-1">
                                         <input type="submit" className="btn btn-success btn-sm px-6 rounded w-full mb-3 font-semibold" value='Login' />
-                                        <a class="text-red-600" href="#!">Forgot password?</a>
+                                        <a className="text-red-600" href="#!">Forgot password?</a>
                                     </div>
                                 </form>
-                                <div class="flex items-center justify-between pb-6">
-                                    <p class="mb-0 mr-2">Don't have an account?</p>
+                                <div className="flex items-center justify-between pb-6">
+                                    <p className="mb-0 mr-2">Don't have an account?</p>
                                     <Link to='/register'
                                         type="button"
-                                        class="btn btn-info btn-sm font-semibold rounded"
+                                        className="btn btn-info btn-sm font-semibold rounded"
 
                                     >
                                         Sign Up

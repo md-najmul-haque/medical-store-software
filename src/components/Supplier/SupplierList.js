@@ -39,7 +39,7 @@ const SupplierList = () => {
     // delete supplier
     const deleteSupplier = (id) => {
 
-        fetch(`http://localhost:5000/api/v1/medicine/${id}`,
+        fetch(`http://localhost:5000/api/v1/supplier/${id}`,
             {
                 method: "DELETE",
                 headers: {
@@ -50,7 +50,7 @@ const SupplierList = () => {
             .then(data => {
                 if (data.status === "success") {
                     toast(data.message)
-                    // refetch()
+                    refetch()
                 } else {
                     toast(data.message)
                 }
@@ -131,44 +131,44 @@ const SupplierList = () => {
                     </div>
                 </div>
 
-                <div class="flex flex-col">
-                    <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-                        <div class="pt-2 inline-block min-w-full sm:px-6 lg:px-8">
-                            <div class="overflow-hidden">
-                                <table class="min-w-full text-center">
-                                    <thead class="bg-accent text-primary border-b">
+                <div className="flex flex-col">
+                    <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                        <div className="pt-2 inline-block min-w-full sm:px-6 lg:px-8">
+                            <div className="overflow-hidden">
+                                <table className="min-w-full text-center">
+                                    <thead className="bg-accent text-primary border-b">
                                         <tr>
-                                            <th scope="col" class="px-6 py-4">
+                                            <th scope="col" className="px-6 py-4">
                                                 Sl
                                             </th>
-                                            <th scope="col" class="px-6 py-4">
+                                            <th scope="col" className="px-6 py-4">
                                                 Supplier Id
                                             </th>
-                                            <th scope="col" class="px-6 py-4">
+                                            <th scope="col" className="px-6 py-4">
                                                 Supplier Name
                                             </th>
-                                            <th scope="col" class="px-6 py-4">
+                                            <th scope="col" className="px-6 py-4">
                                                 Address
                                             </th>
-                                            <th scope="col" class="px-6 py-4">
+                                            <th scope="col" className="px-6 py-4">
                                                 Phone
                                             </th>
-                                            <th scope="col" class="px-6 py-4">
+                                            <th scope="col" className="px-6 py-4">
                                                 Contact Person
                                             </th>
-                                            <th scope="col" class="px-6 py-4">
+                                            <th scope="col" className="px-6 py-4">
                                                 Payable
                                             </th>
-                                            <th scope="col" class="px-6 py-4">
+                                            <th scope="col" className="px-6 py-4">
                                                 Paid
                                             </th>
-                                            <th scope="col" class="px-6 py-4">
+                                            <th scope="col" className="px-6 py-4">
                                                 Due
                                             </th>
-                                            <th scope="col" class="px-6 py-4">
+                                            <th scope="col" className="px-6 py-4">
                                                 Status
                                             </th>
-                                            <th scope="col" class="px-6 py-4">
+                                            <th scope="col" className="px-6 py-4">
                                                 Action
                                             </th>
                                         </tr>
@@ -177,34 +177,34 @@ const SupplierList = () => {
                                         {
                                             search(suppliers)?.slice(0, numberOfSupplier).map((supplier, index) => {
                                                 return (
-                                                    <tr class="even:bg-gray-100 border-b" key={supplier._id}>
-                                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>
-                                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{supplier._id}</td>
-                                                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                    <tr className="even:bg-gray-100 border-b" key={supplier._id}>
+                                                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>
+                                                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{supplier._id}</td>
+                                                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                             {supplier.supplierName}
                                                         </td>
-                                                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                             {supplier.address}
                                                         </td>
-                                                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                             {supplier.phone}
                                                         </td>
-                                                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                             {supplier.contactPerson}
                                                         </td>
-                                                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                             {supplier.payable}
                                                         </td>
-                                                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                             {supplier.paid}
                                                         </td>
-                                                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                             {supplier.payable - supplier.paid}
                                                         </td>
-                                                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                             {supplier.status}
                                                         </td>
-                                                        <td class="text-sm text-gray-900 font-light mt-2 px-5 py-4 whitespace-nowrap flex items-center justify-center">
+                                                        <td className="text-sm text-gray-900 font-light mt-2 px-5 py-4 whitespace-nowrap flex items-center justify-center">
                                                             <label htmlFor="update-supplier" onClick={() => setUpdateSupplier(true)} className="btn btn-sm bg-sky-500 hover:bg-sky-600 border-none font-semibold text-md text-white"> <AiOutlineEdit /></label>
                                                             <button onClick={() => deleteSupplier(supplier._id)} className="btn btn-sm bg-red-500 hover:bg-red-600 border-none text-md text-white ml-2"><RiDeleteBin6Line /></button>
                                                         </td>

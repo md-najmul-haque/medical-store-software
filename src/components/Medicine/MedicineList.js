@@ -144,59 +144,59 @@ const MedicineList = () => {
                     </div>
                 </div>
 
-                <div class="flex flex-col">
-                    <div class="overflow-x-auto">
-                        <div class="min-w-full">
-                            <div class="">
-                                <table class="min-w-full text-center">
-                                    <thead class="bg-accent border-b-2">
+                <div className="flex flex-col">
+                    <div className="overflow-x-auto">
+                        <div className="min-w-full">
+                            <div className="">
+                                <table className="min-w-full text-center">
+                                    <thead className="bg-accent border-b-2">
                                         <tr>
-                                            <th scope="col" class="px-5 py-4">
+                                            <th scope="col" className="px-5 py-4">
                                                 Sl
                                             </th>
-                                            <th scope="col" class="px-5 py-4">
+                                            <th scope="col" className="px-5 py-4">
                                                 Image
                                             </th>
-                                            <th scope="col" class="px-5 py-4">
+                                            <th scope="col" className="px-5 py-4">
                                                 Medicine Name
                                             </th>
-                                            <th scope="col" class="px-5 py-4">
+                                            <th scope="col" className="px-5 py-4">
                                                 Category
                                             </th>
-                                            <th scope="col" class="px-5 py-4">
+                                            <th scope="col" className="px-5 py-4">
                                                 Brand
                                             </th>
-                                            <th scope="col" class="px-5 py-4">
+                                            <th scope="col" className="px-5 py-4">
                                                 Supplier
                                             </th>
-                                            <th scope="col" class="px-5 py-4">
+                                            <th scope="col" className="px-5 py-4">
                                                 Barcode ID
                                             </th>
-                                            <th scope="col" class="px-5 py-4">
+                                            <th scope="col" className="px-5 py-4">
                                                 MRP Price(BDT)
                                             </th>
-                                            <th scope="col" class="px-5 py-4">
+                                            <th scope="col" className="px-5 py-4">
                                                 Purchase Price(BDT)
                                             </th>
-                                            <th scope="col" class="px-5 py-4">
+                                            <th scope="col" className="px-5 py-4">
                                                 Sale Price(BDT)
                                             </th>
-                                            <th scope="col" class="px-5 py-4">
+                                            <th scope="col" className="px-5 py-4">
                                                 Purchase Quantity
                                             </th>
-                                            <th scope="col" class="px-5 py-4">
+                                            <th scope="col" className="px-5 py-4">
                                                 Sale Quantity
                                             </th>
-                                            <th scope="col" class="px-5 py-4">
+                                            <th scope="col" className="px-5 py-4">
                                                 Available Stock
                                             </th>
-                                            <th scope="col" class="px-5 py-4">
+                                            <th scope="col" className="px-5 py-4">
                                                 Booked Quantity
                                             </th>
-                                            <th scope="col" class="px-3 py-4">
+                                            <th scope="col" className="px-3 py-4">
                                                 Status
                                             </th>
-                                            <th scope="col" class="px-3 py-4">
+                                            <th scope="col" className="px-3 py-4">
                                                 Action
                                             </th>
                                         </tr>
@@ -204,53 +204,53 @@ const MedicineList = () => {
                                     <tbody>
                                         {
                                             selectedMedicine ?
-                                                <tr class="even:bg-gray-100 border-b">
-                                                    <td class="px-5 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{1}</td>
-                                                    <td class="text-sm text-gray-900 font-light w-28 px-6 py-4 whitespace-nowrap">
+                                                <tr className="even:bg-gray-100 border-b">
+                                                    <td className="px-5 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{1}</td>
+                                                    <td className="text-sm text-gray-900 font-light w-28 px-6 py-4 whitespace-nowrap">
                                                         <img src={selectedMedicine.imageURL} alt="" />
                                                     </td>
-                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                    <td className="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                                                         {selectedMedicine.medicineName}
                                                     </td>
-                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                    <td className="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                                                         {selectedMedicine.type}
                                                     </td>
-                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                    <td className="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                                                         {selectedMedicine.brandName}
                                                     </td>
-                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                    <td className="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                                                         {selectedMedicine.supplierName}
                                                     </td>
-                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                    <td className="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                                                         {selectedMedicine?.barcodeId}
                                                     </td>
-                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                    <td className="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                                                         {selectedMedicine.price}
                                                     </td>
-                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                    <td className="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                                                         {selectedMedicine.purchasePrice}
                                                     </td>
-                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                    <td className="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                                                         {selectedMedicine.salePrice}
                                                     </td>
-                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                    <td className="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                                                         {selectedMedicine.purchaseQty}
                                                     </td>
-                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                    <td className="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                                                         {selectedMedicine.saleQuantity}
                                                     </td>
-                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                    <td className="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                                                         {selectedMedicine.saleQuantity}
                                                     </td>
 
-                                                    <td class="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
+                                                    <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
                                                         {selectedMedicine.bookedQty}
                                                     </td>
-                                                    <td class="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
+                                                    <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
                                                         {selectedMedicine.status}
                                                     </td>
 
-                                                    <td class="text-sm text-gray-900 font-light mt-2 px-5 py-4 whitespace-nowrap flex items-center justify-center">
+                                                    <td className="text-sm text-gray-900 font-light mt-2 px-5 py-4 whitespace-nowrap flex items-center justify-center">
                                                         <button className="btn btn-sm bg-sky-500 hover:bg-sky-600 border-none font-semibold text-md text-white"> <AiOutlineEdit /></button>
                                                         <button onClick={() => { deleteMedicine(selectedMedicine._id) }} className="btn btn-sm bg-red-500 hover:bg-red-600 border-none text-md text-white ml-2"><RiDeleteBin6Line /></button>
                                                     </td>
@@ -258,53 +258,53 @@ const MedicineList = () => {
 
                                                 : search(medicines)?.slice(0, medicineQuantity)?.map((medicine, index) => {
                                                     return (
-                                                        <tr class="even:bg-gray-100 border-b">
-                                                            <td class="px-5 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>
-                                                            <td class="text-sm text-gray-900 font-light w-28 px-6 py-4 whitespace-nowrap">
+                                                        <tr className="even:bg-gray-100 border-b">
+                                                            <td className="px-5 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>
+                                                            <td className="text-sm text-gray-900 font-light w-28 px-6 py-4 whitespace-nowrap">
                                                                 <img src={medicine.imageURL} alt="" />
                                                             </td>
-                                                            <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                            <td className="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                                                                 {medicine.medicineName}
                                                             </td>
-                                                            <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                            <td className="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                                                                 {medicine.type}
                                                             </td>
-                                                            <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                            <td className="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                                                                 {medicine.brandName}
                                                             </td>
-                                                            <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                            <td className="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                                                                 {medicine.supplierName}
                                                             </td>
-                                                            <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                            <td className="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                                                                 {medicine?.barcodeId}
                                                             </td>
-                                                            <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                            <td className="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                                                                 {medicine.price}
                                                             </td>
-                                                            <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                            <td className="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                                                                 {medicine.purchasePrice}
                                                             </td>
-                                                            <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                            <td className="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                                                                 {medicine.salePrice}
                                                             </td>
-                                                            <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                            <td className="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                                                                 {medicine.purchaseQty}
                                                             </td>
-                                                            <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                            <td className="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                                                                 {medicine.saleQuantity}
                                                             </td>
-                                                            <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                            <td className="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                                                                 {medicine.saleQuantity}
                                                             </td>
 
-                                                            <td class="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
+                                                            <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
                                                                 {medicine.bookedQty}
                                                             </td>
-                                                            <td class="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
+                                                            <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
                                                                 {medicine.status}
                                                             </td>
 
-                                                            <td class="text-sm text-gray-900 font-light mt-2 px-5 py-4 whitespace-nowrap flex items-center justify-center">
+                                                            <td className="text-sm text-gray-900 font-light mt-2 px-5 py-4 whitespace-nowrap flex items-center justify-center">
                                                                 <Link to="" htmlFor="update-medicine" onClick={() => { handleUpdateMedicine(medicine._id) }} className="btn btn-sm bg-sky-500 hover:bg-sky-600 border-none font-semibold text-md text-white"> <AiOutlineEdit /></Link>
                                                                 <button onClick={() => { deleteMedicine(medicine._id) }} className="btn btn-sm bg-red-500 hover:bg-red-600 border-none text-md text-white ml-2"><RiDeleteBin6Line /></button>
                                                             </td>

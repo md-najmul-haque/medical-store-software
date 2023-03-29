@@ -41,8 +41,8 @@ const SalesBillSidebar = ({ handleMedicine, medicines, setMedicines }) => {
                 {/* <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label> */}
 
                 <div className='grid grid-cols-2 gap-x-10'>
-                    <div class="flex justify-center">
-                        <div class="mb-3 xl:w-96">
+                    <div className="flex justify-center">
+                        <div className="mb-3 xl:w-96">
 
                             <div className="input-group">
                                 <input onChange={event => setQuery(event.target.value)} type="text" placeholder="Search…" className="input input-bordered w-full bg-white  focus:outline-none" />

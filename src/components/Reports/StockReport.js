@@ -70,51 +70,51 @@ const StockReport = () => {
                     </div>
                 </div>
 
-                <div class="flex flex-col">
-                    <div class="overflow-x-auto">
-                        <div class="min-w-full">
-                            <div class="">
-                                <table class="min-w-full text-center">
-                                    <thead class="bg-accent border-b-2">
+                <div className="flex flex-col">
+                    <div className="overflow-x-auto">
+                        <div className="min-w-full">
+                            <div className="">
+                                <table className="min-w-full text-center">
+                                    <thead className="bg-accent border-b-2">
                                         <tr>
-                                            <th scope="col" class="px-6 py-4">
+                                            <th scope="col" className="px-6 py-4">
                                                 Sl
                                             </th>
-                                            <th scope="col" class="px-6 py-4">
+                                            <th scope="col" className="px-6 py-4">
                                                 Medicine Name
                                             </th>
-                                            <th scope="col" class="px-6 py-4">
+                                            <th scope="col" className="px-6 py-4">
                                                 Generic Name
                                             </th>
 
-                                            <th scope="col" class="px-6 py-4">
+                                            <th scope="col" className="px-6 py-4">
                                                 Barcode ID
                                             </th>
-                                            <th scope="col" class="px-6 py-4">
+                                            <th scope="col" className="px-6 py-4">
                                                 Available Stock
                                             </th>
-                                            <th scope="col" class="px-6 py-4">
+                                            <th scope="col" className="px-6 py-4">
                                                 Category
                                             </th>
-                                            <th scope="col" class="px-6 py-4">
+                                            <th scope="col" className="px-6 py-4">
                                                 Supplier
                                             </th>
-                                            <th scope="col" class="px-6 py-4">
+                                            <th scope="col" className="px-6 py-4">
                                                 MRP Price (BDT)
                                             </th>
-                                            <th scope="col" class="px-6 py-4">
+                                            <th scope="col" className="px-6 py-4">
                                                 Purchase Price (BDT)
                                             </th>
-                                            <th scope="col" class="px-6 py-4">
+                                            <th scope="col" className="px-6 py-4">
                                                 Total Purchase price (BDT)
                                             </th>
-                                            <th scope="col" class="px-6 py-4">
+                                            <th scope="col" className="px-6 py-4">
                                                 Sale Price (BDT)
                                             </th>
-                                            <th scope="col" class="px-6 py-4">
+                                            <th scope="col" className="px-6 py-4">
                                                 Total Sale price (BDT)
                                             </th>
-                                            <th scope="col" class="px-6 py-4">
+                                            <th scope="col" className="px-6 py-4">
                                                 Status
                                             </th>
                                         </tr>
@@ -122,42 +122,42 @@ const StockReport = () => {
                                     <tbody>
                                         {search(medicines)?.slice(0, medicineQuantity)?.map((medicine, index) => {
                                             return (
-                                                <tr class="even:bg-gray-100 border-b">
-                                                    <td class="px-5 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>
-                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                <tr className="even:bg-gray-100 border-b">
+                                                    <td className="px-5 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>
+                                                    <td className="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                                                         {medicine.medicineName}
                                                     </td>
-                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                    <td className="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                                                         {medicine.genericName}
                                                     </td>
-                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                    <td className="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                                                         {medicine?.barcodeId}
                                                     </td>
-                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                    <td className="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                                                         {medicine.quantity}
                                                     </td>
-                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                    <td className="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                                                         {medicine.type}
                                                     </td>
-                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                    <td className="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                                                         {medicine.supplierName}
                                                     </td>
-                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                    <td className="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                                                         {medicine.price}
                                                     </td>
-                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                    <td className="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                                                         {medicine?.barcodeId}
                                                     </td>
-                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                    <td className="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                                                         {medicine.purchasePrice}
                                                     </td>
-                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                    <td className="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                                                         {medicine.salePrice}
                                                     </td>
-                                                    <td class="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
+                                                    <td className="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                                                         {medicine.purchaseQty}
                                                     </td>
-                                                    <td class="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
+                                                    <td className="text-sm text-gray-900 font-light px-3 py-4 whitespace-nowrap">
                                                         {medicine.status}
                                                     </td>
                                                 </tr>

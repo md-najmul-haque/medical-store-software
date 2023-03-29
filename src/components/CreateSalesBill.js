@@ -151,7 +151,7 @@ const CreateSalesBill = () => {
                                 </tr>
                             </tbody> */}
                         </table>
-                        <div class="flex justify-end items-center mt-10  ">
+                        <div className="flex justify-end items-center mt-10  ">
                             <h2 className='bg-gray-100 p-3'>Total Amount</h2>
                             <input
                                 type="number"

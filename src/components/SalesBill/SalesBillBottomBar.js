@@ -12,7 +12,7 @@ const SalesBillBottomBar = ({ total, totalDiscount, vatPercentage }) => {
         <div className='absolute bg-base-100 py-2 inset-x-0 bottom-2 '>
             <div className='flex justify-between items-center pl-5 pr-10'>
                 <div className='grid grid-cols-3'>
-                    <div class="flex items-center">
+                    <div className="flex items-center">
                         <h2 className='p-3 font-semibold'>Total:</h2>
                         <input
                             type="number"
@@ -21,7 +21,7 @@ const SalesBillBottomBar = ({ total, totalDiscount, vatPercentage }) => {
                             value={((total - totalDiscount) + (total - totalDiscount) * vatPercentage).toFixed(2)}
                         />
                     </div>
-                    <div class="flex items-center">
+                    <div className="flex items-center">
                         <h2 className='p-3 font-semibold flex-none'>Paid Amount: </h2>
                         <input
                             type="number"
@@ -30,7 +30,7 @@ const SalesBillBottomBar = ({ total, totalDiscount, vatPercentage }) => {
                             onChange={e => handlePaidAmount(e)}
                         />
                     </div>
-                    <div class="flex flex-nowrap shrink-0 items-center">
+                    <div className="flex flex-nowrap shrink-0 items-center">
                         <span className='p-3 font-semibold flex-none'>Deu Amount: </span>
                         <input
                             type="number"

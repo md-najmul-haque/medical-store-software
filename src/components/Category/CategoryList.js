@@ -64,32 +64,32 @@ const CategoryList = () => {
                     </div>
                 </div>
 
-                <div class="flex flex-col">
-                    <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-                        <div class="inline-block min-w-full sm:px-6 lg:px-8">
-                            <div class="overflow-hidden">
-                                <table class="min-w-full text-center">
-                                    <thead class="bg-accent border-b">
+                <div className="flex flex-col">
+                    <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                        <div className="inline-block min-w-full sm:px-6 lg:px-8">
+                            <div className="overflow-hidden">
+                                <table className="min-w-full text-center">
+                                    <thead className="bg-accent border-b">
                                         <tr>
-                                            <th scope="col" class="px-6 py-4">
+                                            <th scope="col" className="px-6 py-4">
                                                 Sl
                                             </th>
-                                            <th scope="col" class="px-6 py-4">
+                                            <th scope="col" className="px-6 py-4">
                                                 CAT ID
                                             </th>
-                                            <th scope="col" class="px-6 py-4">
+                                            <th scope="col" className="px-6 py-4">
                                                 Image
                                             </th>
-                                            <th scope="col" class="px-6 py-4">
+                                            <th scope="col" className="px-6 py-4">
                                                 Category Name
                                             </th>
-                                            <th scope="col" class="px-6 py-4">
+                                            <th scope="col" className="px-6 py-4">
                                                 Total Product
                                             </th>
-                                            <th scope="col" class="px-6 py-4">
+                                            <th scope="col" className="px-6 py-4">
                                                 Status
                                             </th>
-                                            <th scope="col" class="px-6 py-4">
+                                            <th scope="col" className="px-6 py-4">
                                                 Action
                                             </th>
                                         </tr>
@@ -98,22 +98,22 @@ const CategoryList = () => {
                                         {
                                             search(categories)?.slice(0, categoryQuantity).map((category, index) => {
                                                 return (
-                                                    <tr class="even:bg-gray-100">
-                                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>
-                                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{category._id}</td>
-                                                        <td class="text-sm text-gray-900 font-light w-28 px-6 py-4 whitespace-nowrap">
+                                                    <tr className="even:bg-gray-100">
+                                                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>
+                                                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{category._id}</td>
+                                                        <td className="text-sm text-gray-900 font-light w-28 px-6 py-4 whitespace-nowrap">
                                                             <img src={category.image} alt="" />
                                                         </td>
-                                                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                             {category.categoryName}
                                                         </td>
-                                                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                             {category.quantity}
                                                         </td>
-                                                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                             {category.status}
                                                         </td>
-                                                        <td class="text-sm text-gray-900 font-light mt-2 px-5 py-4 whitespace-nowrap flex items-center justify-center">
+                                                        <td className="text-sm text-gray-900 font-light mt-2 px-5 py-4 whitespace-nowrap flex items-center justify-center">
                                                             <label htmlFor='edit-category' onClick={() => setEditCategoryModal(true)} className="btn btn-sm bg-sky-500 hover:bg-sky-600 border-none font-semibold text-md text-white"> <AiOutlineEdit /></label>
                                                             <button className="btn btn-sm bg-red-500 hover:bg-red-600 border-none text-md text-white ml-2"><RiDeleteBin6Line /></button>
                                                         </td>

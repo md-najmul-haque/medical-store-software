@@ -137,7 +137,7 @@ const PurchaseBill = () => {
                             <input type="submit" className="btn btn-primary text-white px-12" value='Save' />
                         </div>
 
-                        <div class="flex justify-end items-center mb-2">
+                        <div className="flex justify-end items-center mb-2">
                             <h2 className='p-3 font-semibold'>Grand Total: </h2>
                             <input
                                 type="number"
@@ -146,7 +146,7 @@ const PurchaseBill = () => {
                             />
                         </div>
 
-                        <div class="flex justify-end items-center mb-2 ">
+                        <div className="flex justify-end items-center mb-2 ">
                             <h2 className='p-3 font-semibold '> Discount: </h2>
                             <input
                                 type="number"
@@ -155,7 +155,7 @@ const PurchaseBill = () => {
                             />
                         </div>
 
-                        <div class="flex justify-end items-center mb-2">
+                        <div className="flex justify-end items-center mb-2">
                             <h2 className='p-3 font-semibold'>Net Payable:</h2>
                             <input
                                 type="number"
