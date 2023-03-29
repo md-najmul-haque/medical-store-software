@@ -10,15 +10,24 @@ import { Link } from "react-router-dom";
 import UpdateSupplier from "./UpdateSupplier";
 import { CSVLink } from "react-csv";
 import { toast } from "react-toastify";
+import Loading from "../Loading/Loading";
 
 
 const SupplierList = () => {
-    const [suppliers] = useSupplier()
+    const [isLoading, suppliers, refetch] = useSupplier()
     const [supplierModal, setSupplierModal] = useState(false)
     const [importSupplier, setImportSupplier] = useState(false)
     const [query, setQuery] = useState('')
     const [numberOfSupplier, setNumberOfSupplier] = useState(10)
     const [updateSupplier, setUpdateSupplier] = useState(false)
+
+
+    if (isLoading) {
+        return <Loading />
+    }
+
+
+    console.log(suppliers)
 
     const keys = ['_id', 'supplierName', 'phone', 'contactPerson', 'address', 'status']
     // console.log(suppliers[0]?.["supplierName"])
@@ -27,6 +36,7 @@ const SupplierList = () => {
         return data.filter(supplier => keys.some(key => supplier[key]?.toLowerCase().includes(query)))
     }
 
+    // delete supplier
     const deleteSupplier = (id) => {
 
         fetch(`http://localhost:5000/api/v1/medicine/${id}`,
