@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 import { CSVLink } from "react-csv";
 import UpdateMedicine from './UpdateMedicine';
 import Loading from '../Loading/Loading';
-import { success } from 'daisyui/src/colors';
 import { toast } from 'react-toastify';
 
 const MedicineList = () => {
@@ -58,7 +57,7 @@ const MedicineList = () => {
             })
             .then(res => res.json())
             .then(data => {
-                if (data.status === success) {
+                if (data.status === "success") {
                     toast(data.message)
                     refetch()
                 } else {

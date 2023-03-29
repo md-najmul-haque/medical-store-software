@@ -9,6 +9,7 @@ import ImportSupplier from "./ImportSupplier";
 import { Link } from "react-router-dom";
 import UpdateSupplier from "./UpdateSupplier";
 import { CSVLink } from "react-csv";
+import { toast } from "react-toastify";
 
 
 const SupplierList = () => {
@@ -26,6 +27,27 @@ const SupplierList = () => {
         return data.filter(supplier => keys.some(key => supplier[key]?.toLowerCase().includes(query)))
     }
 
+    const deleteSupplier = (id) => {
+
+        fetch(`http://localhost:5000/api/v1/medicine/${id}`,
+            {
+                method: "DELETE",
+                headers: {
+                    'content-type': 'application/json'
+                }
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.status === "success") {
+                    toast(data.message)
+                    // refetch()
+                } else {
+                    toast(data.message)
+                }
+            })
+
+
+    }
 
     return (
         <div className='h-screen'>
@@ -174,7 +196,7 @@ const SupplierList = () => {
                                                         </td>
                                                         <td class="text-sm text-gray-900 font-light mt-2 px-5 py-4 whitespace-nowrap flex items-center justify-center">
                                                             <label htmlFor="update-supplier" onClick={() => setUpdateSupplier(true)} className="btn btn-sm bg-sky-500 hover:bg-sky-600 border-none font-semibold text-md text-white"> <AiOutlineEdit /></label>
-                                                            <button className="btn btn-sm bg-red-500 hover:bg-red-600 border-none text-md text-white ml-2"><RiDeleteBin6Line /></button>
+                                                            <button onClick={() => deleteSupplier(supplier._id)} className="btn btn-sm bg-red-500 hover:bg-red-600 border-none text-md text-white ml-2"><RiDeleteBin6Line /></button>
                                                         </td>
                                                     </tr>
                                                 )
