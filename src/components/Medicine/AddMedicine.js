@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
-const AddMedicine = ({ setMedicineModal }) => {
+const AddMedicine = ({ setMedicineModal, refetch }) => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
     const onSubmit = data => {
@@ -52,6 +52,7 @@ const AddMedicine = ({ setMedicineModal }) => {
                             if (medicine.status === "success") {
                                 setMedicineModal(false)
                                 reset()
+                                refetch()
                                 toast.success(medicine.message)
                             } else {
                                 toast.error(medicine.message)

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
-const UpdateMedicine = (updateMedicineId, setUpdateMedicine) => {
+const UpdateMedicine = (updateMedicineId, setUpdateMedicine, refetch) => {
     const [data, setData] = useState({})
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 

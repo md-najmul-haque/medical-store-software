@@ -8,6 +8,8 @@ import { Link } from 'react-router-dom';
 import { CSVLink } from "react-csv";
 import UpdateMedicine from './UpdateMedicine';
 import Loading from '../Loading/Loading';
+import { success } from 'daisyui/src/colors';
+import { toast } from 'react-toastify';
 
 const MedicineList = () => {
     const [isLoading, medicines, refetch] = useMedicine()
@@ -47,7 +49,7 @@ const MedicineList = () => {
 
     const deleteMedicine = (id) => {
 
-        fetch(`https://itracker-server.vercel.app/deleteMeeting/${id}`,
+        fetch(`http://localhost:5000/api/v1/medicine/${id}`,
             {
                 method: "DELETE",
                 headers: {
@@ -55,6 +57,14 @@ const MedicineList = () => {
                 }
             })
             .then(res => res.json())
+            .then(data => {
+                if (data.status === success) {
+                    toast(data.message)
+                    refetch()
+                } else {
+                    toast(data.message)
+                }
+            })
 
 
     }
@@ -296,7 +306,7 @@ const MedicineList = () => {
                                                             </td>
 
                                                             <td class="text-sm text-gray-900 font-light mt-2 px-5 py-4 whitespace-nowrap flex items-center justify-center">
-                                                                <label htmlFor="update-medicine" onClick={() => { handleUpdateMedicine(medicine._id) }} className="btn btn-sm bg-sky-500 hover:bg-sky-600 border-none font-semibold text-md text-white"> <AiOutlineEdit /></label>
+                                                                <Link to="" htmlFor="update-medicine" onClick={() => { handleUpdateMedicine(medicine._id) }} className="btn btn-sm bg-sky-500 hover:bg-sky-600 border-none font-semibold text-md text-white"> <AiOutlineEdit /></Link>
                                                                 <button onClick={() => { deleteMedicine(medicine._id) }} className="btn btn-sm bg-red-500 hover:bg-red-600 border-none text-md text-white ml-2"><RiDeleteBin6Line /></button>
                                                             </td>
                                                         </tr>
@@ -314,13 +324,13 @@ const MedicineList = () => {
 
             <div>
                 {
-                    medicineModal && <AddMedicine setMedicineModal={setMedicineModal} />
+                    medicineModal && <AddMedicine setMedicineModal={setMedicineModal} refetch={refetch} />
                 }
             </div>
 
             <div>
                 {
-                    updateMedicine && <UpdateMedicine updateMedicineId={updateMedicineId} setUpdateMedicine={setUpdateMedicine} />
+                    updateMedicine && <UpdateMedicine updateMedicineId={updateMedicineId} setUpdateMedicine={setUpdateMedicine} refetch={refetch} />
                 }
             </div>
 
