@@ -6,13 +6,19 @@ import { AiOutlineEdit } from 'react-icons/ai';
 import { GoPlus } from 'react-icons/go';
 import AddCategory from './AddCategory';
 import UpdateCategory from './UpdateCategory';
+import { toast } from 'react-toastify';
+import Loading from '../Loading/Loading';
 
 const CategoryList = () => {
+    const [isLoading, categories, refetch] = useCategory()
     const [categoryModal, setCategoryModal] = useState(false)
     const [editCategoryModal, setEditCategoryModal] = useState(false)
-    const [categories] = useCategory()
     const [query, setQuery] = useState('')
     const [categoryQuantity, setCategoryQuantity] = useState(10)
+
+    if (isLoading) {
+        return <Loading />
+    }
 
     const keys = ['_id', 'categoryName', 'status']
 
@@ -20,6 +26,28 @@ const CategoryList = () => {
         return data.filter(category => keys.some(key => category[key]?.toLowerCase().includes(query)))
     }
 
+    // delete category
+    const deleteCategory = (id) => {
+
+        fetch(`http://localhost:5000/api/v1/category/${id}`,
+            {
+                method: "DELETE",
+                headers: {
+                    'content-type': 'application/json'
+                }
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.status === "success") {
+                    toast(data.message)
+                    refetch()
+                } else {
+                    toast(data.message)
+                }
+            })
+
+
+    }
 
     return (
         <div className='h-screen'>
@@ -115,7 +143,7 @@ const CategoryList = () => {
                                                         </td>
                                                         <td className="text-sm text-gray-900 font-light mt-2 px-5 py-4 whitespace-nowrap flex items-center justify-center">
                                                             <label htmlFor='edit-category' onClick={() => setEditCategoryModal(true)} className="btn btn-sm bg-sky-500 hover:bg-sky-600 border-none font-semibold text-md text-white"> <AiOutlineEdit /></label>
-                                                            <button className="btn btn-sm bg-red-500 hover:bg-red-600 border-none text-md text-white ml-2"><RiDeleteBin6Line /></button>
+                                                            <button onClick={() => deleteCategory(category._id)} className="btn btn-sm bg-red-500 hover:bg-red-600 border-none text-md text-white ml-2"><RiDeleteBin6Line /></button>
                                                         </td>
                                                     </tr>
                                                 )

@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import { useQuery } from 'react-query';
 
 const useCategory = () => {
-    const [categories, setCategories] = useState([])
 
-    useEffect(() => {
-        fetch('/categories.json')
-            .then(res => res.json()
-                .then(data => setCategories(data)))
-    }, [])
+    const { data: categories, isLoading, refetch } = useQuery(['categories'], () =>
+        fetch('http://localhost:5000/api/v1/category')
+            .then(res => res.json()),
+        {
+            select: (data) => data && data.category,
+        }
+    )
 
-    return [categories, setCategories]
+    return [isLoading, categories, refetch]
 };
 
 export default useCategory;

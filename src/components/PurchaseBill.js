@@ -3,13 +3,17 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { ImCross } from 'react-icons/im';
 import useSupplier from '../hooks/useSupplier';
+import Loading from './Loading/Loading';
 
 const PurchaseBill = () => {
-    const [suppliers, setSuppliers] = useSupplier()
+    const [isLoading, suppliers, refetch] = useSupplier()
     const [products, setProducts] = useState([])
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
+    if (isLoading) {
+        return <Loading />
+    }
 
     const handleSupplier = (e) => {
         const supplierName = e.target.value

@@ -179,7 +179,7 @@ const SupplierList = () => {
                                                 return (
                                                     <tr className="even:bg-gray-100 border-b" key={supplier._id}>
                                                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>
-                                                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{supplier._id}</td>
+                                                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{supplier.supplierId}</td>
                                                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                             {supplier.supplierName}
                                                         </td>
@@ -187,7 +187,7 @@ const SupplierList = () => {
                                                             {supplier.address}
                                                         </td>
                                                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                            {supplier.phone}
+                                                            {supplier.contactPersonPhoneNo}
                                                         </td>
                                                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                             {supplier.contactPerson}

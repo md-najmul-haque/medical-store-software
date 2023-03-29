@@ -118,14 +118,14 @@ const AddCategory = ({ setCategoryModal }) => {
                                         {errors.categoryName?.type === 'required' && <span className="label-text-alt text-red-500">{errors.categoryName.message}</span>}
                                     </label>
                                 </div>
+
                                 <div className="form-control w-full col-span-2">
                                     <label className="label">
-                                        <span className="label-text">Add Category Image</span>
+                                        <span className="font-semibold">Add Category Image</span>
                                     </label>
                                     <input
                                         type="file"
-                                        placeholder="Status"
-                                        className="input w-full shadow-md"
+                                        className="input bg-gray-100 w-full "
                                         {...register("image", {
                                             required: {
                                                 value: true,
@@ -133,9 +133,10 @@ const AddCategory = ({ setCategoryModal }) => {
                                             }
                                         })} />
                                     <label className="label">
-                                        {errors.status?.type === 'required' && <span className="label-text-alt text-red-500">{errors.status.message}</span>}
+                                        {errors.image?.type === 'required' && <span className="label-text-alt text-red-500">{errors.image.message}</span>}
                                     </label>
                                 </div>
+
 
                             </div>
 
