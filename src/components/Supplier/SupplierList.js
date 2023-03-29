@@ -223,7 +223,7 @@ const SupplierList = () => {
 
             <div>
                 {
-                    supplierModal && <AddSupplier setSupplierModal={setSupplierModal} />
+                    supplierModal && <AddSupplier setSupplierModal={setSupplierModal} refetch={refetch} />
                 }
             </div>
 
@@ -235,7 +235,7 @@ const SupplierList = () => {
 
             <div>
                 {
-                    updateSupplier && <UpdateSupplier setUpdateSupplier={setUpdateSupplier} />
+                    updateSupplier && <UpdateSupplier setUpdateSupplier={setUpdateSupplier} refetch={refetch} />
                 }
             </div>
 

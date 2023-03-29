@@ -2,7 +2,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
-const AddSupplier = ({ setSupplierModal }) => {
+const AddSupplier = ({ setSupplierModal, refetch }) => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const onSubmit = data => {
 
@@ -20,6 +20,8 @@ const AddSupplier = ({ setSupplierModal }) => {
             status: data.status,
         }
 
+        // console.log(supplier)
+
         fetch(`http://localhost:5000/api/v1/supplier`, {
             method: "POST",
             body: JSON.stringify(supplier),
@@ -31,11 +33,13 @@ const AddSupplier = ({ setSupplierModal }) => {
             .then(supplier => {
                 if (supplier.status === "success") {
                     reset()
-                    toast.success('Supplier data added successfully')
+                    refetch()
+                    toast.success(supplier.message)
                     console.log(supplier)
                     setSupplierModal(false)
+
                 } else {
-                    toast.error('Fail to saved customer data')
+                    toast.error(supplier.message)
                 }
             })
     }
@@ -59,7 +63,7 @@ const AddSupplier = ({ setSupplierModal }) => {
                                     <span className="font-semibold">Supplier ID</span>
                                 </label>
                                 <input
-                                    type="text"
+                                    type="number"
                                     className="input bg-gray-100 w-full"
                                     {...register("supplierId", {
                                         required: {
@@ -215,7 +219,7 @@ const AddSupplier = ({ setSupplierModal }) => {
                                     <span className="font-semibold">Zip code</span>
                                 </label>
                                 <input
-                                    type="text"
+                                    type="number"
                                     className="input bg-gray-100 w-full"
                                     {...register("zipCode", {
                                         required: {
