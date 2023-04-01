@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
 
-const AddUser = ({ setCategoryModal }) => {
+const AddUser = ({ setUser }) => {
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
@@ -29,18 +29,19 @@ const AddUser = ({ setCategoryModal }) => {
                 if (result.success === true) {
                     const img = result.data.url
 
-                    const category = {
-                        catId: data.catId,
-                        categoryName: data.categoryName,
-                        image: img,
-                        status: data.status,
+                    const user = {
+                        name: data.name,
+                        email: data.email,
+                        role: data.role,
+                        password: data.password,
+                        image: img
                     }
 
-                    console.log(category)
+                    console.log(user)
 
                     fetch(`http://localhost:5000/api/v1/category`, {
                         method: "POST",
-                        body: JSON.stringify(category),
+                        body: JSON.stringify(user),
                         headers: {
                             'content-type': "application/json"
                         }
@@ -48,7 +49,7 @@ const AddUser = ({ setCategoryModal }) => {
                         .then(res => res.json())
                         .then(category => {
                             if (category.status === "success") {
-                                setCategoryModal(false)
+                                setUser(false)
                                 reset()
                                 toast.success("Category Data Saved Successfully")
                             } else {
@@ -111,23 +112,15 @@ const AddUser = ({ setCategoryModal }) => {
                                 </label>
                             </div>
 
-                            <div className="form-control w-full">
+                            <div className="form-control w-full ">
                                 <label className="label">
-                                    <span className="font-semibold">Role</span>
+                                    <span className="font-semibold">Status</span>
                                 </label>
-                                <input
-                                    type="name"
-                                    placeholder="Enter User Role"
-                                    className="input bg-gray-100 w-full input-bordered"
-                                    {...register("email", {
-                                        required: {
-                                            value: true,
-                                            message: 'Role is required'
-                                        }
-                                    })} />
-                                <label className="label">
-                                    {errors.email?.type === 'required' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
-                                </label>
+                                <select className="select w-full input-bordered" {...register("status")}>
+                                    <option selected>Stuff</option>
+                                    <option>Manager</option>
+                                    <option>Admin</option>
+                                </select>
                             </div>
 
                             <div className="form-control w-full">
@@ -164,7 +157,7 @@ const AddUser = ({ setCategoryModal }) => {
 
 
                         <div className="flex justify-center items-center mt-5">
-                            <button onClick={() => setCategoryModal(false)} className="btn btn-secondary px-10 text-white mr-5">Close</button>
+                            <button onClick={() => setUser(false)} className="btn btn-secondary px-10 text-white mr-5">Close</button>
                             <input type="submit" className="btn btn-primary px-10 text-white" value='Submit' />
                         </div>
 
