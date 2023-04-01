@@ -62,24 +62,24 @@ const AddUser = ({ setCategoryModal }) => {
 
     return (
         <div className='h-screen'>
-            <input type="checkbox" id="add-category" className="modal-toggle" />
+            <input type="checkbox" id="add-user" className="modal-toggle" />
             <div className="modal modal-bottom sm:modal-middle">
                 <div className="modal-box min-w-[50%] px-10 bg-white">
                     <div className='border-b-2'>
-                        <label htmlFor="add-category" className="btn btn-sm btn-ghost font-bold text-lg btn-square absolute right-8 top-5">✕</label>
-                        <h1 className='uppercase text-left text-primary text-xl font-bold'>Create New Category</h1>
+                        <label htmlFor="add-user" className="btn btn-sm btn-ghost font-bold text-lg btn-square absolute right-8 top-5">✕</label>
+                        <h1 className='uppercase text-left text-primary text-xl font-bold'>Create New User</h1>
                     </div>
 
                     <form onSubmit={handleSubmit(onSubmit)}>
 
-                        <div className='grid grid-cols-3 gap-x-5 pl-5 pr-20'>
-                            <div className="form-control w-full col-span-2">
+                        <div className='grid grid-cols-2 gap-x-5 pl-5 pr-20'>
+                            <div className="form-control w-full">
                                 <label className="label">
-                                    <span className="label-text">CAT ID</span>
+                                    <span className="font-semibold">User Name</span>
                                 </label>
                                 <input
-                                    type="number"
-                                    placeholder="Enter CAT ID"
+                                    type="name"
+                                    placeholder="Enter User Name"
                                     className="input bg-gray-100 w-full input-bordered"
                                     {...register("catId", {
                                         required: {
@@ -88,42 +88,73 @@ const AddUser = ({ setCategoryModal }) => {
                                         }
                                     })} />
                                 <label className="label">
-                                    {errors.catId?.type === 'required' && <span className="label-text-alt text-red-500">{errors.catId.message}</span>}
+                                    {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
                                 </label>
                             </div>
 
-                            <div className="form-control w-full ">
+                            <div className="form-control w-full">
                                 <label className="label">
-                                    <span className="label-text">Status</span>
+                                    <span className="font-semibold">User Email</span>
                                 </label>
-                                <select className="select w-full input-bordered" {...register("status")}>
-                                    <option selected>Active</option>
-                                    <option>Inactive</option>
-                                </select>
+                                <input
+                                    type="name"
+                                    placeholder="Enter User Email"
+                                    className="input bg-gray-100 w-full input-bordered"
+                                    {...register("email", {
+                                        required: {
+                                            value: true,
+                                            message: 'CAT ID is required'
+                                        }
+                                    })} />
+                                <label className="label">
+                                    {errors.email?.type === 'required' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
+                                </label>
                             </div>
 
-                            <div className="form-control w-full col-span-2">
+
+                            <div className="form-control w-full">
                                 <label className="label">
-                                    <span className="label-text">Category Name</span>
+                                    <span className="font-semibold">Role</span>
+                                </label>
+                                <input
+                                    type="name"
+                                    placeholder="Enter User Role"
+                                    className="input bg-gray-100 w-full input-bordered"
+                                    {...register("email", {
+                                        required: {
+                                            value: true,
+                                            message: 'CAT ID is required'
+                                        }
+                                    })} />
+                                <label className="label">
+                                    {errors.email?.type === 'required' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
+                                </label>
+                            </div>
+
+
+
+                            <div className="form-control w-full">
+                                <label className="label">
+                                    <span className="font-semibold">Password</span>
                                 </label>
                                 <input
                                     type="text"
-                                    placeholder="Category Name"
+                                    placeholder="Enter Password"
                                     className="input w-full input-bordered"
-                                    {...register("categoryName", {
+                                    {...register("password", {
                                         required: {
                                             value: true,
                                             message: 'Category name is required'
                                         }
                                     })} />
                                 <label className="label">
-                                    {errors.categoryName?.type === 'required' && <span className="label-text-alt text-red-500">{errors.categoryName.message}</span>}
+                                    {errors.password?.type === 'required' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
                                 </label>
                             </div>
 
                             <div className="form-control w-full col-span-2">
                                 <label className="label">
-                                    <span className="font-semibold">Add Category Image</span>
+                                    <span className="font-semibold">User Image</span>
                                 </label>
                                 <input
                                     type="file"
@@ -142,14 +173,7 @@ const AddUser = ({ setCategoryModal }) => {
 
                         </div>
 
-                        {/* <div className="form-control w-full col-span-2 ml-5 mt-10">
-                            <input
-                                type="image"
-                                alt=""
-                                style={{ width: '200px', height: '200px' }}
-                                className="input-bordered border-2 shadow-md"
-                                {...register("image")} />
-                        </div> */}
+
 
                         <div className="flex justify-center items-center mt-5">
                             <button onClick={() => setCategoryModal(false)} className="btn btn-secondary px-10 text-white mr-5">Close</button>
