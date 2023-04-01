@@ -61,7 +61,7 @@ const User = () => {
                         </ul>
                     </div>
                 </div>
-                <label htmlFor="add-category" onClick={() => { setUser(true) }} className="btn btn-primary text-white normal-case ml-5" ><span className="mr-1"><GoPlus /></span> Create User</label>
+                <label htmlFor="add-user" onClick={() => { setUser(true) }} className="btn btn-primary text-white normal-case ml-5" ><span className="mr-1"><GoPlus /></span> Create User</label>
             </div>
 
 

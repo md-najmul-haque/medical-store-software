@@ -78,13 +78,13 @@ const AddUser = ({ setCategoryModal }) => {
                                     <span className="font-semibold">User Name</span>
                                 </label>
                                 <input
-                                    type="name"
+                                    type="text"
                                     placeholder="Enter User Name"
                                     className="input bg-gray-100 w-full input-bordered"
-                                    {...register("catId", {
+                                    {...register("name", {
                                         required: {
                                             value: true,
-                                            message: 'CAT ID is required'
+                                            message: 'Name is required'
                                         }
                                     })} />
                                 <label className="label">
@@ -103,14 +103,13 @@ const AddUser = ({ setCategoryModal }) => {
                                     {...register("email", {
                                         required: {
                                             value: true,
-                                            message: 'CAT ID is required'
+                                            message: 'Email is required'
                                         }
                                     })} />
                                 <label className="label">
                                     {errors.email?.type === 'required' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
                                 </label>
                             </div>
-
 
                             <div className="form-control w-full">
                                 <label className="label">
@@ -123,15 +122,13 @@ const AddUser = ({ setCategoryModal }) => {
                                     {...register("email", {
                                         required: {
                                             value: true,
-                                            message: 'CAT ID is required'
+                                            message: 'Role is required'
                                         }
                                     })} />
                                 <label className="label">
                                     {errors.email?.type === 'required' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
                                 </label>
                             </div>
-
-
 
                             <div className="form-control w-full">
                                 <label className="label">
@@ -144,7 +141,7 @@ const AddUser = ({ setCategoryModal }) => {
                                     {...register("password", {
                                         required: {
                                             value: true,
-                                            message: 'Category name is required'
+                                            message: 'Password is required'
                                         }
                                     })} />
                                 <label className="label">
@@ -159,17 +156,8 @@ const AddUser = ({ setCategoryModal }) => {
                                 <input
                                     type="file"
                                     className="input bg-gray-100 w-full "
-                                    {...register("image", {
-                                        required: {
-                                            value: true,
-                                            message: 'Category image is required'
-                                        }
-                                    })} />
-                                <label className="label">
-                                    {errors.image?.type === 'required' && <span className="label-text-alt text-red-500">{errors.image.message}</span>}
-                                </label>
+                                    {...register("image")} />
                             </div>
-
 
                         </div>
 
