@@ -51,9 +51,9 @@ const AddUser = ({ setUser }) => {
                             if (category.status === "success") {
                                 setUser(false)
                                 reset()
-                                toast.success("Category Data Saved Successfully")
+                                toast.success("User Data Saved Successfully")
                             } else {
-                                toast.error('Fail to saved category data. Please try again later')
+                                toast.error('Fail to saved User data. Please try again later')
                             }
                         })
                 }
