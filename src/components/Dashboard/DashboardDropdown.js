@@ -14,7 +14,7 @@ const DashboardDropdown = ({ route, isActive, setIsActive }) => {
     return (
         <>
             <div onClick={() => setIsDropDownOpen(!isDropdownOpen)}
-                className={`flex items-center justify-between font-semibold text-lg px-5 rounded-xl hover:text-white hover:bg-primary mx-2 focus:bg-primary focus:text-white cursor-pointer py-2 hover:shadow-xl ${isActive === route.id && "bg-primary text-white"}`}>
+                className={`flex items-center justify-between mb-1 font-semibold text-lg px-5 rounded-xl hover:text-white hover:bg-primary mx-2 focus:bg-primary focus:text-white cursor-pointer py-2 hover:shadow-xl ${isActive === route.id && "bg-primary text-white"}`}>
                 <div className='flex items-center '>
                     <div className='bg-base-100 text-primary p-2 rounded-lg'>{route.icon}</div>
                     <div className='flex items-center justify-between'>

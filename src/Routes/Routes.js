@@ -18,6 +18,7 @@ import DatewiseReport from "../components/Reports/DatewiseReport";
 import Login from "../components/Authentication/Login";
 import Registration from "../components/Authentication/Registration";
 import RequireAuth from "../hooks/requireAuth";
+import User from "../components/User/User";
 
 const router = createBrowserRouter([
     {
@@ -97,6 +98,11 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/datewiseReport',
                 element: <DatewiseReport />
+
+            },
+            {
+                path: '/dashboard/user',
+                element: <User />
 
             }
 

@@ -121,7 +121,7 @@ const routes = [
             {
                 mainRouteId: 6,
                 path: "/salesBill",
-                name: "Account ",
+                name: "POS",
                 icon: <FaUser />,
             }
         ],
@@ -163,27 +163,15 @@ const routes = [
     {
         id: 9,
         path: "/dashboard",
-        name: "Users",
+        name: "User Management",
         icon: <FaUsers />,
         subRoutes: [
             {
                 mainRouteId: 9,
-                path: "/dashboard/account",
-                name: "Add New User ",
+                path: "/dashboard/user",
+                name: "User",
                 icon: <FaUser />,
-            },
-            {
-                mainRouteId: 9,
-                path: "/dashboard/hrm",
-                name: "User Access Level",
-                icon: <FaLock />,
-            },
-            {
-                mainRouteId: 9,
-                path: "/dashboard/projects",
-                name: "Change Password",
-                icon: <FaMoneyBill />,
-            },
+            }
         ],
     },
 
@@ -218,7 +206,7 @@ const DashboardLayout = () => {
         <div className='h-screen'>
             <DashboardNavbar />
             <div className='flex'>
-                <div className='w-1/6 min-w-[250px]'>
+                <div className='w-1/6 min-w-[280px]'>
                     <section className=''>
                         {
                             routes.map((route) => {
