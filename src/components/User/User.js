@@ -1,33 +1,34 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import useCategory from '../../hooks/useCategory';
-import { RiDeleteBin6Line } from 'react-icons/ri';
-import { AiOutlineEdit } from 'react-icons/ai';
 import { GoPlus } from 'react-icons/go';
 import { toast } from 'react-toastify';
-import Loading from '../Loading/Loading';
 import AddUser from './AddUser';
 import UpdateUser from './UpdateUser';
+import { useQuery } from 'react-query';
+import Loading from '../Loading/Loading';
+import UserCard from './UserCard';
 
 const User = () => {
-    const [isLoading, categories, refetch] = useCategory()
     const [user, setUser] = useState(false)
     const [updateUser, setUpdateUser] = useState(false)
-    const [query, setQuery] = useState('')
-    const [categoryQuantity, setCategoryQuantity] = useState(10)
+
+    const { data: users, isLoading, refetch } = useQuery(['users'], () =>
+        fetch('http://localhost:5000/api/v1/user')
+            .then(res => res.json()),
+        {
+            select: (data) => data && data.user,
+        }
+    )
+
 
     if (isLoading) {
         return <Loading />
     }
 
-    const keys = ['_id', 'categoryName', 'status']
-
-    const search = (data) => {
-        return data.filter(category => keys.some(key => category[key]?.toLowerCase().includes(query)))
-    }
+    console.log(users)
 
     // delete category
-    const deleteCategory = (id) => {
+    const deleteUser = (id) => {
 
         fetch(`http://localhost:5000/api/v1/category/${id}`,
             {
@@ -40,7 +41,7 @@ const User = () => {
             .then(data => {
                 if (data.status === "success") {
                     toast(data.message)
-                    refetch()
+
                 } else {
                     toast(data.message)
                 }
@@ -62,6 +63,13 @@ const User = () => {
                     </div>
                 </div>
                 <label htmlFor="add-user" onClick={() => { setUser(true) }} className="btn btn-primary text-white normal-case ml-5" ><span className="mr-1"><GoPlus /></span> Create User</label>
+            </div>
+
+            <div className="grid xl:grid-cols-4 lg:grid-cols-3 gap-5">
+                {
+                    users.map(user => <UserCard key={user._id} user={user} />)
+                }
+
             </div>
 
 
