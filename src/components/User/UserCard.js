@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { BsThreeDotsVertical } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 
 const UserCard = (user) => {
 
@@ -20,7 +21,15 @@ const UserCard = (user) => {
 
                 <div className='absolute right-10' >
                     {
-                        open ? <p>najmul</p> : ''
+                        open &&
+
+                        <ul className='bg-white shadow-lg py-5 rounded-lg '>
+                            <li className='hover:bg-base-200 px-5 py-1.5'><Link to="">Edit</Link></li>
+                            <li className='hover:bg-base-200 px-5 py-1.5'> <Link to="">Delete</Link></li>
+                            <li className='hover:bg-base-200 px-5 py-1.5'>  <Link to="">Reset Password</Link></li>
+                        </ul>
+
+
                     }
                 </div>
             </div>
