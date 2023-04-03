@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { GoPlus } from 'react-icons/go';
-import { toast } from 'react-toastify';
 import AddUser from './AddUser';
-import UpdateUser from './UpdateUser';
 import { useQuery } from 'react-query';
 import Loading from '../Loading/Loading';
 import UserCard from './UserCard';
 
 const User = () => {
     const [user, setUser] = useState(false)
-    const [updateUser, setUpdateUser] = useState(false)
 
     const { data: users, isLoading, refetch } = useQuery(['users'], () =>
         fetch('http://localhost:5000/api/v1/user')
@@ -50,17 +47,9 @@ const User = () => {
 
             </div>
 
-
-
             <div>
                 {
                     user && <AddUser setUser={setUser} refetch={refetch} />
-                }
-            </div>
-
-            <div>
-                {
-                    updateUser && <UpdateUser setUpdateUser={setUpdateUser} refetch={refetch} />
                 }
             </div>
 

@@ -9,7 +9,7 @@ const AddUser = ({ setUser, refetch }) => {
 
     const onSubmit = data => {
 
-        console.log(data)
+        // console.log(data)
 
         const image = data.image[0];
         const imageStorageKey = '659c9f3714e59a5aab97b06d91ac3782';
@@ -38,7 +38,7 @@ const AddUser = ({ setUser, refetch }) => {
                         image: img
                     }
 
-                    console.log(user)
+                    // console.log(user)
 
                     fetch(`http://localhost:5000/api/v1/register`, {
                         method: "POST",
@@ -75,7 +75,7 @@ const AddUser = ({ setUser, refetch }) => {
 
                     <form onSubmit={handleSubmit(onSubmit)}>
 
-                        <div className='grid grid-cols-2 gap-x-5 pl-5 pr-20'>
+                        <div className='grid grid-cols-2 gap-x-5 px-5 mx-auto'>
                             <div className="form-control w-full">
                                 <label className="label">
                                     <span className="font-semibold">User Name</span>
@@ -154,7 +154,7 @@ const AddUser = ({ setUser, refetch }) => {
 
                             <div className="form-control w-full">
                                 <label className="label">
-                                    <span className="font-semibold">Status</span>
+                                    <span className="font-semibold">Role</span>
                                 </label>
                                 <select className="select w-full input-bordered" {...register("role")}>
                                     <option selected>Stuff</option>

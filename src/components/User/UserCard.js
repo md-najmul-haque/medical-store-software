@@ -1,15 +1,21 @@
 import React, { useState } from 'react';
 import { BsThreeDotsVertical } from 'react-icons/bs';
-import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import UpdateUser from './UpdateUser';
+import ResetPassword from './ResetPassword';
 
 const UserCard = ({ user, refetch }) => {
 
     const [open, setOpen] = useState(false)
+    const [updateUser, setUpdateUser] = useState(false)
+    const [resetPassword, setResetPassword] = useState(false)
+
+
 
     const { _id, name, email, role, image } = user
 
     console.log(user)
+
 
     // delete user
     const deleteUser = (id) => {
@@ -33,14 +39,16 @@ const UserCard = ({ user, refetch }) => {
             })
 
 
+
+
     }
 
     return (
-        <div className="card w-96 bg-white shadow-xl">
+        <div className="card w-96 h-80 bg-white shadow-xl">
 
             <div className='relative'>
                 <div className='flex justify-between px-7 pt-7'>
-                    <p>{role ? role : 'Stuff'}</p>
+                    <p className='bg-primary text-white px-3 py-1 rounded-lg'>{role}</p>
                     <p onClick={() => setOpen(!open)}><BsThreeDotsVertical /></p>
                 </div>
 
@@ -48,12 +56,11 @@ const UserCard = ({ user, refetch }) => {
                     {
                         open &&
 
-                        <ul className='bg-white shadow-lg py-5 rounded-lg '>
-                            <li className='hover:bg-base-200 px-5 py-1.5'><Link to="">Edit</Link></li>
-                            <li className='hover:bg-base-200 px-5 py-1.5'> <Link onClick={() => deleteUser(_id)} to="">Delete</Link></li>
-                            <li className='hover:bg-base-200 px-5 py-1.5'>  <Link to="">Reset Password</Link></li>
+                        <ul className='bg-white shadow-lg py-2 rounded-lg '>
+                            <li onClick={() => setUpdateUser(true)} className='hover:bg-base-200 py-1.5'><label htmlFor="update-user" className='px-5 cursor-pointer'>Edit</label></li>
+                            <li onClick={() => deleteUser(_id)} className='hover:bg-base-200 px-5 py-1.5 cursor-pointer'> Delete</li>
+                            <li className='hover:bg-base-200  py-1.5'>  <label htmlFor="reset-password" onClick={() => setResetPassword(true)} className='px-5 cursor-pointer'>Reset Password</label></li>
                         </ul>
-
 
                     }
                 </div>
@@ -61,13 +68,25 @@ const UserCard = ({ user, refetch }) => {
 
             <div className='flex justify-center item-center mt-10'>
                 <figure className="w-24">
-                    <img src={image ? image : "https://i.ibb.co/RQV7pPN/avatar.png"} alt="Shoes" className="rounded-full" />
+                    <img src={image ? image : "https://i.ibb.co/RQV7pPN/avatar.png"} alt="" className="rounded-full" />
                 </figure>
             </div>
             <div className="card-body items-center text-center">
                 <h2 className="card-title">{name}</h2>
                 <p>{email}</p>
 
+            </div>
+
+            <div>
+                {
+                    updateUser && <UpdateUser setUpdateUser={setUpdateUser} refetch={refetch} />
+                }
+            </div>
+
+            <div>
+                {
+                    resetPassword && <ResetPassword setResetPassword={setResetPassword} refetch={refetch} />
+                }
             </div>
         </div>
     );
