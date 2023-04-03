@@ -27,28 +27,6 @@ const User = () => {
 
     console.log(users)
 
-    // delete category
-    const deleteUser = (id) => {
-
-        fetch(`http://localhost:5000/api/v1/category/${id}`,
-            {
-                method: "DELETE",
-                headers: {
-                    'content-type': 'application/json'
-                }
-            })
-            .then(res => res.json())
-            .then(data => {
-                if (data.status === "success") {
-                    toast(data.message)
-
-                } else {
-                    toast(data.message)
-                }
-            })
-
-
-    }
 
     return (
         <div className='h-screen'>
@@ -67,7 +45,7 @@ const User = () => {
 
             <div className="grid xl:grid-cols-4 lg:grid-cols-3 gap-5">
                 {
-                    users.map(user => <UserCard key={user._id} user={user} />)
+                    users.map(user => <UserCard key={user._id} user={user} refetch={refetch} />)
                 }
 
             </div>
