@@ -54,13 +54,13 @@ const User = () => {
 
             <div>
                 {
-                    user && <AddUser setUser={setUser} />
+                    user && <AddUser setUser={setUser} refetch={refetch} />
                 }
             </div>
 
             <div>
                 {
-                    updateUser && <UpdateUser setUpdateUser={setUpdateUser} />
+                    updateUser && <UpdateUser setUpdateUser={setUpdateUser} refetch={refetch} />
                 }
             </div>
 

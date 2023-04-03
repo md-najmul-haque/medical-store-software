@@ -12,7 +12,8 @@ const Registration = () => {
             name: data.name,
             email: data.email,
             password: data.password,
-            confirmPassword: data.confirmPassword
+            confirmPassword: data.confirmPassword,
+            role: "stuff",
         }
 
         // console.log(user)

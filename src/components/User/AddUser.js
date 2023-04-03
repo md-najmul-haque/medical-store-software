@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
 
-const AddUser = ({ setUser }) => {
+const AddUser = ({ setUser, refetch }) => {
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
@@ -32,14 +32,15 @@ const AddUser = ({ setUser }) => {
                     const user = {
                         name: data.name,
                         email: data.email,
-                        role: data.role,
                         password: data.password,
+                        confirmPassword: data.confirmPassword,
+                        role: data.role,
                         image: img
                     }
 
                     console.log(user)
 
-                    fetch(`http://localhost:5000/api/v1/category`, {
+                    fetch(`http://localhost:5000/api/v1/register`, {
                         method: "POST",
                         body: JSON.stringify(user),
                         headers: {
@@ -47,13 +48,14 @@ const AddUser = ({ setUser }) => {
                         }
                     })
                         .then(res => res.json())
-                        .then(category => {
-                            if (category.status === "success") {
+                        .then(user => {
+                            if (user.status === "success") {
                                 setUser(false)
                                 reset()
-                                toast.success("User Data Saved Successfully")
+                                refetch()
+                                toast.success(user.message)
                             } else {
-                                toast.error('Fail to saved User data. Please try again later')
+                                toast.error(user.message)
                             }
                         })
                 }
@@ -112,23 +114,12 @@ const AddUser = ({ setUser }) => {
                                 </label>
                             </div>
 
-                            <div className="form-control w-full ">
-                                <label className="label">
-                                    <span className="font-semibold">Status</span>
-                                </label>
-                                <select className="select w-full input-bordered" {...register("status")}>
-                                    <option selected>Stuff</option>
-                                    <option>Manager</option>
-                                    <option>Admin</option>
-                                </select>
-                            </div>
-
                             <div className="form-control w-full">
                                 <label className="label">
                                     <span className="font-semibold">Password</span>
                                 </label>
                                 <input
-                                    type="text"
+                                    type="password"
                                     placeholder="Enter Password"
                                     className="input w-full input-bordered"
                                     {...register("password", {
@@ -142,7 +133,37 @@ const AddUser = ({ setUser }) => {
                                 </label>
                             </div>
 
-                            <div className="form-control w-full col-span-2">
+                            <div className="form-control w-full">
+                                <label className="label">
+                                    <span className="font-semibold">Confirm Password</span>
+                                </label>
+                                <input
+                                    type="password"
+                                    placeholder="Confirm Password"
+                                    className="input w-full input-bordered"
+                                    {...register("confirmPassword", {
+                                        required: {
+                                            value: true,
+                                            message: 'Confirm Password is required'
+                                        }
+                                    })} />
+                                <label className="label">
+                                    {errors.confirmPassword?.type === 'required' && <span className="label-text-alt text-red-500">{errors.confirmPassword.message}</span>}
+                                </label>
+                            </div>
+
+                            <div className="form-control w-full">
+                                <label className="label">
+                                    <span className="font-semibold">Status</span>
+                                </label>
+                                <select className="select w-full input-bordered" {...register("role")}>
+                                    <option selected>Stuff</option>
+                                    <option>Manager</option>
+                                    <option>Admin</option>
+                                </select>
+                            </div>
+
+                            <div className="form-control w-full">
                                 <label className="label">
                                     <span className="font-semibold">User Image</span>
                                 </label>
