@@ -56,7 +56,7 @@ const UserCard = ({ user, refetch }) => {
             <div className='relative'>
                 <div className='flex justify-between px-7 pt-7'>
                     <p className='bg-primary text-white px-3 py-1 rounded-lg'>{role}</p>
-                    <p className={``} onClick={() => { }}><BsThreeDotsVertical /></p>
+                    <p className={``} onClick={() => { setOpen(!open) }}><BsThreeDotsVertical /></p>
                 </div>
 
                 <div className='absolute right-10' >
@@ -92,7 +92,7 @@ const UserCard = ({ user, refetch }) => {
 
             <div>
                 {
-                    resetPassword && <ResetPassword setResetPassword={setResetPassword} refetch={refetch} />
+                    resetPassword && <ResetPassword setResetPassword={setResetPassword} refetch={refetch} _id={_id} />
                 }
             </div>
         </div>

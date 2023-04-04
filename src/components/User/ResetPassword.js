@@ -2,8 +2,9 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
-const ResetPassword = ({ setResetPassword, refetch }) => {
+const ResetPassword = ({ setResetPassword, refetch, _id }) => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
+
 
     const onSubmit = data => {
 
@@ -14,7 +15,7 @@ const ResetPassword = ({ setResetPassword, refetch }) => {
 
         // console.log(user)
 
-        fetch(`http://localhost:5000/api/v1/user/${"id"}`, {
+        fetch(`http://localhost:5000/api/v1/changePassword/${_id}`, {
             method: "PATCH",
             body: JSON.stringify(newPassword),
             headers: {
