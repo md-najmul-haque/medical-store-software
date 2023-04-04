@@ -100,7 +100,7 @@ const AddUser = ({ setUser, refetch }) => {
                                     <span className="font-semibold">User Email</span>
                                 </label>
                                 <input
-                                    type="name"
+                                    type="email"
                                     placeholder="Enter User Email"
                                     className="input bg-gray-100 w-full input-bordered"
                                     {...register("email", {

@@ -2,8 +2,11 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
-const UpdateUser = ({ setUpdateUser, refetch }) => {
+const UpdateUser = ({ setUpdateUser, refetch, user }) => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
+
+    const { _id, name, email } = user
+
 
     const onSubmit = data => {
 
@@ -15,7 +18,7 @@ const UpdateUser = ({ setUpdateUser, refetch }) => {
 
         // console.log(user)
 
-        fetch(`http://localhost:5000/api/v1/user/${"id"}`, {
+        fetch(`http://localhost:5000/api/v1/user/${_id}`, {
             method: "PATCH",
             body: JSON.stringify(user),
             headers: {
@@ -57,6 +60,7 @@ const UpdateUser = ({ setUpdateUser, refetch }) => {
                                     type="text"
                                     placeholder="Enter User Name"
                                     className="input bg-gray-100 w-full input-bordered"
+                                    value={name}
                                     {...register("name", {
                                         required: {
                                             value: true,
@@ -73,9 +77,10 @@ const UpdateUser = ({ setUpdateUser, refetch }) => {
                                     <span className="font-semibold">User Email</span>
                                 </label>
                                 <input
-                                    type="name"
+                                    type="email"
                                     placeholder="Enter User Email"
                                     className="input bg-gray-100 w-full input-bordered"
+                                    value={email}
                                     {...register("email", {
                                         required: {
                                             value: true,

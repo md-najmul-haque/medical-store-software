@@ -10,12 +10,7 @@ const UserCard = ({ user, refetch }) => {
     const [updateUser, setUpdateUser] = useState(false)
     const [resetPassword, setResetPassword] = useState(false)
 
-
-
     const { _id, name, email, role, image } = user
-
-    console.log(user)
-
 
     // delete user
     const deleteUser = (id) => {
@@ -43,13 +38,25 @@ const UserCard = ({ user, refetch }) => {
 
     }
 
+    const handleUpdateUser = (id) => {
+        setUpdateUser(true)
+        setOpen(false)
+        console.log(resetPassword)
+    }
+
+    const handlePassword = () => {
+        setResetPassword(true)
+        setOpen(false)
+        console.log(resetPassword)
+    }
+
     return (
         <div className="card w-96 h-80 bg-white shadow-xl">
 
             <div className='relative'>
                 <div className='flex justify-between px-7 pt-7'>
                     <p className='bg-primary text-white px-3 py-1 rounded-lg'>{role}</p>
-                    <p onClick={() => setOpen(!open)}><BsThreeDotsVertical /></p>
+                    <p className={``} onClick={() => { }}><BsThreeDotsVertical /></p>
                 </div>
 
                 <div className='absolute right-10' >
@@ -59,7 +66,7 @@ const UserCard = ({ user, refetch }) => {
                         <ul className='bg-white shadow-lg py-2 rounded-lg '>
                             <li onClick={() => setUpdateUser(true)} className='hover:bg-base-200 py-1.5'><label htmlFor="update-user" className='px-5 cursor-pointer'>Edit</label></li>
                             <li onClick={() => deleteUser(_id)} className='hover:bg-base-200 px-5 py-1.5 cursor-pointer'> Delete</li>
-                            <li className='hover:bg-base-200  py-1.5'>  <label htmlFor="reset-password" onClick={() => setResetPassword(true)} className='px-5 cursor-pointer'>Reset Password</label></li>
+                            <li onClick={() => setResetPassword(true)} className='hover:bg-base-200  py-1.5'>  <label htmlFor="reset-password" className='px-5 cursor-pointer'>Reset Password</label></li>
                         </ul>
 
                     }
@@ -79,7 +86,7 @@ const UserCard = ({ user, refetch }) => {
 
             <div>
                 {
-                    updateUser && <UpdateUser setUpdateUser={setUpdateUser} refetch={refetch} />
+                    updateUser && <UpdateUser setUpdateUser={setUpdateUser} refetch={refetch} user={user} />
                 }
             </div>
 
