@@ -2,7 +2,9 @@ import React from 'react'
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
-const UpdateSupplier = ({ setUpdateSupplier }) => {
+const UpdateSupplier = ({ setUpdateSupplier, supplier, refetch }) => {
+
+    const { _id, supplierId, supplierName, supplierPhoneNo, email, address, contactPersonPhoneNo, contactPerson, status, district, zipCode, thana } = supplier
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const onSubmit = data => {
@@ -21,8 +23,8 @@ const UpdateSupplier = ({ setUpdateSupplier }) => {
             status: data.status,
         }
 
-        fetch(`http://localhost:5000/api/v1/supplier`, {
-            method: "POST",
+        fetch(`http://localhost:5000/api/v1/supplier/${_id}`, {
+            method: "PATCH",
             body: JSON.stringify(supplier),
             headers: {
                 'content-type': "application/json"
@@ -32,10 +34,10 @@ const UpdateSupplier = ({ setUpdateSupplier }) => {
             .then(supplier => {
                 if (supplier.status === "success") {
                     reset()
-                    toast.success('Supplier data added successfully')
+                    toast.success(supplier.message)
                     console.log(supplier)
                 } else {
-                    toast.error('Fail to saved customer data')
+                    toast.error(supplier.message)
                 }
             })
     }
@@ -61,6 +63,7 @@ const UpdateSupplier = ({ setUpdateSupplier }) => {
                                 <input
                                     type="text"
                                     className="input bg-gray-100 w-full"
+                                    value={supplierId}
                                     {...register("supplierId", {
                                         required: {
                                             value: true,
@@ -79,6 +82,7 @@ const UpdateSupplier = ({ setUpdateSupplier }) => {
                                 <input
                                     type="text"
                                     className="input bg-gray-100 w-full "
+                                    value={supplierName}
                                     {...register("supplierName", {
                                         required: {
                                             value: true,
@@ -99,6 +103,7 @@ const UpdateSupplier = ({ setUpdateSupplier }) => {
                                 <input
                                     type="text"
                                     className="input bg-gray-100 w-full"
+                                    value={supplierPhoneNo}
                                     {...register("supplierPhoneNo", {
                                         required: {
                                             value: true,
@@ -117,6 +122,7 @@ const UpdateSupplier = ({ setUpdateSupplier }) => {
                                 <input
                                     type="email"
                                     className="input bg-gray-100 w-full"
+                                    value={email}
                                     {...register("email", {
                                         required: {
                                             value: true,
@@ -140,6 +146,7 @@ const UpdateSupplier = ({ setUpdateSupplier }) => {
                                 <input
                                     type="text"
                                     className="input bg-gray-100 w-full"
+                                    value={status}
                                     {...register("status", {
                                         required: {
                                             value: true,
@@ -161,6 +168,7 @@ const UpdateSupplier = ({ setUpdateSupplier }) => {
                             <textarea
                                 type="text"
                                 className="textarea textarea-bordered bg-gray-100 w-full"
+                                value={address}
                                 {...register("address", {
                                     required: {
                                         value: true,
@@ -180,6 +188,7 @@ const UpdateSupplier = ({ setUpdateSupplier }) => {
                                 <input
                                     type="text"
                                     className="input bg-gray-100 w-full"
+                                    value={district}
                                     {...register("district", {
                                         required: {
                                             value: true,
@@ -198,6 +207,7 @@ const UpdateSupplier = ({ setUpdateSupplier }) => {
                                 <input
                                     type="text"
                                     className="input bg-gray-100 w-full"
+                                    value={thana}
                                     {...register("thana", {
                                         required: {
                                             value: true,
@@ -216,6 +226,7 @@ const UpdateSupplier = ({ setUpdateSupplier }) => {
                                 <input
                                     type="text"
                                     className="input bg-gray-100 w-full"
+                                    value={zipCode}
                                     {...register("zipCode", {
                                         required: {
                                             value: true,
@@ -238,6 +249,7 @@ const UpdateSupplier = ({ setUpdateSupplier }) => {
                                 <input
                                     type="text"
                                     className="input bg-gray-100 w-full"
+                                    value={contactPerson}
                                     {...register("contactPerson", {
                                         required: {
                                             value: true,
@@ -256,6 +268,7 @@ const UpdateSupplier = ({ setUpdateSupplier }) => {
                                 <input
                                     type="text"
                                     className="input bg-gray-100 w-full"
+                                    value={contactPersonPhoneNo}
                                     {...register("contactPersonPhoneNo", {
                                         required: {
                                             value: true,
