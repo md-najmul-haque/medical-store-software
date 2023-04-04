@@ -2,15 +2,16 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
-const ResetPassword = ({ setResetPassword, refetch, _id }) => {
+const ResetPassword = ({ setResetPassword, refetch, user }) => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
-
+    const { _id, role } = user
     const onSubmit = data => {
 
         const newPassword = {
             password: data.password,
-            confirmPassword: data.confirmPassword,
+            confirmPassword: data.confirmPassword
+
         }
 
         // console.log(user)

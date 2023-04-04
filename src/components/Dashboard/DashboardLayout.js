@@ -106,7 +106,7 @@ const routes = [
         subRoutes: [
             {
                 mainRouteId: 5,
-                path: "/dashboard/supplierList",
+                path: "/dashboard/suppliers",
                 name: "Supplier List",
                 icon: <FaUsers />,
             }

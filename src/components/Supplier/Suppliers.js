@@ -1,31 +1,26 @@
 import React, { useState } from "react";
 import { TbFileImport, TbFileExport } from 'react-icons/tb';
 import useSupplier from "../../hooks/useSupplier";
-import { RiDeleteBin6Line } from 'react-icons/ri';
-import { AiOutlineEdit } from 'react-icons/ai';
 import { GoPlus } from 'react-icons/go';
 import AddSupplier from "./AddSupplier";
 import ImportSupplier from "./ImportSupplier";
 import { Link } from "react-router-dom";
-import UpdateSupplier from "./UpdateSupplier";
 import { CSVLink } from "react-csv";
-import { toast } from "react-toastify";
 import Loading from "../Loading/Loading";
+import Supplier from "./Supplier";
 
 
-const SupplierList = () => {
+const Suppliers = () => {
     const [isLoading, suppliers, refetch] = useSupplier()
     const [supplierModal, setSupplierModal] = useState(false)
     const [importSupplier, setImportSupplier] = useState(false)
     const [query, setQuery] = useState('')
     const [numberOfSupplier, setNumberOfSupplier] = useState(10)
-    const [updateSupplier, setUpdateSupplier] = useState(false)
 
 
     if (isLoading) {
         return <Loading />
     }
-
 
     console.log(suppliers)
 
@@ -36,28 +31,7 @@ const SupplierList = () => {
         return data.filter(supplier => keys.some(key => supplier[key]?.toLowerCase().includes(query)))
     }
 
-    // delete supplier
-    const deleteSupplier = (id) => {
 
-        fetch(`http://localhost:5000/api/v1/supplier/${id}`,
-            {
-                method: "DELETE",
-                headers: {
-                    'content-type': 'application/json'
-                }
-            })
-            .then(res => res.json())
-            .then(data => {
-                if (data.status === "success") {
-                    toast(data.message)
-                    refetch()
-                } else {
-                    toast(data.message)
-                }
-            })
-
-
-    }
 
     return (
         <div className='h-screen'>
@@ -175,42 +149,7 @@ const SupplierList = () => {
                                     </thead>
                                     <tbody>
                                         {
-                                            search(suppliers)?.slice(0, numberOfSupplier).map((supplier, index) => {
-                                                return (
-                                                    <tr className="even:bg-gray-100 border-b" key={supplier._id}>
-                                                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>
-                                                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{supplier.supplierId}</td>
-                                                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                            {supplier.supplierName}
-                                                        </td>
-                                                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                            {supplier.address}
-                                                        </td>
-                                                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                            {supplier.contactPersonPhoneNo}
-                                                        </td>
-                                                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                            {supplier.contactPerson}
-                                                        </td>
-                                                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                            {supplier.payable}
-                                                        </td>
-                                                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                            {supplier.paid}
-                                                        </td>
-                                                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                            {supplier.payable - supplier.paid}
-                                                        </td>
-                                                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                            {supplier.status}
-                                                        </td>
-                                                        <td className="text-sm text-gray-900 font-light mt-2 px-5 py-4 whitespace-nowrap flex items-center justify-center">
-                                                            <label htmlFor="update-supplier" onClick={() => setUpdateSupplier(true)} className="btn btn-sm bg-sky-500 hover:bg-sky-600 border-none font-semibold text-md text-white"> <AiOutlineEdit /></label>
-                                                            <button onClick={() => deleteSupplier(supplier._id)} className="btn btn-sm bg-red-500 hover:bg-red-600 border-none text-md text-white ml-2"><RiDeleteBin6Line /></button>
-                                                        </td>
-                                                    </tr>
-                                                )
-                                            })
+                                            search(suppliers)?.slice(0, numberOfSupplier).map((supplier, index) => <Supplier key={supplier._id} index={index} supplier={supplier} refetch={refetch} />)
                                         }
 
                                     </tbody>
@@ -233,14 +172,9 @@ const SupplierList = () => {
                 }
             </div>
 
-            <div>
-                {
-                    updateSupplier && <UpdateSupplier setUpdateSupplier={setUpdateSupplier} refetch={refetch} />
-                }
-            </div>
 
         </div>
     )
 }
 
-export default SupplierList
+export default Suppliers

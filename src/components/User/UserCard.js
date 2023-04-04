@@ -92,7 +92,7 @@ const UserCard = ({ user, refetch }) => {
 
             <div>
                 {
-                    resetPassword && <ResetPassword setResetPassword={setResetPassword} refetch={refetch} _id={_id} />
+                    resetPassword && <ResetPassword setResetPassword={setResetPassword} refetch={refetch} user={user} />
                 }
             </div>
         </div>
