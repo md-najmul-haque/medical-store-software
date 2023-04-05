@@ -3,24 +3,31 @@ import DashboardNavbar from '../Dashboard/DashboardNavbar';
 import SalesBillBottomBar from './SalesBillBottomBar';
 import SalesBillForm from './SalesBillForm';
 import SalesBillSidebar from './SalesBillSidebar';
+import useMedicine from '../../hooks/useMedicine';
+import Loading from '../Loading/Loading';
 
 
 const SalesBill = () => {
+    const [isLoading, medicines, refetch] = useMedicine()
     const [total, setTotal] = useState(0)
     const [totalDiscount, setTotalDiscount] = useState(0)
     const [vat, setVat] = useState(0)
-    const [medicines, setMedicines] = useState([])
+
+    // const [medicines, setMedicines] = useState([])
     let [medicine, setMedicine] = useState([])
     const [vatPercentage, setVatPercentage] = useState(0)
     const [givenAmount, setGivenAmount] = useState(0)
     const [changeAmount, setChangeAmount] = useState(0)
 
-    useEffect(() => {
-        fetch('medicines.json')
-            .then(res => res.json()
-                .then(data => setMedicines(data)))
-    }, [])
+    // useEffect(() => {
+    //     fetch('medicines.json')
+    //         .then(res => res.json()
+    //             .then(data => setMedicines(data)))
+    // }, [])
 
+    if (isLoading) {
+        return <Loading />
+    }
 
     const handleMedicine = (id) => {
         let incrementedMedicine = medicine.find(med => med._id === id)
@@ -70,7 +77,7 @@ const SalesBill = () => {
             <div className='grid grid-cols-2 gap-5'>
                 <SalesBillSidebar
                     medicines={medicines}
-                    setMedicines={setMedicines}
+                    // setMedicines={setMedicines}
                     handleMedicine={handleMedicine}
                 />
                 <SalesBillForm

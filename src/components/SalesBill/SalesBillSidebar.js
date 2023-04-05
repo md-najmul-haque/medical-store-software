@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const SalesBillSidebar = ({ handleMedicine, medicines, setMedicines }) => {
+const SalesBillSidebar = ({ handleMedicine, medicines }) => {
     const [query, setQuery] = useState('')
     const [categorizedMedicines, setCategorizedMedicines] = useState(null)
 
@@ -19,7 +19,7 @@ const SalesBillSidebar = ({ handleMedicine, medicines, setMedicines }) => {
             setCategorizedMedicines(null)
 
         } else {
-            const med = medicines.filter(medi => medi.type === category)
+            const med = medicines.filter(medi => medi.medicineCategory === category)
             setCategorizedMedicines(med)
         }
 
@@ -38,8 +38,6 @@ const SalesBillSidebar = ({ handleMedicine, medicines, setMedicines }) => {
 
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content">
-                {/* <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label> */}
-
                 <div className='grid grid-cols-2 gap-x-10'>
                     <div className="flex justify-center">
                         <div className="mb-3 xl:w-96">
@@ -69,7 +67,7 @@ const SalesBillSidebar = ({ handleMedicine, medicines, setMedicines }) => {
                             search(categorizedMedicines).map(medicine => {
                                 return (
                                     <div onClick={() => handleMedicine(medicine._id)} key={medicine._id} className="card w-32 gap-3 mb-2 bg-base-100 shadow-xl">
-                                        <figure><img src={medicine.photoURL} alt="medicine" /></figure>
+                                        <figure><img src={medicine.imageURL} alt="medicine" /></figure>
                                         <h2 className="text-center pb-1">{medicine.medicineName}</h2>
                                     </div>
                                 )
@@ -78,7 +76,7 @@ const SalesBillSidebar = ({ handleMedicine, medicines, setMedicines }) => {
                             : search(medicines).map(medicine => {
                                 return (
                                     <div onClick={() => handleMedicine(medicine._id)} key={medicine._id} className="card w-32 gap-3 mb-2 shadow-xl">
-                                        <figure><img src={medicine.photoURL} alt="medicine" /></figure>
+                                        <figure><img src={medicine.imageURL} alt="medicine" /></figure>
                                         <h2 className="text-center pb-1">{medicine.medicineName}</h2>
                                     </div>
                                 )
