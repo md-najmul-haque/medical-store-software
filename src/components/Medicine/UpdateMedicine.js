@@ -2,18 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
-const UpdateMedicine = (updateMedicineId, setUpdateMedicine, refetch) => {
-    const [data, setData] = useState({})
+const UpdateMedicine = ({ medicine, setUpdateMedicine, refetch }) => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
-    useEffect(() => {
-        fetch(`http://localhost:5000/api/v1/medicine/${updateMedicineId}`)
-            .then(res => res.json())
-            .then(data => setData(data))
-    }, [updateMedicineId])
+    const { _id, imageURL, medicineName, type, brandName, supplierName, barcodeId, price, purchasePrice, salePrice, purchaseQty, saleQuantity, bookedQty, status, origin, unit, genericName, quantity, batchNo, remarks } = medicine
 
-
-    console.log(data)
+    console.log(medicine)
 
     const onSubmit = data => {
 
@@ -50,8 +44,8 @@ const UpdateMedicine = (updateMedicineId, setUpdateMedicine, refetch) => {
                         remarks: data.remarks,
                     }
 
-                    fetch(`http://localhost:5000/api/v1/medicine`, {
-                        method: "POST",
+                    fetch(`http://localhost:5000/api/v1/medicine/${_id}`, {
+                        method: "PATCH",
                         body: JSON.stringify(medicine),
                         headers: {
                             'content-type': "application/json"
@@ -62,9 +56,10 @@ const UpdateMedicine = (updateMedicineId, setUpdateMedicine, refetch) => {
                             if (medicine.status === "success") {
                                 setUpdateMedicine(false)
                                 reset()
-                                toast.success("Medicine Data Saved Successfully")
+                                refetch()
+                                toast.success(medicine.message)
                             } else {
-                                toast.error('Fail to saved medicine data. Please try again later')
+                                toast.error(medicine.message)
                             }
                         })
                 }
@@ -96,9 +91,8 @@ const UpdateMedicine = (updateMedicineId, setUpdateMedicine, refetch) => {
                                     </label>
                                     <input
                                         type="text"
-                                        value={data.medicineName}
-
                                         className="input bg-gray-100 w-full "
+                                        defaultValue={medicineName}
                                         {...register("medicineName", {
                                             required: {
                                                 value: true,
@@ -117,6 +111,7 @@ const UpdateMedicine = (updateMedicineId, setUpdateMedicine, refetch) => {
                                     <input
                                         type="text"
                                         className="input bg-gray-100 w-full "
+                                        defaultValue={genericName}
                                         {...register("genericName", {
                                             required: {
                                                 value: true,
@@ -152,6 +147,7 @@ const UpdateMedicine = (updateMedicineId, setUpdateMedicine, refetch) => {
                                     <input
                                         type="text"
                                         className="input bg-gray-100 w-full "
+                                        defaultValue={supplierName}
                                         {...register("supplierName", {
                                             required: {
                                                 value: true,
@@ -170,6 +166,7 @@ const UpdateMedicine = (updateMedicineId, setUpdateMedicine, refetch) => {
                                     <input
                                         type="text"
                                         className="input bg-gray-100 w-full "
+                                        defaultValue={brandName}
                                         {...register("brandName", {
                                             required: {
                                                 value: true,
@@ -193,6 +190,7 @@ const UpdateMedicine = (updateMedicineId, setUpdateMedicine, refetch) => {
                                     <input
                                         type="number"
                                         className="input bg-gray-100 w-full "
+                                        defaultValue={price}
                                         {...register("price", {
                                             required: {
                                                 value: true,
@@ -211,6 +209,7 @@ const UpdateMedicine = (updateMedicineId, setUpdateMedicine, refetch) => {
                                     <input
                                         type="number"
                                         className="input bg-gray-100 w-full "
+                                        defaultValue={quantity}
                                         {...register("quantity", {
                                             required: {
                                                 value: true,
@@ -247,6 +246,7 @@ const UpdateMedicine = (updateMedicineId, setUpdateMedicine, refetch) => {
                                     <input
                                         type="text"
                                         className="input bg-gray-100 w-full "
+                                        defaultValue={batchNo}
                                         {...register("batchNo", {
                                             required: {
                                                 value: true,
@@ -276,6 +276,7 @@ const UpdateMedicine = (updateMedicineId, setUpdateMedicine, refetch) => {
                                     <input
                                         type="text"
                                         className="input bg-gray-100 w-full "
+                                        defaultValue={unit}
                                         {...register("unit", {
                                             required: {
                                                 value: true,
@@ -294,6 +295,7 @@ const UpdateMedicine = (updateMedicineId, setUpdateMedicine, refetch) => {
                                     <input
                                         type="text"
                                         className="input bg-gray-100 w-full "
+                                        defaultValue={origin}
                                         {...register("origin", {
                                             required: {
                                                 value: true,
@@ -317,6 +319,7 @@ const UpdateMedicine = (updateMedicineId, setUpdateMedicine, refetch) => {
                                     <input
                                         type="file"
                                         className="input bg-gray-100 w-full "
+
                                         {...register("image", {
                                             required: {
                                                 value: true,
@@ -335,6 +338,7 @@ const UpdateMedicine = (updateMedicineId, setUpdateMedicine, refetch) => {
                                     <input
                                         type="text"
                                         className="input bg-gray-100 w-full "
+                                        defaultValue={remarks}
                                         {...register("remarks")} />
                                 </div>
                             </div>
