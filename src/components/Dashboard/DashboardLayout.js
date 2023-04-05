@@ -78,8 +78,8 @@ const routes = [
         subRoutes: [
             {
                 mainRouteId: 3,
-                path: "/dashboard/medicineList",
-                name: "Medicine List",
+                path: "/dashboard/medicines",
+                name: "Medicines",
                 icon: <FaUser />,
             }
         ],

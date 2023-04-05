@@ -160,7 +160,7 @@ const CategoryList = () => {
 
             <div>
                 {
-                    categoryModal && <AddCategory setCategoryModal={setCategoryModal} />
+                    categoryModal && <AddCategory setCategoryModal={setCategoryModal} refetch={refetch} />
                 }
             </div>
 

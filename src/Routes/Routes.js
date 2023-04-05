@@ -1,7 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import CategoryList from "../components/Category/CategoryList";
 import Main from "../Layouts/Main";
-import MedicineList from "../components/Medicine/MedicineList";
 import SalesBill from "../components/SalesBill/SalesBill";
 import DashboardLayout from "../components/Dashboard/DashboardLayout";
 import PurchaseBill from "../components/PurchaseBill";
@@ -18,6 +17,7 @@ import Registration from "../components/Authentication/Registration";
 import RequireAuth from "../hooks/requireAuth";
 import User from "../components/User/User";
 import Suppliers from "../components/Supplier/Suppliers";
+import Medicines from "../components/Medicine/Medicines";
 
 const router = createBrowserRouter([
     {
@@ -58,8 +58,8 @@ const router = createBrowserRouter([
                 element: <PurchaseBill />
             },
             {
-                path: '/dashboard/medicineList',
-                element: <MedicineList />
+                path: '/dashboard/medicines',
+                element: <Medicines />
             },
             {
                 path: '/dashboard/categoryList',

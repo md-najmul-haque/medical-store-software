@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
 
-const AddCategory = ({ setCategoryModal }) => {
+const AddCategory = ({ setCategoryModal, refetch }) => {
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
@@ -50,9 +50,10 @@ const AddCategory = ({ setCategoryModal }) => {
                             if (category.status === "success") {
                                 setCategoryModal(false)
                                 reset()
-                                toast.success("Category Data Saved Successfully")
+                                refetch()
+                                toast.success(category.message)
                             } else {
-                                toast.error('Fail to saved category data. Please try again later')
+                                toast.error(category.message)
                             }
                         })
                 }
