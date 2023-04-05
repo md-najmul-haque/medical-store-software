@@ -9,6 +9,7 @@ import UserCard from './UserCard';
 const User = () => {
     const [user, setUser] = useState(false)
 
+
     const { data: users, isLoading, refetch } = useQuery(['users'], () =>
         fetch('http://localhost:5000/api/v1/user')
             .then(res => res.json()),

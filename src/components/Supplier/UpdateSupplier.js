@@ -10,7 +10,6 @@ const UpdateSupplier = ({ setUpdateSupplier, supplier, refetch }) => {
     const onSubmit = data => {
 
         const supplier = {
-            supplierId: data.supplierId,
             supplierName: data.supplierName,
             supplierPhoneNo: data.supplierPhoneNo,
             email: data.email,
@@ -23,6 +22,8 @@ const UpdateSupplier = ({ setUpdateSupplier, supplier, refetch }) => {
             status: data.status,
         }
 
+        console.log(supplier)
+
         fetch(`http://localhost:5000/api/v1/supplier/${_id}`, {
             method: "PATCH",
             body: JSON.stringify(supplier),
@@ -34,8 +35,9 @@ const UpdateSupplier = ({ setUpdateSupplier, supplier, refetch }) => {
             .then(supplier => {
                 if (supplier.status === "success") {
                     reset()
+                    setUpdateSupplier(false)
                     toast.success(supplier.message)
-                    console.log(supplier)
+                    refetch()
                 } else {
                     toast.error(supplier.message)
                 }
@@ -61,7 +63,7 @@ const UpdateSupplier = ({ setUpdateSupplier, supplier, refetch }) => {
                                     <span className="font-semibold">Supplier ID</span>
                                 </label>
                                 <input
-                                    type="text"
+                                    type="number"
                                     className="input bg-gray-100 w-full"
                                     value={supplierId}
                                     {...register("supplierId", {
@@ -82,7 +84,7 @@ const UpdateSupplier = ({ setUpdateSupplier, supplier, refetch }) => {
                                 <input
                                     type="text"
                                     className="input bg-gray-100 w-full "
-                                    value={supplierName}
+                                    defaultValue={supplierName}
                                     {...register("supplierName", {
                                         required: {
                                             value: true,
@@ -103,7 +105,7 @@ const UpdateSupplier = ({ setUpdateSupplier, supplier, refetch }) => {
                                 <input
                                     type="text"
                                     className="input bg-gray-100 w-full"
-                                    value={supplierPhoneNo}
+                                    defaultValue={supplierPhoneNo}
                                     {...register("supplierPhoneNo", {
                                         required: {
                                             value: true,
@@ -122,7 +124,7 @@ const UpdateSupplier = ({ setUpdateSupplier, supplier, refetch }) => {
                                 <input
                                     type="email"
                                     className="input bg-gray-100 w-full"
-                                    value={email}
+                                    defaultValue={email}
                                     {...register("email", {
                                         required: {
                                             value: true,
@@ -146,7 +148,7 @@ const UpdateSupplier = ({ setUpdateSupplier, supplier, refetch }) => {
                                 <input
                                     type="text"
                                     className="input bg-gray-100 w-full"
-                                    value={status}
+                                    defaultValue={status}
                                     {...register("status", {
                                         required: {
                                             value: true,
@@ -168,7 +170,7 @@ const UpdateSupplier = ({ setUpdateSupplier, supplier, refetch }) => {
                             <textarea
                                 type="text"
                                 className="textarea textarea-bordered bg-gray-100 w-full"
-                                value={address}
+                                defaultValue={address}
                                 {...register("address", {
                                     required: {
                                         value: true,
@@ -188,7 +190,7 @@ const UpdateSupplier = ({ setUpdateSupplier, supplier, refetch }) => {
                                 <input
                                     type="text"
                                     className="input bg-gray-100 w-full"
-                                    value={district}
+                                    defaultValue={district}
                                     {...register("district", {
                                         required: {
                                             value: true,
@@ -207,7 +209,7 @@ const UpdateSupplier = ({ setUpdateSupplier, supplier, refetch }) => {
                                 <input
                                     type="text"
                                     className="input bg-gray-100 w-full"
-                                    value={thana}
+                                    defaultValue={thana}
                                     {...register("thana", {
                                         required: {
                                             value: true,
@@ -224,9 +226,9 @@ const UpdateSupplier = ({ setUpdateSupplier, supplier, refetch }) => {
                                     <span className="font-semibold">Zip code</span>
                                 </label>
                                 <input
-                                    type="text"
+                                    type="number"
                                     className="input bg-gray-100 w-full"
-                                    value={zipCode}
+                                    defaultValue={zipCode}
                                     {...register("zipCode", {
                                         required: {
                                             value: true,
@@ -249,7 +251,7 @@ const UpdateSupplier = ({ setUpdateSupplier, supplier, refetch }) => {
                                 <input
                                     type="text"
                                     className="input bg-gray-100 w-full"
-                                    value={contactPerson}
+                                    defaultValue={contactPerson}
                                     {...register("contactPerson", {
                                         required: {
                                             value: true,
@@ -268,7 +270,7 @@ const UpdateSupplier = ({ setUpdateSupplier, supplier, refetch }) => {
                                 <input
                                     type="text"
                                     className="input bg-gray-100 w-full"
-                                    value={contactPersonPhoneNo}
+                                    defaultValue={contactPersonPhoneNo}
                                     {...register("contactPersonPhoneNo", {
                                         required: {
                                             value: true,

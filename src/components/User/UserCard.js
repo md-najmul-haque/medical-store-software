@@ -5,8 +5,9 @@ import UpdateUser from './UpdateUser';
 import ResetPassword from './ResetPassword';
 
 const UserCard = ({ user, refetch }) => {
-
     const [open, setOpen] = useState(false)
+
+    // const [close, setClose] = useState(false)
     const [updateUser, setUpdateUser] = useState(false)
     const [resetPassword, setResetPassword] = useState(false)
 
@@ -38,16 +39,15 @@ const UserCard = ({ user, refetch }) => {
 
     }
 
-    const handleUpdateUser = (id) => {
-        setUpdateUser(true)
-        setOpen(false)
-        console.log(resetPassword)
-    }
+    console.log(open)
 
-    const handlePassword = () => {
-        setResetPassword(true)
+
+    const handleUserMenu = (id) => {
         setOpen(false)
-        console.log(resetPassword)
+        if (_id === id) {
+            setOpen(true)
+
+        }
     }
 
     return (
@@ -56,7 +56,7 @@ const UserCard = ({ user, refetch }) => {
             <div className='relative'>
                 <div className='flex justify-between px-7 pt-7'>
                     <p className='bg-primary text-white px-3 py-1 rounded-lg'>{role}</p>
-                    <p className={``} onClick={() => { setOpen(!open) }}><BsThreeDotsVertical /></p>
+                    <p onClick={() => handleUserMenu(_id)}><BsThreeDotsVertical /></p>
                 </div>
 
                 <div className='absolute right-10' >
