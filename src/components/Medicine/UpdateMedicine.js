@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
-const UpdateMedicine = ({ medicine, setUpdateMedicine, refetch }) => {
+const UpdateMedicine = ({ medicine, setUpdateMedicine, refetch, _id }) => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
-    const { _id, imageURL, medicineName, type, brandName, supplierName, barcodeId, price, purchasePrice, salePrice, purchaseQty, saleQuantity, bookedQty, status, origin, unit, genericName, quantity, batchNo, remarks } = medicine
+    const { imageURL, medicineName, type, brandName, supplierName, barcodeId, price, purchasePrice, salePrice, purchaseQty, saleQuantity, bookedQty, status, origin, unit, genericName, quantity, batchNo, remarks } = medicine
 
+    // console.log(_id)
     console.log(medicine)
 
     const onSubmit = data => {
@@ -43,6 +44,8 @@ const UpdateMedicine = ({ medicine, setUpdateMedicine, refetch }) => {
                         imageURL: img,
                         remarks: data.remarks,
                     }
+
+                    console.log(medicine)
 
                     fetch(`http://localhost:5000/api/v1/medicine/${_id}`, {
                         method: "PATCH",

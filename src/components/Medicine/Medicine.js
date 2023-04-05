@@ -8,6 +8,7 @@ const Medicine = ({ medicine, index, refetch }) => {
     const [updateMedicine, setUpdateMedicine] = useState(false)
 
     const { _id, imageURL, medicineName, type, brandName, supplierName, barcodeId, price, purchasePrice, salePrice, purchaseQty, saleQuantity, bookedQty, status } = medicine
+    console.log(_id)
 
     const deleteMedicine = (id) => {
 
@@ -87,7 +88,7 @@ const Medicine = ({ medicine, index, refetch }) => {
 
             <div>
                 {
-                    updateMedicine && <UpdateMedicine setUpdateMedicine={setUpdateMedicine} refetch={refetch} medicine={medicine} />
+                    updateMedicine && <UpdateMedicine setUpdateMedicine={setUpdateMedicine} refetch={refetch} medicine={medicine} _id={_id} />
                 }
             </div>
         </>
