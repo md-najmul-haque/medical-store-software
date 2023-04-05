@@ -11,12 +11,14 @@ const SalesBillForm = ({ medicine, setMedicine, vat, total, setTotal, totalDisco
     const [modal, setModal] = useState(false)
     const [medicineDetails, setMedicineDetails] = useState(null)
 
-    const findCustomer = () => {
+    const findCustomer = async () => {
 
-        fetch(`customer.json`)
+        console.log(customerData)
+        await fetch(`http://localhost:5000/api/v1/customer`)
             .then(res => res.json())
             .then(data => {
-                const selectedCustomer = data.find(customer => customer.customerNumber === customerNumber)
+                console.log(data.customerInfo)
+                const selectedCustomer = data.customerInfo.find(customer => customer.phoneNumber === customerNumber)
                 console.log(selectedCustomer)
                 if (selectedCustomer !== undefined) {
                     setCustomerData(selectedCustomer)
@@ -153,14 +155,14 @@ const SalesBillForm = ({ medicine, setMedicine, vat, total, setTotal, totalDisco
                         type="text"
                         placeholder="Customer Name / Phone Number"
                         className="input w-full input-bordered bg-white focus:outline-none"
-                        defaultValue={customerData?.customerName}
+                        value={customerData?.customerName}
 
                     />
                 </div>
 
                 <div className="form-control">
                     <div className="input-group">
-                        <input type="text" placeholder="Search…" className="input input-bordered w-full bg-white  focus:outline-none" onChange={(e) => setCustomerNumber(e.target.value)} />
+                        <input type="text" placeholder="Search…" className="input input-bordered w-full bg-white  focus:outline-none" onBlur={(e) => setCustomerNumber(e.target.value)} />
                         <label htmlFor="add-customer" onClick={() => findCustomer()} className="btn btn-square text-white bg-secondary shadow-md hover:bg-secondary hover:shadow-lg focus:bg-secondary  focus:shadow-lg border-none">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
                         </label>
