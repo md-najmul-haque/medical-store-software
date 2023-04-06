@@ -28,7 +28,7 @@ const Suppliers = () => {
     // console.log(suppliers[0]?.["supplierName"])
 
     const search = (data) => {
-        return data.filter(supplier => keys.some(key => supplier[key]?.toLowerCase().includes(query)))
+        return data?.filter(supplier => keys.some(key => supplier[key]?.toLowerCase().includes(query)))
     }
 
 

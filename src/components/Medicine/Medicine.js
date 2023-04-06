@@ -7,7 +7,7 @@ import UpdateMedicine from './UpdateMedicine';
 const Medicine = ({ medicine, index, refetch }) => {
     const [updateMedicine, setUpdateMedicine] = useState(false)
 
-    const { _id, imageURL, medicineName, medicineCategory, brandName, supplierName, barcodeId, price, purchasePrice, salePrice, purchaseQty, saleQuantity, bookedQty, status } = medicine
+    const { _id, imageURL, medicineName, medicineCategory, brandName, supplier, barcodeId, price, purchasePrice, salePrice, purchaseQty, saleQuantity, bookedQty, status } = medicine
     console.log(_id)
 
     const deleteMedicine = (id) => {
@@ -49,7 +49,7 @@ const Medicine = ({ medicine, index, refetch }) => {
                     {brandName}
                 </td>
                 <td className="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
-                    {supplierName.name}
+                    {supplier?.supplierName}
                 </td>
                 <td className="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                     {barcodeId}

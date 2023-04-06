@@ -1,8 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
-import Loading from '../Loading/Loading';
-import useSupplier from '../../hooks/useSupplier';
 
 const AddMedicine = ({ setMedicineModal, refetch, suppliers }) => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
@@ -33,8 +31,8 @@ const AddMedicine = ({ setMedicineModal, refetch, suppliers }) => {
                         medicineName: data.medicineName,
                         genericName: data.genericName,
                         medicineCategory: data.medicineCategory,
-                        supplierName: {
-                            name: data.supplierName,
+                        supplier: {
+                            supplierName: data.supplierName,
                             id: selectedSupplier._id
                         },
                         brandName: data.brandName,
