@@ -2,7 +2,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
-const AddSupplier = ({ setSupplierModal, refetch }) => {
+const AddSupplier = ({ setSupplierModal, refetch, suppliers }) => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const onSubmit = data => {
 
@@ -65,6 +65,7 @@ const AddSupplier = ({ setSupplierModal, refetch }) => {
                                 <input
                                     type="number"
                                     className="input bg-gray-100 w-full"
+                                    value={suppliers.length + 1}
                                     {...register("supplierId", {
                                         required: {
                                             value: true,
