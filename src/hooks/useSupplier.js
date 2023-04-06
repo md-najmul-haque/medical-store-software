@@ -2,7 +2,7 @@ import { useQuery } from 'react-query';
 
 const useSupplier = () => {
 
-    const { data: suppliers, isLoading, refetch } = useQuery(['suppliers'], () =>
+    const { data: suppliers, isLoadingSupplier, refetch } = useQuery(['suppliers'], () =>
         fetch('http://localhost:5000/api/v1/supplier')
             .then(res => res.json()),
         {
@@ -10,7 +10,7 @@ const useSupplier = () => {
         }
     )
 
-    return { isLoading, suppliers, refetch }
+    return { isLoadingSupplier, suppliers, refetch }
 
 };
 

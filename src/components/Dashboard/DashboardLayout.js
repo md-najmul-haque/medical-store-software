@@ -81,31 +81,24 @@ const routes = [
                 path: "/dashboard/medicines",
                 name: "Medicines",
                 icon: <FaUser />,
-            }
-        ],
-    },
-    {
-        id: 4,
-        path: "/dashboard",
-        name: "Category",
-        icon: <MdOutlineCategory />,
-        subRoutes: [
+            },
             {
-                mainRouteId: 4,
-                path: "/dashboard/categoryList",
-                name: "Category List",
+                mainRouteId: 3,
+                path: "/dashboard/category",
+                name: "Category",
                 icon: <FaUser />,
             }
         ],
     },
+
     {
-        id: 5,
+        id: 4,
         path: "/dashboard",
         name: "Supplier",
         icon: <FaUserTie />,
         subRoutes: [
             {
-                mainRouteId: 5,
+                mainRouteId: 4,
                 path: "/dashboard/suppliers",
                 name: "Supplier List",
                 icon: <FaUsers />,
@@ -113,13 +106,13 @@ const routes = [
         ],
     },
     {
-        id: 6,
+        id: 5,
         path: "/dashboard",
         name: "POS System",
         icon: <MdOutlinePayment />,
         subRoutes: [
             {
-                mainRouteId: 6,
+                mainRouteId: 5,
                 path: "/salesBill",
                 name: "POS",
                 icon: <FaUser />,
@@ -127,13 +120,13 @@ const routes = [
         ],
     },
     {
-        id: 7,
+        id: 6,
         path: "/dashboard",
         name: "Payment",
         icon: <MdOutlinePayment />,
         subRoutes: [
             {
-                mainRouteId: 7,
+                mainRouteId: 6,
                 path: "/dashboard/paymentToVendor",
                 name: "Payment to Vendor",
                 icon: <FaUser />,
@@ -141,19 +134,19 @@ const routes = [
         ],
     },
     {
-        id: 8,
+        id: 7,
         path: "/dashboard",
         name: "Stock",
         icon: <AiOutlineStock />,
         subRoutes: [
             {
-                mainRouteId: 8,
+                mainRouteId: 7,
                 path: "/dashboard/stockInfo",
                 name: "Stock Info",
                 icon: <FaUser />,
             },
             {
-                mainRouteId: 8,
+                mainRouteId: 7,
                 path: "/dashboard/itemForm",
                 name: "Item Form",
                 icon: <FaUser />,
@@ -161,13 +154,13 @@ const routes = [
         ],
     },
     {
-        id: 9,
+        id: 8,
         path: "/dashboard",
         name: "User Management",
         icon: <FaUsers />,
         subRoutes: [
             {
-                mainRouteId: 9,
+                mainRouteId: 8,
                 path: "/dashboard/user",
                 name: "User",
                 icon: <FaUser />,
@@ -176,19 +169,19 @@ const routes = [
     },
 
     {
-        id: 10,
+        id: 9,
         path: "/dashboard/Reports",
         name: "Reports",
         icon: <HiDocumentReport />,
         subRoutes: [
             {
-                mainRouteId: 10,
+                mainRouteId: 9,
                 path: "/dashboard/stockReport",
                 name: "Stock Report",
                 icon: <FaUser />,
             },
             {
-                mainRouteId: 10,
+                mainRouteId: 9,
                 path: "/dashboard/datewiseReport",
                 name: "Datewise Report",
                 icon: <FaLock />,

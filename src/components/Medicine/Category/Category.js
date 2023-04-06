@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import useCategory from '../../hooks/useCategory';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { GoPlus } from 'react-icons/go';
 import AddCategory from './AddCategory';
 import UpdateCategory from './UpdateCategory';
 import { toast } from 'react-toastify';
-import Loading from '../Loading/Loading';
+import useCategory from '../../../hooks/useCategory';
+import Loading from '../../Loading/Loading';
 
-const CategoryList = () => {
-    const [isLoading, categories, refetch] = useCategory()
+const Category = () => {
+    const { isLoading, categories, refetch } = useCategory()
     const [categoryModal, setCategoryModal] = useState(false)
     const [editCategoryModal, setEditCategoryModal] = useState(false)
     const [query, setQuery] = useState('')
@@ -160,7 +160,7 @@ const CategoryList = () => {
 
             <div>
                 {
-                    categoryModal && <AddCategory setCategoryModal={setCategoryModal} refetch={refetch} />
+                    categoryModal && <AddCategory setCategoryModal={setCategoryModal} refetch={refetch} categories={categories} />
                 }
             </div>
 
@@ -174,4 +174,4 @@ const CategoryList = () => {
     );
 };
 
-export default CategoryList;
+export default Category;

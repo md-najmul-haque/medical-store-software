@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-import CategoryList from "../components/Category/CategoryList";
 import Main from "../Layouts/Main";
 import SalesBill from "../components/SalesBill/SalesBill";
 import DashboardLayout from "../components/Dashboard/DashboardLayout";
@@ -18,6 +17,7 @@ import RequireAuth from "../hooks/requireAuth";
 import User from "../components/User/User";
 import Suppliers from "../components/Supplier/Suppliers";
 import Medicines from "../components/Medicine/Medicines";
+import Category from "../components/Medicine/Category/Category";
 
 const router = createBrowserRouter([
     {
@@ -62,8 +62,8 @@ const router = createBrowserRouter([
                 element: <Medicines />
             },
             {
-                path: '/dashboard/categoryList',
-                element: <CategoryList />
+                path: '/dashboard/category',
+                element: <Category />
             },
             {
                 path: '/dashboard/suppliers',

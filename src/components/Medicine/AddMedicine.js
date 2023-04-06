@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
-const AddMedicine = ({ setMedicineModal, refetch, suppliers }) => {
+const AddMedicine = ({ setMedicineModal, refetch, suppliers, categories }) => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
 
@@ -30,7 +30,7 @@ const AddMedicine = ({ setMedicineModal, refetch, suppliers }) => {
                     const medicine = {
                         medicineName: data.medicineName,
                         genericName: data.genericName,
-                        medicineCategory: data.medicineCategory,
+                        category: data.category,
                         supplier: {
                             supplierName: data.supplierName,
                             id: selectedSupplier._id
@@ -125,19 +125,28 @@ const AddMedicine = ({ setMedicineModal, refetch, suppliers }) => {
                                     </label>
                                 </div>
 
-                                <div className="form-control w-full ">
+                                <div className="form-control w-full">
                                     <label className="label">
-                                        <span className="font-semibold">Category Name</span>
+                                        <span className="font-semibold">Category</span>
                                     </label>
-                                    <select className="select bg-gray-100 w-full " {...register("medicineCategory")}>
-                                        <option disabled selected>Medicine Category</option>
-                                        <option>Tablet</option>
-                                        <option>Capsule</option>
-                                        <option>Drop</option>
-                                        <option>Syrup</option>
-                                        <option>Ointment</option>
-                                        <option>Injection</option>
+                                    <select className="select w-full input-bordered"
+                                        {...register("category", {
+                                            required: {
+                                                value: true,
+                                                message: 'Category is required'
+                                            }
+                                        })} >
+                                        <option disabled selected>Category</option>
+                                        {
+                                            categories?.map(category => {
+                                                return <option key={category._id}>{category.categoryName}</option>
+
+                                            })
+                                        }
                                     </select>
+                                    <label className="label">
+                                        {errors.category?.type === 'required' && <span className="label-text-alt text-red-500">{errors.category.message}</span>}
+                                    </label>
                                 </div>
                             </div>
 

@@ -6,7 +6,7 @@ import useSupplier from '../hooks/useSupplier';
 import Loading from './Loading/Loading';
 
 const PurchaseBill = () => {
-    const [isLoading, suppliers, refetch] = useSupplier()
+    const { isLoading, suppliers, refetch } = useSupplier()
     const [products, setProducts] = useState([])
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
@@ -15,12 +15,13 @@ const PurchaseBill = () => {
         return <Loading />
     }
 
+    console.log(suppliers)
     const handleSupplier = (e) => {
         const supplierName = e.target.value
 
         const supplier = suppliers.find(sup => sup.supplierName === supplierName)
         console.log(supplier.product)
-        setProducts(supplier.product);
+        setProducts(supplier.medicines);
 
     }
 

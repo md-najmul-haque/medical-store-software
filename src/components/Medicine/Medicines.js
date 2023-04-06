@@ -7,10 +7,12 @@ import { CSVLink } from "react-csv";
 import Loading from '../Loading/Loading';
 import Medicine from './Medicine';
 import useSupplier from '../../hooks/useSupplier';
+import useCategory from '../../hooks/useCategory';
 
 const Medicines = () => {
     const { isLoading, medicines, refetch } = useMedicine()
-    const { suppliers } = useSupplier()
+    const { isLoadingSupplier, suppliers } = useSupplier()
+    const { categories } = useCategory()
     const [medicineModal, setMedicineModal] = useState(false)
     const [query, setQuery] = useState('')
     const [medicineQuantity, setMedicineQuantity] = useState(10)
@@ -18,7 +20,7 @@ const Medicines = () => {
     const [selectedMedicine, setSelectedMedicine] = useState(null)
 
 
-    if (isLoading) {
+    if (isLoading || isLoadingSupplier) {
         return <Loading />
     }
 
@@ -176,9 +178,9 @@ const Medicines = () => {
                                     <tbody>
                                         {
                                             selectedMedicine ?
-                                                <Medicine key={selectedMedicine._id} medicine={selectedMedicine} refetch={refetch} />
+                                                <Medicine key={selectedMedicine._id} medicine={selectedMedicine} refetch={refetch} categories={categories} />
 
-                                                : search(medicines)?.slice(0, medicineQuantity)?.map((medicine, index) => <Medicine key={medicine._id} medicine={medicine} index={index} refetch={refetch} />)
+                                                : search(medicines)?.slice(0, medicineQuantity)?.map((medicine, index) => <Medicine key={medicine._id} medicine={medicine} index={index} refetch={refetch} categories={categories} suppliers={suppliers} />)
                                         }
 
                                     </tbody>
@@ -191,7 +193,7 @@ const Medicines = () => {
 
             <div>
                 {
-                    medicineModal && <AddMedicine setMedicineModal={setMedicineModal} refetch={refetch} suppliers={suppliers} />
+                    medicineModal && <AddMedicine setMedicineModal={setMedicineModal} refetch={refetch} suppliers={suppliers} categories={categories} />
                 }
             </div>
 

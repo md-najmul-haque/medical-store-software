@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
 
-const AddCategory = ({ setCategoryModal, refetch }) => {
+const AddCategory = ({ setCategoryModal, refetch, categories }) => {
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
@@ -82,6 +82,7 @@ const AddCategory = ({ setCategoryModal, refetch }) => {
                                     type="number"
                                     placeholder="Enter CAT ID"
                                     className="input bg-gray-100 w-full input-bordered"
+                                    value={categories.length + 1}
                                     {...register("catId", {
                                         required: {
                                             value: true,

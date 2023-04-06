@@ -2,13 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
-const UpdateMedicine = ({ medicine, setUpdateMedicine, refetch, _id }) => {
+const UpdateMedicine = ({ medicine, setUpdateMedicine, refetch, _id, suppliers, categories }) => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
-    const { imageURL, medicineName, type, brandName, supplierName, barcodeId, price, purchasePrice, salePrice, purchaseQty, saleQuantity, bookedQty, status, origin, unit, genericName, quantity, batchNo, remarks } = medicine
+    const { imageURL, medicineName, type, brandName, supplier, barcodeId, price, purchasePrice, salePrice, purchaseQty, saleQuantity, bookedQty, status, origin, unit, genericName, quantity, batchNo, remarks } = medicine
 
     // console.log(_id)
-    console.log(medicine)
+    // console.log(medicine)
+
+    const defaultSupplier = suppliers.find(sup => sup.supplierName === supplier.supplierName)
+    // console.log(defaultSupplier)
 
     const onSubmit = data => {
 
@@ -28,11 +31,16 @@ const UpdateMedicine = ({ medicine, setUpdateMedicine, refetch, _id }) => {
                 if (result.success === true) {
                     const img = result.data.url
 
+                    const selectedSupplier = suppliers.find(supplier => supplier.supplierName === data.supplierName)
+
                     const medicine = {
                         medicineName: data.medicineName,
                         genericName: data.genericName,
-                        medicineCategory: data.medicineCategory,
-                        supplierName: data.supplierName,
+                        category: data.category,
+                        supplier: {
+                            supplierName: data.supplierName,
+                            id: selectedSupplier._id
+                        },
                         brandName: data.brandName,
                         unit: data.unit,
                         origin: data.origin,
@@ -44,6 +52,7 @@ const UpdateMedicine = ({ medicine, setUpdateMedicine, refetch, _id }) => {
                         imageURL: img,
                         remarks: data.remarks,
                     }
+
 
                     console.log(medicine)
 
@@ -126,37 +135,48 @@ const UpdateMedicine = ({ medicine, setUpdateMedicine, refetch, _id }) => {
                                     </label>
                                 </div>
 
-                                <div className="form-control w-full ">
+                                <div className="form-control w-full">
                                     <label className="label">
-                                        <span className="font-semibold">Category Name</span>
+                                        <span className="font-semibold">Category</span>
                                     </label>
-                                    <select className="select bg-gray-100 w-full " {...register("medicineCategory")}>
-                                        <option disabled selected>Medicine Category</option>
-                                        <option>Tablet</option>
-                                        <option>Capsule</option>
-                                        <option>Drop</option>
-                                        <option>Syrup</option>
-                                        <option>Ointment</option>
-                                        <option>Injection</option>
+                                    <select className="select w-full input-bordered"
+                                        {...register("category", {
+                                            required: {
+                                                value: true,
+                                                message: 'Category is required'
+                                            }
+                                        })} >
+                                        <option disabled selected>Category</option>
+                                        {
+                                            categories?.map(category => {
+                                                return <option key={category._id}>{category.categoryName}</option>
+
+                                            })
+                                        }
                                     </select>
+                                    <label className="label">
+                                        {errors.category?.type === 'required' && <span className="label-text-alt text-red-500">{errors.category.message}</span>}
+                                    </label>
                                 </div>
                             </div>
 
                             <div className='grid grid-cols-2 gap-5'>
-                                <div className="form-control w-full ">
+                                <div className="form-control w-full">
                                     <label className="label">
                                         <span className="font-semibold">Supplier Name</span>
                                     </label>
-                                    <input
-                                        type="text"
-                                        className="input bg-gray-100 w-full "
-                                        defaultValue={supplierName}
+                                    <select className="select w-full input-bordered"
                                         {...register("supplierName", {
                                             required: {
                                                 value: true,
                                                 message: 'Supplier name is required'
                                             }
-                                        })} />
+                                        })} >
+
+                                        <option disabled>Supplier</option>
+                                        <option selected>{defaultSupplier.supplierName}</option>
+
+                                    </select>
                                     <label className="label">
                                         {errors.supplierName?.type === 'required' && <span className="label-text-alt text-red-500">{errors.supplierName.message}</span>}
                                     </label>
@@ -166,16 +186,16 @@ const UpdateMedicine = ({ medicine, setUpdateMedicine, refetch, _id }) => {
                                     <label className="label">
                                         <span className="font-semibold">Brand Name</span>
                                     </label>
-                                    <input
-                                        type="text"
-                                        className="input bg-gray-100 w-full "
-                                        defaultValue={brandName}
+                                    <select className="select w-full input-bordered"
                                         {...register("brandName", {
                                             required: {
                                                 value: true,
-                                                message: 'Brand name is required'
+                                                message: 'Supplier name is required'
                                             }
-                                        })} />
+                                        })} >
+                                        <option disabled selected>Brand Name</option>
+                                        <option selected>{defaultSupplier.supplierName}</option>
+                                    </select>
                                     <label className="label">
                                         {errors.brandName?.type === 'required' && <span className="label-text-alt text-red-500">{errors.brandName.message}</span>}
                                     </label>

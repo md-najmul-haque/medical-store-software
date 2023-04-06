@@ -4,10 +4,10 @@ import { RiDeleteBin6Line } from 'react-icons/ri';
 import { toast } from 'react-toastify';
 import UpdateMedicine from './UpdateMedicine';
 
-const Medicine = ({ medicine, index, refetch }) => {
+const Medicine = ({ medicine, index, refetch, suppliers, categories }) => {
     const [updateMedicine, setUpdateMedicine] = useState(false)
 
-    const { _id, imageURL, medicineName, medicineCategory, brandName, supplier, barcodeId, price, purchasePrice, salePrice, purchaseQty, saleQuantity, bookedQty, status } = medicine
+    const { _id, imageURL, medicineName, category, brandName, supplier, barcodeId, price, purchasePrice, salePrice, purchaseQty, saleQuantity, bookedQty, status } = medicine
     console.log(_id)
 
     const deleteMedicine = (id) => {
@@ -43,7 +43,7 @@ const Medicine = ({ medicine, index, refetch }) => {
                     {medicineName}
                 </td>
                 <td className="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
-                    {medicineCategory}
+                    {category}
                 </td>
                 <td className="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                     {brandName}
@@ -88,7 +88,7 @@ const Medicine = ({ medicine, index, refetch }) => {
 
             <div>
                 {
-                    updateMedicine && <UpdateMedicine setUpdateMedicine={setUpdateMedicine} refetch={refetch} medicine={medicine} _id={_id} />
+                    updateMedicine && <UpdateMedicine setUpdateMedicine={setUpdateMedicine} refetch={refetch} medicine={medicine} _id={_id} suppliers={suppliers} categories={categories} />
                 }
             </div>
         </>

@@ -10,7 +10,7 @@ const useCategory = () => {
         }
     )
 
-    return [isLoading, categories, refetch]
+    return { isLoading, categories, refetch }
 };
 
 export default useCategory;
