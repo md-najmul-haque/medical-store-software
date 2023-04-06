@@ -1,9 +1,12 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import Loading from '../Loading/Loading';
+import useSupplier from '../../hooks/useSupplier';
 
-const AddMedicine = ({ setMedicineModal, refetch }) => {
+const AddMedicine = ({ setMedicineModal, refetch, suppliers }) => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
+
 
     const onSubmit = data => {
 
@@ -23,11 +26,17 @@ const AddMedicine = ({ setMedicineModal, refetch }) => {
                 if (result.success === true) {
                     const img = result.data.url
 
+                    const selectedSupplier = suppliers.find(supplier => supplier.supplierName === data.supplierName)
+                    console.log(selectedSupplier)
+
                     const medicine = {
                         medicineName: data.medicineName,
                         genericName: data.genericName,
                         medicineCategory: data.medicineCategory,
-                        supplierName: data.supplierName,
+                        supplierName: {
+                            name: data.supplierName,
+                            id: selectedSupplier._id
+                        },
                         brandName: data.brandName,
                         unit: data.unit,
                         origin: data.origin,
@@ -135,19 +144,26 @@ const AddMedicine = ({ setMedicineModal, refetch }) => {
                             </div>
 
                             <div className='grid grid-cols-2 gap-5'>
-                                <div className="form-control w-full ">
+
+                                <div className="form-control w-full">
                                     <label className="label">
                                         <span className="font-semibold">Supplier Name</span>
                                     </label>
-                                    <input
-                                        type="text"
-                                        className="input bg-gray-100 w-full "
+                                    <select className="select w-full input-bordered"
                                         {...register("supplierName", {
                                             required: {
                                                 value: true,
                                                 message: 'Supplier name is required'
                                             }
-                                        })} />
+                                        })} >
+                                        <option disabled selected>Supplier</option>
+                                        {
+                                            suppliers?.map(supplier => {
+                                                return <option key={supplier._id}>{supplier.supplierName}</option>
+
+                                            })
+                                        }
+                                    </select>
                                     <label className="label">
                                         {errors.supplierName?.type === 'required' && <span className="label-text-alt text-red-500">{errors.supplierName.message}</span>}
                                     </label>
@@ -157,19 +173,26 @@ const AddMedicine = ({ setMedicineModal, refetch }) => {
                                     <label className="label">
                                         <span className="font-semibold">Brand Name</span>
                                     </label>
-                                    <input
-                                        type="text"
-                                        className="input bg-gray-100 w-full "
+                                    <select className="select w-full input-bordered"
                                         {...register("brandName", {
                                             required: {
                                                 value: true,
-                                                message: 'Brand name is required'
+                                                message: 'Supplier name is required'
                                             }
-                                        })} />
+                                        })} >
+                                        <option disabled selected>Brand Name</option>
+                                        {
+                                            suppliers?.map(supplier => {
+                                                return <option key={supplier._id}>{supplier.supplierName}</option>
+
+                                            })
+                                        }
+                                    </select>
                                     <label className="label">
                                         {errors.brandName?.type === 'required' && <span className="label-text-alt text-red-500">{errors.brandName.message}</span>}
                                     </label>
                                 </div>
+
                             </div>
 
                             <h2 className='font-semibold mt-5'>Medicine details info</h2>

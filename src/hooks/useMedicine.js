@@ -11,7 +11,7 @@ const useMedicine = () => {
         }
     )
 
-    return [isLoading, medicines, refetch]
+    return { isLoading, medicines, refetch }
 };
 
 export default useMedicine;

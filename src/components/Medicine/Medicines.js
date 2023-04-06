@@ -6,9 +6,11 @@ import { Link } from 'react-router-dom';
 import { CSVLink } from "react-csv";
 import Loading from '../Loading/Loading';
 import Medicine from './Medicine';
+import useSupplier from '../../hooks/useSupplier';
 
 const Medicines = () => {
-    const [isLoading, medicines, refetch] = useMedicine()
+    const { isLoading, medicines, refetch } = useMedicine()
+    const { suppliers } = useSupplier()
     const [medicineModal, setMedicineModal] = useState(false)
     const [query, setQuery] = useState('')
     const [medicineQuantity, setMedicineQuantity] = useState(10)
@@ -189,7 +191,7 @@ const Medicines = () => {
 
             <div>
                 {
-                    medicineModal && <AddMedicine setMedicineModal={setMedicineModal} refetch={refetch} />
+                    medicineModal && <AddMedicine setMedicineModal={setMedicineModal} refetch={refetch} suppliers={suppliers} />
                 }
             </div>
 

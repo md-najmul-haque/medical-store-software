@@ -49,7 +49,7 @@ const Medicine = ({ medicine, index, refetch }) => {
                     {brandName}
                 </td>
                 <td className="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
-                    {supplierName}
+                    {supplierName.name}
                 </td>
                 <td className="text-sm text-gray-900 font-light px-5 py-4 whitespace-nowrap">
                     {barcodeId}

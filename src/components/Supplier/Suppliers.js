@@ -11,7 +11,7 @@ import Supplier from "./Supplier";
 
 
 const Suppliers = () => {
-    const [isLoading, suppliers, refetch] = useSupplier()
+    const { isLoading, suppliers, refetch } = useSupplier()
     const [supplierModal, setSupplierModal] = useState(false)
     const [importSupplier, setImportSupplier] = useState(false)
     const [query, setQuery] = useState('')

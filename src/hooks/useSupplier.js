@@ -10,7 +10,7 @@ const useSupplier = () => {
         }
     )
 
-    return [isLoading, suppliers, refetch]
+    return { isLoading, suppliers, refetch }
 
 };
 

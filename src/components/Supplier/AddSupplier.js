@@ -56,7 +56,7 @@ const AddSupplier = ({ setSupplierModal, refetch, suppliers }) => {
                     </div>
 
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        {/* <h2 className='font-semibold'>Supplier Basic info</h2> */}
+
                         <div className='grid grid-cols-2 gap-2'>
                             <div className="form-control w-full mx-auto">
                                 <label className="label">
