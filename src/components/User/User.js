@@ -4,7 +4,7 @@ import { GoPlus } from 'react-icons/go';
 import AddUser from './AddUser';
 import { useQuery } from 'react-query';
 import Loading from '../Loading/Loading';
-import UserCard from './UserCard';
+import UserDetails from './UserDetails';
 
 const User = () => {
     const [user, setUser] = useState(false)
@@ -41,11 +41,43 @@ const User = () => {
                 <label htmlFor="add-user" onClick={() => { setUser(true) }} className="btn btn-primary text-white normal-case ml-5" ><span className="mr-1"><GoPlus /></span> Create User</label>
             </div>
 
-            <div className="grid xl:grid-cols-4 lg:grid-cols-3 gap-5">
-                {
-                    users.map(user => <UserCard key={user._id} user={user} refetch={refetch} />)
-                }
+            <div className="flex flex-col">
+                <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                    <div className="inline-block min-w-full sm:px-6 lg:px-8">
+                        <div className="overflow-hidden">
+                            <table className="min-w-full text-center">
+                                <thead className="bg-accent border-b">
+                                    <tr>
+                                        <th scope="col" className="px-6 py-4">
+                                            Sl
+                                        </th>
+                                        <th scope="col" className="px-6 py-4">
+                                            User Name
+                                        </th>
+                                        <th scope="col" className="px-6 py-4">
+                                            Photo
+                                        </th>
+                                        <th scope="col" className="px-6 py-4">
+                                            User Email
+                                        </th>
+                                        <th scope="col" className="px-6 py-4">
+                                            Role
+                                        </th>
+                                        <th scope="col" className="px-6 py-4">
+                                            Action
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        users.map((user, index) => <UserDetails key={user._id} user={user} refetch={refetch} />)
+                                    }
 
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div>
