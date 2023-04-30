@@ -45,10 +45,10 @@ const UserDetails = ({ index, user, refetch }) => {
     return (<>
         <tr className="even:bg-gray-100">
             <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>
-            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{name}</td>
             <td className="text-sm text-gray-900 font-light w-28 px-6 py-4 whitespace-nowrap">
-                <img src={image} alt="" />
+                <img src={image ? image : "https://i.ibb.co/RQV7pPN/avatar.png"} alt="" className="rounded-full" />
             </td>
+            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{name}</td>
             <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                 {email}
             </td>

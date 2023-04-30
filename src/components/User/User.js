@@ -89,10 +89,10 @@ const User = () => {
                                                 Sl
                                             </th>
                                             <th scope="col" className="px-6 py-4">
-                                                User Name
+                                                Photo
                                             </th>
                                             <th scope="col" className="px-6 py-4">
-                                                Photo
+                                                User Name
                                             </th>
                                             <th scope="col" className="px-6 py-4">
                                                 User Email
@@ -107,7 +107,7 @@ const User = () => {
                                     </thead>
                                     <tbody>
                                         {
-                                            search(users)?.slice(0, selectedUserNumber).map((user, index) => <UserDetails key={user._id} user={user} refetch={refetch} />)
+                                            search(users)?.slice(0, selectedUserNumber).map((user, index) => <UserDetails key={user._id} index={index} user={user} refetch={refetch} />)
                                         }
 
                                     </tbody>
