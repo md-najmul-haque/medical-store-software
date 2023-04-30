@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
-import { BsThreeDotsVertical } from 'react-icons/bs';
 import { toast } from 'react-toastify';
 import UpdateUser from './UpdateUser';
 import ResetPassword from './ResetPassword';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { RiDeleteBin6Line } from 'react-icons/ri';
+import { MdOutlinePassword } from 'react-icons/md';
+
 
 const UserDetails = ({ index, user, refetch }) => {
-    const [open, setOpen] = useState(false)
 
-    // const [close, setClose] = useState(false)
     const [updateUser, setUpdateUser] = useState(false)
     const [resetPassword, setResetPassword] = useState(false)
 
@@ -41,16 +40,7 @@ const UserDetails = ({ index, user, refetch }) => {
 
     }
 
-    console.log(open)
 
-
-    const handleUserMenu = (id) => {
-        setOpen(false)
-        if (_id === id) {
-            setOpen(true)
-
-        }
-    }
 
     return (<>
         <tr className="even:bg-gray-100">
@@ -67,7 +57,7 @@ const UserDetails = ({ index, user, refetch }) => {
             </td>
             <td className="text-sm text-gray-900 font-light mt-2 px-5 py-4 whitespace-nowrap flex items-center justify-center">
                 <label htmlFor='update-user' onClick={() => setUpdateUser(true)} className="btn btn-sm bg-sky-500 hover:bg-sky-600 border-none font-semibold text-md text-white"> <AiOutlineEdit /></label>
-                <label htmlFor='update-user' onClick={() => setResetPassword(true)} className="btn btn-sm bg-sky-500 hover:bg-sky-600 border-none font-semibold text-md text-white"> <AiOutlineEdit /></label>
+                <label htmlFor='update-user' onClick={() => setResetPassword(true)} className="btn btn-sm bg-orange-500 hover:bg-orange-600 border-none ml-2 font-semibold text-md text-white"> <MdOutlinePassword /></label>
                 <button onClick={() => deleteUser(_id)} className="btn btn-sm bg-red-500 hover:bg-red-600 border-none text-md text-white ml-2"><RiDeleteBin6Line /></button>
             </td>
         </tr>
